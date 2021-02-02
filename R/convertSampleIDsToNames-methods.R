@@ -5,12 +5,12 @@
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
-#' @return Varies, depending on the method.
-#'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")
-#' rse <- RangedSummarizedExperiment
-#' convertSampleIDsToNames(rse)
+#'
+#' ## SummarizedExperiment ===
+#' object <- RangedSummarizedExperiment
+#' convertSampleIDsToNames(object)
 NULL
 
 
@@ -24,7 +24,7 @@ NULL
 ##   appending gaps is not supported
 ## nolint end
 ##
-## Updated 2020-01-20.
+## Updated 2021-02-02.
 `convertSampleIDsToNames,SummarizedExperiment` <-  # nolint
     function(object) {
         validObject(object)
@@ -33,12 +33,12 @@ NULL
             identical(as.character(sampleNames), colnames(object)) ||
             !identical(names(sampleNames), colnames(object))
         ) {
-            cli_alert_warning("Returning with the sample names unmodified.")
-        } else {
-            colnames <- as.character(sampleNames)
-            assert(hasNoDuplicates(colnames))
-            colnames(object) <- colnames
+            alertWarning("Returning with the sample names unmodified.")
+            return(object)
         }
+        colnames <- as.character(sampleNames)
+        assert(hasNoDuplicates(colnames))
+        colnames(object) <- colnames
         ## Note that we need to allow invalid dimnames to pass through here,
         ## so don't run validity checks.
         object
