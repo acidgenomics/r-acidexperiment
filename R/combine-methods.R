@@ -20,11 +20,7 @@
 #' @return `SummarizedExperiment`.
 #'
 #' @examples
-#' data(
-#'     RangedSummarizedExperiment,
-#'     SingleCellExperiment,
-#'     package = "AcidTest"
-#' )
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #' str_pad <- stringr::str_pad
 #'
 #' ## SummarizedExperiment ====
@@ -44,32 +40,6 @@
 #'     str_pad(
 #'         string = seq(from = ncol(y) + 1L, to = ncol(y) * 2L),
 #'         width = 2L,
-#'         pad = "0"
-#'     )
-#' )
-#'
-#' ## Combine the two objects.
-#' c <- combine(x, y)
-#' sampleData(c)
-#' print(c)
-#'
-#' ## SingleCellExperiment ====
-#' x <- SingleCellExperiment
-#' colnames(x) <- paste0(
-#'     "cell",
-#'     str_pad(
-#'         string = seq_len(ncol(x)),
-#'         width = 4L,
-#'         pad = "0"
-#'     )
-#' )
-#'
-#' y <- x
-#' colnames(y) <- paste0(
-#'     "cell",
-#'     str_pad(
-#'         string = seq_len(ncol(y)) + ncol(y),
-#'         width = 4L,
 #'         pad = "0"
 #'     )
 #' )
@@ -258,6 +228,3 @@ setMethod(
     ),
     definition = `combine,SummarizedExperiment`
 )
-
-
-

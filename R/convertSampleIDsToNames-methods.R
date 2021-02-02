@@ -1,6 +1,6 @@
 #' @name convertSampleIDsToNames
 #' @inherit AcidGenerics::convertSampleIDsToNames
-#' @note Updated 2020-01-20.
+#' @note Updated 2021-02-02.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -52,26 +52,4 @@ setMethod(
     f = "convertSampleIDsToNames",
     signature = signature("SummarizedExperiment"),
     definition = `convertSampleIDsToNames,SummarizedExperiment`
-)
-
-
-
-## Updated 2019-07-22.
-`convertSampleIDsToNames,SingleCellExperiment` <-  # nolint
-    function(object) {
-        cli_alert_warning(paste(
-            "{.var SingleCellExperiment} contains cells instead of samples.",
-            "Returning with column names unmodified."
-        ))
-        object
-    }
-
-
-
-#' @rdname convertSampleIDsToNames
-#' @export
-setMethod(
-    f = "convertSampleIDsToNames",
-    signature = signature("SingleCellExperiment"),
-    definition = `convertSampleIDsToNames,SingleCellExperiment`
 )
