@@ -19,18 +19,10 @@
 #' @return `character`.
 #'
 #' @examples
-#' data(
-#'     RangedSummarizedExperiment,
-#'     SingleCellExperiment,
-#'     package = "AcidTest"
-#' )
+#' data( RangedSummarizedExperiment, package = "AcidTest")
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' autopadZeros(object, rownames = TRUE, colnames = TRUE)
-#'
-#' ## SingleCellExperiment ====
-#' object <- SingleCellExperiment
 #' autopadZeros(object, rownames = TRUE, colnames = TRUE)
 NULL
 
