@@ -38,10 +38,8 @@
 #'
 #' @seealso
 #' - [`SummarizedExperiment()`][SummarizedExperiment::SummarizedExperiment].
-#' - [`SingleCellExperiment()`][SingleCellExperiment::SingleCellExperiment].
 #' - `help("RangedSummarizedExperiment-class", "SummarizedExperiment")`.
 #' - `help("SummarizedExperiment-class", "SummarizedExperiment")`.
-#' - `help("SingleCellExperiment-class", "SingleCellExperiment")`.
 #'
 #' @examples
 #' ## Rows (genes)
@@ -127,8 +125,7 @@ makeSummarizedExperiment <- function(
     ## Assays ------------------------------------------------------------------
     assays <- Filter(f = Negate(is.null), x = assays)
     if (hasLength(assays)) {
-        ## Name the primary assay "counts" by default. This helps ensure
-        ## consistency with the naming conventions for `SingleCellExperiment`.
+        ## Name the primary assay "counts" by default.
         if (!hasNames(assays)) {
             if (hasLength(assays, n = 1L)) {
                 names(assays) <- "counts"
@@ -232,9 +229,7 @@ makeSummarizedExperiment <- function(
         rowData <- rowData[rownames(assay), , drop = FALSE]
     }
     ## Column data -------------------------------------------------------------
-    ## Allowing some single-cell RNA-seq automatic columns to pass through
-    ## here, since this code is used by `makeSingleCellExperiment()`. May
-    ## tighten this up and be more restrictive in the future.
+    ## Allowing some single-cell RNA-seq automatic columns to pass through.
     if (hasLength(colData)) {
         assert(
             hasColnames(colData),
