@@ -1,0 +1,38 @@
+Package: AcidExperiment
+Title: Acid Genomics Summarized Experiment
+Description: Toolkit to extend the functionality of SummarizedExperiment.
+Version: 0.0.1
+Date: 2021-02-02
+Authors@R: c(
+    person(
+        "Michael", "Steinbaugh",
+        email = "mike@steinbaugh.com",
+        role = c("aut", "cre"),
+        comment = c(ORCID = "0000-0002-2403-2221")
+    ),
+    person(
+        given = "Acid Genomics",
+        role = c("cph", "fnd")
+    ))
+URL:
+    https://r.acidgenomics.com/packages/acidexperiment/,
+    https://github.com/acidgenomics/r-acidexperiment/
+BugReports: https://github.com/acidgenomics/r-acidexperiment/issues/
+License: GPL-3
+Encoding: UTF-8
+Depends: R (>= 4.0)
+Imports:
+    SummarizedExperiment
+Suggests:
+    AcidTest (>= 0.4.1),
+    testthat
+biocViews:
+    Annotation,
+    Genetics,
+    GenomeAnnotation,
+    Infrastructure,
+    Sequencing
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+VignetteBuilder: knitr
+Additional_repositories: https://r.acidgenomics.com
