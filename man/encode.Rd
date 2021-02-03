@@ -31,7 +31,7 @@ data(RangedSummarizedExperiment, package = "AcidTest")
 ## This works on rowData and colData.
 object <- RangedSummarizedExperiment
 object <- encode(object)
-lapply(rowData(object), class)
+lapply(SummarizedExperiment::rowData(object), class)
 }
 \seealso{
 \code{\link[S4Vectors:Rle-class]{S4Vectors::Rle()}}.
