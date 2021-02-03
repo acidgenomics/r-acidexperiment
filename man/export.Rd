@@ -71,7 +71,14 @@ for exporting \code{data.frame} and \code{matrix} class objects.
 }
 
 \examples{
-print("FIXME")
+data(RangedSummarizedExperiment, package = "AcidTest")
+
+## SummarizedExperiment ====
+object <- RangedSummarizedExperiment
+dir <- "example"
+x <- export(object = object, dir = dir)
+print(x)
+unlink(dir, recursive = TRUE)
 }
 \seealso{
 Packages:

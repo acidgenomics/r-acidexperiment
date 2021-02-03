@@ -31,7 +31,8 @@ Imports:
     SummarizedExperiment,
     pipette (>= 0.5.3),
     scales,
-    sessioninfo (>= 1.1)
+    sessioninfo (>= 1.1),
+    stringr (>= 1.4)
 Suggests:
     AcidTest (>= 0.4.1),
     testthat

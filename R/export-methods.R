@@ -6,7 +6,14 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' print("FIXME")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
+#'
+#' ## SummarizedExperiment ====
+#' object <- RangedSummarizedExperiment
+#' dir <- "example"
+#' x <- export(object = object, dir = dir)
+#' print(x)
+#' unlink(dir, recursive = TRUE)
 NULL
 
 
