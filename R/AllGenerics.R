@@ -400,6 +400,40 @@ NULL
 
 
 
+#' @rdname syntactic
+#' @name camelCase
+#' @importFrom AcidGenerics camelCase
+#' @importMethodsFrom syntactic camelCase
+#' @usage camelCase(object, ...)
+#' @export
+NULL
+
+#' @rdname syntactic
+#' @name dottedCase
+#' @importFrom AcidGenerics dottedCase
+#' @importMethodsFrom syntactic dottedCase
+#' @usage dottedCase(object, ...)
+#' @export
+NULL
+
+#' @rdname syntactic
+#' @name snakeCase
+#' @importFrom AcidGenerics snakeCase
+#' @importMethodsFrom syntactic snakeCase
+#' @usage snakeCase(object, ...)
+#' @export
+NULL
+
+#' @rdname syntactic
+#' @name upperCamelCase
+#' @importFrom AcidGenerics upperCamelCase
+#' @importMethodsFrom syntactic upperCamelCase
+#' @usage upperCamelCase(object, ...)
+#' @export
+NULL
+
+
+
 #' @rdname tpm
 #' @name tpm
 #' @importFrom AcidGenerics tpm
