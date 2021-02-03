@@ -15,8 +15,8 @@
 #' head(rownames(object))
 #' object <- stripGeneVersions(object)
 #' object <- stripTranscriptVersions(object)
-#' head(rowData(object)[["txId"]])
-#' head(rowData(object)[["geneId"]])
+#' head(SummarizedExperiment::rowData(object)[["txId"]])
+#' head(SummarizedExperiment::rowData(object)[["geneId"]])
 #' head(rownames(object))
 NULL
 
