@@ -2,7 +2,7 @@
 #'
 #' @name correlation
 #' @inherit AcidGenerics::correlation
-#' @note Updated 2020-01-20.
+#' @note Updated 2021-02-03.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @inheritParams stats::cor
@@ -54,7 +54,7 @@ method <- formals(stats::cor)[["method"]]
 
 
 
-## Updated 2020-01-20.
+## Updated 2021-02-03.
 `correlation,numeric,numeric` <-  # nolint
     function(x, y, method) {
         assert(
@@ -64,7 +64,7 @@ method <- formals(stats::cor)[["method"]]
         )
         method <- match.arg(method)
         n <- length(x)
-        cli_alert(sprintf(
+        alert(sprintf(
             fmt = "Calculating %s correlation on %d %s.",
             method,
             n,
@@ -94,12 +94,12 @@ setMethod(
 
 
 
-## Updated 2020-01-20.
+## Updated 2021-02-03.
 `correlation,matrix,missing` <-  # nolint
     function(x, y = NULL, method) {
         assert(!anyNA(x))
         method <- match.arg(method)
-        cli_alert(sprintf(
+        alert(sprintf(
             "Calculating {.val %s} correlation matrix.", method
         ))
         cor(x = x, y = NULL, method = method)

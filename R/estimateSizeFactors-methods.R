@@ -14,7 +14,7 @@
 #' can also be supplied using the assignment function [sizeFactors<-()].
 #'
 #' @name estimateSizeFactors
-#' @note Updated 2021-02-02.
+#' @note Updated 2021-02-03.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param type `character(1)`.
@@ -67,7 +67,7 @@ NULL
 
 
 
-## Updated 2020-01-20.
+## Updated 2021-02-03.
 .librarySizeFactors <-  # nolint
     function(
         counts,
@@ -82,7 +82,7 @@ NULL
             !anyNA(counts)
         )
         type <- match.arg(type)
-        cli_alert(sprintf(
+        alert(sprintf(
             fmt = "Calculating library size factors using {.val %s} method.",
             type
         ))
@@ -119,7 +119,7 @@ NULL
 
 
 
-## Updated 2020-01-20.
+## Updated 2021-02-03.
 .centerSizeFactors <- function(sf, center = 1L) {
     assert(
         is.numeric(sf),
@@ -127,7 +127,7 @@ NULL
         isNumber(center),
         isPositive(center)
     )
-    cli_alert(sprintf("Centering size factors at %d.", center))
+    alert(sprintf("Centering size factors at %d.", center))
     sf <- sf / mean(sf) * center
     assert(mean(sf) == center)
     sf
