@@ -1,7 +1,8 @@
 context("droplevels")
 
 test_that("SummarizedExperiment", {
-    x <- droplevels(rse)
+    object <- rse
+    x <- droplevels(object)
     expect_s4_class(x, "RangedSummarizedExperiment")
     ## Check for factor columns.
     ok <- any(vapply(
