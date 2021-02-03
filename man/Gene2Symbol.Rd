@@ -22,6 +22,8 @@ identifiers remain unmodified.
 long format.
 \item \code{"1:1"}: For gene symbols that map to multiple gene identifiers, select
 }}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{Gene2Symbol}.

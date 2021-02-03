@@ -1,6 +1,6 @@
 #' @name sampleData
 #' @inherit AcidGenerics::sampleData
-#' @note Updated 2021-02-02.
+#' @note Updated 2021-02-03.
 #'
 #' @section All supported S4 classes:
 #'
@@ -40,11 +40,6 @@
 #'   `colData` to be ignored as sample-level metadata.
 #'   Particularly useful for `SingleCellExperiment` objects, where
 #'   cell-to-sample mappings are defined using the `sampleId` column.
-#' @param blacklistCols `character` or `NULL`.
-#'   Column names that should not be treated as sample-level metadata.
-#'   Currently applicable only to `SingleCellExperiment` objects, which have
-#'   cell-level columns that can be difficult to distinguish, especially when
-#'   processed using Seurat, scater, etc.
 #' @param ... Additional arguments.
 #'
 #' @examples

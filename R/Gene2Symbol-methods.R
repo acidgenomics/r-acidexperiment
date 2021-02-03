@@ -2,7 +2,7 @@
 #' @inherit AcidGenomes::Gene2Symbol
 #' @note Updated 2021-02-01.
 #'
-#' @inheritParams AcidRoxygen::params
+#' @param ... Additional arguments.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")

@@ -1,11 +1,14 @@
 #' Transcripts per million
 #'
-#' @note Both gene- and transcript-level counts are supported, as long as they
-#'   were imported using a tximport caller (e.g. salmon, kallisto).
-#' @note Updated 2019-08-06.
-#'
 #' @name tpm
+#' @note Updated 2021-02-03.
+#'
+#' @details
+#' Both gene- and transcript-level counts are supported, as long as they
+#' were imported using a tximport caller (e.g. salmon, kallisto).
+#'
 #' @inheritParams AcidRoxygen::params
+#' @param ... Additional arguments.
 #'
 #' @return `matrix`.
 #'

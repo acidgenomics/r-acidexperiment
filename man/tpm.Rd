@@ -11,6 +11,8 @@ tpm(object, ...)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{matrix}.
@@ -18,11 +20,12 @@ tpm(object, ...)
 \description{
 Transcripts per million
 }
-\note{
+\details{
 Both gene- and transcript-level counts are supported, as long as they
 were imported using a tximport caller (e.g. salmon, kallisto).
-
-Updated 2019-08-06.
+}
+\note{
+Updated 2021-02-03.
 }
 \examples{
 se <- SummarizedExperiment::SummarizedExperiment(

@@ -2,13 +2,10 @@
 % Please edit documentation in R/AllGenerics.R, R/organism-methods.R
 \name{organism}
 \alias{organism}
-\alias{organism<-}
 \alias{organism,SummarizedExperiment-method}
 \title{Organism}
 \usage{
 organism(object)
-
-organism(object) <- value
 
 \S4method{organism}{SummarizedExperiment}(object)
 }
@@ -25,6 +22,8 @@ Get or set the organism (i.e. species) of an object.
 }
 \note{
 Updated 2021-02-03.
+
+Assignment method is defined in AcidGenomes.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
