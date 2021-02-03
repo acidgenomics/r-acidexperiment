@@ -51,8 +51,9 @@ data(RangedSummarizedExperiment, package = "AcidTest")
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
-x <- calculateMetrics(object)
-print(x)
+names(colData(object))
+object <- calculateMetrics(object)
+names(colData(object))
 }
 \author{
 Michael Steinbaugh, Rory Kirchner

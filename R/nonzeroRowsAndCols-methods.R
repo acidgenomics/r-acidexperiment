@@ -17,7 +17,7 @@ NULL
 
 
 
-## Updated 2020-01-20.
+## Updated 2021-02-03.
 `nonzeroRowsAndCols,matrix` <-  # nolint
     function(object) {
         originalDim <- dim(object)
@@ -26,7 +26,7 @@ NULL
         object <- object[nzrows, nzcols, drop = FALSE]
         dim <- dim(object)
         if (!identical(dim, originalDim)) {
-            cli_alert_info(sprintf(
+            alertInfo(sprintf(
                 fmt = paste(
                     "Filtered zero count rows and columns:",
                     "  - %d / %d %s (%s)",

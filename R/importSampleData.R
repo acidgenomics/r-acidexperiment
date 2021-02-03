@@ -167,7 +167,7 @@ importSampleData <- function(
             identical(idCol, "sampleId") &&
             !validNames(unique(data[[idCol]]))
         ) {
-            cli_alert_info(paste0(
+            alertInfo(paste0(
                 "Sanitizing sample IDs defined in ",
                 "{.var ", idCol, "} column into snake case."
             ))
