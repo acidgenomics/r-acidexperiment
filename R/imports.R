@@ -31,8 +31,8 @@
 #'   isNonNegative isNotMatchingRegex isNumber isPositive isScalar isString
 #'   isSubset isSuperset matchesUniqueGeneNames validNames validate
 #'   validateClasses
-#' @importFrom methods as coerce is new setMethod setReplaceMethod setOldClass
-#'   setValidity signature slot slotNames validObject .hasSlot
+#' @importFrom methods as coerce is new setMethod setReplaceMethod signature
+#'   validObject
 #' @importFrom scales percent
 #' @importFrom sessioninfo session_info
 #' @importFrom stringr boundary str_detect str_dup str_extract str_length
