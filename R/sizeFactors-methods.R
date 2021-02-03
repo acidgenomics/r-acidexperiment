@@ -27,7 +27,7 @@ NULL
 
 
 ## Updated 2019-08-06.
-`sizeFactors,SummarizedExperiment` <-  # nolint
+`sizeFactors,SE` <-  # nolint
     function(object) {
         if (!"sizeFactor" %in% names(colData(object))) {
             return(NULL)
@@ -44,13 +44,13 @@ NULL
 setMethod(
     f = "sizeFactors",
     signature = signature("SummarizedExperiment"),
-    definition = `sizeFactors,SummarizedExperiment`
+    definition = `sizeFactors,SE`
 )
 
 
 
 ## Updated 2019-08-06.
-`sizeFactors<-,SummarizedExperiment,ANY` <-  # nolint
+`sizeFactors<-,SE,ANY` <-  # nolint
     function(object, value) {
         if (!is.null(value)) {
             assert(
@@ -75,5 +75,5 @@ setReplaceMethod(
         object = "SummarizedExperiment",
         value = "ANY"
     ),
-    definition = `sizeFactors<-,SummarizedExperiment,ANY`
+    definition = `sizeFactors<-,SE,ANY`
 )

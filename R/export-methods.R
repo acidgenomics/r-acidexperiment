@@ -140,7 +140,7 @@ NULL
 #' to contain named assays (e.g. DESeqTransform). In the event that an SE object
 #' contains a single, unnamed assay, we make sure to rename it internally to
 #' "assay" before exporting.
-`export,SummarizedExperiment` <-  # nolint
+`export,SE` <-  # nolint
     function(
         object,
         name = NULL,
@@ -207,7 +207,7 @@ NULL
         invisible(files)
     }
 
-formals(`export,SummarizedExperiment`)[
+formals(`export,SE`)[
     c("compress", "dir", "overwrite", "quiet")] <-
     formalsList[c("export.compress", "export.dir", "overwrite", "quiet")]
 
@@ -218,5 +218,5 @@ formals(`export,SummarizedExperiment`)[
 setMethod(
     f = "export",
     signature = signature("SummarizedExperiment"),
-    definition = `export,SummarizedExperiment`
+    definition = `export,SE`
 )

@@ -49,7 +49,7 @@ setMethod(
 
 
 ## Updated 2019-08-24.
-`melt,SummarizedExperiment` <-  # nolint
+`melt,SE` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -77,7 +77,7 @@ setMethod(
     }
 
 args <- c("min", "minMethod", "trans")
-formals(`melt,SummarizedExperiment`)[args] <- formals(`melt,matrix`)[args]
+formals(`melt,SE`)[args] <- formals(`melt,matrix`)[args]
 rm(args)
 
 
@@ -87,5 +87,5 @@ rm(args)
 setMethod(
     f = "melt",
     signature = signature("SummarizedExperiment"),
-    definition = `melt,SummarizedExperiment`
+    definition = `melt,SE`
 )

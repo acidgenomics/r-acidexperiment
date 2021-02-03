@@ -107,7 +107,7 @@ setMethod(
 
 
 ## Updated 2020-05-22.
-`aggregateCols,SummarizedExperiment` <-  # nolint
+`aggregateCols,SE` <-  # nolint
     function(
         x,
         col = "aggregate",
@@ -160,5 +160,5 @@ setMethod(
 setMethod(
     f = "aggregateCols",
     signature = signature("SummarizedExperiment"),
-    definition = `aggregateCols,SummarizedExperiment`
+    definition = `aggregateCols,SE`
 )

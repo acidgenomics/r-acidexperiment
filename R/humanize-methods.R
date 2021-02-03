@@ -18,7 +18,7 @@ NULL
 
 
 ## Updated 2020-01-20.
-`humanize,SummarizedExperiment` <-  # nolint
+`humanize,SE` <-  # nolint
     function(object) {
         to <- object
         to <- convertSampleIDsToNames(to)
@@ -33,5 +33,5 @@ NULL
 setMethod(
     f = "humanize",
     signature = signature("SummarizedExperiment"),
-    definition = `humanize,SummarizedExperiment`
+    definition = `humanize,SE`
 )

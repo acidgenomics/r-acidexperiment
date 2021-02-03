@@ -65,7 +65,7 @@ setMethod(
 
 
 ## Updated 2019-12-04.
-`integerCounts,SummarizedExperiment` <-  # nolint
+`integerCounts,SE` <-  # nolint
     function(object) {
         integerCounts(counts(object))
     }
@@ -77,5 +77,5 @@ setMethod(
 setMethod(
     f = "integerCounts",
     signature = signature("SummarizedExperiment"),
-    definition = `integerCounts,SummarizedExperiment`
+    definition = `integerCounts,SE`
 )

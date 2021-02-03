@@ -91,7 +91,7 @@ setMethod(
 
 
 ## Updated 2019-09-16.
-`nonzeroRowsAndCols,SummarizedExperiment` <-  # nolint
+`nonzeroRowsAndCols,SE` <-  # nolint
     function(object, assay = 1L) {
         assay <- assay(object, i = assay)
         assay <- nonzeroRowsAndCols(assay)
@@ -106,5 +106,5 @@ setMethod(
 setMethod(
     f = "nonzeroRowsAndCols",
     signature = signature("SummarizedExperiment"),
-    definition = `nonzeroRowsAndCols,SummarizedExperiment`
+    definition = `nonzeroRowsAndCols,SE`
 )

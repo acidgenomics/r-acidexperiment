@@ -40,7 +40,7 @@ setMethod(
 
 
 ## Updated 2021-01-16.
-`matchSampleColumn,SummarizedExperiment` <-  # nolint
+`matchSampleColumn,SE` <-  # nolint
     function(object) {
         matchSampleColumn(colData(object))
 }
@@ -52,5 +52,5 @@ setMethod(
 setMethod(
     f = "matchSampleColumn",
     signature = signature("SummarizedExperiment"),
-    definition = `matchSampleColumn,SummarizedExperiment`
+    definition = `matchSampleColumn,SE`
 )

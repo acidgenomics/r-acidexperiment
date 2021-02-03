@@ -1,6 +1,6 @@
 context("Ensembl2Entrez")
 
-formats <- eval(formals(`Ensembl2Entrez,SummarizedExperiment`)[["format"]])
+formats <- eval(formals(`Ensembl2Entrez,SE`)[["format"]])
 
 test_that("RangedSummarizedExperiment", {
     for (format in formats) {

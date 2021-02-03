@@ -20,7 +20,7 @@ NULL
 
 
 ## Updated 2021-02-03.
-`droplevels,SummarizedExperiment` <-  # nolint
+`droplevels,SE` <-  # nolint
     function(x) {
         if (hasCols(rowData(x))) {
             rowData(x) <- droplevels(rowData(x))
@@ -37,5 +37,5 @@ NULL
 setMethod(
     f = "droplevels",
     signature = signature("SummarizedExperiment"),
-    definition = `droplevels,SummarizedExperiment`
+    definition = `droplevels,SE`
 )

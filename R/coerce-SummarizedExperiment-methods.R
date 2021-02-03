@@ -44,7 +44,7 @@ NULL
 
 
 ## Updated 2019-08-23.
-`as.SummarizedExperiment,SummarizedExperiment` <-  # nolint
+`as.SummarizedExperiment,SE` <-  # nolint
     function(x) {
         rowMeta <- metadata(rowData(x))
         x <- as(x, "SummarizedExperiment")
@@ -59,13 +59,13 @@ NULL
 setMethod(
     f = "as.SummarizedExperiment",
     signature = signature("SummarizedExperiment"),
-    definition = `as.SummarizedExperiment,SummarizedExperiment`
+    definition = `as.SummarizedExperiment,SE`
 )
 
 
 
 ## Updated 2019-08-23.
-`as.SummarizedExperiment,RangedSummarizedExperiment` <-  # nolint
+`as.SummarizedExperiment,RSE` <-  # nolint
     function(x) {
         rowMeta <- metadata(rowRanges(x))
         x <- as(x, "RangedSummarizedExperiment")
@@ -81,5 +81,5 @@ setMethod(
 setMethod(
     f = "as.SummarizedExperiment",
     signature = signature("RangedSummarizedExperiment"),
-    definition = `as.SummarizedExperiment,RangedSummarizedExperiment`
+    definition = `as.SummarizedExperiment,RSE`
 )

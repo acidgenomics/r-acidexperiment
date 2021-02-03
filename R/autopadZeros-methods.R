@@ -70,7 +70,7 @@ setMethod(
 
 
 ## Updated 2019-08-05.
-`autopadZeros,SummarizedExperiment` <-  # nolint
+`autopadZeros,SE` <-  # nolint
     function(object, rownames = FALSE, colnames = TRUE, sort = TRUE) {
         object <- do.call(
             what = `autopadZeros,matrix`,
@@ -94,5 +94,5 @@ setMethod(
 setMethod(
     f = "autopadZeros",
     signature = signature("SummarizedExperiment"),
-    definition = `autopadZeros,SummarizedExperiment`
+    definition = `autopadZeros,SE`
 )

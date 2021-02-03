@@ -136,7 +136,7 @@ NULL
 
 
 ## Updated 2019-10-09.
-`estimateSizeFactors,SummarizedExperiment` <-  # nolint
+`estimateSizeFactors,SE` <-  # nolint
     function(object, type, center) {
         validObject(object)
         assert(
@@ -154,7 +154,7 @@ NULL
         object
     }
 
-formals(`estimateSizeFactors,SummarizedExperiment`)[
+formals(`estimateSizeFactors,SE`)[
     c("type", "center")
 ] <- list(
     type = formals(.librarySizeFactors)[["type"]],
@@ -168,5 +168,5 @@ formals(`estimateSizeFactors,SummarizedExperiment`)[
 setMethod(
     f = "estimateSizeFactors",
     signature = signature("SummarizedExperiment"),
-    definition = `estimateSizeFactors,SummarizedExperiment`
+    definition = `estimateSizeFactors,SE`
 )

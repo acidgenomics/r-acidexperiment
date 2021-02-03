@@ -139,7 +139,7 @@ setMethod(
 
 
 ## Updated 2021-02-02.
-`mapGenesToRownames,SummarizedExperiment` <-  # nolint
+`mapGenesToRownames,SE` <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
         assert(isFlag(strict))
@@ -196,7 +196,7 @@ setMethod(
 setMethod(
     f = "mapGenesToRownames",
     signature = signature("SummarizedExperiment"),
-    definition = `mapGenesToRownames,SummarizedExperiment`
+    definition = `mapGenesToRownames,SE`
 )
 
 
@@ -233,7 +233,7 @@ setMethod(
 
 
 ## Updated 2021-02-02.
-`mapGenesToIDs,SummarizedExperiment` <-  # nolint
+`mapGenesToIDs,SE` <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
         suppressMessages({
@@ -257,7 +257,7 @@ setMethod(
 setMethod(
     f = "mapGenesToIDs",
     signature = signature("SummarizedExperiment"),
-    definition = `mapGenesToIDs,SummarizedExperiment`
+    definition = `mapGenesToIDs,SE`
 )
 
 
@@ -294,7 +294,7 @@ setMethod(
 
 
 ## Updated 2021-02-02.
-`mapGenesToSymbols,SummarizedExperiment` <-  # nolint
+`mapGenesToSymbols,SE` <-  # nolint
     function(object, genes, strict = TRUE) {
         validObject(object)
         suppressMessages({
@@ -318,5 +318,5 @@ setMethod(
 setMethod(
     f = "mapGenesToSymbols",
     signature = signature("SummarizedExperiment"),
-    definition = `mapGenesToSymbols,SummarizedExperiment`
+    definition = `mapGenesToSymbols,SE`
 )

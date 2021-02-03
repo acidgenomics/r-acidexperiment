@@ -27,7 +27,7 @@ NULL
 
 
 ## Updated 2019-08-06.
-`counts,SummarizedExperiment` <-  # nolint
+`counts,SE` <-  # nolint
     function(object) {
         validObject(object)
         assay(object, i = "counts")
@@ -40,13 +40,13 @@ NULL
 setMethod(
     f = "counts",
     signature = signature("SummarizedExperiment"),
-    definition = `counts,SummarizedExperiment`
+    definition = `counts,SE`
 )
 
 
 
 ## Updated 2019-08-06.
-`counts<-,SummarizedExperiment,matrix` <-  # nolint
+`counts<-,SE,matrix` <-  # nolint
     function(object, value) {
         assert(
             all(!is.na(value)),
@@ -68,14 +68,14 @@ setReplaceMethod(
         object = "SummarizedExperiment",
         value = "matrix"
     ),
-    definition = `counts<-,SummarizedExperiment,matrix`
+    definition = `counts<-,SE,matrix`
 )
 
 
 
 ## Updated 2019-08-06.
-`counts<-,SummarizedExperiment,Matrix` <-  # nolint
-    `counts<-,SummarizedExperiment,matrix`
+`counts<-,SE,Matrix` <-  # nolint
+    `counts<-,SE,matrix`
 
 
 
@@ -87,5 +87,5 @@ setReplaceMethod(
         object = "SummarizedExperiment",
         value = "Matrix"
     ),
-    definition = `counts<-,SummarizedExperiment,Matrix`
+    definition = `counts<-,SE,Matrix`
 )

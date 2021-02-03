@@ -25,7 +25,7 @@ NULL
 ## nolint end
 ##
 ## Updated 2021-02-02.
-`convertSampleIDsToNames,SummarizedExperiment` <-  # nolint
+`convertSampleIDsToNames,SE` <-  # nolint
     function(object) {
         validObject(object)
         sampleNames <- sampleNames(object)
@@ -51,5 +51,5 @@ NULL
 setMethod(
     f = "convertSampleIDsToNames",
     signature = signature("SummarizedExperiment"),
-    definition = `convertSampleIDsToNames,SummarizedExperiment`
+    definition = `convertSampleIDsToNames,SE`
 )
