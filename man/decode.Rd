@@ -24,22 +24,16 @@ The Rle class is a general container for storing an atomic vector
   \code{\link[base]{rle}} function from the base package.
 }
 \note{
-Updated 2021-02-02.
+Updated 2021-02-03.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
-rowData <- SummarizedExperiment::rowData
-
-## DataFrame ====
-df <- rowData(RangedSummarizedExperiment)
-lapply(df, class)
-x <- decode(df)
-lapply(x, class)
 
 ## SummarizedExperiment ====
 ## This works on rowData and colData.
-x <- decode(RangedSummarizedExperiment)
-lapply(rowData(x), class)
+object <- RangedSummarizedExperiment
+object <- decode(object)
+lapply(rowData(object), class)
 }
 \seealso{
 \code{\link[S4Vectors:Rle-class]{S4Vectors::decode()}}.
