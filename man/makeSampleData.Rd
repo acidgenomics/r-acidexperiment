@@ -56,7 +56,7 @@ Blacklisted columns:
 }
 }
 \examples{
-object <- DataFrame(
+object <- S4Vectors::DataFrame(
     genotype = rep(c("control", "wildtype"), times = 2L),
     treatment = rep(c("vector", "RNAi"), each = 2L),
     sampleName = paste("sample", seq_len(4L)),

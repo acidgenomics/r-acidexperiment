@@ -2,6 +2,7 @@
 % Please edit documentation in R/AllGenerics.R, R/organism-methods.R
 \name{organism}
 \alias{organism}
+\alias{organism<-}
 \alias{organism,SummarizedExperiment-method}
 \title{Organism}
 \usage{
