@@ -303,6 +303,22 @@ NULL
 
 
 
+#' @rdname organism
+#' @name organism
+#' @importFrom AcidGenerics organism
+#' @usage organism(object)
+#' @export
+NULL
+
+#' @rdname organism
+#' @name organism<-
+#' @importFrom AcidGenerics organism<-
+#' @usage organism(object) <- value
+#' @export
+NULL
+
+
+
 #' @rdname sampleData
 #' @name sampleData
 #' @importFrom AcidGenerics sampleData
