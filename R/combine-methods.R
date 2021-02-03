@@ -53,7 +53,7 @@ NULL
 
 
 ## Updated 2020-01-20.
-`combine,SummarizedExperiment` <-  # nolint
+`combine,SE` <-  # nolint
     function(x, y) {
         validObject(x)
         validObject(y)
@@ -222,5 +222,5 @@ setMethod(
         x = "SummarizedExperiment",
         y = "SummarizedExperiment"
     ),
-    definition = `combine,SummarizedExperiment`
+    definition = `combine,SE`
 )

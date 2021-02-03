@@ -34,7 +34,7 @@ NULL
 
 
 ## Updated 2019-08-18.
-`metrics,SummarizedExperiment` <-  # nolint
+`metrics,SE` <-  # nolint
     function(object, return = c("tbl_df", "DataFrame")) {
         validObject(object)
         return <- match.arg(return)
@@ -55,5 +55,5 @@ NULL
 setMethod(
     f = "metrics",
     signature = signature("SummarizedExperiment"),
-    definition = `metrics,SummarizedExperiment`
+    definition = `metrics,SE`
 )

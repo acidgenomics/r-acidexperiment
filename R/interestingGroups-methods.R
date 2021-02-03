@@ -61,7 +61,7 @@ setReplaceMethod(
 
 
 ## Updated 2019-08-11.
-`interestingGroups<-,SummarizedExperiment,character` <-  # nolint
+`interestingGroups<-,SE,character` <-  # nolint
     function(object, value) {
         ## Check for attempt to use `interestingGroups` automatic column.
         assert(areDisjointSets(value, "interestingGroups"))
@@ -88,7 +88,7 @@ setReplaceMethod(
         object = "SummarizedExperiment",
         value = "character"
     ),
-    definition = `interestingGroups<-,SummarizedExperiment,character`
+    definition = `interestingGroups<-,SE,character`
 )
 
 

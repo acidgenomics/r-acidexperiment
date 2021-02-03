@@ -17,7 +17,7 @@ NULL
 
 
 ## Updated 2021-01-29.
-`Tx2Gene,SummarizedExperiment` <-  # nolint
+`Tx2Gene,SE` <-  # nolint
     function(object) {
         object <- rowData(object, use.names = TRUE)
         Tx2Gene(object)
@@ -30,5 +30,5 @@ NULL
 setMethod(
     f = "Tx2Gene",
     signature = signature("SummarizedExperiment"),
-    definition = `Tx2Gene,SummarizedExperiment`
+    definition = `Tx2Gene,SE`
 )

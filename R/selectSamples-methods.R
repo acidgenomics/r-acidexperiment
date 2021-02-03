@@ -18,7 +18,7 @@ NULL
 
 
 ## Updated 2019-07-22.
-`selectSamples,SummarizedExperiment` <-  # nolint
+`selectSamples,SE` <-  # nolint
     function(object, ...) {
         validObject(object)
         args <- list(...)
@@ -57,7 +57,7 @@ NULL
 setMethod(
     f = "selectSamples",
     signature = signature("SummarizedExperiment"),
-    definition = `selectSamples,SummarizedExperiment`
+    definition = `selectSamples,SE`
 )
 
 

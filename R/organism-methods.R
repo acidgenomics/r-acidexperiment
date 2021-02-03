@@ -18,7 +18,7 @@ NULL
 
 
 ## Updated 2021-02-03.
-`organism,SummarizedExperiment` <-  # nolint
+`organism,SE` <-  # nolint
     function(object) {
         ## Attempt to use metadata stash, if defined.
         fun <- methodFunction(
@@ -50,5 +50,5 @@ NULL
 setMethod(
     f = "organism",
     signature = signature("SummarizedExperiment"),
-    definition = `organism,SummarizedExperiment`
+    definition = `organism,SE`
 )

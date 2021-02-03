@@ -25,7 +25,7 @@ NULL
 
 
 ## Updated 2019-07-20.
-`decode,SummarizedExperiment` <-  # nolint
+`decode,SE` <-  # nolint
     function(x) {
         validObject(x)
         if (!is.null(rowData(x))) {
@@ -45,5 +45,5 @@ NULL
 setMethod(
     f = "decode",
     signature = signature("SummarizedExperiment"),
-    definition = `decode,SummarizedExperiment`
+    definition = `decode,SE`
 )

@@ -23,7 +23,7 @@ NULL
 
 
 ## Updated 2019-07-20.
-`encode,SummarizedExperiment` <-  # nolint
+`encode,SE` <-  # nolint
     function(x) {
         validObject(x)
         if (!is.null(rowData(x))) {
@@ -43,5 +43,5 @@ NULL
 setMethod(
     f = "encode",
     signature = signature("SummarizedExperiment"),
-    definition = `encode,SummarizedExperiment`
+    definition = `encode,SE`
 )

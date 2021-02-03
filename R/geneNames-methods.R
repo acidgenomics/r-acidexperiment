@@ -40,7 +40,7 @@ setMethod(
 
 
 ## Updated 2019-07-22.
-`geneNames,SummarizedExperiment` <-  # nolint
+`geneNames,SE` <-  # nolint
     `geneNames,Vector`
 
 
@@ -50,5 +50,5 @@ setMethod(
 setMethod(
     f = "geneNames",
     signature = signature("SummarizedExperiment"),
-    definition = `geneNames,SummarizedExperiment`
+    definition = `geneNames,SE`
 )

@@ -220,7 +220,7 @@ setMethod(
 
 
 ## Updated 2019-08-23.
-`calculateMetrics,RangedSummarizedExperiment` <-  # nolint
+`calculateMetrics,RSE` <-  # nolint
     function(object, prefilter = FALSE) {
         ## Drop zero rows and columns to first to speed up calculations.
         if (isTRUE(prefilter)) {
@@ -255,5 +255,5 @@ setMethod(
 setMethod(
     f = "calculateMetrics",
     signature = signature("RangedSummarizedExperiment"),
-    definition = `calculateMetrics,RangedSummarizedExperiment`
+    definition = `calculateMetrics,RSE`
 )

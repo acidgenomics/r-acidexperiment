@@ -27,7 +27,7 @@ NULL
 
 
 ## Updated 2019-08-06.
-`tpm,SummarizedExperiment` <-  # nolint
+`tpm,SE` <-  # nolint
     function(object) {
         assay(object, i = "tpm")
     }
@@ -39,5 +39,5 @@ NULL
 setMethod(
     f = "tpm",
     signature = signature("SummarizedExperiment"),
-    definition = `tpm,SummarizedExperiment`
+    definition = `tpm,SE`
 )
