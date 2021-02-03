@@ -6,7 +6,7 @@
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
 #' @importFrom AcidBase appendToBody bapply formalsList getNameInParent
-#'   lanePattern methodFormals methodFunction
+#'   initDir lanePattern methodFormals methodFunction realpath standardizeCall
 #' @importFrom AcidCLI alert alertInfo alertWarning
 #' @importFrom AcidGenerics %in% aggregate as.data.frame colSums
 #'   cor decode do.call head lapply match
@@ -27,6 +27,7 @@
 #'   isPositive isScalar isString isSubset matchesUniqueGeneNames validNames
 #' @importFrom methods as coerce is new setMethod setReplaceMethod signature
 #'   validObject
+#' @importFrom pipette atomize
 #' @importFrom scales percent
 #' @importFrom sessioninfo session_info
 #' @importFrom stringr str_match str_pad
@@ -34,7 +35,7 @@
 #' @importMethodsFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
 #'   Tx2Gene stripGeneVersions stripTranscriptVersions
 #' @importMethodsFrom SummarizedExperiment coerce
-#' @importMethodsFrom pipette as.data.frame coerce
+#' @importMethodsFrom pipette as.data.frame coerce export
 NULL
 
 

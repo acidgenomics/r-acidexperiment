@@ -1,8 +1,3 @@
-## FIXME Ensure rowRanges return unclassed as `GRanges` or `GRangesList` here,
-## not a special class from AcidGenomes.
-
-
-
 #' Make a SummarizedExperiment object
 #'
 #' This function is a utility wrapper for `SummarizedExperiment` that provides
@@ -22,7 +17,7 @@
 #'
 #' @export
 #' @note Column and rows always return sorted alphabetically.
-#' @note Updated 2021-02-02.
+#' @note Updated 2021-02-03.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param sort `logical(1)`.
@@ -155,11 +150,16 @@ makeSummarizedExperiment <- function(
         ## Ensure we unclass any special classes returned from AcidGenomes.
         if (is(rowRanges, "GRangesList")) {
             rowRanges <- as(rowRanges, "GRangesList")
-            assert(hasCols(mcols(rowRanges[[1L]])))
-            ## FIXME SET COLUMNS IN STRICT CAMEL CASE.
-            ## FIXME HOW TO DO THIS QUICKLY FOR GRANGESLIST???
-            ##       NEED TO USE AN LAPPLY CALL RIGHT?
-            ## > mcolnames <- names(mcols(rowRanges[[1L]]))
+            assert(
+                hasCols(mcols(rowRanges[[1L]])),
+                identical(
+                    x = colnames(mcols(rowRanges)[[1L]]),
+                    y = camelCase(
+                        object = colnames(mcols(rowRanges)[[1L]]),
+                        strict = TRUE
+                    )
+                )
+            )
         } else {
             rowRanges <- as(rowRanges, "GRanges")
             assert(hasCols(mcols(rowRanges)))
