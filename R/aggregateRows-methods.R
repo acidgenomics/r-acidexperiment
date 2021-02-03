@@ -62,8 +62,8 @@
 #'
 #' ## SummarizedExperiment ====
 #' se <- SummarizedExperiment::SummarizedExperiment(
-#'     assays = SimpleList(counts = counts),
-#'     rowData = DataFrame(aggregate = genes)
+#'     assays = S4Vectors::SimpleList(counts = counts),
+#'     rowData = S4Vectors::DataFrame(aggregate = genes)
 #' )
 #' print(se)
 #' aggregateRows(se)
