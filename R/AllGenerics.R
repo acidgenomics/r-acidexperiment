@@ -59,10 +59,10 @@ NULL
 
 
 
-#' @rdname coerce-SummarizedExperiment
-#' @name as.SummarizedExperiment
-#' @importFrom AcidGenerics as.SummarizedExperiment
-#' @usage as.SummarizedExperiment(x, ...)
+#' @rdname calculateMetrics
+#' @name calculateMetrics
+#' @importFrom AcidGenerics calculateMetrics
+#' @usage calculateMetrics(object, ...)
 #' @export
 NULL
 
@@ -73,6 +73,15 @@ NULL
 #' @importFrom AcidGenerics autopadZeros
 #' @importMethodsFrom syntactic autopadZeros
 #' @usage autopadZeros(object, ...)
+#' @export
+NULL
+
+
+
+#' @rdname coerce-SummarizedExperiment
+#' @name as.SummarizedExperiment
+#' @importFrom AcidGenerics as.SummarizedExperiment
+#' @usage as.SummarizedExperiment(x, ...)
 #' @export
 NULL
 
