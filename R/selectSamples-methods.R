@@ -59,6 +59,3 @@ setMethod(
     signature = signature("SummarizedExperiment"),
     definition = `selectSamples,SE`
 )
-
-
-
