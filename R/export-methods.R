@@ -1,34 +1,8 @@
 #' @name export
-#' @inherit AcidGenerics::export
-#' @note Updated 2021-02-01.
+#' @inherit pipette::export
+#' @note Updated 2021-02-03.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @param object Object.
-#'   An object supporting [`dim()`][base::dim], or a supported class capable
-#'   of being coerced to `data.frame`, to be written to disk.
-#' @param ext `character(1)`.
-#'   Output file format extension.
-#'
-#'   `matrix` supported arguments:
-#'   - Comma separated values (CSV):
-#'     `"csv"`, `"csv.bz2"`, `"csv.gz"`, `"csv.xz"`, `"csv.zip"`.
-#'   - Tab separated values (TSV):
-#'     `"tsv"`, `"tsv.bz2"`, `"tsv.gz"`, `"tsv.xz"`, `"tsv.zip"`.
-#'
-#'   `Matrix` (`sparseMatrix`) supported arguments:
-#'   - MatrixMarket exchange (MTX):
-#'     `"mtx"`, `"mtx.bz2"`, `"mtx.gz"`, `"mtx.xz"`, `"mtx.zip"`.
-#' @param file `character(1)`.
-#'   File path. When left unset (default), the `ext` and `dir` arguments will
-#'   be used instead.
-#' @param compress `logical(1)`.
-#'   Apply gzip compression to all files.
-#' @param name `character(1)`.
-#'   Name to use on disk. If `NULL`, will use the name of the object instead.
-#' @param append `logical(1)`.
-#'   Append to output file.
-#'   When enabled, automatically sets `overwrite` argument to `FALSE`.
-#'   Requires readr package to be installed.
 #' @param ... Additional arguments.
 #'
 #' @examples
