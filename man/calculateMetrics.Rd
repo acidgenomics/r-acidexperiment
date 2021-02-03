@@ -32,24 +32,25 @@ change with this operation.}
 \value{
 \itemize{
 \item \code{matrix} / \code{Matrix}: \code{DataFrame} containing metrics.
-\item \code{SingleCellExperiment} / \code{SummarizedExperiment}: Modified object, with
-metrics in \code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}}.
+\item \code{SummarizedExperiment}: Modified object, with metrics in
+\code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}}.
 }
 }
 \description{
 Calculate quality control metrics
 }
+\details{
+Input a raw count matrix. Do not use size factor adjusted or log normalized
+counts here.
+}
 \note{
-Input a raw count matrix. Do not use size factor adjusted or log
-normalized counts here.
-
-Updated 2020-01-20.
+Updated 2020-02-03.
 }
 \examples{
-data(SingleCellExperiment, package = "AcidTest")
+data(RangedSummarizedExperiment, package = "AcidTest")
 
-## SingleCellExperiment ====
-object <- SingleCellExperiment
+## SummarizedExperiment ====
+object <- RangedSummarizedExperiment
 x <- calculateMetrics(object)
 print(x)
 }
