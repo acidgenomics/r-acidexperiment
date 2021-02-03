@@ -59,7 +59,7 @@ If \code{NULL}, calculates correlation matrix only on the primary assay.}
 Correlation
 }
 \note{
-Updated 2020-01-20.
+Updated 2021-02-03.
 }
 \examples{
 data(correlation, package = "AcidTest")

@@ -74,12 +74,11 @@ NULL
         } else {
             Class <- "SummarizedExperiment"  # nolint
         }
-        cli_alert(sprintf("Combining objects into {.var %s}.", Class))
+        alert(sprintf("Combining objects into {.var %s}.", Class))
         x <- as(object = x, Class = Class)
         y <- as(object = y, Class = Class)
-
         ## Assays --------------------------------------------------------------
-        cli_alert(sprintf(
+        alert(sprintf(
             "Binding columns in {.fun assays}: {.var %s}.",
             toString(assayNames(x))
         ))
@@ -92,9 +91,8 @@ NULL
         )
         assert(is.list(assays))
         assays <- as(assays, "SimpleList")
-
         ## Row data ------------------------------------------------------------
-        cli_alert("Checking row data.")
+        alert("Checking row data.")
         ## Require that the gene annotations are identical.
         if (is(x, "RangedSummarizedExperiment")) {
             assert(identical(rowRanges(x), rowRanges(y)))
@@ -107,9 +105,8 @@ NULL
             ## This provides backward compatibility for BioC 3.7.
             rownames(rowData) <- rownames(x)
         }
-
         ## Column data ---------------------------------------------------------
-        cli_alert("Updating column data.")
+        alert("Updating column data.")
         cdx <- colData(x)
         cdy <- colData(y)
         ## Check for column mismatches and restore NA values, if necessary. This
@@ -121,7 +118,7 @@ NULL
         intersect <- intersect(names(cdx), names(cdy))
         if (!isTRUE(identical(union, intersect))) {
             setdiff <- setdiff(union, intersect)
-            cli_alert_warning(sprintf(
+            alertWarning(sprintf(
                 "Fixing %d mismatched %s in {.fun colData}: {.var %s}.",
                 length(setdiff),
                 ngettext(
@@ -156,14 +153,14 @@ NULL
         )
 
         ## Metadata ------------------------------------------------------------
-        cli_alert("Updating metadata.")
+        alert("Updating metadata.")
         mx <- metadata(x)
         my <- metadata(y)
         ## We're keeping only metadata elements that are common in both objects.
         keep <- intersect(names(mx), names(my))
         if (!isTRUE(setequal(x = names(mx), y = names(my)))) {
             drop <- setdiff(x = union(names(mx), names(my)), y = keep)
-            cli_alert_warning(sprintf(
+            alertWarning(sprintf(
                 "Dropping %d disjoint metadata %s: {.var %s}.",
                 length(drop),
                 ngettext(
@@ -186,7 +183,7 @@ NULL
         )
         drop <- names(keep)[!keep]
         if (hasLength(drop)) {
-            cli_alert_warning(sprintf(
+            alertWarning(sprintf(
                 "Dropping %d non-identical metadata %s: {.var %s}.",
                 length(drop),
                 ngettext(
@@ -201,14 +198,13 @@ NULL
         metadata <- mx[keep]
         metadata[["combine"]] <- TRUE
         metadata <- Filter(Negate(is.null), metadata)
-
         ## Return --------------------------------------------------------------
         args <- list(
-            assays = assays,
-            rowRanges = rowRanges,
-            rowData = rowData,
-            colData = colData,
-            metadata = metadata
+            "assays" = assays,
+            "rowRanges" = rowRanges,
+            "rowData" = rowData,
+            "colData" = colData,
+            "metadata" = metadata
         )
         args <- Filter(Negate(is.null), args)
         out <- do.call(what = SummarizedExperiment, args = args)

@@ -36,7 +36,7 @@
 #' @note Works with local or remote files.
 #'
 #' @author Michael Steinbaugh
-#' @note Updated 2020-07-24.
+#' @note Updated 2021-02-03.
 #' @export
 #'
 #' @inheritParams AcidRoxygen::params
@@ -124,7 +124,7 @@ importSampleData <- function(
     } else if (identical(pipeline, "bcbio")) {
         ## Look for bcbio "samplename" column and rename to "fileName".
         if (isSubset("samplename", colnames(data))) {
-            cli_alert_warning("Renaming 'samplename' column to 'fileName'.")
+            alertWarning("Renaming 'samplename' column to 'fileName'.")
             assert(areDisjointSets(x = "fileName", y = colnames(data)))
             colnames(data)[colnames(data) == "samplename"] <- "fileName"
         }
@@ -146,7 +146,7 @@ importSampleData <- function(
         (any(duplicated(data[[idCol]])) || identical(nrow(data), 1L))
     ) {
         multiplexed <- TRUE
-        cli_alert_info("Multiplexed samples detected.")
+        alertInfo("Multiplexed samples detected.")
         requiredCols <- c(requiredCols, "sampleName", "index")
         ## Note that sample ID column is now expected to have duplicates.
         assert(
