@@ -164,6 +164,15 @@ NULL
 
 
 
+#' @rdname droplevels
+#' @name droplevels
+#' @importFrom AcidGenerics droplevels
+#' @usage droplevels(x, ...)
+#' @export
+NULL
+
+
+
 #' @rdname encode
 #' @name encode
 #' @importFrom AcidGenerics encode
