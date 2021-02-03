@@ -21,17 +21,20 @@
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
 #'   rowRanges rowRanges<-
-#' @importFrom goalie allAreMatchingRegex areDisjointSets areIntersectingSets
-#'   areSetEqual assert false hasColnames hasCols hasDimnames hasLength hasNames
-#'   hasNoDuplicates hasRownames hasRows hasValidDimnames hasValidNames
-#'   isAFile isAURL isAny isCharacter isFlag isInt isNonNegative isNumber
-#'   isPositive isScalar isString isSubset matchesUniqueGeneNames validNames
+#' @importFrom goalie allAreAtomic allAreMatchingRegex areDisjointSets
+#'   areIntersectingSets areSetEqual assert false hasColnames hasCols
+#'   hasDimnames hasLength hasNames hasNoDuplicates hasRownames hasRows
+#'   hasValidDimnames hasValidNames isAFile isAURL isAny isCharacter isFlag
+#'   isInt isNonNegative isNumber isPositive isScalar isString isSubset
+#'   matchesUniqueGeneNames validNames
 #' @importFrom methods as coerce is new setMethod setReplaceMethod signature
 #'   validObject
-#' @importFrom pipette atomize
+#' @importFrom pipette atomize import removeNA
 #' @importFrom scales percent
 #' @importFrom sessioninfo session_info
 #' @importFrom stringr str_match str_pad
+#' @importFrom syntactic camelCase snakeCase
+#' @importFrom utils packageName packageVersion
 #'
 #' @importMethodsFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
 #'   Tx2Gene stripGeneVersions stripTranscriptVersions

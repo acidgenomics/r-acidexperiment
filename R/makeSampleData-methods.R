@@ -1,6 +1,6 @@
 #' @name makeSampleData
 #' @inherit AcidGenerics::makeSampleData
-#' @note Updated 2021-02-02.
+#' @note Updated 2021-02-03.
 #'
 #' Utility function that prepares metadata to be slotted into
 #' [`colData()`][SummarizedExperiment::colData].
@@ -70,12 +70,7 @@ setMethod(
             hasColnames(object)
         )
         ## Enforcing strict as of 2021-01-14.
-        object <- camelCase(
-            object = object,
-            rownames = FALSE,
-            colnames = TRUE,
-            strict = TRUE
-        )
+        colnames(object) <- camelCase(colnames(object), strict = TRUE)
         object <- removeNA(object)
         ## Assign row names from column automatically, if applicable.
         if (!hasRownames(object)) {
