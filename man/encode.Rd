@@ -22,20 +22,16 @@ All \code{atomic} columns will be encoded to \code{Rle} S4 class.
 Encode using run-length encoding
 }
 \note{
-Updated 2021-02-02.
+Updated 2021-02-03.
 }
 \examples{
-## FIXME NEED RSE EXAMPLE HERE.
+data(RangedSummarizedExperiment, package = "AcidTest")
 
-## DataFrame ====
-binary <- seq(from = 0L, to = 1L)
-df <- S4Vectors::DataFrame(
-    a = rep(x = binary, times = 50L),
-    b = rep(x = binary, each = 50L)
-)
-lapply(df, class)
-x <- encode(df)
-lapply(x, class)
+## SummarizedExperiment ====
+## This works on rowData and colData.
+object <- RangedSummarizedExperiment
+object <- encode(object)
+lapply(rowData(object), class)
 }
 \seealso{
 \code{\link[S4Vectors:Rle-class]{S4Vectors::Rle()}}.
