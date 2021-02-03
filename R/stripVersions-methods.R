@@ -7,16 +7,17 @@
 #'
 #' @examples
 #' data(SummarizedExperiment_transcripts, package = "AcidTest")
+#' rowData <- SummarizedExperiment::rowData
 #'
 #' ## SummarizedExperiment ====
 #' object <- SummarizedExperiment_transcripts
-#' head(SummarizedExperiment::rowData(object)[["txId"]])
-#' head(SummarizedExperiment::rowData(object)[["geneId"]])
+#' head(rowData(object)[["txId"]])
+#' head(rowData(object)[["geneId"]])
 #' head(rownames(object))
 #' object <- stripGeneVersions(object)
 #' object <- stripTranscriptVersions(object)
-#' head(SummarizedExperiment::rowData(object)[["txId"]])
-#' head(SummarizedExperiment::rowData(object)[["geneId"]])
+#' head(rowData(object)[["txId"]])
+#' head(rowData(object)[["geneId"]])
 #' head(rownames(object))
 NULL
 
