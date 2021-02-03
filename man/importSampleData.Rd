@@ -69,7 +69,7 @@ they cannot contain illegal characters (e.g. spaces, non-alphanumerics,
 
 \strong{Multiplexed samples.} This applies to some single-cell RNA-seq formats,
 including inDrops. In this case, bcbio will output per-sample directories
-with this this structure: \code{description-revcomp}. \code{\link[=readSampleData]{readSampleData()}} checks to
+with this this structure: \code{description-revcomp}. The function checks to
 see if the \code{"description"} column is unique. If the values are duplicated,
 the function assumes that bcbio processed multiplexed FASTQs, where multiple
 samples of interest are barcoded inside a single FASTQ. This this case, you

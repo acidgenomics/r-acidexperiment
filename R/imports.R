@@ -14,7 +14,7 @@
 #'   mcols mcols<- metadata metadata<- na.omit rowSums setdiff split
 #'   summary t unlist
 #' @importFrom AcidGenomes detectOrganism emptyRanges
-#' @importFrom AcidPlyr leftJoin
+#' @importFrom AcidPlyr leftJoin mutateAt
 #' @importFrom Biostrings reverseComplement
 #' @importFrom IRanges SplitDataFrameList unsplit
 #' @importFrom Matrix fac2sparse
