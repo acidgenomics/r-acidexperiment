@@ -40,12 +40,6 @@ cell-to-sample mappings are defined using the \code{sampleId} column.}
 
 \item{value}{Value to assign.}
 
-\item{blacklistCols}{\code{character} or \code{NULL}.
-Column names that should not be treated as sample-level metadata.
-Currently applicable only to \code{SingleCellExperiment} objects, which have
-cell-level columns that can be difficult to distinguish, especially when
-processed using Seurat, scater, etc.}
-
 \item{...}{Additional arguments.}
 }
 \value{
@@ -62,7 +56,7 @@ columns map to a single sample (e.g. cells for a single-cell RNA-seq
 experiment).
 }
 \note{
-Updated 2021-02-02.
+Updated 2021-02-03.
 }
 \section{All supported S4 classes}{
 

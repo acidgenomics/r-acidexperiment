@@ -1,8 +1,8 @@
-#' @inherit AcidGenomes::Ensembl2Entrez title description return
+#' @inherit AcidGenomes::Ensembl2Entrez
 #' @name Ensembl2Entrez
-#' @note Updated 2021-02-02.
+#' @note Updated 2021-02-03.
 #'
-#' @inheritParams AcidRoxygen::params
+#' @param ... Additional arguments.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")

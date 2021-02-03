@@ -24,9 +24,9 @@
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' names(colData(object))
+#' names(SummarizedExperiment::colData(object))
 #' object <- calculateMetrics(object)
-#' names(colData(object))
+#' names(SummarizedExperiment::colData(object))
 NULL
 
 

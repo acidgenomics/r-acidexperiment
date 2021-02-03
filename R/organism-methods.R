@@ -1,8 +1,8 @@
 #' @name organism
 #' @inherit AcidGenerics::organism
 #' @note Updated 2021-02-03.
+#' @note Assignment method is defined in AcidGenomes.
 #'
-#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
