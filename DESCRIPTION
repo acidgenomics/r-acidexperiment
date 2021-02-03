@@ -25,6 +25,7 @@ Imports:
     AcidCLI (>= 0.0.6),
     AcidGenerics (>= 0.5.6),
     AcidGenomes (>= 0.2.0),
+    AcidPlyr (>= 0.1.8),
     Biostrings,
     IRanges,
     Matrix (>= 1.3),
