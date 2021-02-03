@@ -23,8 +23,7 @@ sizeFactors(object, ...) <- value
 \item{...}{Additional arguments.}
 }
 \value{
-\code{numeric}.
-Names correspond to object column names.
+Varies, depending on the method.
 }
 \description{
 Size factors
@@ -40,11 +39,4 @@ object <- RangedSummarizedExperiment
 object <- estimateSizeFactors(object)
 head(sizeFactors(object))
 mean(sizeFactors(object))
-}
-\seealso{
-\itemize{
-\item \code{DESeq2::sizeFactors()}.
-\item \code{DESeq2::estimateSizeFactors()}.
-\item \code{DESeq2::estimateSizeFactorsForMatrix()}.
-}
 }

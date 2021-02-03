@@ -29,7 +29,7 @@ coloring in plots. When multiple interesting groups are present, unite into a
 single column, delimited by a colon.
 }
 \note{
-Updated 2019-08-29.
+Updated 2021-02-03.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")

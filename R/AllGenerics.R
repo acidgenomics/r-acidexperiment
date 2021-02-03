@@ -392,15 +392,6 @@ NULL
 
 
 
-#' @rdname subsetPerSample
-#' @name subsetPerSample
-#' @importFrom AcidGenerics subsetPerSample
-#' @usage subsetPerSample(object, ...)
-#' @export
-NULL
-
-
-
 #' @rdname tpm
 #' @name tpm
 #' @importFrom AcidGenerics tpm

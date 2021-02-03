@@ -5,14 +5,6 @@
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
-#' @return `numeric`.
-#'   Names correspond to object column names.
-#'
-#' @seealso
-#' - `DESeq2::sizeFactors()`.
-#' - `DESeq2::estimateSizeFactors()`.
-#' - `DESeq2::estimateSizeFactorsForMatrix()`.
-#'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")
 #'
@@ -31,29 +23,6 @@ NULL
 ##
 ## See also:
 ## - https://github.com/drisso/SingleCellExperiment/pull/34
-
-
-
-## nolint start
-##
-## SE methods are modified versions of the DESeqDataSet methods.
-##
-## > getMethod(
-## >     f = "sizeFactors",
-## >     signature = "DESeqDataSet",
-## >     where = asNamespace("DESeq2")
-## > )
-##
-## > getMethod(
-## >     f = "sizeFactors<-",
-## >     signature = signature(
-## >         object = "DESeqDataSet",
-## >         value = "numeric"
-## >     ),
-## >     where = asNamespace("DESeq2")
-## > )
-##
-## nolint end
 
 
 
