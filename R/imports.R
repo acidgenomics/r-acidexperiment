@@ -1,5 +1,5 @@
 #' @importClassesFrom AcidGenerics AsIs missingOrNULL
-#' @importClassesFrom AcidGenomes Gene2Symbol
+#' @importClassesFrom AcidGenomes Gene2Symbol Tx2Gene
 #' @importClassesFrom GenomicRanges GRanges GRangesList
 #' @importClassesFrom IRanges SimpleDataFrameList
 #' @importClassesFrom Matrix Matrix
@@ -9,6 +9,8 @@ NULL
 
 
 
+#' @importMethodsFrom AcidGenomes Tx2Gene stripGeneVersions
+#'   stripTranscriptVersions
 #' @importMethodsFrom SummarizedExperiment coerce
 #' @importMethodsFrom pipette as.data.frame coerce
 NULL
@@ -21,6 +23,7 @@ NULL
 #'   complete.cases cor decode do.call expand expand.grid head lapply match
 #'   mcols mcols<- merge metadata metadata<- na.omit order rowSums setdiff split
 #'   summary t tail unlist
+#' @importFrom AcidGenomes detectOrganism
 #' @importFrom Biostrings reverseComplement
 #' @importFrom IRanges DataFrameList IRanges SplitDataFrameList unsplit
 #' @importFrom Matrix fac2sparse

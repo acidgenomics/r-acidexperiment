@@ -1,8 +1,32 @@
-## Updated 2021-02-01.
+#' @name organism
+#' @inherit AcidGenerics::organism
+#' @note Updated 2021-02-03.
+#'
+#' @inheritParams AcidRoxygen::params
+#' @param ... Additional arguments.
+#'
+#' @examples
+#' data(RangedSummarizedExperiment, package = "AcidTest")
+#'
+#' ## SummarizedExperiment ====
+#' object <- RangedSummarizedExperiment
+#' organism(object)
+#' organism(object) <- "xxx"
+#' organism(object)
+NULL
+
+
+
+## Updated 2021-02-03.
 `organism,SummarizedExperiment` <-  # nolint
     function(object) {
         ## Attempt to use metadata stash, if defined.
-        organism <- `organism,Annotated`(object)
+        fun <- methodFunction(
+            f = "organism",
+            signature = "Annotated",
+            package = "AcidGenomes"
+        )
+        organism <- fun(object)
         if (isString(organism)) {
             return(organism)
         }
