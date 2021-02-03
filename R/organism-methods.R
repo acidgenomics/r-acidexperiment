@@ -3,8 +3,6 @@
 #' @note Updated 2021-02-03.
 #' @note Assignment method is defined in AcidGenomes.
 #'
-#' @param ... Additional arguments.
-#'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")
 #'

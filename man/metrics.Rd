@@ -17,10 +17,6 @@ Return type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defau
 to the first argument in the \code{character} vector.}
 
 \item{...}{Additional arguments.}
-
-\item{fun}{\code{character(1)}.
-Mathematical function name to apply.
-Uses \code{\link[base:match.arg]{match.arg()}} internally.}
 }
 \value{
 Object of class determined by \code{return} argument.
@@ -34,6 +30,9 @@ and consistently returns a \code{tbl_df} or \code{DataFrame} with \code{sampleNa
 \code{interestingGroups} columns, even when these columns are not defined in
 \code{colData()}. This is designed to integrate with plotting functions that use
 ggplot2 internally.
+
+This will error intentionally if no numeric columns are defined
+in \code{colData()}.
 }
 \section{Functions}{
 \itemize{
@@ -41,10 +40,7 @@ ggplot2 internally.
 }}
 
 \note{
-These functions will error intentionally if no numeric columns are
-defined in \code{colData()}.
-
-Updated 2021-02-02.
+Updated 2021-02-03.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")

@@ -1,9 +1,7 @@
 #' @name metrics
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::metrics
-#' @note These functions will error intentionally if no numeric columns are
-#'   defined in `colData()`.
-#' @note Updated 2021-02-02.
+#' @note Updated 2021-02-03.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -15,9 +13,8 @@
 #' `colData()`. This is designed to integrate with plotting functions that use
 #' ggplot2 internally.
 #'
-#' @param fun `character(1)`.
-#'   Mathematical function name to apply.
-#'   Uses [`match.arg()`][base::match.arg] internally.
+#' This will error intentionally if no numeric columns are defined
+#' in `colData()`.
 #'
 #' @return Object of class determined by `return` argument.
 #'

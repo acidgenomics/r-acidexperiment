@@ -27,6 +27,7 @@
 #'   - `samplename` (use `sampleName`).
 #'
 #' @inheritParams AcidRoxygen::params
+#' @param ... Additional arguments.
 #'
 #' @seealso `makeNames`.
 #'
