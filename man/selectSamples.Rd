@@ -33,7 +33,7 @@ Internally, pattern matching against sample and file names is applied using
 logical grep matching.
 }
 \note{
-Updated 2020-01-20.
+Updated 2021-02-03.
 }
 \section{Intended usage}{
 
@@ -60,7 +60,7 @@ data(RangedSummarizedExperiment, package = "AcidTest")
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
-sample <- sampleNames(object) \%>\% head(1L)
+sample <- sampleNames(object)[[1L]]
 print(sample)
 subset <- selectSamples(object, sampleName = sample)
 print(subset)

@@ -1,6 +1,6 @@
 #' @name selectSamples
 #' @inherit AcidGenerics::selectSamples
-#' @note Updated 2020-01-20.
+#' @note Updated 2021-02-03.
 #'
 #' @inheritParams AcidRoxygen::params
 #'
@@ -9,7 +9,7 @@
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' sample <- sampleNames(object) %>% head(1L)
+#' sample <- sampleNames(object)[[1L]]
 #' print(sample)
 #' subset <- selectSamples(object, sampleName = sample)
 #' print(subset)
