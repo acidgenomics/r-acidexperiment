@@ -318,6 +318,13 @@ NULL
 #' @export
 NULL
 
+#' @rdname organism
+#' @name organism<-
+#' @importFrom AcidGenerics organism<-
+#' @usage NULL
+#' @export
+NULL
+
 
 
 #' @rdname sampleData
