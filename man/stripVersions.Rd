@@ -40,8 +40,8 @@ data(SummarizedExperiment_transcripts, package = "AcidTest")
 
 ## SummarizedExperiment ====
 object <- SummarizedExperiment_transcripts
-head(rowData(object)[["txId"]])
-head(rowData(object)[["geneId"]])
+head(SummarizedExperiment::rowData(object)[["txId"]])
+head(SummarizedExperiment::rowData(object)[["geneId"]])
 head(rownames(object))
 object <- stripGeneVersions(object)
 object <- stripTranscriptVersions(object)
