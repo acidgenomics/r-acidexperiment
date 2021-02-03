@@ -30,7 +30,7 @@
 #'   matchesUniqueGeneNames validNames
 #' @importFrom methods as coerce is new setMethod setReplaceMethod signature
 #'   validObject
-#' @importFrom pipette atomize import removeNA
+#' @importFrom pipette as_tibble atomize import removeNA
 #' @importFrom scales percent
 #' @importFrom sessioninfo session_info
 #' @importFrom stringr str_match str_pad
