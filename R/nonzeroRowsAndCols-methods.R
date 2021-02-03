@@ -1,25 +1,15 @@
 #' @name nonzeroRowsAndCols
 #' @inherit AcidGenerics::nonzeroRowsAndCols
-#' @note Updated 2020-01-20.
+#' @note Updated 2021-02-02.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(
-#'     RangedSummarizedExperiment,
-#'     SingleCellExperiment,
-#'     package = "AcidTest"
-#' )
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' dim(object)
-#' x <- nonzeroRowsAndCols(object)
-#' dim(x)
-#'
-#' ## SingleCellExperiment ====
-#' object <- SingleCellExperiment
 #' dim(object)
 #' x <- nonzeroRowsAndCols(object)
 #' dim(x)
