@@ -5,9 +5,9 @@
 #' @importClassesFrom S4Vectors DataFrame SimpleList
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
-#' @importFrom AcidBase appendToBody bapply formalsList getNameInParent
-#'   initDir lanePattern metadataBlacklist methodFormals methodFunction realpath
-#'   standardizeCall
+#' @importFrom AcidBase appendToBody bapply formalsList geometricMean
+#'   getNameInParent initDir lanePattern metadataBlacklist methodFormals
+#'   methodFunction realpath standardizeCall
 #' @importFrom AcidCLI alert alertInfo alertWarning
 #' @importFrom AcidGenerics %in% aggregate as.data.frame colSums
 #'   cor decode do.call head lapply match
@@ -18,7 +18,7 @@
 #' @importFrom Biostrings reverseComplement
 #' @importFrom IRanges SplitDataFrameList unsplit
 #' @importFrom Matrix fac2sparse
-#' @importFrom S4Vectors DataFrame SimpleList
+#' @importFrom S4Vectors DataFrame Rle SimpleList
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
 #'   rowRanges rowRanges<-
@@ -34,7 +34,7 @@
 #' @importFrom scales percent
 #' @importFrom sessioninfo session_info
 #' @importFrom stringr str_match str_pad
-#' @importFrom syntactic camelCase snakeCase
+#' @importFrom syntactic camelCase makeNames snakeCase
 #' @importFrom utils packageName packageVersion
 #'
 #' @importMethodsFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
