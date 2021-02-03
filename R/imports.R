@@ -1,28 +1,22 @@
-## FIXME ANY MATRIX METHODS NEED TO GO IN ACIDSINGLECELL.
-
-
-
-#' @importClassesFrom AcidGenerics AsIs
+#' @importClassesFrom AcidGenerics AsIs missingOrNULL
+#' @importClassesFrom AcidGenomes Gene2Symbol
 #' @importClassesFrom GenomicRanges GRanges GRangesList
 #' @importClassesFrom IRanges SimpleDataFrameList
 #' @importClassesFrom Matrix Matrix
 #' @importClassesFrom S4Vectors Annotated DataFrame List Vector
-#' @importClassesFrom SingleCellExperiment SingleCellExperiment
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 NULL
 
 
 
-#' @importMethodsFrom SingleCellExperiment coerce
 #' @importMethodsFrom SummarizedExperiment coerce
 #' @importMethodsFrom pipette as.data.frame coerce
 NULL
 
 
 
-#' @importFrom AcidBase appendToBody bapply compress getNameInParent
-#'   matchArgsToDoCall methodFormals methodFunction printString
-#'   requireNamespaces
+#' @importFrom AcidBase appendToBody bapply compress formalsList getNameInParent
+#'   lanePattern methodFormals methodFunction printString requireNamespaces
 #' @importFrom AcidGenerics %in% aggregate as.data.frame as.list colSums
 #'   complete.cases cor decode do.call expand expand.grid head lapply match
 #'   mcols mcols<- merge metadata metadata<- na.omit order rowSums setdiff split
@@ -31,7 +25,6 @@ NULL
 #' @importFrom IRanges DataFrameList IRanges SplitDataFrameList unsplit
 #' @importFrom Matrix fac2sparse
 #' @importFrom S4Vectors DataFrame List Rle SimpleList
-#' @importFrom SingleCellExperiment SingleCellExperiment
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
 #'   rowRanges rowRanges<-

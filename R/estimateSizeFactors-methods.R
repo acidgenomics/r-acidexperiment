@@ -14,7 +14,7 @@
 #' can also be supplied using the assignment function [sizeFactors<-()].
 #'
 #' @name estimateSizeFactors
-#' @note Updated 2020-07-24.
+#' @note Updated 2021-02-02.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param type `character(1)`.
@@ -57,21 +57,12 @@
 #'   Use `[sizeFactors()] to access the computed size factor numeric.
 #'
 #' @examples
-#' data(
-#'     RangedSummarizedExperiment,
-#'     SingleCellExperiment,
-#'     package = "AcidTest"
-#' )
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
 #' object <- estimateSizeFactors(object)
 #' sizeFactors(object)
-#'
-#' ## SingleCellExperiment ====
-#' object <- SingleCellExperiment
-#' object <- estimateSizeFactors(object)
-#' head(sizeFactors(object))
 NULL
 
 
@@ -178,20 +169,4 @@ setMethod(
     f = "estimateSizeFactors",
     signature = signature("SummarizedExperiment"),
     definition = `estimateSizeFactors,SummarizedExperiment`
-)
-
-
-
-## Updated 2019-08-06.
-`estimateSizeFactors,SingleCellExperiment` <-  # nolint
-    `estimateSizeFactors,SummarizedExperiment`
-
-
-
-#' @rdname estimateSizeFactors
-#' @export
-setMethod(
-    f = "estimateSizeFactors",
-    signature = signature("SingleCellExperiment"),
-    definition = `estimateSizeFactors,SingleCellExperiment`
 )

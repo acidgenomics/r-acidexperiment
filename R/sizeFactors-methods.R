@@ -1,12 +1,8 @@
-#' Size factors
-#'
 #' @name sizeFactors
-#' @note Updated 2019-08-19.
-#'
-#' @importMethodsFrom SingleCellExperiment sizeFactors sizeFactors<-
+#' @inherit AcidGenerics::sizeFactors
+#' @note Updated 2021-02-02.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @inheritParams SingleCellExperiment::sizeFactors
 #' @param ... Additional arguments.
 #'
 #' @return `numeric`.
@@ -16,23 +12,12 @@
 #' - `DESeq2::sizeFactors()`.
 #' - `DESeq2::estimateSizeFactors()`.
 #' - `DESeq2::estimateSizeFactorsForMatrix()`.
-#' - `SingleCellExperiment::sizeFactors()`.
 #'
 #' @examples
-#' data(
-#'     RangedSummarizedExperiment,
-#'     SingleCellExperiment,
-#'     package = "AcidTest"
-#' )
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' object <- estimateSizeFactors(object)
-#' head(sizeFactors(object))
-#' mean(sizeFactors(object))
-#'
-#' ## SingleCellExperiment ====
-#' object <- SingleCellExperiment
 #' object <- estimateSizeFactors(object)
 #' head(sizeFactors(object))
 #' mean(sizeFactors(object))

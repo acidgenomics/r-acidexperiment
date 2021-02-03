@@ -1,25 +1,15 @@
 #' @name humanize
 #' @inherit AcidGenerics::humanize
-#' @note Updated 2020-01-20.
+#' @note Updated 2021-02-02.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(
-#'     RangedSummarizedExperiment,
-#'     SingleCellExperiment,
-#'     package = "AcidTest"
-#' )
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' lapply(dimnames(object), head)
-#' x <- humanize(object)
-#' lapply(dimnames(x), head)
-#'
-#' ## SingleCellExperiment ====
-#' object <- SingleCellExperiment
 #' lapply(dimnames(object), head)
 #' x <- humanize(object)
 #' lapply(dimnames(x), head)
