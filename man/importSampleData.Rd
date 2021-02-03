@@ -83,12 +83,18 @@ reverse complement will be calculated automatically and added as the
 
 \examples{
 ## Demultiplexed ====
-file <- file.path(basejumpTestsURL, "bcbio-metadata-demultiplexed.csv")
+file <- file.path(
+    AcidExperimentTestsURL,
+    "bcbio-metadata-demultiplexed.csv"
+)
 x <- importSampleData(file, pipeline = "bcbio")
 print(x)
 
 ## Multiplexed ====
-file <- file.path(basejumpTestsURL, "bcbio-metadata-multiplexed-indrops.csv")
+file <- file.path(
+    AcidExperimentTestsURL,
+    "bcbio-metadata-multiplexed-indrops.csv"
+)
 x <- importSampleData(file, pipeline = "bcbio")
 print(x)
 }

@@ -61,12 +61,18 @@
 #'
 #' @examples
 #' ## Demultiplexed ====
-#' file <- file.path(basejumpTestsURL, "bcbio-metadata-demultiplexed.csv")
+#' file <- file.path(
+#'     AcidExperimentTestsURL,
+#'     "bcbio-metadata-demultiplexed.csv"
+#' )
 #' x <- importSampleData(file, pipeline = "bcbio")
 #' print(x)
 #'
 #' ## Multiplexed ====
-#' file <- file.path(basejumpTestsURL, "bcbio-metadata-multiplexed-indrops.csv")
+#' file <- file.path(
+#'     AcidExperimentTestsURL,
+#'     "bcbio-metadata-multiplexed-indrops.csv"
+#' )
 #' x <- importSampleData(file, pipeline = "bcbio")
 #' print(x)
 importSampleData <- function(
@@ -108,12 +114,7 @@ importSampleData <- function(
     ## Import ------------------------------------------------------------------
     data <- import(file, sheet = sheet)
     data <- as(data, "DataFrame")
-    data <- camelCase(
-        object = data,
-        rownames = FALSE,
-        colnames = TRUE,
-        strict = TRUE
-    )
+    colnames(data) <- camelCase(colnames(data), strict = TRUE)
     data <- removeNA(data)
     ## Manual "sampleId" column is not allowed for bcbio or Cell Ranger input.
     if (isSubset(pipeline, c("bcbio", "cellranger"))) {

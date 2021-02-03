@@ -22,7 +22,7 @@ makeSampleData(object, ...)
 Make sample data
 }
 \note{
-Updated 2021-02-02.
+Updated 2021-02-03.
 
 Utility function that prepares metadata to be slotted into
 \code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}}.
