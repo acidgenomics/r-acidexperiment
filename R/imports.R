@@ -20,27 +20,19 @@
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
 #'   rowRanges rowRanges<-
-#' @importFrom goalie allAreAtomic allAreMatchingRegex allAreNotMatchingRegex
-#'   areDisjointSets areIntersectingSets areSameLength areSetEqual assert false
-#'   hasColnames hasCols hasDimnames hasDims hasDuplicates hasInternet hasLength
-#'   hasMetrics hasNames hasNoDuplicates hasNonzeroRowsAndCols hasRows
-#'   hasRownames hasSubset hasUniqueCols hasValidDimnames hasValidNames
-#'   isADirectory isAFile isAURL isAlpha isAny isCharacter isFlag isGGScale
-#'   isGreaterThanOrEqualTo isHeaderLevel isHexColorFunction isInClosedRange
-#'   isInLeftOpenRange isInRange isInt isIntegerish isMatchingRegex
-#'   isNonNegative isNotMatchingRegex isNumber isPositive isScalar isString
-#'   isSubset isSuperset matchesUniqueGeneNames validNames validate
-#'   validateClasses
+#' @importFrom goalie allAreMatchingRegex areDisjointSets areIntersectingSets
+#'   areSetEqual assert false hasColnames hasCols hasDimnames hasLength hasNames
+#'   hasNoDuplicates hasRownames hasRows hasValidDimnames hasValidNames
+#'   isAFile isAURL isAny isCharacter isFlag isInt isNonNegative isNumber
+#'   isPositive isScalar isString isSubset matchesUniqueGeneNames validNames
 #' @importFrom methods as coerce is new setMethod setReplaceMethod signature
 #'   validObject
 #' @importFrom scales percent
 #' @importFrom sessioninfo session_info
-#' @importFrom stringr boundary str_detect str_dup str_extract str_length
-#'   str_match str_pad str_replace_all str_split str_split_fixed str_subset
-#'   str_trunc
+#' @importFrom stringr str_match str_pad
 #'
-#' @importMethodsFrom AcidGenomes Tx2Gene stripGeneVersions
-#'   stripTranscriptVersions
+#' @importMethodsFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
+#'   Tx2Gene stripGeneVersions stripTranscriptVersions
 #' @importMethodsFrom SummarizedExperiment coerce
 #' @importMethodsFrom pipette as.data.frame coerce
 NULL

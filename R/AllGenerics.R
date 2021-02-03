@@ -5,9 +5,7 @@
 #' @export
 NULL
 
-
-
-#' @rdname Entrez2Ensembl
+#' @rdname Ensembl2Entrez
 #' @name Entrez2Ensembl
 #' @importFrom AcidGenomes Entrez2Ensembl
 #' @usage Entrez2Ensembl(object, ...)
