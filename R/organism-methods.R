@@ -33,10 +33,7 @@ NULL
         ## Fall back to detecting from rowRanges or rownames.
         if (hasColnames(rowData(object))) {
             colnames(rowData(object)) <-
-                camelCase(
-                    object = colnames(rowData(object)),
-                    strict = TRUE
-                )
+                camelCase(colnames(rowData(object)), strict = TRUE)
         }
         if (isSubset("geneId", colnames(rowData(object)))) {
             x <- as.character(rowData(object)[["geneId"]])
