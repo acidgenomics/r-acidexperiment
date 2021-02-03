@@ -36,43 +36,59 @@ Overwrite existing file on disk.}
 \item{quiet}{\code{logical(1)}.
 Perform command quietly, suppressing messages.}
 
-\item{ext}{\code{character(1)}.
-Output file format extension.
-
-\code{matrix} supported arguments:
-\itemize{
-\item Comma separated values (CSV):
-\code{"csv"}, \code{"csv.bz2"}, \code{"csv.gz"}, \code{"csv.xz"}, \code{"csv.zip"}.
-\item Tab separated values (TSV):
-\code{"tsv"}, \code{"tsv.bz2"}, \code{"tsv.gz"}, \code{"tsv.xz"}, \code{"tsv.zip"}.
-}
-
-\code{Matrix} (\code{sparseMatrix}) supported arguments:
-\itemize{
-\item MatrixMarket exchange (MTX):
-\code{"mtx"}, \code{"mtx.bz2"}, \code{"mtx.gz"}, \code{"mtx.xz"}, \code{"mtx.zip"}.
-}}
-
-\item{file}{\code{character(1)}.
-File path. When left unset (default), the \code{ext} and \code{dir} arguments will
-be used instead.}
-
-\item{append}{\code{logical(1)}.
-Append to output file.
-When enabled, automatically sets \code{overwrite} argument to \code{FALSE}.
-Requires readr package to be installed.}
-
 \item{...}{Additional arguments.}
 }
 \value{
-Invisibily return file paths, either as \code{list} or \code{character}.
+Invisible \code{character}.
+File path(s).
 }
 \description{
 Export data out of R and write to disk.
 }
 \note{
-Updated 2021-02-01.
+Updated 2021-02-03.
 }
+\section{Row names}{
+
+
+
+Some export utilities in R have a tendency to drop row names when writing to
+disk in CSV format. For example, the \href{https://readr.tidyverse.org/}{readr} family of functions never
+write row names by design. This is a \emph{really poor} default setting for
+handling genomic data, which often contain gene identifiers in the row names.
+Here we're performing any internal tibble coercion step to ensure row names
+are always moved to a \code{"rowname"} column in the CSV export.
+
+}
+
+\section{Debugging}{
+
+
+
+Note that this function currently wraps \code{vroom::voom_write()} by default
+for exporting \code{data.frame} and \code{matrix} class objects.
+
+}
+
 \examples{
 print("FIXME")
+}
+\seealso{
+Packages:
+\itemize{
+\item \href{http://r-datatable.com/}{data.table}.
+\item \href{http://readr.tidyverse.org}{readr}.
+\item \href{https://cran.r-project.org/package=rio}{rio}.
+\item \href{http://bioconductor.org/packages/rtracklayer/}{rtracklayer}.
+\item \href{https://vroom.r-lib.org}{vroom}.
+}
+
+Export functions:
+\itemize{
+\item \code{data.table::fwrite()}.
+\item \code{readr::write_csv()}.
+\item \code{rio::export()}.
+\item \code{rtracklayer::export()}.
+\item \code{vroom::vroom_write()}.
+}
 }
