@@ -1,9 +1,9 @@
 context("Gene2Symbol")
 
-formats <- eval(formals(`Gene2Symbol,GRanges`)[["format"]])
+formats <- eval(formals(`Gene2Symbol,SE`)[["format"]])
 test_that("Gene2Symbol", {
     for (format in formats) {
-        object <- GRanges
+        object <- rse
         object <- Gene2Symbol(object, format = format)
         expect_s4_class(object, "Gene2Symbol")
         expect_identical(colnames(object), c("geneId", "geneName"))
@@ -12,7 +12,7 @@ test_that("Gene2Symbol", {
 rm(formats)
 
 test_that("summary", {
-    object <- GRanges
+    object <- rse
     x <- Gene2Symbol(object)
     output <- capture.output(summary(x))
     expect_identical(

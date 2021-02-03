@@ -1,8 +1,9 @@
 context("export")
 
 test_that("'dir' argument, no 'name'", {
-    out <- export(rse, name = NULL, dir = "XXX", compress = TRUE)
-    prefix <- realpath(file.path("XXX", "rse"))
+    object <- rse
+    out <- export(object = object, name = NULL, dir = "XXX", compress = TRUE)
+    prefix <- realpath(file.path("XXX", "object"))
     expect_identical(
         out,
         list(
@@ -17,7 +18,8 @@ test_that("'dir' argument, no 'name'", {
 })
 
 test_that("Both 'name' and 'dir' declared", {
-    out <- export(rse, name = "test", dir = "XXX", compress = FALSE)
+    object <- rse
+    out <- export(object = object, name = "test", dir = "XXX", compress = FALSE)
     prefix <- realpath(file.path("XXX", "test"))
     expect_identical(
         out,
@@ -33,11 +35,11 @@ test_that("Both 'name' and 'dir' declared", {
 })
 
 test_that("Unnamed primary assay", {
-    se <- as(rse, "SummarizedExperiment")
+    object <- as(rse, "SummarizedExperiment")
     ## Note that `assayNames()` assignment doesn't work here.
-    names(assays(se)) <- NULL
-    expect_null(assayNames(se))
-    x <- export(se, dir = "XXX")
+    names(assays(object)) <- NULL
+    expect_null(assayNames(object))
+    x <- export(object = object, dir = "XXX")
     expect_identical(names(x[["assays"]]), "assay")
     unlink("XXX", recursive = TRUE)
 })
