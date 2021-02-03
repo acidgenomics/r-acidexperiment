@@ -5,10 +5,10 @@
 \title{Make a SummarizedExperiment object}
 \usage{
 makeSummarizedExperiment(
-  assays = SimpleList(),
-  rowRanges = GRanges(),
+  assays = S4Vectors::SimpleList(),
+  rowRanges = GenomicRanges::GRanges(),
   rowData = NULL,
-  colData = DataFrame(),
+  colData = S4Vectors::DataFrame(),
   metadata = list(),
   transgeneNames = NULL,
   sort = TRUE,
@@ -97,17 +97,18 @@ counts <- matrix(
     dimnames = list(genes, samples)
 )
 ## Primary assay must be named "counts".
-assays <- SimpleList(counts = counts)
+assays <- S4Vectors::SimpleList(counts = counts)
 print(assays)
 
 ## Row data (genomic ranges)
 ## Note that we haven't defined the transgene here.
 ## It will be handled automatically in the function call.
-rowRanges <- emptyRanges(names = head(genes, n = length(genes) - 1L))
+rowRanges <-
+    AcidGenomes::emptyRanges(names = head(genes, n = length(genes) - 1L))
 print(rowRanges)
 
 ## Column data
-colData <- DataFrame(
+colData <- S4Vectors::DataFrame(
     age = rep(
         x = c(3L, 6L),
         times = length(samples) / 2L

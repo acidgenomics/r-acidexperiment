@@ -13,7 +13,7 @@
 #'   cor decode do.call head lapply match
 #'   mcols mcols<- metadata metadata<- na.omit rowSums setdiff split
 #'   summary t unlist
-#' @importFrom AcidGenomes detectOrganism
+#' @importFrom AcidGenomes detectOrganism emptyRanges
 #' @importFrom Biostrings reverseComplement
 #' @importFrom IRanges SplitDataFrameList unsplit
 #' @importFrom Matrix fac2sparse

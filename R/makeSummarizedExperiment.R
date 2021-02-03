@@ -56,17 +56,18 @@
 #'     dimnames = list(genes, samples)
 #' )
 #' ## Primary assay must be named "counts".
-#' assays <- SimpleList(counts = counts)
+#' assays <- S4Vectors::SimpleList(counts = counts)
 #' print(assays)
 #'
 #' ## Row data (genomic ranges)
 #' ## Note that we haven't defined the transgene here.
 #' ## It will be handled automatically in the function call.
-#' rowRanges <- emptyRanges(names = head(genes, n = length(genes) - 1L))
+#' rowRanges <-
+#'     AcidGenomes::emptyRanges(names = head(genes, n = length(genes) - 1L))
 #' print(rowRanges)
 #'
 #' ## Column data
-#' colData <- DataFrame(
+#' colData <- S4Vectors::DataFrame(
 #'     age = rep(
 #'         x = c(3L, 6L),
 #'         times = length(samples) / 2L
@@ -92,10 +93,10 @@
 #' )
 #' print(x)
 makeSummarizedExperiment <- function(
-    assays = SimpleList(),
-    rowRanges = GRanges(),
+    assays = S4Vectors::SimpleList(),
+    rowRanges = GenomicRanges::GRanges(),
     rowData = NULL,
-    colData = DataFrame(),
+    colData = S4Vectors::DataFrame(),
     metadata = list(),
     transgeneNames = NULL,
     sort = TRUE,
@@ -150,21 +151,23 @@ makeSummarizedExperiment <- function(
         ## Ensure we unclass any special classes returned from AcidGenomes.
         if (is(rowRanges, "GRangesList")) {
             rowRanges <- as(rowRanges, "GRangesList")
-            assert(
-                hasCols(mcols(rowRanges[[1L]])),
-                identical(
-                    x = colnames(mcols(rowRanges)[[1L]]),
-                    y = camelCase(
-                        object = colnames(mcols(rowRanges)[[1L]]),
-                        strict = TRUE
+            if (hasCols(mcols(rowRanges[[1L]]))) {
+                assert(
+                    identical(
+                        x = colnames(mcols(rowRanges)[[1L]]),
+                        y = camelCase(
+                            object = colnames(mcols(rowRanges)[[1L]]),
+                            strict = TRUE
+                        )
                     )
                 )
-            )
+            }
         } else {
             rowRanges <- as(rowRanges, "GRanges")
-            assert(hasCols(mcols(rowRanges)))
-            colnames(mcols(rowRanges)) <-
-                camelCase(colnames(mcols(rowRanges)), strict = TRUE)
+            if (hasCols(mcols(rowRanges))) {
+                colnames(mcols(rowRanges)) <-
+                    camelCase(colnames(mcols(rowRanges)), strict = TRUE)
+            }
         }
         setdiff <- setdiff(rownames(assay), names(rowRanges))
         if (hasLength(setdiff) && !is(rowRanges, "GRanges")) {
@@ -182,7 +185,7 @@ makeSummarizedExperiment <- function(
             transgeneRanges <- emptyRanges(
                 names = transgeneNames,
                 seqname = "transgene",
-                mcolnames = mcolnames
+                mcolnames = names(mcols(rowRanges))
             )
             suppressWarnings({
                 rowRanges <- c(transgeneRanges, rowRanges)
@@ -209,7 +212,10 @@ makeSummarizedExperiment <- function(
                 toString(symbols, width = 200L)
             ))
             alertInfo("Define transgenes using {.arg transgeneNames}.")
-            unknownRanges <- emptyRanges(names = symbols, mcolnames = mcolnames)
+            unknownRanges <- emptyRanges(
+                names = symbols,
+                mcolnames = names(mcols(rowRanges))
+            )
             suppressWarnings({
                 rowRanges <- c(unknownRanges, rowRanges)
             })
