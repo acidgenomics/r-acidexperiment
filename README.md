@@ -21,4 +21,6 @@ install.packages(
 )
 ```
 
+[bioconductor]: https://bioconductor.org/
+[r]: https://www.r-project.org/
 [summarizedexperiment]: https://bioconductor.org/packages/SummarizedExperiment/
