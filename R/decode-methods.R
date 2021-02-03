@@ -19,7 +19,7 @@
 #' ## This works on rowData and colData.
 #' object <- RangedSummarizedExperiment
 #' object <- decode(object)
-#' lapply(rowData(object), class)
+#' lapply(SummarizedExperiment::rowData(object), class)
 NULL
 
 
