@@ -26,14 +26,14 @@
 #'   areIntersectingSets areSetEqual assert false hasColnames hasCols
 #'   hasDimnames hasLength hasNames hasNoDuplicates hasRownames hasRows
 #'   hasValidDimnames hasValidNames isAFile isAURL isAny isCharacter isFlag
-#'   isInt isNonNegative isNumber isPositive isScalar isString isSubset
-#'   matchesUniqueGeneNames validNames
+#'   isInRange isInt isNonNegative isNumber isPositive isScalar isString
+#'   isSubset matchesUniqueGeneNames validNames
 #' @importFrom methods as coerce is new setMethod setReplaceMethod signature
 #'   validObject
 #' @importFrom pipette as_tibble atomize factorize import removeNA
 #' @importFrom scales percent
 #' @importFrom sessioninfo session_info
-#' @importFrom stringr str_match str_pad
+#' @importFrom stringr str_length str_match str_pad
 #' @importFrom syntactic camelCase makeNames snakeCase
 #' @importFrom utils packageName packageVersion
 #'
