@@ -1,9 +1,9 @@
 data(syntactic, package = "AcidTest", envir = environment())
 funs <- list(
-    camelCase = camelCase,
-    dottedCase = dottedCase,
-    snakeCase = snakeCase,
-    upperCamelCase = upperCamelCase
+    "camelCase" = camelCase,
+    "dottedCase" = dottedCase,
+    "snakeCase" = snakeCase,
+    "upperCamelCase" = upperCamelCase
 )
 
 
@@ -42,16 +42,16 @@ test_that("factor", {
     mapply(
         f = funs,
         levels = list(
-            camelCase = c("group1", "group2"),
-            dottedCase = c("group.1", "group.2"),
-            snakeCase = c("group_1", "group_2"),
-            upperCamelCase = c("Group1", "Group2")
+            "camelCase" = c("group1", "group2"),
+            "dottedCase" = c("group.1", "group.2"),
+            "snakeCase" = c("group_1", "group_2"),
+            "upperCamelCase" = c("Group1", "Group2")
         ),
         names = list(
-            camelCase = c("sample1", "sample2", "sample3", "sample4"),
-            dottedCase = c("sample.1", "sample.2", "sample.3", "sample.4"),
-            snakeCase = c("sample_1", "sample_2", "sample_3", "sample_4"),
-            upperCamelCase = c("Sample1", "Sample2", "Sample3", "Sample4")
+            "camelCase" = c("sample1", "sample2", "sample3", "sample4"),
+            "dottedCase" = c("sample.1", "sample.2", "sample.3", "sample.4"),
+            "snakeCase" = c("sample_1", "sample_2", "sample_3", "sample_4"),
+            "upperCamelCase" = c("Sample1", "Sample2", "Sample3", "Sample4")
         ),
         FUN = function(f, levels, names) {
             object <- syntactic[["factor"]]
@@ -82,10 +82,10 @@ test_that("list", {
     mapply(
         f = funs,
         expected = list(
-            camel = c("itemA", "itemB"),
-            dotted = c("item.a", "item.b"),
-            snake = c("item_a", "item_b"),
-            upperCamel = c("ItemA", "ItemB")
+            "camelCase" = c("itemA", "itemB"),
+            "dottedCase" = c("item.a", "item.b"),
+            "snakeCase" = c("item_a", "item_b"),
+            "upperCamelCase" = c("ItemA", "ItemB")
         ),
         FUN = function(f, expected) {
             object <- syntactic[["list"]]
@@ -106,19 +106,19 @@ test_that("matrix", {
     mapply(
         f = funs,
         expected = list(
-            camelCase = list(
+            "camelCase" = list(
                 c("alabama", "alaska", "arizona"),
                 c("murder", "assault", "urbanPop")
             ),
-            dottedCase = list(
+            "dottedCase" = list(
                 c("alabama", "alaska", "arizona"),
                 c("murder", "assault", "urban.pop")
             ),
-            snakeCase = list(
+            "snakeCase" = list(
                 c("alabama", "alaska", "arizona"),
                 c("murder", "assault", "urban_pop")
             ),
-            upperCamelCase = list(
+            "upperCamelCase" = list(
                 c("Alabama", "Alaska", "Arizona"),
                 c("Murder", "Assault", "UrbanPop")
             )
@@ -183,10 +183,10 @@ test_that("GRanges", {
     mapply(
         f = funs,
         expected = list(
-            camelCase = c("geneID", "geneName"),
-            dottedCase = c("gene.id", "gene.name"),
-            snakeCase = c("gene_id", "gene_name"),
-            upperCamelCase = c("GeneID", "GeneName")
+            "camelCase" = c("geneId", "geneName"),
+            "dottedCase" = c("gene.id", "gene.name"),
+            "snakeCase" = c("gene_id", "gene_name"),
+            "upperCamelCase" = c("GeneId", "GeneName")
         ),
         FUN = function(f, expected) {
             x <- f(
