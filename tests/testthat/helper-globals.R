@@ -1,4 +1,5 @@
 data(
+    DFrame,
     GRanges,
     RangedSummarizedExperiment,
     package = "AcidTest",
@@ -9,6 +10,7 @@ stopifnot(
     is(RangedSummarizedExperiment, "RangedSummarizedExperiment")
 )
 
+df <- DFrame
 gr <- GRanges
 rse <- RangedSummarizedExperiment
 
