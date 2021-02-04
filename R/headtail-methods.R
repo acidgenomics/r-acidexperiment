@@ -1,7 +1,3 @@
-## FIXME MOVE TO ACIDEXPERIMENT.
-
-
-
 #' @name headtail
 #' @inherit AcidGenerics::headtail
 #' @note Updated 2020-10-07.
@@ -12,12 +8,11 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(mtcars, package = "datasets")
 #' data(RangedSummarizedExperiment, package = "AcidTest")
-#' rse <- RangedSummarizedExperiment
 #'
 #' ## SummarizedExperiment ====
-#' headtail(rse)
+#' object <- RangedSummarizedExperiment
+#' headtail(object)
 NULL
 
 
