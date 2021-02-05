@@ -7,7 +7,7 @@
 #' - interestingGroups.
 #' - sampleId.
 #'
-#' @note Updated 2021-01-14.
+#' @note Updated 2021-02-05.
 #' @export
 #'
 #' @param object `DataFrame` (recommended) or `data.frame` (legacy).
@@ -28,38 +28,24 @@
 #' all(vapply(to, is.factor, logical(1L)))
 #' print(to)
 sanitizeSampleData <- function(object) {
-    ## Still allowing standard `data.frame`, to support bcbioRNASeq v0.2.9.
-    ## Require stricter `DataFrame` input in a future update.
-    if (is.data.frame(object)) {
-        legacy <- TRUE
-        class <- class(object)[[1L]]
-        object <- as(object, "DataFrame")
-    } else {
-        legacy <- FALSE
-    }
     assert(
         is(object, "DataFrame"),
-        ## Require `sampleName` column.
-        "sampleName" %in% colnames(object),
-        ## Check for any duplicate rows.
-        hasNoDuplicates(object[["sampleName"]]),
-        hasRownames(object)
+        hasRownames(object),
+        hasColnames(object),
+        identical(
+            x = colnames(object),
+            y = camelCase(colnames(object), strict = TRUE)
+        ),
+        isSubset("sampleName", colnames(object)),
+        hasNoDuplicates(object[["sampleName"]])
     )
-    ## Drop blacklisted columns.
     blacklist <- c("interestingGroups", "sampleId")
     object <- object[, setdiff(colnames(object), blacklist), drop = FALSE]
-    ## This will flatten the S4 columns if possible and drop non-atomic.
     object <- atomize(object)
-    ## Ensure all columns are factors, with up-to-date levels.
     object <- factorize(object)
     assert(
         is(object, "DataFrame"),
         hasRownames(object)
     )
-    ## Remove this step in a future update.
-    if (isTRUE(legacy)) {
-        object <- as(object, class)
-    }
-    ## Return.
     object
 }
