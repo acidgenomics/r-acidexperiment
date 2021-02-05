@@ -1,7 +1,7 @@
 #' @name metrics
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::metrics
-#' @note Updated 2021-02-03.
+#' @note Updated 2021-02-05.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -13,7 +13,9 @@
 #' `colData()`. This is designed to integrate with plotting functions that use
 #' ggplot2 internally.
 #'
-#' This will error intentionally if no numeric columns are defined
+#' Column names are always returned formatted in strict lower camel case.
+#'
+#' This function will error intentionally if no numeric columns are defined
 #' in `colData()`.
 #'
 #' @return Object of class determined by `return` argument.
@@ -30,18 +32,24 @@ NULL
 
 
 
-## Updated 2019-08-18.
+## Updated 2021-02-05.
 `metrics,SE` <-  # nolint
     function(object, return = c("tbl_df", "DataFrame")) {
         validObject(object)
         return <- match.arg(return)
         data <- sampleData(object, clean = FALSE)
+        assert(identical(
+            x = colnames(data),
+            y = camelCase(colnames(data), strict = TRUE)
+        ))
+        sampleCol <- "sampleId"
+        assert(areDisjointSets(sampleCol, colnames(data)))
         ## Decode columns that contain Rle, if necessary.
         data <- decode(data)
         switch(
             EXPR = return,
             "DataFrame" = data,
-            "tbl_df" = as_tibble(data, rownames = "sampleId")
+            "tbl_df" = as_tibble(data, rownames = sampleCol)
         )
     }
 

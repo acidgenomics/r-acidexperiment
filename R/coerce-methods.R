@@ -1,4 +1,4 @@
-#' Coerce to summarized experiment
+#' Coercion methods
 #'
 #' Coerce to `SummarizedExperiment`.
 #'
@@ -19,8 +19,8 @@
 #' )
 #' ```
 #'
-#' @name coerce-SummarizedExperiment
-#' @note Updated 2020-01-18.
+#' @name coerce
+#' @note Updated 2021-02-05.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -54,7 +54,7 @@ NULL
 
 
 
-#' @rdname coerce-SummarizedExperiment
+#' @rdname coerce
 #' @export
 setMethod(
     f = "as.SummarizedExperiment",
@@ -76,7 +76,7 @@ setMethod(
 
 
 
-#' @rdname coerce-SummarizedExperiment
+#' @rdname coerce
 #' @export
 setMethod(
     f = "as.SummarizedExperiment",

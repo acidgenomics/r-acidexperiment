@@ -49,11 +49,8 @@ cell-to-sample mappings are defined using the \code{sampleId} column.}
 Metadata that describes the samples.
 }
 \details{
-This is a complement to the standard
-\code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}} function, but improves support
-for accessing sample metadata for datasets where multiple items in the
-columns map to a single sample (e.g. cells for a single-cell RNA-seq
-experiment).
+All columns defined in \code{colData} of the object must be named in strict
+lower camel case, otherwise this function will intentionally error.
 }
 \note{
 Updated 2021-02-05.
@@ -97,11 +94,11 @@ Illegal \code{colData}:
 data(RangedSummarizedExperiment, package = "AcidTest")
 
 ## SummarizedExperiment ====
-x <- RangedSummarizedExperiment
-sampleData(x)
+object <- RangedSummarizedExperiment
+sampleData(object)
 
-## Assignment support
-sampleData(x)[["batch"]] <- 1L
+## Assignment support.
+sampleData(object)[["batch"]] <- 1L
 ## `batch` column should be now defined.
-sampleData(x)
+sampleData(object)
 }
