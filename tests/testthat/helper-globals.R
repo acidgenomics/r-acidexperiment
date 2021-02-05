@@ -23,6 +23,7 @@ txse <- SummarizedExperiment_transcripts
 assay <- SummarizedExperiment::assay
 assayNames <- SummarizedExperiment::assayNames
 assays <- SummarizedExperiment::assays
+cause <- goalie::cause
 colData <- SummarizedExperiment::colData
 hasInternet <- goalie::hasInternet
 rowData <- SummarizedExperiment::rowData
