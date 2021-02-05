@@ -1,3 +1,3 @@
-## AcidExperiment 0.1.0 (2021-02-03)
+## AcidExperiment 0.1.0 (2021-02-05)
 
-Initial release.
+Initial release, with code migrated from basejump package.
