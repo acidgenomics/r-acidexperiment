@@ -1,5 +1,10 @@
 ## AcidExperiment 0.1.1 (2021-02-05)
 
+### Major changes
+
+- Ensuring we're enforcing lower camel case naming conventions for metadata
+  describing the columns slotted in `colData`.
+
 ### Minor changes
 
 - Imported coercion methods from `SummarizedExperiment`.

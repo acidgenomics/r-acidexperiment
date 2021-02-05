@@ -16,14 +16,15 @@ test_that("SummarizedExperiment", {
     expect_s4_class(object, "SummarizedExperiment")
     x <- decode(colData(object))[1L, cols, drop = TRUE]
     x <- lapply(X = x, FUN = round, digits = 3L)
+    ## NOTE These values can change if we update example RSE object.
     expect_equal(
         object = x,
         expected = list(
-            "log10FeaturesPerCount" = 0.619,
+            "log10FeaturesPerCount" = 0.618,
             "mitoRatio" = NA_integer_,
-            "nCount" = 19671,  # nolint
-            "nFeature" = 457,  # nolint
-            "nCoding" = 19578,  # nolint
+            "nCount" = 19878,  # nolint
+            "nFeature" = 454,  # nolint
+            "nCoding" = 19775,  # nolint
             "nMito" = NA_integer_
         )
     )
