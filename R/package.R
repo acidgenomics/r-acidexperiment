@@ -1,3 +1,12 @@
+#' AcidExperiment
+#'
+#' Toolkit to extend the functionality of SummarizedExperiment.
+#'
+#' @keywords internal
+"_PACKAGE"
+
+
+
 #' @importClassesFrom AcidGenerics missingOrNULL
 #' @importClassesFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
 #'   Tx2Gene
@@ -47,5 +56,6 @@ NULL
 
 ## This is needed to properly declare S4 `as()` coercion methods.
 #' @importFrom methods coerce
+#' @importMethodsFrom SummarizedExperiment coerce
 #' @exportMethod coerce
 NULL

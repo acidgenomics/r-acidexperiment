@@ -52,12 +52,11 @@ objects.
 Updated 2020-10-07.
 }
 \examples{
-data(mtcars, package = "datasets")
 data(RangedSummarizedExperiment, package = "AcidTest")
-rse <- RangedSummarizedExperiment
 
 ## SummarizedExperiment ====
-headtail(rse)
+object <- RangedSummarizedExperiment
+headtail(object)
 }
 \seealso{
 \itemize{
