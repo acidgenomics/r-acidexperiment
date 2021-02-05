@@ -1,6 +1,6 @@
 #' @name sampleData
 #' @inherit AcidGenerics::sampleData
-#' @note Updated 2021-02-03.
+#' @note Updated 2021-02-05.
 #'
 #' @section All supported S4 classes:
 #'
@@ -73,6 +73,7 @@ NULL
         data <- colData(object)
         if (!hasRows(data)) return(data)
         assert(
+            hasColnames(object),
             hasRownames(data),
             isFlag(clean),
             isCharacter(ignoreCols, nullOK = TRUE),

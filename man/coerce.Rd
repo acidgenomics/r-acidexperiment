@@ -2,10 +2,10 @@
 % Please edit documentation in R/AllGenerics.R, R/coerce-methods.R
 \name{as.SummarizedExperiment}
 \alias{as.SummarizedExperiment}
-\alias{coerce-SummarizedExperiment}
+\alias{coerce}
 \alias{as.SummarizedExperiment,SummarizedExperiment-method}
 \alias{as.SummarizedExperiment,RangedSummarizedExperiment-method}
-\title{Coerce to summarized experiment}
+\title{Coercion methods}
 \usage{
 as.SummarizedExperiment(x, ...)
 
@@ -40,7 +40,7 @@ Related S4 coercion method of interest:\preformatted{getMethod(
 }
 }
 \note{
-Updated 2020-01-18.
+Updated 2021-02-05.
 }
 \examples{
 suppressPackageStartupMessages(library(SummarizedExperiment))
