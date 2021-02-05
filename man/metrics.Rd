@@ -31,7 +31,9 @@ and consistently returns a \code{tbl_df} or \code{DataFrame} with \code{sampleNa
 \code{colData()}. This is designed to integrate with plotting functions that use
 ggplot2 internally.
 
-This will error intentionally if no numeric columns are defined
+Column names are always returned formatted in strict lower camel case.
+
+This function will error intentionally if no numeric columns are defined
 in \code{colData()}.
 }
 \section{Functions}{
@@ -40,7 +42,7 @@ in \code{colData()}.
 }}
 
 \note{
-Updated 2021-02-03.
+Updated 2021-02-05.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")

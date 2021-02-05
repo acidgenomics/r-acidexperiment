@@ -1,3 +1,8 @@
+## FIXME NEED TO ENSURE WE'RE NOT HARD CODING AGAINST "SAMPLEID", "GENEID",
+##       AND OTHERS IN PACKAGE.
+
+
+
 #' @name matchSampleColumn
 #' @inherit AcidGenerics::matchSampleColumn
 #' @note Updated 2021-01-16.

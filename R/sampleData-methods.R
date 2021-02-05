@@ -2,6 +2,10 @@
 #' @inherit AcidGenerics::sampleData
 #' @note Updated 2021-02-05.
 #'
+#' @details
+#' All columns defined in `colData` of the object must be named in strict
+#' lower camel case, otherwise this function will intentionally error.
+#'
 #' @section All supported S4 classes:
 #'
 #' Illegal `colData`:
@@ -46,19 +50,19 @@
 #' data(RangedSummarizedExperiment, package = "AcidTest")
 #'
 #' ## SummarizedExperiment ====
-#' x <- RangedSummarizedExperiment
-#' sampleData(x)
+#' object <- RangedSummarizedExperiment
+#' sampleData(object)
 #'
-#' ## Assignment support
-#' sampleData(x)[["batch"]] <- 1L
+#' ## Assignment support.
+#' sampleData(object)[["batch"]] <- 1L
 #' ## `batch` column should be now defined.
-#' sampleData(x)
+#' sampleData(object)
 NULL
 
 
 
 ## Don't run validity checks here.
-## Updated 2019-08-27.
+## Updated 2021-02-05.
 `sampleData,SE` <-  # nolint
     function(
         object,
@@ -77,7 +81,11 @@ NULL
             hasRownames(data),
             isFlag(clean),
             isCharacter(ignoreCols, nullOK = TRUE),
-            areDisjointSets(x = colnames(data), y = metadataBlacklist)
+            areDisjointSets(x = colnames(data), y = metadataBlacklist),
+            identical(
+                x = colnames(data),
+                y = camelCase(colnames(data), strict = TRUE)
+            )
         )
         ## Require `sampleName` column.
         if (!isSubset("sampleName", colnames(data))) {
