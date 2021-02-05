@@ -14,6 +14,9 @@
 #' @importClassesFrom S4Vectors DataFrame SimpleList
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
+#' @importMethodsFrom SummarizedExperiment coerce
+#' @importMethodsFrom pipette coerce
+#'
 #' @importFrom AcidBase appendToBody bapply formalsList geometricMean
 #'   getNameInParent initDir lanePattern metadataBlacklist methodFormals
 #'   methodFunction realpath standardizeCall
@@ -50,12 +53,4 @@
 #'   Tx2Gene stripGeneVersions stripTranscriptVersions
 #' @importMethodsFrom SummarizedExperiment coerce
 #' @importMethodsFrom pipette as.data.frame coerce droplevels export
-NULL
-
-
-
-## This is needed to properly declare S4 `as()` coercion methods.
-#' @importFrom methods coerce
-#' @importMethodsFrom SummarizedExperiment coerce
-#' @exportMethod coerce
 NULL
