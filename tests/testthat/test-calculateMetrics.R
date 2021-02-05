@@ -21,9 +21,9 @@ test_that("SummarizedExperiment", {
         expected = list(
             "log10FeaturesPerCount" = 0.619,
             "mitoRatio" = NA_integer_,
-            "nCount" = 19671,
-            "nFeature" = 457,
-            "nCoding" = 19578,
+            "nCount" = 19671,  # nolint
+            "nFeature" = 457,  # nolint
+            "nCoding" = 19578,  # nolint
             "nMito" = NA_integer_
         )
     )
