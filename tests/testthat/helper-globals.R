@@ -4,6 +4,7 @@ data(
     RangedSummarizedExperiment,
     SummarizedExperiment_transcripts,
     matrix,
+    sparseMatrix,
     package = "AcidTest",
     envir = environment()
 )
@@ -16,6 +17,7 @@ df <- DFrame
 gr <- GRanges
 mat <- matrix
 rse <- RangedSummarizedExperiment
+sparse <- sparseMatrix
 txse <- SummarizedExperiment_transcripts
 
 ## nolint start
