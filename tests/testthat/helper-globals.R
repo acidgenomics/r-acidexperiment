@@ -2,6 +2,7 @@ data(
     DFrame,
     GRanges,
     RangedSummarizedExperiment,
+    SummarizedExperiment_transcripts,
     matrix,
     package = "AcidTest",
     envir = environment()
@@ -15,6 +16,7 @@ df <- DFrame
 gr <- GRanges
 mat <- matrix
 rse <- RangedSummarizedExperiment
+txse <- SummarizedExperiment_transcripts
 
 ## nolint start
 `assays<-` <- SummarizedExperiment::`assays<-`
