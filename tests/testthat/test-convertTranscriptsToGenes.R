@@ -90,7 +90,7 @@ test_that("SummarizedExperiment", {
             ncol = 4L,
             byrow = TRUE,
             dimnames = list(
-                c("ENSG00000000003", "ENSG00000000419"),
+                c("ENSG00000000003.15", "ENSG00000000419.12"),
                 c("sample1", "sample2", "sample3", "sample4")
             )
         )

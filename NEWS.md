@@ -1,4 +1,4 @@
-## AcidExperiment 0.1.1 (2021-02-05)
+## AcidExperiment 0.1.1 (2021-02-06)
 
 ### Major changes
 
