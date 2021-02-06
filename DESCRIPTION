@@ -47,7 +47,7 @@ Imports:
     syntactic,
     utils
 Suggests:
-    AcidTest (>= 0.4.1),
+    AcidTest (>= 0.4.2),
     testthat
 biocViews:
     Annotation,
