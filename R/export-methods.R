@@ -3,6 +3,10 @@
 #' @note Updated 2021-02-03.
 #'
 #' @inheritParams AcidRoxygen::params
+#' @param compress `logical(1)`.
+#'   Apply gzip compression to all files.
+#' @param name `character(1)`.
+#'   Name to use on disk. If `NULL`, will use the name of the object instead.
 #' @param ... Additional arguments.
 #'
 #' @examples

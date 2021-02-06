@@ -1,0 +1,4 @@
+#+TITLE: pipette
+#+STARTUP: content
+* Development
+** TODO sampleData assignment method needs to check for camelCase names
