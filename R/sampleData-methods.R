@@ -75,7 +75,7 @@ NULL
         )
     ) {
         data <- colData(object)
-        if (!hasRows(data)) return(data)
+        if (!hasRows(data) || !hasCols(data)) return(data)
         assert(
             hasColnames(object),
             hasRownames(data),

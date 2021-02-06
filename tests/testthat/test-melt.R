@@ -21,13 +21,14 @@ test_that("Per row filtering", {
     expect_true(any(x[["value"]] == 0L))
 })
 
+## NOTE These values can change when we update AcidTest.
 test_that("trans", {
     mapply(
         trans = eval(formals(`melt,SE`)[["trans"]]),
         expected = list(
-            "identity" = c(58, 14, 49),  # nolint
-            "log2" = c(5.883, 3.907, 5.644),
-            "log10" = c(1.771, 1.176, 1.699)
+            "identity" = c(17, 4, 27),  # nolint
+            "log2" = c(4.170, 2.322, 4.807),
+            "log10" = c(1.255, 0.699, 1.447)
         ),
         FUN = function(trans, expected) {
             object <- rse
