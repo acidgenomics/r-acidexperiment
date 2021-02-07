@@ -19,17 +19,17 @@ mapGenesToIDs(object, ...)
 
 mapGenesToSymbols(object, ...)
 
-\S4method{mapGenesToRownames}{Gene2Symbol}(object, genes, ignoreVersion = FALSE, strict = TRUE)
+\S4method{mapGenesToRownames}{Gene2Symbol}(object, genes, strict = TRUE)
 
-\S4method{mapGenesToRownames}{SummarizedExperiment}(object, genes, ignoreVersion = FALSE, strict = TRUE)
+\S4method{mapGenesToRownames}{SummarizedExperiment}(object, genes, strict = TRUE)
 
-\S4method{mapGenesToIDs}{Gene2Symbol}(object, genes, ignoreVersion = FALSE, strict = TRUE)
+\S4method{mapGenesToIDs}{Gene2Symbol}(object, genes, strict = TRUE)
 
-\S4method{mapGenesToIDs}{SummarizedExperiment}(object, genes, ignoreVersion = FALSE, strict = TRUE)
+\S4method{mapGenesToIDs}{SummarizedExperiment}(object, genes, strict = TRUE)
 
-\S4method{mapGenesToSymbols}{Gene2Symbol}(object, genes, ignoreVersion = FALSE, strict = TRUE)
+\S4method{mapGenesToSymbols}{Gene2Symbol}(object, genes, strict = TRUE)
 
-\S4method{mapGenesToSymbols}{SummarizedExperiment}(object, genes, ignoreVersion = FALSE, strict = TRUE)
+\S4method{mapGenesToSymbols}{SummarizedExperiment}(object, genes, strict = TRUE)
 }
 \arguments{
 \item{object}{Object.}
