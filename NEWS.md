@@ -1,5 +1,11 @@
 ## AcidExperiment 0.1.1 (2021-02-06)
 
+### Minor changes
+
+- Added `ignoreVersion` option to gene mapping functions.
+
+## AcidExperiment 0.1.1 (2021-02-06)
+
 ### Major changes
 
 - Ensuring we're enforcing lower camel case naming conventions for metadata
