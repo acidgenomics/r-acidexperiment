@@ -55,8 +55,6 @@ NULL
 
 
 
-## FIXME HANDLE IGNORE VERSIONS HERE AUTOMATICALLY, WITHOUT USER INTERVENTION.
-
 ## Updated 2021-02-02.
 .mapGenes <- function(
     object,
@@ -213,7 +211,6 @@ setMethod(
 
 
 ## mapGenesToIDs ===============================================================
-## FIXME NEED TO IMPROVE IGNORE VERSION HANDLING HERE.
 ## Updated 2021-02-07.
 `mapGenesToIDs,Gene2Symbol` <-  # nolint
     function(
