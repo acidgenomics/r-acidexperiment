@@ -13,7 +13,7 @@
 #' is duplicated, these functions will return a warning.
 #'
 #' @name mapGenes
-#' @note Updated 2021-02-02.
+#' @note Updated 2021-02-07.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param strict `logical(1)`.
@@ -26,58 +26,64 @@
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")
-#' rse <- RangedSummarizedExperiment
-#' print(rse)
 #'
-#' rownames <- head(rownames(rse))
+#' ## SummarizedExperiment ====
+#' object <- RangedSummarizedExperiment
+#' rownames <- head(rownames(object))
 #' print(rownames)
-#'
-#' g2s <- Gene2Symbol(rse)
+#' g2s <- Gene2Symbol(object)
 #' geneIds <- head(g2s[["geneId"]])
 #' print(geneIds)
-#'
 #' geneNames <- head(g2s[["geneName"]])
 #' print(geneNames)
 #'
 #' ## Row names.
-#' mapGenesToRownames(rse, genes = rownames)
-#' mapGenesToRownames(rse, genes = geneIds)
-#' mapGenesToRownames(rse, genes = geneNames)
+#' mapGenesToRownames(object, genes = rownames)
+#' mapGenesToRownames(object, genes = geneIds)
+#' mapGenesToRownames(object, genes = geneNames)
 #'
 #' ## Gene identifiers.
-#' mapGenesToIDs(rse, genes = rownames)
-#' mapGenesToIDs(rse, genes = geneIds)
-#' mapGenesToIDs(rse, genes = geneNames)
+#' mapGenesToIDs(object, genes = rownames)
+#' mapGenesToIDs(object, genes = geneIds)
+#' mapGenesToIDs(object, genes = geneNames)
 #'
 #' ## Gene names (symbols).
-#' mapGenesToSymbols(rse, genes = rownames)
-#' mapGenesToSymbols(rse, genes = geneIds)
-#' mapGenesToSymbols(rse, genes = geneNames)
+#' mapGenesToSymbols(object, genes = rownames)
+#' mapGenesToSymbols(object, genes = geneIds)
+#' mapGenesToSymbols(object, genes = geneNames)
 NULL
 
 
 
+## FIXME HANDLE IGNORE VERSIONS HERE AUTOMATICALLY, WITHOUT USER INTERVENTION.
+
 ## Updated 2021-02-02.
-.mapGenes <- function(object, genes, strict = TRUE) {
+.mapGenes <- function(
+    object,
+    genes,
+    strict = TRUE
+) {
     validObject(object)
     assert(
         is(object, "Gene2Symbol"),
         isCharacter(genes),
         isFlag(strict)
     )
-    cols <- c("geneId", "geneName")
-    if (!identical(cols, colnames(object))) {
-        colnames(object) <- cols
-    }
-    validObject(object)
+    object <- as(object, "DataFrame")
+    colnames(object) <- camelCase(colnames(object), strict = TRUE)
+    suppressMessages({
+        genes <- stripGeneVersions(genes)
+        object[["geneIdNoVersion"]] <- stripGeneVersions(object[["geneId"]])
+    })
+    cols <- c("id" = "geneIdNoVersion", "name" = "geneName")
     ## Prepare the match table.
     if (any(genes %in% rownames(object))) {
         table <- rownames(object)
-    } else if (any(genes %in% object[["geneName"]])) {
+    } else if (any(genes %in% object[[cols[["name"]]]])) {
         assert(matchesUniqueGeneNames(object, genes))
-        table <- object[["geneName"]]
-    } else if (any(genes %in% object[["geneId"]])) {
-        table <- object[["geneId"]]
+        table <- object[[cols[["name"]]]]
+    } else if (any(genes %in% object[[cols[["id"]]]])) {
+        table <- object[[cols[["id"]]]]
     } else {
         stop(sprintf(
             "All genes failed to map: %s.",
@@ -109,9 +115,14 @@ NULL
 
 
 ## mapGenesToRownames ==========================================================
-## Updated 2021-02-02.
+## Updated 2021-02-07.
 `mapGenesToRownames,Gene2Symbol` <-  # nolint
-    function(object, genes, strict = TRUE) {
+    function(
+        object,
+        genes,
+        strict = TRUE
+    ) {
+        validObject(object)
         mapped <- do.call(
             what = .mapGenes,
             args = list(
@@ -138,9 +149,13 @@ setMethod(
 
 
 
-## Updated 2021-02-02.
+## Updated 2021-02-07.
 `mapGenesToRownames,SE` <-  # nolint
-    function(object, genes, strict = TRUE) {
+    function(
+        object,
+        genes,
+        strict = TRUE
+    ) {
         validObject(object)
         assert(isFlag(strict))
         ## Check to see if object contains gene-to-symbol mappings.
@@ -202,9 +217,14 @@ setMethod(
 
 
 ## mapGenesToIDs ===============================================================
-## Updated 2021-02-02.
+## FIXME NEED TO IMPROVE IGNORE VERSION HANDLING HERE.
+## Updated 2021-02-07.
 `mapGenesToIDs,Gene2Symbol` <-  # nolint
-    function(object, genes, strict = TRUE) {
+    function(
+        object,
+        genes,
+        strict = TRUE
+    ) {
         mapped <- do.call(
             what = .mapGenes,
             args = list(
@@ -232,9 +252,13 @@ setMethod(
 
 
 
-## Updated 2021-02-02.
+## Updated 2021-02-07.
 `mapGenesToIDs,SE` <-  # nolint
-    function(object, genes, strict = TRUE) {
+    function(
+        object,
+        genes,
+        strict = TRUE
+    ) {
         validObject(object)
         suppressMessages({
             g2s <- Gene2Symbol(object)
@@ -263,9 +287,13 @@ setMethod(
 
 
 ## mapGenesToSymbols ===========================================================
-## Updated 2021-02-02.
+## Updated 2021-02-07.
 `mapGenesToSymbols,Gene2Symbol` <-  # nolint
-    function(object, genes, strict = TRUE) {
+    function(
+        object,
+        genes,
+        strict = TRUE
+    ) {
         mapped <- do.call(
             what = .mapGenes,
             args = list(
@@ -293,9 +321,13 @@ setMethod(
 
 
 
-## Updated 2021-02-02.
+## Updated 2021-02-07.
 `mapGenesToSymbols,SE` <-  # nolint
-    function(object, genes, strict = TRUE) {
+    function(
+        object,
+        genes,
+        strict = TRUE
+    ) {
         validObject(object)
         suppressMessages({
             g2s <- Gene2Symbol(object)

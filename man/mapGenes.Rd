@@ -19,17 +19,17 @@ mapGenesToIDs(object, ...)
 
 mapGenesToSymbols(object, ...)
 
-\S4method{mapGenesToRownames}{Gene2Symbol}(object, genes, strict = TRUE)
+\S4method{mapGenesToRownames}{Gene2Symbol}(object, genes, ignoreVersion = FALSE, strict = TRUE)
 
-\S4method{mapGenesToRownames}{SummarizedExperiment}(object, genes, strict = TRUE)
+\S4method{mapGenesToRownames}{SummarizedExperiment}(object, genes, ignoreVersion = FALSE, strict = TRUE)
 
-\S4method{mapGenesToIDs}{Gene2Symbol}(object, genes, strict = TRUE)
+\S4method{mapGenesToIDs}{Gene2Symbol}(object, genes, ignoreVersion = FALSE, strict = TRUE)
 
-\S4method{mapGenesToIDs}{SummarizedExperiment}(object, genes, strict = TRUE)
+\S4method{mapGenesToIDs}{SummarizedExperiment}(object, genes, ignoreVersion = FALSE, strict = TRUE)
 
-\S4method{mapGenesToSymbols}{Gene2Symbol}(object, genes, strict = TRUE)
+\S4method{mapGenesToSymbols}{Gene2Symbol}(object, genes, ignoreVersion = FALSE, strict = TRUE)
 
-\S4method{mapGenesToSymbols}{SummarizedExperiment}(object, genes, strict = TRUE)
+\S4method{mapGenesToSymbols}{SummarizedExperiment}(object, genes, ignoreVersion = FALSE, strict = TRUE)
 }
 \arguments{
 \item{object}{Object.}
@@ -54,7 +54,7 @@ writing code that needs to handle either gene identifier or gene name input
 dynamically (e.g. for single-cell RNA-seq marker analysis).
 }
 \note{
-Updated 2021-02-02.
+Updated 2021-02-07.
 }
 \section{Ambiguous gene names}{
 
@@ -67,31 +67,29 @@ is duplicated, these functions will return a warning.
 
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
-rse <- RangedSummarizedExperiment
-print(rse)
 
-rownames <- head(rownames(rse))
+## SummarizedExperiment ====
+object <- RangedSummarizedExperiment
+rownames <- head(rownames(object))
 print(rownames)
-
-g2s <- Gene2Symbol(rse)
+g2s <- Gene2Symbol(object)
 geneIds <- head(g2s[["geneId"]])
 print(geneIds)
-
 geneNames <- head(g2s[["geneName"]])
 print(geneNames)
 
 ## Row names.
-mapGenesToRownames(rse, genes = rownames)
-mapGenesToRownames(rse, genes = geneIds)
-mapGenesToRownames(rse, genes = geneNames)
+mapGenesToRownames(object, genes = rownames)
+mapGenesToRownames(object, genes = geneIds)
+mapGenesToRownames(object, genes = geneNames)
 
 ## Gene identifiers.
-mapGenesToIDs(rse, genes = rownames)
-mapGenesToIDs(rse, genes = geneIds)
-mapGenesToIDs(rse, genes = geneNames)
+mapGenesToIDs(object, genes = rownames)
+mapGenesToIDs(object, genes = geneIds)
+mapGenesToIDs(object, genes = geneNames)
 
 ## Gene names (symbols).
-mapGenesToSymbols(rse, genes = rownames)
-mapGenesToSymbols(rse, genes = geneIds)
-mapGenesToSymbols(rse, genes = geneNames)
+mapGenesToSymbols(object, genes = rownames)
+mapGenesToSymbols(object, genes = geneIds)
+mapGenesToSymbols(object, genes = geneNames)
 }
