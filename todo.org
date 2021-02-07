@@ -1,4 +1,6 @@
 #+TITLE: pipette
 #+STARTUP: content
 * Development
+** TODO mapGenes needs to handle mapping of gender markers without gene versions
+   better (see AcidPlots update).
 ** TODO sampleData assignment method needs to check for camelCase names
