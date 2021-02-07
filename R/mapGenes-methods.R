@@ -72,32 +72,29 @@ NULL
     object <- as(object, "DataFrame")
     colnames(object) <- camelCase(colnames(object), strict = TRUE)
     suppressMessages({
-        genes <- stripGeneVersions(genes)
         object[["geneIdNoVersion"]] <- stripGeneVersions(object[["geneId"]])
     })
-    cols <- c("id" = "geneIdNoVersion", "name" = "geneName")
-    ## Prepare the match table.
     if (any(genes %in% rownames(object))) {
         table <- rownames(object)
-    } else if (any(genes %in% object[[cols[["name"]]]])) {
+    } else if (any(genes %in% object[["geneName"]])) {
         assert(matchesUniqueGeneNames(object, genes))
-        table <- object[[cols[["name"]]]]
-    } else if (any(genes %in% object[[cols[["id"]]]])) {
-        table <- object[[cols[["id"]]]]
+        table <- object[["geneName"]]
+    } else if (any(genes %in% object[["geneId"]])) {
+        table <- object[["geneId"]]
+    } else if (any(genes %in% object[["geneIdNoVersion"]])) {
+        table <- object[["geneIdNoVersion"]]
     } else {
         stop(sprintf(
             "All genes failed to map: %s.",
             toString(genes, width = 100L)
         ))
     }
-    ## Match the user input `genes` vector to the table.
     match <- match(x = genes, table = table)
     names(match) <- genes
-    ## Stop or warn if there are unmapped genes.
     if (isTRUE(strict)) {
         fun <- stop
     } else {
-        fun <- message
+        fun <- alertWarning
     }
     unmapped <- which(is.na(match))
     if (length(unmapped) > 0L) {
@@ -106,7 +103,6 @@ NULL
             toString(genes[unmapped], width = 200L)
         ))
     }
-    ## Return the identifiers that map to rownames.
     mapped <- na.omit(match)
     assert(hasLength(mapped))
     mapped
