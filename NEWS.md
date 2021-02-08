@@ -1,3 +1,9 @@
+## AcidExperiment 0.1.4 (2021-02-08)
+
+### Minor changes
+
+- Now reexporting some commonly used functions from SummarizedExperiment.
+
 ## AcidExperiment 0.1.3 (2021-02-08)
 
 ### Minor changes
