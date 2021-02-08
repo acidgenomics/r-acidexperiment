@@ -106,7 +106,7 @@ setMethod(
 
 
 
-## Updated 2020-05-22.
+## Updated 2021-02-08.
 `aggregateCols,SE` <-  # nolint
     function(
         x,
@@ -120,10 +120,7 @@ setMethod(
             isString(fun)
         )
         ## Groupings -----------------------------------------------------------
-        if (!all(
-            isSubset(col, colnames(colData(x))),
-            isSubset(col, colnames(sampleData(x)))
-        )) {
+        if (!all(isSubset(col, colnames(colData(x))))) {
             stop(sprintf(
                 "'%s' column not defined in 'colData()'.", deparse(col)
             ))
@@ -139,8 +136,8 @@ setMethod(
         assert(identical(nrow(counts), nrow(x)))
         ## Return --------------------------------------------------------------
         args <- list(
-            assays = SimpleList(counts = counts),
-            colData = DataFrame(row.names = colnames(counts))
+            "assays" = SimpleList(counts = counts),
+            "colData" = DataFrame(row.names = colnames(counts))
         )
         if (is(x, "RangedSummarizedExperiment")) {
             args[["rowRanges"]] <- rowRanges(x)
