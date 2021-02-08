@@ -1,9 +1,34 @@
-#' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
-#'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
-#'   rowRanges rowRanges<-
-NULL
+#' @importFrom SummarizedExperiment SummarizedExperiment
+#' @export
+SummarizedExperiment::SummarizedExperiment
+
+#' @importFrom SummarizedExperiment assay
+#' @export
+SummarizedExperiment::assay
+
+#' @importFrom SummarizedExperiment assay<-
+#' @export
+SummarizedExperiment::`assay<-`
+
+#' @importFrom SummarizedExperiment assayNames
+#' @export
+SummarizedExperiment::assayNames
+
+#' @importFrom SummarizedExperiment assayNames<-
+#' @export
+SummarizedExperiment::`assayNames<-`
+
+## #' assays
+## #' assays<-
+## #' colData
+## #' colData<-
+## #' rowData
+## #' rowData<-
+## #' rowRanges
+## #' rowRanges<-
 
 
 
 #' @importFrom sessioninfo session_info
-NULL
+#' @export
+sessioninfo::session_info
