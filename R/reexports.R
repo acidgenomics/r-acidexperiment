@@ -1,3 +1,23 @@
+#' @importFrom IRanges SplitDataFrameList
+#' @export
+IRanges::SplitDataFrameList
+
+
+
+#' @importFrom S4Vectors DataFrame
+#' @export
+S4Vectors::DataFrame
+
+#' @importFrom S4Vectors Rle
+#' @export
+S4Vectors::Rle
+
+#' @importFrom S4Vectors SimpleList
+#' @export
+S4Vectors::SimpleList
+
+
+
 #' @importFrom SummarizedExperiment SummarizedExperiment
 #' @export
 SummarizedExperiment::SummarizedExperiment
