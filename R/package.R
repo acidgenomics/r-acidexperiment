@@ -14,21 +14,23 @@
 #' @importClassesFrom S4Vectors DataFrame SimpleList
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
+#' @importMethodsFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
+#'   Tx2Gene stripGeneVersions stripTranscriptVersions
+#' @importMethodsFrom IRanges unsplit
 #' @importMethodsFrom SummarizedExperiment coerce
-#' @importMethodsFrom pipette coerce
+#' @importMethodsFrom pipette as.data.frame coerce droplevels export
 #'
 #' @importFrom AcidBase appendToBody bapply formalsList geometricMean
 #'   getNameInParent initDir lanePattern metadataBlacklist methodFormals
 #'   methodFunction realpath standardizeCall
 #' @importFrom AcidCLI alert alertInfo alertWarning
-#' @importFrom AcidGenerics %in% aggregate as.data.frame colSums
-#'   cor decode do.call head lapply match
-#'   mcols mcols<- metadata metadata<- na.omit rowSums setdiff split
-#'   summary t unlist
+#' @importFrom AcidGenerics %in% aggregate as.data.frame colSums cor decode
+#'   do.call head lapply match mcols mcols<- metadata metadata<- na.omit rowSums
+#'   setdiff split summary t unlist unsplit
 #' @importFrom AcidGenomes detectOrganism emptyRanges
 #' @importFrom AcidPlyr leftJoin mutateAt
 #' @importFrom Biostrings reverseComplement
-#' @importFrom IRanges SplitDataFrameList unsplit
+#' @importFrom IRanges SplitDataFrameList
 #' @importFrom Matrix fac2sparse
 #' @importFrom S4Vectors DataFrame Rle SimpleList
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
@@ -48,9 +50,4 @@
 #' @importFrom stringr str_length str_match str_pad
 #' @importFrom syntactic camelCase makeNames snakeCase
 #' @importFrom utils packageName packageVersion
-#'
-#' @importMethodsFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
-#'   Tx2Gene stripGeneVersions stripTranscriptVersions
-#' @importMethodsFrom SummarizedExperiment coerce
-#' @importMethodsFrom pipette as.data.frame coerce droplevels export
 NULL
