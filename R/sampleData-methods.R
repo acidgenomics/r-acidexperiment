@@ -1,6 +1,6 @@
 #' @name sampleData
 #' @inherit AcidGenerics::sampleData
-#' @note Updated 2021-02-05.
+#' @note Updated 2021-02-08.
 #'
 #' @details
 #' All columns defined in `colData` of the object must be named in strict
@@ -62,7 +62,7 @@ NULL
 
 
 ## Don't run validity checks here.
-## Updated 2021-02-05.
+## Updated 2021-02-08.
 `sampleData,SE` <-  # nolint
     function(
         object,
@@ -75,18 +75,22 @@ NULL
         )
     ) {
         data <- colData(object)
-        if (!hasRows(data) || !hasCols(data)) return(data)
+        if (!hasRows(data)) return(data)
         assert(
-            hasColnames(object),
             hasRownames(data),
             isFlag(clean),
-            isCharacter(ignoreCols, nullOK = TRUE),
-            areDisjointSets(x = colnames(data), y = metadataBlacklist),
-            identical(
-                x = colnames(data),
-                y = camelCase(colnames(data), strict = TRUE)
-            )
+            isCharacter(ignoreCols, nullOK = TRUE)
+
         )
+        if (hasColnames(data)) {
+            assert(
+                areDisjointSets(x = colnames(data), y = metadataBlacklist),
+                identical(
+                    x = colnames(data),
+                    y = camelCase(colnames(data), strict = TRUE)
+                )
+            )
+        }
         ## Require `sampleName` column.
         if (!isSubset("sampleName", colnames(data))) {
             ## Bioconductor 3.10 is converting to "DFrame" class here.
