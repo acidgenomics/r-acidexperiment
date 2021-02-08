@@ -16,11 +16,17 @@ test_that("Return", {
         object = as.data.frame(x),
         expected = as.data.frame(y)
     )
-    ## Empty `colData` is supported.
+})
+
+test_that("Automatic return for empty colData", {
     object <- rse
     colData(object) <- DataFrame(row.names = colnames(object))
     interestingGroups(object) <- NULL
-    expect_silent(sampleData(object))
+    x <- sampleData(object)
+    expect_identical(
+        object = colnames(x),
+        expected = c("sampleName", "interestingGroups")
+    )
 })
 
 test_that("Empty return", {
