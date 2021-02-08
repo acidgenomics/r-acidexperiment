@@ -18,14 +18,37 @@ SummarizedExperiment::assayNames
 #' @export
 SummarizedExperiment::`assayNames<-`
 
-## #' assays
-## #' assays<-
-## #' colData
-## #' colData<-
-## #' rowData
-## #' rowData<-
-## #' rowRanges
-## #' rowRanges<-
+#' @importFrom SummarizedExperiment assays
+#' @export
+SummarizedExperiment::assays
+
+#' @importFrom SummarizedExperiment assays<-
+#' @export
+SummarizedExperiment::`assays<-`
+
+#' @importFrom SummarizedExperiment colData
+#' @export
+SummarizedExperiment::colData
+
+#' @importFrom SummarizedExperiment colData<-
+#' @export
+SummarizedExperiment::`colData<-`
+
+#' @importFrom SummarizedExperiment rowData
+#' @export
+SummarizedExperiment::rowData
+
+#' @importFrom SummarizedExperiment rowData<-
+#' @export
+SummarizedExperiment::`rowData<-`
+
+#' @importFrom SummarizedExperiment rowRanges
+#' @export
+SummarizedExperiment::rowRanges
+
+#' @importFrom SummarizedExperiment rowRanges<-
+#' @export
+SummarizedExperiment::`rowRanges<-`
 
 
 
