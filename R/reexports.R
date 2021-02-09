@@ -59,6 +59,12 @@ sessioninfo::session_info
 
 
 #' @rdname reexports
+#' @name RangedSummarizedExperiment-class
+#' @importClassesFrom SummarizedExperiment RangedSummarizedExperiment
+#' @exportClass RangedSummarizedExperiment
+NULL
+
+#' @rdname reexports
 #' @name SummarizedExperiment-class
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #' @exportClass SummarizedExperiment

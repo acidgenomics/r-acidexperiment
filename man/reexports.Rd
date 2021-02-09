@@ -17,6 +17,7 @@
 \alias{rowRanges}
 \alias{rowRanges<-}
 \alias{session_info}
+\alias{RangedSummarizedExperiment-class}
 \alias{SummarizedExperiment-class}
 \title{Objects exported from other packages}
 \keyword{internal}
