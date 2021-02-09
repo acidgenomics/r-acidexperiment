@@ -1,3 +1,10 @@
+## AcidExperiment 0.1.5 (2021-02-09)
+
+### Minor changes
+
+- Reworked the list of reexported functions. Now reexporting only from
+  SummarizedExperiment and sessioninfo.
+
 ## AcidExperiment 0.1.4 (2021-02-08)
 
 ### Minor changes
