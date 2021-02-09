@@ -3,10 +3,6 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
-\alias{SplitDataFrameList}
-\alias{DataFrame}
-\alias{Rle}
-\alias{SimpleList}
 \alias{SummarizedExperiment}
 \alias{assay}
 \alias{assay<-}
@@ -21,6 +17,7 @@
 \alias{rowRanges}
 \alias{rowRanges<-}
 \alias{session_info}
+\alias{SummarizedExperiment-class}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -28,10 +25,6 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{IRanges}{\code{\link[IRanges:DataFrameList-class]{SplitDataFrameList}}}
-
-  \item{S4Vectors}{\code{\link[S4Vectors:DataFrame-class]{DataFrame}}, \code{\link[S4Vectors:Rle-class]{Rle}}, \code{\link[S4Vectors:SimpleList-class]{SimpleList}}}
-
   \item{sessioninfo}{\code{\link[sessioninfo]{session_info}}}
 
   \item{SummarizedExperiment}{\code{\link[SummarizedExperiment:RangedSummarizedExperiment-class]{SummarizedExperiment}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assay}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assay<-}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assayNames}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assayNames<-}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assays}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assays<-}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData<-}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{rowData}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{rowData<-}}, \code{\link[SummarizedExperiment:RangedSummarizedExperiment-class]{rowRanges}}, \code{\link[SummarizedExperiment:RangedSummarizedExperiment-class]{rowRanges<-}}}
