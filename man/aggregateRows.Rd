@@ -95,9 +95,9 @@ print(sparse)
 aggregateRows(sparse, by = genes)
 
 ## SummarizedExperiment ====
-se <- SummarizedExperiment::SummarizedExperiment(
-    assays = S4Vectors::SimpleList(counts = counts),
-    rowData = S4Vectors::DataFrame(aggregate = genes)
+se <- SummarizedExperiment(
+    assays = SimpleList(counts = counts),
+    rowData = DataFrame(aggregate = genes)
 )
 print(se)
 aggregateRows(se)

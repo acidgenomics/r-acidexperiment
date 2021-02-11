@@ -62,12 +62,11 @@
 #' ## Row data (genomic ranges)
 #' ## Note that we haven't defined the transgene here.
 #' ## It will be handled automatically in the function call.
-#' rowRanges <-
-#'     AcidGenomes::emptyRanges(names = head(genes, n = length(genes) - 1L))
+#' rowRanges <- emptyRanges(names = head(genes, n = length(genes) - 1L))
 #' print(rowRanges)
 #'
 #' ## Column data
-#' colData <- S4Vectors::DataFrame(
+#' colData <- DataFrame(
 #'     age = rep(
 #'         x = c(3L, 6L),
 #'         times = length(samples) / 2L
@@ -93,10 +92,10 @@
 #' )
 #' print(x)
 makeSummarizedExperiment <- function(
-    assays = S4Vectors::SimpleList(),
-    rowRanges = GenomicRanges::GRanges(),
+    assays = SimpleList(),
+    rowRanges = GRanges(),
     rowData = NULL,
-    colData = S4Vectors::DataFrame(),
+    colData = DataFrame(),
     metadata = list(),
     transgeneNames = NULL,
     sort = TRUE,
