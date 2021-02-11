@@ -16,7 +16,8 @@
 #'
 #' @importFrom AcidBase appendToBody bapply formalsList geometricMean
 #'   getNameInParent initDir lanePattern metadataBlacklist methodFormals
-#'   methodFunction packageName packageVersion realpath standardizeCall
+#'   methodFunction packageName packageVersion realpath requireNamespaces
+#'   standardizeCall
 #' @importFrom AcidCLI alert alertInfo alertWarning
 #' @importFrom AcidGenerics DataFrame Rle SimpleList %in% aggregate
 #'   as.data.frame colSums cor decode do.call head lapply match mcols mcols<-
