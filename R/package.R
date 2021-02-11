@@ -14,14 +14,15 @@
 #' @importMethodsFrom SummarizedExperiment coerce
 #' @importMethodsFrom pipette as.data.frame coerce droplevels export
 #'
-#' @importFrom AcidBase appendToBody bapply formalsList geometricMean
-#'   getNameInParent initDir lanePattern metadataBlacklist methodFormals
-#'   methodFunction packageName packageVersion realpath requireNamespaces
-#'   standardizeCall
+#' @importFrom AcidBase appendToBody as bapply formalsList geometricMean
+#'   getNameInParent initDir is lanePattern metadataBlacklist methodFormals
+#'   methodFunction new packageName packageVersion realpath requireNamespaces
+#'   setMethod setReplaceMethod signature standardizeCall validObject
 #' @importFrom AcidCLI alert alertInfo alertWarning
 #' @importFrom AcidGenerics DataFrame Rle SimpleList %in% aggregate
-#'   as.data.frame colSums cor decode do.call head lapply match mcols mcols<-
-#'   metadata metadata<- na.omit rowSums setdiff split summary t unlist unsplit
+#'   as.data.frame coerce colSums cor decode do.call head lapply match mcols
+#'   mcols<- metadata metadata<- na.omit rowSums setdiff split summary t unlist
+#'   unsplit
 #' @importFrom AcidGenomes detectOrganism emptyRanges
 #' @importFrom AcidPlyr leftJoin mutateAt
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
@@ -33,8 +34,6 @@
 #'   hasValidDimnames hasValidNames isAFile isAURL isAny isCharacter isFlag
 #'   isInRange isInt isNonNegative isNumber isPositive isScalar isString
 #'   isSubset matchesUniqueGeneNames validNames
-#' @importFrom methods as coerce is new setMethod setReplaceMethod signature
-#'   validObject
 #' @importFrom pipette SplitDataFrameList as_tibble atomize factorize import
 #'   removeNA
 #' @importFrom scales percent
