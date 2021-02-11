@@ -50,8 +50,6 @@ SummarizedExperiment::rowRanges
 #' @export
 SummarizedExperiment::`rowRanges<-`
 
-
-
 #' @importFrom sessioninfo session_info
 #' @export
 sessioninfo::session_info

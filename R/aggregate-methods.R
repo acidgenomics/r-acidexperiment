@@ -102,13 +102,14 @@ setMethod(
 
 ## Matrix multiplication using sparse model (design matrix).
 ## Note that this works row-wise, like stats data.frame method.
-## Updated 2020-05-22.
+## Updated 2021-02-11.
 `aggregate,Matrix` <-  # nolint
     function(
         x,
         by,
         fun = c("sum", "mean", "n")
     ) {
+        requireNamespaces("Matrix")
         assert(
             hasDimnames(x),
             is.factor(by),
@@ -118,7 +119,7 @@ setMethod(
         if (fun == "n") {
             x <- x != 0L
         }
-        model <- fac2sparse(by)
+        model <- Matrix::fac2sparse(by)
         ## This step calculates the sum.
         result <- model %*% x
         if (fun == "mean") {

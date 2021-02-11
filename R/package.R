@@ -4,16 +4,13 @@
 #'
 #' @keywords internal
 #'
-#' @importClassesFrom AcidGenerics missingOrNULL
+#' @importClassesFrom AcidGenerics DataFrame SimpleList missingOrNULL
 #' @importClassesFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
 #'   Tx2Gene
-#' @importClassesFrom IRanges SplitDataFrameList
-#' @importClassesFrom S4Vectors DataFrame SimpleList
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
 #' @importMethodsFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
 #'   Tx2Gene stripGeneVersions stripTranscriptVersions
-#' @importMethodsFrom IRanges unsplit
 #' @importMethodsFrom SummarizedExperiment coerce
 #' @importMethodsFrom pipette as.data.frame coerce droplevels export
 #'
@@ -27,7 +24,6 @@
 #' @importFrom AcidGenomes detectOrganism emptyRanges
 #' @importFrom AcidPlyr leftJoin mutateAt
 #' @importFrom IRanges SplitDataFrameList
-#' @importFrom Matrix fac2sparse
 #' @importFrom S4Vectors DataFrame Rle SimpleList
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
@@ -40,7 +36,8 @@
 #'   isSubset matchesUniqueGeneNames validNames
 #' @importFrom methods as coerce is new setMethod setReplaceMethod signature
 #'   validObject
-#' @importFrom pipette as_tibble atomize factorize import removeNA
+#' @importFrom pipette SplitDataFrameList as_tibble atomize factorize import
+#'   removeNA
 #' @importFrom scales percent
 #' @importFrom sessioninfo session_info
 #' @importFrom stringr str_length str_match str_pad
