@@ -3,10 +3,7 @@
 #' Toolkit to extend the functionality of SummarizedExperiment.
 #'
 #' @keywords internal
-"_PACKAGE"
-
-
-
+#'
 #' @importClassesFrom AcidGenerics missingOrNULL
 #' @importClassesFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
 #'   Tx2Gene
@@ -29,7 +26,6 @@
 #'   setdiff split summary t unlist unsplit
 #' @importFrom AcidGenomes detectOrganism emptyRanges
 #' @importFrom AcidPlyr leftJoin mutateAt
-#' @importFrom Biostrings reverseComplement
 #' @importFrom IRanges SplitDataFrameList
 #' @importFrom Matrix fac2sparse
 #' @importFrom S4Vectors DataFrame Rle SimpleList
@@ -50,4 +46,4 @@
 #' @importFrom stringr str_length str_match str_pad
 #' @importFrom syntactic camelCase makeNames snakeCase
 #' @importFrom utils packageName packageVersion
-NULL
+"_PACKAGE"
