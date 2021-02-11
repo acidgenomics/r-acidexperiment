@@ -56,7 +56,7 @@
 #'     dimnames = list(genes, samples)
 #' )
 #' ## Primary assay must be named "counts".
-#' assays <- S4Vectors::SimpleList(counts = counts)
+#' assays <- SimpleList(counts = counts)
 #' print(assays)
 #'
 #' ## Row data (genomic ranges)
