@@ -71,6 +71,7 @@ SummarizedExperiment::`rowRanges<-`
 sessioninfo::session_info
 
 #' @importFrom stringr str_pad
+#' @export
 stringr::str_pad
 
 
