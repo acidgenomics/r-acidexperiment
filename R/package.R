@@ -16,15 +16,13 @@
 #'
 #' @importFrom AcidBase appendToBody bapply formalsList geometricMean
 #'   getNameInParent initDir lanePattern metadataBlacklist methodFormals
-#'   methodFunction realpath standardizeCall
+#'   methodFunction packageName packageVersion realpath standardizeCall
 #' @importFrom AcidCLI alert alertInfo alertWarning
-#' @importFrom AcidGenerics %in% aggregate as.data.frame colSums cor decode
-#'   do.call head lapply match mcols mcols<- metadata metadata<- na.omit rowSums
-#'   setdiff split summary t unlist unsplit
+#' @importFrom AcidGenerics DataFrame Rle SimpleList %in% aggregate
+#'   as.data.frame colSums cor decode do.call head lapply match mcols mcols<-
+#'   metadata metadata<- na.omit rowSums setdiff split summary t unlist unsplit
 #' @importFrom AcidGenomes detectOrganism emptyRanges
 #' @importFrom AcidPlyr leftJoin mutateAt
-#' @importFrom IRanges SplitDataFrameList
-#' @importFrom S4Vectors DataFrame Rle SimpleList
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
 #'   rowRanges rowRanges<-
@@ -42,5 +40,4 @@
 #' @importFrom sessioninfo session_info
 #' @importFrom stringr str_length str_match str_pad
 #' @importFrom syntactic camelCase makeNames snakeCase
-#' @importFrom utils packageName packageVersion
 "_PACKAGE"
