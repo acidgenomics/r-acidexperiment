@@ -7,7 +7,7 @@
 #' @inheritParams AcidRoxygen::params
 #'
 #' @examples
-#' x <- S4Vectors::DataFrame(
+#' x <- DataFrame(
 #'     "sample1" = c(1L, 2L),
 #'     "sample2" = c(3L, 4L),
 #'     row.names = c("gene1", "gene2")
@@ -15,7 +15,7 @@
 #' print(x)
 #'
 #' g2s <- Gene2Symbol(
-#'     object = S4Vectors::DataFrame(
+#'     object = DataFrame(
 #'         "geneId" = c("ENSG00000000003", "ENSG00000000005"),
 #'         "geneName" = c("TSPAN6", "TNMD"),
 #'         row.names = rownames(x)

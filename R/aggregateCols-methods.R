@@ -41,9 +41,9 @@
 #' aggregateCols(sparse, by = samples)
 #'
 #' ## SummarizedExperiment ====
-#' se <- SummarizedExperiment::SummarizedExperiment(
-#'     assays = S4Vectors::SimpleList(counts = counts),
-#'     colData = S4Vectors::DataFrame(
+#' se <- SummarizedExperiment(
+#'     assays = SimpleList(counts = counts),
+#'     colData = DataFrame(
 #'         sampleName = as.factor(names(samples)),
 #'         aggregate = samples
 #'     )

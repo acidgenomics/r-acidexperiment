@@ -21,7 +21,6 @@
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")
-#' str_pad <- stringr::str_pad
 #'
 #' ## SummarizedExperiment ====
 #' x <- RangedSummarizedExperiment

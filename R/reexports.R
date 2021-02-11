@@ -1,3 +1,15 @@
+#' @importFrom AcidGenerics DataFrame
+#' @export
+AcidGenerics::DataFrame
+
+#' @importFrom pipette GRanges
+#' @export
+pipette::GRanges
+
+#' @importFrom AcidGenerics SimpleList
+#' @export
+AcidGenerics::SimpleList
+
 #' @importFrom SummarizedExperiment SummarizedExperiment
 #' @export
 SummarizedExperiment::SummarizedExperiment
@@ -34,6 +46,10 @@ SummarizedExperiment::colData
 #' @export
 SummarizedExperiment::`colData<-`
 
+#' @importFrom AcidGenomes emptyRanges
+#' @export
+AcidGenomes::emptyRanges
+
 #' @importFrom SummarizedExperiment rowData
 #' @export
 SummarizedExperiment::rowData
@@ -53,6 +69,9 @@ SummarizedExperiment::`rowRanges<-`
 #' @importFrom sessioninfo session_info
 #' @export
 sessioninfo::session_info
+
+#' @importFrom stringr str_pad
+stringr::str_pad
 
 
 

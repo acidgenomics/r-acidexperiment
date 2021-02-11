@@ -14,7 +14,7 @@
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' S4Vectors::droplevels(object)
+#' droplevels(object)
 NULL
 
 

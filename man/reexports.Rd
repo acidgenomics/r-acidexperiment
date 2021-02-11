@@ -3,6 +3,9 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
+\alias{DataFrame}
+\alias{GRanges}
+\alias{SimpleList}
 \alias{SummarizedExperiment}
 \alias{assay}
 \alias{assay<-}
@@ -12,11 +15,13 @@
 \alias{assays<-}
 \alias{colData}
 \alias{colData<-}
+\alias{emptyRanges}
 \alias{rowData}
 \alias{rowData<-}
 \alias{rowRanges}
 \alias{rowRanges<-}
 \alias{session_info}
+\alias{str_pad}
 \alias{RangedSummarizedExperiment-class}
 \alias{SummarizedExperiment-class}
 \title{Objects exported from other packages}
@@ -26,7 +31,15 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
+  \item{AcidGenerics}{\code{\link[AcidGenerics:reexports]{DataFrame}}, \code{\link[AcidGenerics:reexports]{SimpleList}}}
+
+  \item{AcidGenomes}{\code{\link[AcidGenomes]{emptyRanges}}}
+
+  \item{pipette}{\code{\link[pipette:reexports]{GRanges}}}
+
   \item{sessioninfo}{\code{\link[sessioninfo]{session_info}}}
+
+  \item{stringr}{\code{\link[stringr]{str_pad}}}
 
   \item{SummarizedExperiment}{\code{\link[SummarizedExperiment:RangedSummarizedExperiment-class]{SummarizedExperiment}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assay}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assay<-}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assayNames}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assayNames<-}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assays}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{assays<-}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData<-}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{rowData}}, \code{\link[SummarizedExperiment:SummarizedExperiment-class]{rowData<-}}, \code{\link[SummarizedExperiment:RangedSummarizedExperiment-class]{rowRanges}}, \code{\link[SummarizedExperiment:RangedSummarizedExperiment-class]{rowRanges<-}}}
 }}
