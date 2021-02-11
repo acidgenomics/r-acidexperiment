@@ -14,10 +14,10 @@
 #' @importMethodsFrom SummarizedExperiment coerce
 #' @importMethodsFrom pipette as.data.frame coerce droplevels export
 #'
-#' @importFrom AcidBase appendToBody as bapply formalsList geometricMean
-#'   getNameInParent initDir is lanePattern metadataBlacklist methodFormals
-#'   methodFunction new packageName packageVersion realpath requireNamespaces
-#'   setMethod setReplaceMethod signature standardizeCall validObject
+#' @importFrom AcidBase appendToBody bapply formalsList geometricMean
+#'   getNameInParent initDir lanePattern metadataBlacklist methodFormals
+#'   methodFunction packageName packageVersion realpath requireNamespaces
+#'   standardizeCall
 #' @importFrom AcidCLI alert alertInfo alertWarning
 #' @importFrom AcidGenerics DataFrame Rle SimpleList %in% aggregate
 #'   as.data.frame coerce colSums cor decode do.call head lapply match mcols
@@ -34,6 +34,8 @@
 #'   hasValidDimnames hasValidNames isAFile isAURL isAny isCharacter isFlag
 #'   isInRange isInt isNonNegative isNumber isPositive isScalar isString
 #'   isSubset matchesUniqueGeneNames validNames
+#' @importFrom methods as is new setMethod setReplaceMethod signature
+#'   validObject
 #' @importFrom pipette SplitDataFrameList as_tibble atomize factorize import
 #'   removeNA
 #' @importFrom scales percent
