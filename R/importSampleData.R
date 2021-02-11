@@ -36,7 +36,7 @@
 #' @note Works with local or remote files.
 #'
 #' @author Michael Steinbaugh
-#' @note Updated 2021-02-03.
+#' @note Updated 2021-02-11.
 #' @export
 #'
 #' @inheritParams AcidRoxygen::params
@@ -193,6 +193,7 @@ importSampleData <- function(
     ## - Require at least 6 nucleotides in the index sequence.
     ## - inDrops currently uses 8 but SureCell uses 6.
     if (identical(pipeline, "bcbio") && isTRUE(multiplexed)) {
+        requireNamespaces("Biostrings")
         assert(isSubset(c("index", "sequence"), colnames(data)))
         sequence <- data[["sequence"]]
         assert(allAreMatchingRegex(sequence, pattern = "^[ACGT]{6,}"))
@@ -201,7 +202,7 @@ importSampleData <- function(
             FUN = function(x) {
                 x <- as(x, "character")
                 x <- as(x, "DNAStringSet")
-                x <- reverseComplement(x)
+                x <- Biostrings::reverseComplement(x)
                 x <- as(x, "character")
                 x
             },
