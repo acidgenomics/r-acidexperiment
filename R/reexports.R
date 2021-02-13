@@ -1,89 +1,89 @@
-#' @importFrom AcidGenerics DataFrame
 #' @export
+#' @importFrom AcidGenerics DataFrame
 AcidGenerics::DataFrame
 
-#' @importFrom pipette GRanges
 #' @export
+#' @importFrom pipette GRanges
 pipette::GRanges
 
-#' @importFrom AcidGenerics SimpleList
 #' @export
+#' @importFrom AcidGenerics SimpleList
 AcidGenerics::SimpleList
 
-#' @importFrom SummarizedExperiment SummarizedExperiment
 #' @export
+#' @importFrom SummarizedExperiment SummarizedExperiment
 SummarizedExperiment::SummarizedExperiment
 
-#' @importFrom SummarizedExperiment assay
 #' @export
+#' @importFrom SummarizedExperiment assay
 SummarizedExperiment::assay
 
-#' @importFrom SummarizedExperiment assay<-
 #' @export
+#' @importFrom SummarizedExperiment assay<-
 SummarizedExperiment::`assay<-`
 
-#' @importFrom SummarizedExperiment assayNames
 #' @export
+#' @importFrom SummarizedExperiment assayNames
 SummarizedExperiment::assayNames
 
-#' @importFrom SummarizedExperiment assayNames<-
 #' @export
+#' @importFrom SummarizedExperiment assayNames<-
 SummarizedExperiment::`assayNames<-`
 
-#' @importFrom SummarizedExperiment assays
 #' @export
+#' @importFrom SummarizedExperiment assays
 SummarizedExperiment::assays
 
-#' @importFrom SummarizedExperiment assays<-
 #' @export
+#' @importFrom SummarizedExperiment assays<-
 SummarizedExperiment::`assays<-`
 
-#' @importFrom SummarizedExperiment colData
 #' @export
+#' @importFrom SummarizedExperiment colData
 SummarizedExperiment::colData
 
-#' @importFrom SummarizedExperiment colData<-
 #' @export
+#' @importFrom SummarizedExperiment colData<-
 SummarizedExperiment::`colData<-`
 
-#' @importFrom AcidGenomes emptyRanges
 #' @export
+#' @importFrom AcidGenomes emptyRanges
 AcidGenomes::emptyRanges
 
-#' @importFrom SummarizedExperiment rowData
 #' @export
+#' @importFrom SummarizedExperiment rowData
 SummarizedExperiment::rowData
 
-#' @importFrom SummarizedExperiment rowData<-
 #' @export
+#' @importFrom SummarizedExperiment rowData<-
 SummarizedExperiment::`rowData<-`
 
-#' @importFrom SummarizedExperiment rowRanges
 #' @export
+#' @importFrom SummarizedExperiment rowRanges
 SummarizedExperiment::rowRanges
 
-#' @importFrom SummarizedExperiment rowRanges<-
 #' @export
+#' @importFrom SummarizedExperiment rowRanges<-
 SummarizedExperiment::`rowRanges<-`
 
-#' @importFrom sessioninfo session_info
 #' @export
+#' @importFrom sessioninfo session_info
 sessioninfo::session_info
 
-#' @importFrom stringr str_pad
 #' @export
+#' @importFrom stringr str_pad
 stringr::str_pad
 
 
 
-#' @rdname reexports
-#' @name RangedSummarizedExperiment-class
-#' @importClassesFrom SummarizedExperiment RangedSummarizedExperiment
 #' @exportClass RangedSummarizedExperiment
+#' @importClassesFrom SummarizedExperiment RangedSummarizedExperiment
+#' @name RangedSummarizedExperiment-class
+#' @rdname reexports
 NULL
 
-#' @rdname reexports
-#' @name SummarizedExperiment-class
-#' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #' @exportClass SummarizedExperiment
+#' @importClassesFrom SummarizedExperiment SummarizedExperiment
+#' @name SummarizedExperiment-class
+#' @rdname reexports
 NULL
