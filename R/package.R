@@ -4,7 +4,8 @@
 #'
 #' @keywords internal
 #'
-#' @importClassesFrom AcidGenerics DataFrame SimpleList missingOrNULL
+#' @importClassesFrom AcidGenerics DataFrame SimpleList SplitDataFrameList
+#'   missingOrNULL
 #' @importClassesFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
 #'   Tx2Gene
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
@@ -19,10 +20,10 @@
 #'   methodFunction packageName packageVersion realpath requireNamespaces
 #'   standardizeCall
 #' @importFrom AcidCLI alert alertInfo alertWarning
-#' @importFrom AcidGenerics DataFrame Rle SimpleList %in% aggregate
-#'   as.data.frame coerce colSums cor decode do.call head lapply match mcols
-#'   mcols<- metadata metadata<- na.omit rowSums setdiff split summary t unlist
-#'   unsplit
+#' @importFrom AcidGenerics DataFrame Rle SimpleList SplitDataFrameList %in%
+#'   aggregate as.data.frame coerce colSums cor decode do.call head lapply match
+#'   mcols mcols<- metadata metadata<- na.omit rowSums setdiff split summary t
+#'   unlist unsplit
 #' @importFrom AcidGenomes detectOrganism emptyRanges
 #' @importFrom AcidPlyr leftJoin mutateAt
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
@@ -36,8 +37,7 @@
 #'   isSubset matchesUniqueGeneNames validNames
 #' @importFrom methods as is new setMethod setReplaceMethod signature
 #'   validObject
-#' @importFrom pipette SplitDataFrameList as_tibble atomize factorize import
-#'   removeNA
+#' @importFrom pipette as_tibble atomize factorize import removeNA
 #' @importFrom scales percent
 #' @importFrom sessioninfo session_info
 #' @importFrom stringr str_length str_match str_pad
