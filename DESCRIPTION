@@ -33,7 +33,7 @@ Imports:
     AcidGenerics (>= 0.5.14),
     AcidGenomes (>= 0.2.4),
     AcidPlyr (>= 0.1.10),
-    SummarizedExperiment,
+    SummarizedExperiment (>= 1.20),
     goalie (>= 0.4.14),
     methods,
     pipette (>= 0.5.9),
