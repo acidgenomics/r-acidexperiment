@@ -1,3 +1,15 @@
+## AcidExperiment 0.1.7 (2021-02-13)
+
+### Minor changes
+
+- More internal NAMESPACE reworks. IRanges classes now defined in AcidGenerics.
+
+## AcidExperiment 0.1.6 (2021-02-11)
+
+### Minor changes
+
+- Internal NAMESPACE rework, using pipette and AcidGenerics.
+
 ## AcidExperiment 0.1.5 (2021-02-09)
 
 ### Minor changes
