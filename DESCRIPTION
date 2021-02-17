@@ -24,7 +24,7 @@ URL:
     https://r.acidgenomics.com/packages/acidexperiment/,
     https://github.com/acidgenomics/r-acidexperiment/
 BugReports: https://github.com/acidgenomics/r-acidexperiment/issues/
-License: GPL-3
+License: AGPL-3
 Encoding: UTF-8
 Depends: R (>= 4.0)
 Imports:
