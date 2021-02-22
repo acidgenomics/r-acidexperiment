@@ -1,7 +1,7 @@
 #' @name aggregateCols
 #' @inherit AcidGenerics::aggregateCols
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2021-01-16.
+#' @note Updated 2021-02-22.
 #'
 #' @inherit aggregateRows
 #' @param ... Additional arguments.
@@ -80,7 +80,7 @@ setMethod(
 
 
 
-## Updated 2020-01-30.
+## Updated 2021-02-22.
 `aggregateCols,Matrix` <-  # nolint
     function(
         x,
@@ -88,9 +88,9 @@ setMethod(
         fun = c("sum", "mean")
     ) {
         fun <- match.arg(fun)
-        x <- Matrix::t(x)
+        x <- t(x)
         x <- aggregateRows(x = x, by = by, fun = fun)
-        x <- Matrix::t(x)
+        x <- t(x)
         x
     }
 

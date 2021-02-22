@@ -68,15 +68,9 @@ setMethod(
 
 
 
-## Updated 2019-08-23.
+## Updated 2021-02-22.
 `nonzeroRowsAndCols,Matrix` <-  # nolint
-    appendToBody(
-        fun = `nonzeroRowsAndCols,matrix`,
-        values = list(
-            quote(rowSums <- Matrix::rowSums),
-            quote(colSums <- Matrix::colSums)
-        )
-    )
+    `nonzeroRowsAndCols,matrix`
 
 
 

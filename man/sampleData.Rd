@@ -53,7 +53,7 @@ All columns defined in \code{colData} of the object must be named in strict
 lower camel case, otherwise this function will intentionally error.
 }
 \note{
-Updated 2021-02-08.
+Updated 2021-02-22.
 }
 \section{All supported S4 classes}{
 

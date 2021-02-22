@@ -29,12 +29,9 @@ NULL
 
 
 
-## Updated 2019-08-26.
+## Updated 2021-02-22.
 `melt,Matrix` <-  # nolint
-    appendToBody(
-        fun = `melt,matrix`,
-        values = quote(rowSums <- Matrix::rowSums)
-    )
+    `melt,matrix`
 
 
 
