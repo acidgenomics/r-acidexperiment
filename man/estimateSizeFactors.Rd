@@ -54,7 +54,7 @@ the accessor function \code{\link[=sizeFactors]{sizeFactors()}}. Alternative lib
 can also be supplied using the assignment function \code{\link[=sizeFactors<-]{sizeFactors<-()}}.
 }
 \note{
-Updated 2021-02-03.
+Updated 2021-02-22.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")

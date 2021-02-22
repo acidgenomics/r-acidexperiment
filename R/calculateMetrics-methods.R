@@ -197,15 +197,9 @@ setMethod(
 
 
 
-## Updated 2019-08-23.
+## Updated 2021-02-22.
 `calculateMetrics,Matrix` <-  # nolint
-    appendToBody(
-        fun = `calculateMetrics,matrix`,
-        values = list(
-            quote(rowSums <- Matrix::rowSums),
-            quote(colSums <- Matrix::colSums)
-        )
-    )
+    `calculateMetrics,matrix`
 
 
 
