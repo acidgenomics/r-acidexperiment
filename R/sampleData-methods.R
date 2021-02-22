@@ -1,6 +1,6 @@
 #' @name sampleData
 #' @inherit AcidGenerics::sampleData
-#' @note Updated 2021-02-08.
+#' @note Updated 2021-02-22.
 #'
 #' @details
 #' All columns defined in `colData` of the object must be named in strict
@@ -82,14 +82,10 @@ NULL
             isCharacter(ignoreCols, nullOK = TRUE)
 
         )
+        ## This provides backward compatibility for legacy objects, such as
+        ## bcbioRNASeq.
         if (hasColnames(data)) {
-            assert(
-                areDisjointSets(x = colnames(data), y = metadataBlacklist),
-                identical(
-                    x = colnames(data),
-                    y = camelCase(colnames(data), strict = TRUE)
-                )
-            )
+            colnames(data) <- camelCase(colnames(data), strict = TRUE)
         }
         ## Require `sampleName` column.
         if (!isSubset("sampleName", colnames(data))) {
