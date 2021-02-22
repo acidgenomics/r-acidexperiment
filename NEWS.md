@@ -1,3 +1,10 @@
+## AcidExperiment 0.1.8 (2021-02-22)
+
+### Minor changes
+
+- Now enforcing lower camel case for `sampleData` return.
+- Simplified generic handling for Matrix methods.
+
 ## AcidExperiment 0.1.7 (2021-02-13)
 
 ### Minor changes
