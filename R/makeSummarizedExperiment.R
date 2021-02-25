@@ -10,16 +10,19 @@
 #' session information into the `metadata` slot by default:
 #'
 #' - `date`: Today's date, returned from `Sys.Date`.
-#' - `wd`: Working directory, returned from `getwd`.
 #' - `sessionInfo`: [sessioninfo::session_info()] return.
-#'
-#' This behavior can be disabled by setting `sessionInfo = FALSE`.
+#'   This behavior can be disabled by setting `sessionInfo = FALSE`.
+#' - `wd`: Working directory, returned from `getwd`.
 #'
 #' @export
-#' @note Column and rows always return sorted alphabetically.
-#' @note Updated 2021-02-03.
+#' @note Updated 2021-02-25.
 #'
 #' @inheritParams AcidRoxygen::params
+#' @param blacklist `logical(1)`.
+#'   Apply a metadata blacklist check on column names defined in `colData`.
+#'   This is useful for catching names that are not considered best practice,
+#'   and other values that may conflict with Acid Genomics packages.
+#'   Refer to `metadataBlacklist` for the default list of illegal values.
 #' @param sort `logical(1)`.
 #'   Ensure all row and column names are sorted alphabetically. This includes
 #'   columns inside `rowData` and `colData`, and `metadata` slot names. Assay
@@ -98,6 +101,7 @@ makeSummarizedExperiment <- function(
     colData = DataFrame(),
     metadata = list(),
     transgeneNames = NULL,
+    blacklist = TRUE,
     sort = TRUE,
     sessionInfo = TRUE
 ) {
@@ -108,6 +112,7 @@ makeSummarizedExperiment <- function(
         isAny(colData, c("DataFrame", "NULL")),
         isAny(metadata, c("list", "NULL")),
         isAny(transgeneNames, c("character", "NULL")),
+        isFlag(blacklist),
         isFlag(sort),
         isFlag(sessionInfo)
     )
@@ -241,11 +246,11 @@ makeSummarizedExperiment <- function(
             hasRows(colData)
         )
         colnames(colData) <- camelCase(colnames(colData), strict = TRUE)
-        blacklist <- setdiff(metadataBlacklist, c("revcomp", "sampleId"))
-        assert(
-            isSubset(colnames(assay), rownames(colData)),
-            areDisjointSets(colnames(colData), blacklist)
-        )
+        assert(isSubset(colnames(assay), rownames(colData)))
+        if (isTRUE(blacklist)) {
+            blacklist <- setdiff(metadataBlacklist, c("revcomp", "sampleId"))
+            assert(areDisjointSets(colnames(colData), blacklist))
+        }
         colData <- colData[colnames(assay), , drop = FALSE]
     }
     ## Metadata ----------------------------------------------------------------

@@ -11,6 +11,7 @@ makeSummarizedExperiment(
   colData = DataFrame(),
   metadata = list(),
   transgeneNames = NULL,
+  blacklist = TRUE,
   sort = TRUE,
   sessionInfo = TRUE
 )
@@ -39,6 +40,12 @@ Metadata.}
 \item{transgeneNames}{\code{character}.
 Vector indicating which assay rows denote transgenes (e.g. EGFP, TDTOMATO).}
 
+\item{blacklist}{\code{logical(1)}.
+Apply a metadata blacklist check on column names defined in \code{colData}.
+This is useful for catching names that are not considered best practice,
+and other values that may conflict with Acid Genomics packages.
+Refer to \code{metadataBlacklist} for the default list of illegal values.}
+
 \item{sort}{\code{logical(1)}.
 Ensure all row and column names are sorted alphabetically. This includes
 columns inside \code{rowData} and \code{colData}, and \code{metadata} slot names. Assay
@@ -59,9 +66,7 @@ automatic subsetting for row and column data, as well as automatic handling
 of transgenes and spike-ins.
 }
 \note{
-Column and rows always return sorted alphabetically.
-
-Updated 2021-02-03.
+Updated 2021-02-25.
 }
 \section{Session information}{
 
@@ -70,11 +75,10 @@ This function improves upon the standard constructor by slotting useful
 session information into the \code{metadata} slot by default:
 \itemize{
 \item \code{date}: Today's date, returned from \code{Sys.Date}.
-\item \code{wd}: Working directory, returned from \code{getwd}.
 \item \code{sessionInfo}: \code{\link[sessioninfo:session_info]{sessioninfo::session_info()}} return.
-}
-
 This behavior can be disabled by setting \code{sessionInfo = FALSE}.
+\item \code{wd}: Working directory, returned from \code{getwd}.
+}
 }
 
 \examples{
