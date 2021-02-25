@@ -24,7 +24,7 @@ makeSampleData(object, ...)
 Make sample data
 }
 \note{
-Updated 2021-02-03.
+Updated 2021-02-25.
 
 Utility function that prepares metadata to be slotted into
 \code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}}.
@@ -46,7 +46,7 @@ useful for plots and doesn't have to match the column names of a
 \code{SummarizedExperiment} object, which should use valid names.
 }
 
-Blacklisted columns:
+Denylist columns:
 \itemize{
 \item \code{filename} (use \code{fileName}).
 \item \code{id}.

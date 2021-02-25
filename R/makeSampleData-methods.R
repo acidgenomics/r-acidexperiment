@@ -1,6 +1,6 @@
 #' @name makeSampleData
 #' @inherit AcidGenerics::makeSampleData
-#' @note Updated 2021-02-03.
+#' @note Updated 2021-02-25.
 #'
 #' Utility function that prepares metadata to be slotted into
 #' [`colData()`][SummarizedExperiment::colData].
@@ -19,7 +19,7 @@
 #'     useful for plots and doesn't have to match the column names of a
 #'     `SummarizedExperiment` object, which should use valid names.
 #'
-#' Blacklisted columns:
+#' Denylist columns:
 #'   - `filename` (use `fileName`).
 #'   - `id`.
 #'   - `interestingGroups`. Defined automatically downstream.
@@ -62,7 +62,7 @@ setMethod(
 
 
 
-## Updated 2021-02-02.
+## Updated 2021-02-25.
 `makeSampleData,DataFrame` <-  # nolint
     function(object) {
         ## Check for complex S4 columns, which are discouraged.
@@ -89,7 +89,7 @@ setMethod(
         }
         assert(
             hasRownames(object),
-            ## Check for blacklisted columns.
+            ## Check for denylist columns.
             areDisjointSets(
                 x = c(
                     ## rn,

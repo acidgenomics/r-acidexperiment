@@ -18,11 +18,11 @@
 #' @note Updated 2021-02-25.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @param blacklist `logical(1)`.
-#'   Apply a metadata blacklist check on column names defined in `colData`.
-#'   This is useful for catching names that are not considered best practice,
-#'   and other values that may conflict with Acid Genomics packages.
-#'   Refer to `metadataBlacklist` for the default list of illegal values.
+#' @param denylist `logical(1)`.
+#'   Apply a denylist check on illegal column names defined in `colData`. This
+#'   is useful for catching names that are not considered best practice, and
+#'   other values that may conflict with Acid Genomics packages. Refer to
+#'   `metadataDenylist` for the current list of offending values.
 #' @param sort `logical(1)`.
 #'   Ensure all row and column names are sorted alphabetically. This includes
 #'   columns inside `rowData` and `colData`, and `metadata` slot names. Assay
@@ -101,7 +101,8 @@ makeSummarizedExperiment <- function(
     colData = DataFrame(),
     metadata = list(),
     transgeneNames = NULL,
-    blacklist = TRUE,
+    ## This is intentionally disabled in cBioPortalAnalysis package.
+    denylist = TRUE,
     sort = TRUE,
     sessionInfo = TRUE
 ) {
@@ -112,7 +113,7 @@ makeSummarizedExperiment <- function(
         isAny(colData, c("DataFrame", "NULL")),
         isAny(metadata, c("list", "NULL")),
         isAny(transgeneNames, c("character", "NULL")),
-        isFlag(blacklist),
+        isFlag(denylist),
         isFlag(sort),
         isFlag(sessionInfo)
     )
@@ -247,9 +248,9 @@ makeSummarizedExperiment <- function(
         )
         colnames(colData) <- camelCase(colnames(colData), strict = TRUE)
         assert(isSubset(colnames(assay), rownames(colData)))
-        if (isTRUE(blacklist)) {
-            blacklist <- setdiff(metadataBlacklist, c("revcomp", "sampleId"))
-            assert(areDisjointSets(colnames(colData), blacklist))
+        if (isTRUE(denylist)) {
+            denylist <- setdiff(metadataDenylist, c("revcomp", "sampleId"))
+            assert(areDisjointSets(colnames(colData), denylist))
         }
         colData <- colData[colnames(assay), , drop = FALSE]
     }

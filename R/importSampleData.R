@@ -134,7 +134,7 @@ importSampleData <- function(
         ## Consider renaming this to `sampleId`, for consistency.
         idCol <- "directory"
     }
-    ## Check that input passes blacklist, and has all required columns.
+    ## Check that input passes denylist, and has all required columns.
     assert(
         .isSampleData(object = data, requiredCols = requiredCols),
         isString(idCol), isSubset(idCol, colnames(data))
@@ -271,20 +271,20 @@ importSampleData <- function(
 
 
 ## Sample metadata assert check for goalie engine.
-## Updated 2019-08-13.
+## Updated 2021-02-25.
 .isSampleData <- function(object, requiredCols = "sampleName") {
     assert(isCharacter(requiredCols))
     ok <- isAny(object, c("data.frame", "DataFrame"))
     if (!isTRUE(ok)) return(ok)
     ok <- hasRows(object)
     if (!isTRUE(ok)) return(ok)
-    ## Check for blacklisted columns.
-    intersect <- intersect(colnames(object), metadataBlacklist)
+    ## Check for denylist columns.
+    intersect <- intersect(colnames(object), metadataDenylist)
     ok <- !hasLength(intersect)
     if (!isTRUE(ok)) {
         return(false(
             paste0(
-                "Blacklisted columns detected: %s.\n",
+                "Denylist columns detected: %s.\n",
                 "Refer to 'importSampleData()' for formatting requirements."
             ),
             toString(intersect)
