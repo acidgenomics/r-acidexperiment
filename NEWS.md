@@ -1,3 +1,12 @@
+## AcidExperiment 0.1.9 (2021-02-25)
+
+### Minor changes
+
+- Renamed all internal instances of "blacklist" to "denylist".
+- Added `denylist` override option to `makeSummarizedExperiment`
+  (recommended to be left enabled by default), which will be used in
+  cBioPortalAnalysis package update.
+
 ## AcidExperiment 0.1.8 (2021-02-22)
 
 ### Minor changes

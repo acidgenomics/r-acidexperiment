@@ -11,7 +11,7 @@ makeSummarizedExperiment(
   colData = DataFrame(),
   metadata = list(),
   transgeneNames = NULL,
-  blacklist = TRUE,
+  denylist = TRUE,
   sort = TRUE,
   sessionInfo = TRUE
 )
@@ -40,11 +40,11 @@ Metadata.}
 \item{transgeneNames}{\code{character}.
 Vector indicating which assay rows denote transgenes (e.g. EGFP, TDTOMATO).}
 
-\item{blacklist}{\code{logical(1)}.
-Apply a metadata blacklist check on column names defined in \code{colData}.
-This is useful for catching names that are not considered best practice,
-and other values that may conflict with Acid Genomics packages.
-Refer to \code{metadataBlacklist} for the default list of illegal values.}
+\item{denylist}{\code{logical(1)}.
+Apply a denylist check on illegal column names defined in \code{colData}. This
+is useful for catching names that are not considered best practice, and
+other values that may conflict with Acid Genomics packages. Refer to
+\code{metadataDenylist} for the current list of offending values.}
 
 \item{sort}{\code{logical(1)}.
 Ensure all row and column names are sorted alphabetically. This includes

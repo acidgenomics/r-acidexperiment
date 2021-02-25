@@ -16,7 +16,7 @@
 #' @importMethodsFrom pipette as.data.frame coerce droplevels export
 #'
 #' @importFrom AcidBase bapply formalsList geometricMean getNameInParent initDir
-#'   lanePattern metadataBlacklist methodFormals methodFunction packageName
+#'   lanePattern metadataDenylist methodFormals methodFunction packageName
 #'   packageVersion realpath requireNamespaces standardizeCall
 #' @importFrom AcidCLI alert alertInfo alertWarning
 #' @importFrom AcidGenerics DataFrame Rle SimpleList SplitDataFrameList %in%

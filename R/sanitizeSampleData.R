@@ -1,20 +1,20 @@
 #' Sanitize sample data
 #'
-#' @section Blacklist:
+#' @section Denylist:
 #'
-#' Here's the current column blacklist:
+#' Here's the current column denylist:
 #'
-#' - interestingGroups.
-#' - sampleId.
+#' - `interestingGroups`.
+#' - `sampleId`.
 #'
-#' @note Updated 2021-02-05.
+#' @note Updated 2021-02-25.
 #' @export
 #'
 #' @param object `DataFrame` (recommended) or `data.frame` (legacy).
 #'   Note that legacy `data.frame` support will be removed in a future update.
 #'
 #' @return `DataFrame`.
-#' Sanitized data frame containing only non-blacklisted columns and all
+#' Sanitized data frame containing only non-denylist columns and all
 #' `character` columns coerced to `factor` (i.e. `stringsAsFactors`).
 #'
 #' @examples
@@ -39,8 +39,8 @@ sanitizeSampleData <- function(object) {
         isSubset("sampleName", colnames(object)),
         hasNoDuplicates(object[["sampleName"]])
     )
-    blacklist <- c("interestingGroups", "sampleId")
-    object <- object[, setdiff(colnames(object), blacklist), drop = FALSE]
+    denylist <- c("interestingGroups", "sampleId")
+    object <- object[, setdiff(colnames(object), denylist), drop = FALSE]
     object <- atomize(object)
     object <- factorize(object)
     assert(

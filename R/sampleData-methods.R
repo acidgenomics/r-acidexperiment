@@ -143,12 +143,12 @@ setMethod(
 
 
 
-## Updated 2021-01-14.
+## Updated 2021-02-25.
 `sampleData<-,SE,DataFrame` <-  # nolint
     function(object, value) {
         assert(hasRownames(value))
-        blacklist <- c("interestingGroups", "rowname", "sampleId")
-        keep <- setdiff(colnames(value), blacklist)
+        denylist <- c("interestingGroups", "rowname", "sampleId")
+        keep <- setdiff(colnames(value), denylist)
         assert(hasLength(keep))
         value <- value[, keep, drop = FALSE]
         colData(object) <- value
