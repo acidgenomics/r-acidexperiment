@@ -234,7 +234,7 @@ test_that("Missing file", {
 
 context("importSampleData : Malformed input")
 
-test_that("Metadata blacklist", {
+test_that("Metadata denylist", {
     file <- file.path(
         "cache",
         "bcbio-metadata-invalid-column-name.csv"
