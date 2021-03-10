@@ -124,6 +124,7 @@ makeSummarizedExperiment <- function(
         assays <- SimpleList(assays)
     }
     ## Assays ------------------------------------------------------------------
+    ## Currently only allowing matrix or Matrix classes here.
     assays <- Filter(f = Negate(is.null), x = assays)
     if (hasLength(assays)) {
         ## Name the primary assay "counts" by default.
@@ -139,6 +140,8 @@ makeSummarizedExperiment <- function(
             hasValidNames(assays)
         )
         assay <- assays[[1L]]
+        ## Currently allowing pass-in of empty primary assay, but that may
+        ## change to make this function more restrictive in the future.
         if (hasLength(assay)) {
             assert(
                 hasRownames(assay),
