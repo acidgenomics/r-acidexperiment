@@ -67,11 +67,9 @@ test_that("SummarizedExperiment", {
 })
 
 test_that("Minimal input", {
-    assays <- SimpleList(counts = matrix())
-
+    assays <- SimpleList(counts = matrix(nrow = 0L, ncol = 0L))
     x <- makeSummarizedExperiment(assays = assays)
     expect_identical(class(x), SE)
-
     x <- makeSummarizedExperiment(
         assays = assays,
         rowRanges = NULL,
@@ -98,21 +96,21 @@ test_that("Duplicate names", {
     rownames(countsDupeRows) <- paste0("gene", rep(seq_len(2L), each = 2L))
     expect_error(
         object = makeSummarizedExperiment(
-            assays = SimpleList(counts = countsDupeRows),
+            assays = SimpleList("counts" = countsDupeRows),
             rowRanges = rowRanges,
             colData = colData
         ),
-        regexp = "hasValidDimnames"
+        regexp = "hasNoDuplicates"
     )
     countsDupeCols <- counts
     colnames(countsDupeCols) <- paste0("sample", rep(seq_len(2L), each = 2L))
     expect_error(
         object = makeSummarizedExperiment(
-            assays = SimpleList(counts = countsDupeCols),
+            assays = SimpleList("counts" = countsDupeCols),
             rowRanges = rowRanges,
             colData = colData
         ),
-        regexp = "hasValidDimnames"
+        regexp = "hasNoDuplicates"
     )
 })
 
