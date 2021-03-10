@@ -118,17 +118,17 @@ test_that("Column data failure", {
     ## Bad pass-in of objects not supporting `dimnames`.
     expect_error(
         object = makeSummarizedExperiment(
-            assays = SimpleList(counts = "yyy"),
+            assays = SimpleList("counts" = "yyy"),
             rowRanges = rowRanges,
             colData = colData
         ),
-        regexp = "areIntersectingSets"
+        regexp = "assay"
     )
     expect_error(
         object = makeSummarizedExperiment(
             assays = assays,
             rowRanges = rowRanges,
-            colData = c(xxx = "yyy")
+            colData = c("xxx" = "yyy")
         ),
         regexp = "isAny.*colData"
     )
