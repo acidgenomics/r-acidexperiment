@@ -13,7 +13,7 @@ test_that("Allow 'NULL' to pass", {
 test_that("Match failure", {
     ok <- matchesInterestingGroups(rse, c("XXX", "YYY"))
     expect_false(ok)
-    expect_s3_class(ok, "goalie")
+    expect_s4_class(ok, "goalie")
     expect_identical(
         cause(ok),
         noquote("Interesting groups are not defined in 'sampleData()'.")
