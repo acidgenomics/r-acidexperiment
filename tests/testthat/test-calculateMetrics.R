@@ -20,11 +20,11 @@ test_that("SummarizedExperiment", {
     expect_equal(
         object = x,
         expected = list(
-            "log10FeaturesPerCount" = 0.618,
+            "log10FeaturesPerCount" = 0.619,
             "mitoRatio" = NA_integer_,
-            "nCount" = 19878,  # nolint
-            "nFeature" = 454,  # nolint
-            "nCoding" = 19775,  # nolint
+            "nCount" = 19671,  # nolint
+            "nFeature" = 457,  # nolint
+            "nCoding" = 19617,  # nolint
             "nMito" = NA_integer_
         )
     )
