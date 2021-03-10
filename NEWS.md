@@ -1,3 +1,9 @@
+## AcidExperiment 0.1.10 (2021-03-01)
+
+- `makeSummarizedExperiment`: Relaxed the validity check on syntactically
+  valid names in rownames and colnames of the object. Now the function
+  informs the user with a CLI message instead of erroring.
+
 ## AcidExperiment 0.1.9 (2021-02-25)
 
 ### Minor changes
