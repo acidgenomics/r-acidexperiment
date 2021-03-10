@@ -29,7 +29,7 @@
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
 #'   rowRanges rowRanges<-
 #' @importFrom goalie allAreAtomic allAreMatchingRegex areDisjointSets
-#'   areIntersectingSets areSetEqual assert false hasColnames hasCols
+#'   areIntersectingSets areSetEqual assert cause false hasColnames hasCols
 #'   hasDimnames hasLength hasNames hasNoDuplicates hasRownames hasRows
 #'   hasValidDimnames hasValidNames isAFile isAURL isAny isCharacter isFlag
 #'   isInRange isInt isNonNegative isNumber isPositive isScalar isString

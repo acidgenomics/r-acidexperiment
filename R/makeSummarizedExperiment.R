@@ -15,7 +15,7 @@
 #' - `wd`: Working directory, returned from `getwd`.
 #'
 #' @export
-#' @note Updated 2021-02-25.
+#' @note Updated 2021-03-10.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param denylist `logical(1)`.
@@ -137,9 +137,19 @@ makeSummarizedExperiment <- function(
         assay <- assays[[1L]]
         assert(
             hasNames(assays),
-            hasValidNames(assays),
-            hasValidDimnames(assay)
+            hasValidNames(assays)
         )
+        ## Inform rather than erroring when row and/or column names are invalid.
+        ## Previously, we used this stricter approach:
+        ## > assert(hasValidDimnames(assay))
+        ok <- validNames(rownames(assay))
+        if (!isTRUE(ok)) {
+            alertWarning(cause(ok))
+        }
+        ok <- validNames(colnames(assay))
+        if (!isTRUE(ok)) {
+            alertWarning(cause(ok))
+        }
     }
     ## Row data ----------------------------------------------------------------
     ## Dynamically allow input of rowRanges (recommended) or rowData (fallback):
