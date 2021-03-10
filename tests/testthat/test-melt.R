@@ -26,9 +26,9 @@ test_that("trans", {
     mapply(
         trans = eval(formals(`melt,SE`)[["trans"]]),
         expected = list(
-            "identity" = c(17, 4, 27),  # nolint
-            "log2" = c(4.170, 2.322, 4.807),
-            "log10" = c(1.255, 0.699, 1.447)
+            "identity" = c(58, 14, 49),  # nolint
+            "log2" = c(5.88, 3.91, 5.64),
+            "log10" = c(1.77, 1.18, 1.70)
         ),
         FUN = function(trans, expected) {
             object <- rse
@@ -40,7 +40,7 @@ test_that("trans", {
             )
             expect_s4_class(object, "DataFrame")
             object <-
-                decode(round(head(object[["value"]], n = 3L), digits = 3L))
+                decode(round(head(object[["value"]], n = 3L), digits = 2L))
             expect_identical(object, expected)
         },
         SIMPLIFY = FALSE
