@@ -12,22 +12,22 @@ Note that legacy \code{data.frame} support will be removed in a future update.}
 }
 \value{
 \code{DataFrame}.
-Sanitized data frame containing only non-blacklisted columns and all
+Sanitized data frame containing only non-denylist columns and all
 \code{character} columns coerced to \code{factor} (i.e. \code{stringsAsFactors}).
 }
 \description{
 Sanitize sample data
 }
 \note{
-Updated 2021-02-05.
+Updated 2021-02-25.
 }
-\section{Blacklist}{
+\section{Denylist}{
 
 
-Here's the current column blacklist:
+Here's the current column denylist:
 \itemize{
-\item interestingGroups.
-\item sampleId.
+\item \code{interestingGroups}.
+\item \code{sampleId}.
 }
 }
 
