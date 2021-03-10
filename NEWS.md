@@ -1,4 +1,4 @@
-## AcidExperiment 0.1.10 (2021-03-01)
+## AcidExperiment 0.1.10 (2021-03-10)
 
 - `makeSummarizedExperiment`: Relaxed the validity check on syntactically
   valid names in rownames and colnames of the object. Now the function
