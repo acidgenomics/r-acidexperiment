@@ -134,21 +134,29 @@ makeSummarizedExperiment <- function(
                 stop("Multiple assays defined without names.")
             }
         }
-        assay <- assays[[1L]]
         assert(
             hasNames(assays),
             hasValidNames(assays)
         )
-        ## Inform rather than erroring when row and/or column names are invalid.
-        ## Previously, we used this stricter approach:
-        ## > assert(hasValidDimnames(assay))
-        ok <- validNames(rownames(assay))
-        if (!isTRUE(ok)) {
-            alertWarning(cause(ok))
-        }
-        ok <- validNames(colnames(assay))
-        if (!isTRUE(ok)) {
-            alertWarning(cause(ok))
+        assay <- assays[[1L]]
+        if (hasLength(assay)) {
+            assert(
+                hasRownames(assay),
+                hasColnames(assay),
+                hasNoDuplicates(rownames(assay)),
+                hasNoDuplicates(colnames(assay))
+            )
+            ## Inform rather than erroring when row and/or column names are
+            ## invalid. Previously, we used this stricter approach:
+            ## > assert(hasValidDimnames(assay))
+            ok <- validNames(rownames(assay))
+            if (!isTRUE(ok)) {
+                alertWarning(cause(ok))
+            }
+            ok <- validNames(colnames(assay))
+            if (!isTRUE(ok)) {
+                alertWarning(cause(ok))
+            }
         }
     }
     ## Row data ----------------------------------------------------------------
