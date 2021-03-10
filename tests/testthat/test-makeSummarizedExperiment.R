@@ -82,27 +82,14 @@ test_that("Minimal input", {
     expect_identical(class(x), SE)
 })
 
-test_that("Strict names", {
-    ## Don't allow any dashes and other illegal characters in names.
-    countsBadRows <- counts
-    rownames(countsBadRows) <- paste0(rownames(counts), "-XXX")
-    expect_error(
+test_that("Inform instead of error on invalid row and/or column names", {
+    rownames(counts) <- paste0(rownames(counts), "-XXX")
+    colnames(counts) <- paste0(colnames(counts), "-XXX")
+    expect_message(
         object = makeSummarizedExperiment(
-            assays = SimpleList(counts = countsBadRows),
-            rowRanges = rowRanges,
-            colData = colData
+            assays = SimpleList("counts" = counts)
         ),
-        regexp = "hasValidDimnames"
-    )
-    countsBadCols <- counts
-    colnames(countsBadCols) <- paste0(colnames(countsBadCols), "-XXX")
-    expect_error(
-        object = makeSummarizedExperiment(
-            assays = SimpleList(counts = countsBadCols),
-            rowRanges = rowRanges,
-            colData = colData
-        ),
-        regexp = "hasValidDimnames"
+        regexp = "make.names"
     )
 })
 
