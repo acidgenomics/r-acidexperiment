@@ -16,6 +16,6 @@ test_that("Match failure", {
     expect_s4_class(ok, "goalie")
     expect_identical(
         cause(ok),
-        noquote("Interesting groups are not defined in 'sampleData()'.")
+        "Interesting groups are not defined in 'sampleData()'."
     )
 })
