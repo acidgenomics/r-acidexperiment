@@ -7,11 +7,10 @@
 #' @param ... Additional arguments.
 #'
 #' @details
-#' [metrics()] takes data stored in [`colData()`][SummarizedExperiment::colData]
-#' and consistently returns a `tbl_df` or `DataFrame` with `sampleName` and
-#' `interestingGroups` columns, even when these columns are not defined in
-#' `colData()`. This is designed to integrate with plotting functions that use
-#' ggplot2 internally.
+#' `metrics()` takes data stored in `colData()` and consistently returns a
+#' `tbl_df` or `DataFrame` with `sampleName` and `interestingGroups` columns,
+#' even when these columns are not defined in `colData()`. This is designed to
+#' integrate with plotting functions that use ggplot2 internally.
 #'
 #' Column names are always returned formatted in strict lower camel case.
 #'

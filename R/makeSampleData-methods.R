@@ -2,8 +2,7 @@
 #' @inherit AcidGenerics::makeSampleData
 #' @note Updated 2021-02-25.
 #'
-#' Utility function that prepares metadata to be slotted into
-#' [`colData()`][SummarizedExperiment::colData].
+#' Utility function that prepares metadata to be slotted into `colData()`.
 #'
 #' This function adheres to the following conventions:
 #'
@@ -11,7 +10,7 @@
 #'   a rownames column (data.table / tibble style).
 #'   Supported colnames: "sampleId", "rowname", "rn".
 #' - All column names will be converted to lower camel case
-#'   (see [camelCase()] for details).
+#'   (see `camelCase()` for details).
 #' - `sampleName` column is always placed first.
 #'
 #' Required columns:

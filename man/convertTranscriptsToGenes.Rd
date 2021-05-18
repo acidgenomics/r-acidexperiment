@@ -26,8 +26,8 @@ convertTranscriptsToGenes(object, ...)
 Transcript-to-gene mappings.}
 
 \item{aggregate}{\code{logical(1)}.
-For objects supporting \code{\link[base:dim]{dim()}}, aggregate counts to gene level
-and collapse the matrix.}
+For objects supporting \code{dim()}, aggregate counts to gene level and
+collapse the matrix.}
 
 \item{...}{Additional arguments.}
 }
@@ -84,5 +84,5 @@ x <- convertTranscriptsToGenes(object)
 print(x)
 }
 \seealso{
-\code{\link[=aggregateRows]{aggregateRows()}}.
+\code{aggregateRows()}.
 }

@@ -33,7 +33,7 @@ change with this operation.}
 \itemize{
 \item \code{matrix} / \code{Matrix}: \code{DataFrame} containing metrics.
 \item \code{SummarizedExperiment}: Modified object, with metrics in
-\code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}}.
+\code{colData()}.
 }
 }
 \description{

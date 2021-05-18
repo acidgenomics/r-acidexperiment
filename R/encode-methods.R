@@ -5,7 +5,7 @@
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
-#' @seealso [S4Vectors::Rle()].
+#' @seealso `S4Vectors::Rle()`.
 #'
 #' @return Modified object.
 #' All `atomic` columns will be encoded to `Rle` S4 class.

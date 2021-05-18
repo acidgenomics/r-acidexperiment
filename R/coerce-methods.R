@@ -4,7 +4,7 @@
 #'
 #' Improved S4 methods for reliably coercing objects that extend
 #' `RangedSummarizedExperiment` to a standard `SummarizedExperiment`, that
-#' doesn't drop [`rowData()`][SummarizedExperiment::rowData].
+#' doesn't drop `rowData()`.
 #'
 #' Related S4 coercion method of interest:
 #'

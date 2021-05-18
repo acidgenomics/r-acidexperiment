@@ -10,7 +10,7 @@
 #'   the [names][base::names].
 #' @param fun `character(1)`.
 #'   Name of the aggregation function to apply.
-#'   Uses [`match.arg()`][base::match.arg] internally.
+#'   Uses `match.arg()` internally.
 #' @param ... Additional arguments.
 #'
 #' @seealso
