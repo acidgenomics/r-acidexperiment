@@ -11,17 +11,17 @@
 #' Illegal `colData`:
 #'
 #' - `interestingGroups`: Generated automatically, based on the criteria
-#'   slotted into the object using [interestingGroups()]. The function will
-#'   error intentionally if this column is manually defined in [colData()].
+#'   slotted into the object using `interestingGroups()`. The function will
+#'   error intentionally if this column is manually defined in `colData()`.
 #'
 #' Recommended `colData`:
 #'
 #' - `sampleName`: Human readable sample names used by basejump plotting
 #'   functions in favor of object column names, which should be syntactically
 #'   valid (but not always very readable). See
-#'   [`make.names()`][base::make.names] for more information on syntactically
-#'   valid names. Note that if this column is not defined in the object,
-#'   it will be returned automatically by [sampleData()].
+#'   `make.names()` for more information on syntactically valid names. Note that
+#'   if this column is not defined in the object, it will be returned
+#'   automatically by `sampleData()`.
 #'
 #' @section SummarizedExperiment:
 #'
@@ -36,9 +36,9 @@
 #' @inheritParams AcidRoxygen::params
 #' @param clean `logical(1)`.
 #'   Only return `factor` columns. Useful when working with objects that contain
-#'   quality control metrics in [`colData()`][SummarizedExperiment::colData].
-#'   For example, `bcbioRNASeq` and `DESeqDataSet` objects often contain
-#'   additional columns that aren't informative sample metadata.
+#'   quality control metrics in `colData()`. For example, `bcbioRNASeq` and
+#'   `DESeqDataSet` objects often contain additional columns that aren't
+#'   informative sample metadata.
 #' @param ignoreCols `character` or `NULL`.
 #'   Only applies when `clean = TRUE`. Additional factor columns defined in
 #'   `colData` to be ignored as sample-level metadata.

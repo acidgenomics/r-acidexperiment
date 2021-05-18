@@ -22,7 +22,7 @@ the \link[base:names]{names}.}
 
 \item{fun}{\code{character(1)}.
 Name of the aggregation function to apply.
-Uses \code{\link[base:match.arg]{match.arg()}} internally.}
+Uses \code{match.arg()} internally.}
 
 \item{...}{Additional arguments.}
 }

@@ -33,17 +33,16 @@ Resort using \code{sort}.}
 Autopad zeros
 }
 \note{
-For methods on objects supporting \code{\link[base:dim]{dim()}} (e.g. \code{matrix}),
-the object will be returned with the rows and/or columns resorted by default.
-This does not apply to the \code{character} method defined in syntactic.
+For methods on objects supporting \code{dim()} (e.g. \code{matrix}), the object
+will be returned with the rows and/or columns resorted by default. This does
+not apply to the \code{character} method defined in syntactic.
 
 Updated 2020-06-15.
 }
 \section{SummarizedExperiment sample names}{
 
 
-If \code{sampleName} column is defined in
-\code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}}, these values will also get
+If \code{sampleName} column is defined in \code{colData()}, these values will also get
 padded, if necessary. This improves # downstream handling in functions that
 rely on this feature.
 }
