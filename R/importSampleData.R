@@ -36,12 +36,10 @@
 #' @note Works with local or remote files.
 #'
 #' @author Michael Steinbaugh
-#' @note Updated 2021-02-11.
+#' @note Updated 2021-06-04.
 #' @export
 #'
 #' @inheritParams AcidRoxygen::params
-#' @param sheet `character(1)` or `integer(1)`.
-#'   Workbook sheet.
 #' @param lanes `integer(1)`.
 #'   Number of lanes used to split the samples into technical replicates
 #'   suffix (i.e. `_LXXX`).
@@ -77,9 +75,8 @@
 #' print(x)
 importSampleData <- function(
     file,
-    sheet = 1L,
     lanes = 0L,
-    pipeline = c("none", "bcbio", "cellranger", "cpi"),
+    pipeline = c("none", "bcbio", "cellranger"),
     autopadZeros = FALSE
 ) {
     ## Coerce `detectLanes()` empty integer return to 0.
@@ -94,13 +91,6 @@ importSampleData <- function(
     )
     lanes <- as.integer(lanes)
     pipeline <- match.arg(pipeline)
-    if (identical(pipeline, "cpi")) {
-        .Defunct(msg = paste(
-            "CPI pipeline support is defunct.",
-            "Use `pipeline = \"none\", sheet = 2L` instead.",
-            sep = "\n"
-        ))
-    }
     requiredCols <- switch(
         EXPR = pipeline,
         "none" = "sampleId",
@@ -112,7 +102,7 @@ importSampleData <- function(
         lanes <- seq_len(lanes)
     }
     ## Import ------------------------------------------------------------------
-    data <- import(file, sheet = sheet)
+    data <- import(file = file)
     data <- as(data, "DataFrame")
     colnames(data) <- camelCase(colnames(data), strict = TRUE)
     data <- removeNA(data)
