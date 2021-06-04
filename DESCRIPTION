@@ -46,12 +46,6 @@ Suggests:
     Biostrings (>= 2.58),
     Matrix (>= 1.3),
     testthat
-biocViews:
-    Annotation,
-    Genetics,
-    GenomeAnnotation,
-    Infrastructure,
-    Sequencing
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Additional_repositories: https://r.acidgenomics.com
