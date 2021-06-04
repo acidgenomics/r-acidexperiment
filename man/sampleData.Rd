@@ -28,9 +28,9 @@ sampleData(object, ...) <- value
 
 \item{clean}{\code{logical(1)}.
 Only return \code{factor} columns. Useful when working with objects that contain
-quality control metrics in \code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}}.
-For example, \code{bcbioRNASeq} and \code{DESeqDataSet} objects often contain
-additional columns that aren't informative sample metadata.}
+quality control metrics in \code{colData()}. For example, \code{bcbioRNASeq} and
+\code{DESeqDataSet} objects often contain additional columns that aren't
+informative sample metadata.}
 
 \item{ignoreCols}{\code{character} or \code{NULL}.
 Only applies when \code{clean = TRUE}. Additional factor columns defined in
@@ -61,8 +61,8 @@ Updated 2021-02-22.
 Illegal \code{colData}:
 \itemize{
 \item \code{interestingGroups}: Generated automatically, based on the criteria
-slotted into the object using \code{\link[=interestingGroups]{interestingGroups()}}. The function will
-error intentionally if this column is manually defined in \code{\link[=colData]{colData()}}.
+slotted into the object using \code{interestingGroups()}. The function will
+error intentionally if this column is manually defined in \code{colData()}.
 }
 
 Recommended \code{colData}:
@@ -70,9 +70,9 @@ Recommended \code{colData}:
 \item \code{sampleName}: Human readable sample names used by basejump plotting
 functions in favor of object column names, which should be syntactically
 valid (but not always very readable). See
-\code{\link[base:make.names]{make.names()}} for more information on syntactically
-valid names. Note that if this column is not defined in the object,
-it will be returned automatically by \code{\link[=sampleData]{sampleData()}}.
+\code{make.names()} for more information on syntactically valid names. Note that
+if this column is not defined in the object, it will be returned
+automatically by \code{sampleData()}.
 }
 }
 

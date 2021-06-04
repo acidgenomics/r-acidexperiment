@@ -38,10 +38,9 @@ correlation(x, y, ...)
 
 \item{y}{Object.}
 
-\item{method}{a character string indicating which correlation
-    coefficient (or covariance) is to be computed.  One of
-    \code{"pearson"} (default), \code{"kendall"}, or \code{"spearman"}:
-    can be abbreviated.}
+\item{method}{\code{character(1)}.
+Which correlation coefficient (or covariance) is to be computed.
+See \code{stats::cor} documentation for details.}
 
 \item{i}{\code{integer(1)} or \code{character(1)}.
 For \code{SummarizedExperiment}, primary assay.}
@@ -59,7 +58,7 @@ If \code{NULL}, calculates correlation matrix only on the primary assay.}
 Correlation
 }
 \note{
-Updated 2021-02-03.
+Updated 2021-06-04.
 }
 \examples{
 data(correlation, package = "AcidTest")

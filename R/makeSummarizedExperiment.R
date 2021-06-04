@@ -10,7 +10,7 @@
 #' session information into the `metadata` slot by default:
 #'
 #' - `date`: Today's date, returned from `Sys.Date`.
-#' - `sessionInfo`: [sessioninfo::session_info()] return.
+#' - `sessionInfo`: `sessioninfo::session_info()` return.
 #'   This behavior can be disabled by setting `sessionInfo = FALSE`.
 #' - `wd`: Working directory, returned from `getwd`.
 #'
@@ -35,7 +35,7 @@
 #' - Providing `rowData`: `SummarizedExperiment`.
 #'
 #' @seealso
-#' - [`SummarizedExperiment()`][SummarizedExperiment::SummarizedExperiment].
+#' - `SummarizedExperiment()`.
 #' - `help("RangedSummarizedExperiment-class", "SummarizedExperiment")`.
 #' - `help("SummarizedExperiment-class", "SummarizedExperiment")`.
 #'

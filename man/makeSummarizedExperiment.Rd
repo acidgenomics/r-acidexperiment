@@ -75,7 +75,7 @@ This function improves upon the standard constructor by slotting useful
 session information into the \code{metadata} slot by default:
 \itemize{
 \item \code{date}: Today's date, returned from \code{Sys.Date}.
-\item \code{sessionInfo}: \code{\link[sessioninfo:session_info]{sessioninfo::session_info()}} return.
+\item \code{sessionInfo}: \code{sessioninfo::session_info()} return.
 This behavior can be disabled by setting \code{sessionInfo = FALSE}.
 \item \code{wd}: Working directory, returned from \code{getwd}.
 }
@@ -139,7 +139,7 @@ print(x)
 }
 \seealso{
 \itemize{
-\item \code{\link[SummarizedExperiment:RangedSummarizedExperiment-class]{SummarizedExperiment()}}.
+\item \code{SummarizedExperiment()}.
 \item \code{help("RangedSummarizedExperiment-class", "SummarizedExperiment")}.
 \item \code{help("SummarizedExperiment-class", "SummarizedExperiment")}.
 }

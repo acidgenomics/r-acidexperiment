@@ -2,15 +2,17 @@
 #'
 #' @name correlation
 #' @inherit AcidGenerics::correlation
-#' @note Updated 2021-02-03.
+#' @note Updated 2021-06-04.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @inheritParams stats::cor
 #' @param i `integer(1)` or `character(1)`.
 #'   For `SummarizedExperiment`, primary assay.
 #' @param j `integer(1)`, `character(1)`, or `NULL`.
 #'   For `SummarizedExperiment`, optional secondary assay.
 #'   If `NULL`, calculates correlation matrix only on the primary assay.
+#' @param method `character(1)`.
+#'   Which correlation coefficient (or covariance) is to be computed.
+#'   See `stats::cor` documentation for details.
 #' @param ... Additional arguments.
 #'
 #' @examples

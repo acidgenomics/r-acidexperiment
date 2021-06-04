@@ -18,11 +18,10 @@ droplevels(x, ...)
 Modified object.
 }
 \description{
-The function \code{droplevels} is used to drop unused levels from a
-  \code{\link[base]{factor}} or, more commonly, from factors in a data frame.
+Drop unused levels from factors
 }
 \note{
-Updated 2021-02-03.
+Updated 2021-06-04.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")

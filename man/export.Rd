@@ -18,8 +18,8 @@ export(object, ...)
 }
 \arguments{
 \item{object}{Object.
-An object supporting \code{\link[base:dim]{dim()}}, or a supported class capable
-of being coerced to \code{data.frame}, to be written to disk.}
+An object supporting \code{dim()}, or a supported class capable of being coerced
+to \code{data.frame}, to be written to disk.}
 
 \item{name}{\code{character(1)}.
 Name to use on disk. If \code{NULL}, will use the name of the object instead.}
@@ -65,7 +65,7 @@ are always moved to a \code{"rowname"} column in the CSV export.
 
 
 
-Note that this function currently wraps \code{vroom::voom_write()} by default
+Note that this function currently wraps \code{data.table::fwrite()} by default
 for exporting \code{data.frame} and \code{matrix} class objects.
 
 }
