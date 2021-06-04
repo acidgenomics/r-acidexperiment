@@ -17,7 +17,7 @@
 #' @return
 #' - `matrix` / `Matrix`: `DataFrame` containing metrics.
 #' - `SummarizedExperiment`: Modified object, with metrics in
-#'   [`colData()`][SummarizedExperiment::colData].
+#'   `colData()`.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")

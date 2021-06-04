@@ -36,7 +36,7 @@ cells is equal to the value defined. Set to \code{0} to disable centering.}
 }
 \value{
 Modified object.
-Use `\code{\link[=sizeFactors]{sizeFactors()}} to access the computed size factor numeric.
+Use \code{sizeFactors()} to access the computed size factor numeric.
 }
 \description{
 Define size factors from the library sizes, and then apply centering at
@@ -50,8 +50,8 @@ interpretation of the normalized values, as well as comaprisons between
 features normalized with different size factors (e.g., spike-ins).
 
 The estimated size factors computed by this function can be accessed using
-the accessor function \code{\link[=sizeFactors]{sizeFactors()}}. Alternative library size estimators
-can also be supplied using the assignment function \code{\link[=sizeFactors<-]{sizeFactors<-()}}.
+the accessor function \code{sizeFactors()}. Alternative library size estimators
+can also be supplied using the assignment function \verb{sizeFactors<-()}.
 }
 \note{
 Updated 2021-02-22.

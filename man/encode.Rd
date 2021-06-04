@@ -34,5 +34,5 @@ object <- encode(object)
 lapply(rowData(object), class)
 }
 \seealso{
-\code{\link[S4Vectors:Rle-class]{S4Vectors::Rle()}}.
+\code{S4Vectors::Rle()}.
 }

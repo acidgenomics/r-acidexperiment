@@ -1,8 +1,7 @@
 #' Drop unused levels from factors
 #'
 #' @name droplevels
-#' @inherit base::droplevels description
-#' @note Updated 2021-02-03.
+#' @note Updated 2021-06-04.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.

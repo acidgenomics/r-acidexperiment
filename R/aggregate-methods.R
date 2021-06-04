@@ -6,11 +6,10 @@
 #' @inheritParams AcidRoxygen::params
 #' @param by `factor`.
 #'   Aggregation groupings. The new aggregate names are defined as the `factor`
-#'   [levels][base::levels], and the original, unaggregated names are defined as
-#'   the [names][base::names].
+#'   `levels`, and the original, unaggregated names are defined as the `names`.
 #' @param fun `character(1)`.
 #'   Name of the aggregation function to apply.
-#'   Uses [`match.arg()`][base::match.arg] internally.
+#'   Uses `match.arg()` internally.
 #' @param ... Additional arguments.
 #'
 #' @seealso

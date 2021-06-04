@@ -21,6 +21,18 @@ install.packages(
 )
 ```
 
+### [Conda][] method
+
+Configure [Conda][] to use the [Bioconda][] channels.
+
+```sh
+# Don't install recipe into base environment.
+name="r-acidexperiment"
+conda create --name="$name" "$name"
+conda activate "$name"
+R
+```
+
 ### [Docker][] method
 
 ```sh

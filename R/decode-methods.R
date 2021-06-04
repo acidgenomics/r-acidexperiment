@@ -1,8 +1,7 @@
 #' Decode column data that uses run-length encoding
 #'
 #' @name decode
-#' @inherit S4Vectors::decode description return
-#' @note Updated 2021-02-03.
+#' @note Updated 2021-06-04.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -10,7 +9,9 @@
 #' @return Modified object.
 #' Columns will be decoded and no longer `Rle` class.
 #'
-#' @seealso [S4Vectors::decode()].
+#' @seealso `S4Vectors::decode()`.
+#'
+#' @return Modified object.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")

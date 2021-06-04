@@ -26,8 +26,7 @@ Make sample data
 \note{
 Updated 2021-02-25.
 
-Utility function that prepares metadata to be slotted into
-\code{\link[SummarizedExperiment:SummarizedExperiment-class]{colData()}}.
+Utility function that prepares metadata to be slotted into \code{colData()}.
 
 This function adheres to the following conventions:
 \itemize{
@@ -35,7 +34,7 @@ This function adheres to the following conventions:
 a rownames column (data.table / tibble style).
 Supported colnames: "sampleId", "rowname", "rn".
 \item All column names will be converted to lower camel case
-(see \code{\link[=camelCase]{camelCase()}} for details).
+(see \code{camelCase()} for details).
 \item \code{sampleName} column is always placed first.
 }
 

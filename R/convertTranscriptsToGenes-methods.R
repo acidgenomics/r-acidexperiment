@@ -8,8 +8,8 @@
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param aggregate `logical(1)`.
-#'   For objects supporting [`dim()`][base::dim], aggregate counts to gene level
-#'   and collapse the matrix.
+#'   For objects supporting `dim()`, aggregate counts to gene level and
+#'   collapse the matrix.
 #' @param ... Additional arguments.
 #'
 #' @return
@@ -19,7 +19,7 @@
 #'     Object containing counts collapsed to gene level by default
 #'     (see `aggregate` argument).
 #'
-#' @seealso [aggregateRows()].
+#' @seealso `aggregateRows()`.
 #'
 #' @examples
 #' data(SummarizedExperiment_transcripts, package = "AcidTest")
