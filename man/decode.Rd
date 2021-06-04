@@ -17,14 +17,14 @@ decode(x, ...)
 \value{
 Modified object.
 Columns will be decoded and no longer \code{Rle} class.
+
+Modified object.
 }
 \description{
-The Rle class is a general container for storing an atomic vector
-  that is stored in a run-length encoding format. It is based on the
-  \code{\link[base]{rle}} function from the base package.
+Decode column data that uses run-length encoding
 }
 \note{
-Updated 2021-02-03.
+Updated 2021-06-04.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")

@@ -5,7 +5,6 @@
 #' @note Updated 2021-02-03.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @inheritParams stats::cor
 #' @param i `integer(1)` or `character(1)`.
 #'   For `SummarizedExperiment`, primary assay.
 #' @param j `integer(1)`, `character(1)`, or `NULL`.
