@@ -17,8 +17,7 @@ aggregate(x, ...)
 
 \item{by}{\code{factor}.
 Aggregation groupings. The new aggregate names are defined as the \code{factor}
-\link[base:levels]{levels}, and the original, unaggregated names are defined as
-the \link[base:names]{names}.}
+\code{levels}, and the original, unaggregated names are defined as the \code{names}.}
 
 \item{fun}{\code{character(1)}.
 Name of the aggregation function to apply.
