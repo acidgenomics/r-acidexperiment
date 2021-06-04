@@ -66,7 +66,10 @@ test_that("matrix", {
             c("sample1", "sample2")
         )
     )
-    object <- convertGenesToSymbols(gene2symbol = gene2symbol)
+    object <- convertGenesToSymbols(
+        object = object,
+        gene2symbol = gene2symbol
+    )
     expect_identical(
         object = rownames(object),
         expected = c("TSPAN6", "TNMD")
