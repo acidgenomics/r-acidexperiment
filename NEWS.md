@@ -1,9 +1,10 @@
-## AcidExperiment 0.1.11 (2021-05-18)
+## AcidExperiment 0.1.11 (2021-06-04)
 
 ### Minor changes
 
 - Updated the documentation to provide compatibility with R 4.1 and Bioconductor
   3.13 release.
+- Updated dependency versions.
 
 ## AcidExperiment 0.1.10 (2021-03-10)
 
