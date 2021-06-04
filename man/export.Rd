@@ -18,8 +18,8 @@ export(object, ...)
 }
 \arguments{
 \item{object}{Object.
-An object supporting \code{\link[base:dim]{dim()}}, or a supported class capable
-of being coerced to \code{data.frame}, to be written to disk.}
+An object supporting \code{dim()}, or a supported class capable of being coerced
+to \code{data.frame}, to be written to disk.}
 
 \item{name}{\code{character(1)}.
 Name to use on disk. If \code{NULL}, will use the name of the object instead.}
