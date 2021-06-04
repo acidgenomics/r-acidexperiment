@@ -6,18 +6,14 @@
 \usage{
 importSampleData(
   file,
-  sheet = 1L,
   lanes = 0L,
-  pipeline = c("none", "bcbio", "cellranger", "cpi"),
+  pipeline = c("none", "bcbio", "cellranger"),
   autopadZeros = FALSE
 )
 }
 \arguments{
 \item{file}{\code{character(1)}.
 File path.}
-
-\item{sheet}{\code{character(1)} or \code{integer(1)}.
-Workbook sheet.}
 
 \item{lanes}{\code{integer(1)}.
 Number of lanes used to split the samples into technical replicates
@@ -47,7 +43,7 @@ This function imports user-defined sample metadata saved in a spreadsheet.
 \note{
 Works with local or remote files.
 
-Updated 2021-02-11.
+Updated 2021-06-04.
 }
 \section{bcbio pipeline}{
 
