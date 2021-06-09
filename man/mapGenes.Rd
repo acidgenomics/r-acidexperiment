@@ -5,11 +5,8 @@
 \alias{mapGenesToIDs}
 \alias{mapGenesToSymbols}
 \alias{mapGenes}
-\alias{mapGenesToRownames,Gene2Symbol-method}
 \alias{mapGenesToRownames,SummarizedExperiment-method}
-\alias{mapGenesToIDs,Gene2Symbol-method}
 \alias{mapGenesToIDs,SummarizedExperiment-method}
-\alias{mapGenesToSymbols,Gene2Symbol-method}
 \alias{mapGenesToSymbols,SummarizedExperiment-method}
 \title{Map genes}
 \usage{
@@ -19,15 +16,9 @@ mapGenesToIDs(object, ...)
 
 mapGenesToSymbols(object, ...)
 
-\S4method{mapGenesToRownames}{Gene2Symbol}(object, genes, strict = TRUE)
-
 \S4method{mapGenesToRownames}{SummarizedExperiment}(object, genes, strict = TRUE)
 
-\S4method{mapGenesToIDs}{Gene2Symbol}(object, genes, strict = TRUE)
-
 \S4method{mapGenesToIDs}{SummarizedExperiment}(object, genes, strict = TRUE)
-
-\S4method{mapGenesToSymbols}{Gene2Symbol}(object, genes, strict = TRUE)
 
 \S4method{mapGenesToSymbols}{SummarizedExperiment}(object, genes, strict = TRUE)
 }
@@ -38,9 +29,9 @@ mapGenesToSymbols(object, ...)
 Gene identifiers.}
 
 \item{strict}{\code{logical(1)}.
-Require all genes to match. Recommended by default. If set \code{FALSE}, instead
-will return a warning to the user, and subset the genes vector to only
-include matches.}
+Require all genes to match. Recommended by default.
+If set \code{FALSE}, instead will return a warning to the user, and subset the
+genes vector to only include matches.}
 
 \item{...}{Additional arguments.}
 }
@@ -54,7 +45,7 @@ writing code that needs to handle either gene identifier or gene name input
 dynamically (e.g. for single-cell RNA-seq marker analysis).
 }
 \note{
-Updated 2021-02-07.
+Updated 2021-06-09.
 }
 \section{Ambiguous gene names}{
 
