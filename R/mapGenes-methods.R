@@ -13,7 +13,7 @@
 #' is duplicated, these functions will return a warning.
 #'
 #' @name mapGenes
-#' @note Updated 2021-06-09.
+#' @note Updated 2021-06-10.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param strict `logical(1)`.
@@ -61,7 +61,7 @@ NULL
 #' Contains gene identifiers, gene names (symbols), and alternative (legacy)
 #' gene synonyms, when possible.
 #'
-#' @note Updated 2021-06-09.
+#' @note Updated 2021-06-10.
 #' @noRd
 .makeGeneMap <- function(object) {
     validObject(object)
@@ -72,9 +72,6 @@ NULL
     assert(identical(rownames(g2s), rownames(object)))
     df <- as(g2s, "DataFrame")
     colnames(df) <- camelCase(colnames(df), strict = TRUE)
-    suppressMessages({
-        df[["geneIdNoVersion"]] <- stripGeneVersions(df[["geneId"]])
-    })
     if (isSubset("geneSynonyms", colnames(rowData(object)))) {
         df[["geneSynonyms"]] <- rowData(object)[["geneSynonyms"]]
     }
@@ -83,7 +80,7 @@ NULL
 
 
 
-## Updated 2021-06-09.
+## Updated 2021-06-10.
 .mapGenes <- function(
     object,
     genes,
@@ -93,17 +90,22 @@ NULL
     assert(
         is(object, "DataFrame"),
         isSubset(
-            x = c("geneId", "geneIdNoVersion", "geneName"),
+            x = c("geneId", "geneName"),
             y = colnames(object)
         ),
         isCharacter(genes),
         isFlag(strict)
     )
+    object <- as(object, "DataFrame")
     if (isTRUE(strict)) {
         alertFun <- stop
     } else {
         alertFun <- alertWarning
     }
+    suppressMessages({
+        object[["geneIdNoVersion"]] <-
+            stripGeneVersions(object[["geneId"]])
+    })
     out <- vapply(
         X = genes,
         FUN = function(x) {
