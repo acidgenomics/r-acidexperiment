@@ -1,6 +1,6 @@
 #' Check that user-defined gene input matches expected values
 #'
-#' @note Updated 2020-10-05.
+#' @note Updated 2021-06-10.
 #' @export
 #'
 #' @inherit goalie::check return
@@ -55,11 +55,8 @@ matchesGene2Symbol <- function(
     if (is.null(rownames(gene2symbol))) {
         rownames(gene2symbol) <- rownames(x)
     }
-    ## Map genes to x rownames, using gene2symbol.
-    ok <- isSubset(
-        x = mapGenesToRownames(object = gene2symbol, genes = genes),
-        y = rownames(x)
-    )
+    idx <- .mapGenes(object = gene2symbol, genes = genes, strict = TRUE)
+    ok <- is.integer(idx) && !any(is.na(idx))
     if (!isTRUE(ok)) {
         return(false("Failed to map genes to rownames in '%s'.", .xname))
     }
