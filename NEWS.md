@@ -1,4 +1,4 @@
-## AcidExperiment 0.1.12 (UNRELEASED)
+## AcidExperiment 0.1.12 (2021-06-10)
 
 ### Minor changes
 
