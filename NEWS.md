@@ -1,3 +1,17 @@
+## AcidExperiment 0.1.12 (UNRELEASED)
+
+### Minor changes
+
+- `mapGenesToRownames`, `mapGenesToIDs`, `mapGenesToSymbols`: Improved the
+  flexibility of gene identifier matching for `SummarizedExperiment` method.
+  Now also attempts to match against `geneSynonyms` when defined in `rowData`,
+  which is incredibly useful for easy matching of deprecated gene names.
+- Removed unnecessary `Gene2Symbol` methods for `mapGenesToRownames`,
+  `mapGenesToIDs`, and `mapGenesToSymbols`.
+- `matchesGene2Symbol` no longer attempts to use the now removed `Gene2Symbol`
+  method for `mapGenesToRownames` internally. We simplified this check using
+  the internal `.mapGenes` function to locate index position instead.
+
 ## AcidExperiment 0.1.11 (2021-06-04)
 
 ### Minor changes
