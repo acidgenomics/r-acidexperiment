@@ -1,6 +1,9 @@
 #+TITLE: pipette
 #+STARTUP: content
 * Development
+** TODO Error if metadata inpt contains values we automatically assign.
+    e.g. date, wd, etc.
+** TODO Improve messages when exporting assays: need to format the cli commas.
 ** TODO mapGenes needs to handle mapping of gender markers without gene versions
    better (see AcidPlots update).
 ** TODO sampleData assignment method needs to check for camelCase names
