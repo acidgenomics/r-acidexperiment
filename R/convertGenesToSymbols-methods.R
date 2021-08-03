@@ -1,6 +1,10 @@
+## FIXME Need to add coverage for object containing NA values in gene symbols.
+
+
+
 #' @name convertGenesToSymbols
 #' @inherit AcidGenerics::convertGenesToSymbols
-#' @note Updated 2021-02-02.
+#' @note Updated 2021-08-03.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -128,7 +132,8 @@ setMethod(
 
 
 
-## Updated 2021-01-17.
+## FIXME Need to handle NA values here.
+## Updated 2021-08-03.
 `convertGenesToSymbols,GRanges` <-  # nolint
     function(object) {
         validObject(object)
@@ -151,6 +156,7 @@ setMethod(
 
 
 
+## FIXME Need to handle NA values better here.
 ## Updated 2021-01-17.
 `convertGenesToSymbols,SE` <-  # nolint
     function(object) {
@@ -177,6 +183,7 @@ setMethod(
 
 
 
+## FIXME Need to harden against NA values here better.
 ## Updated 2021-01-17.
 `convertSymbolsToGenes,SE` <-  # nolint
     function(object) {
