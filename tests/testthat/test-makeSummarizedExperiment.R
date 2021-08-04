@@ -1,12 +1,5 @@
 context("makeSummarizedExperiment")
 
-## Test for SummarizedExperiment instead of RangedSummarizedExperiment.
-SE <-  # nolint
-    structure(
-        .Data = "SummarizedExperiment",
-        package = "SummarizedExperiment"
-    )
-
 genes <- paste0("gene", seq_len(4L))
 samples <- paste0("sample", seq_len(4L))
 
@@ -63,13 +56,13 @@ test_that("SummarizedExperiment", {
         rowData = rowData,
         colData = colData
     )
-    expect_identical(class(object), SE)
+    expect_identical(simpleClass(object), "SummarizedExperiment")
 })
 
 test_that("Minimal input", {
     assays <- SimpleList(counts = matrix(nrow = 0L, ncol = 0L))
     x <- makeSummarizedExperiment(assays = assays)
-    expect_identical(class(x), SE)
+    expect_identical(simpleClass(object), "SummarizedExperiment")
     x <- makeSummarizedExperiment(
         assays = assays,
         rowRanges = NULL,
@@ -77,7 +70,7 @@ test_that("Minimal input", {
         colData = NULL,
         metadata = NULL
     )
-    expect_identical(class(x), SE)
+    expect_identical(simpleClass(object), "SummarizedExperiment")
 })
 
 test_that("Inform instead of error on invalid row and/or column names", {
