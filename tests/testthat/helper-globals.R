@@ -30,4 +30,5 @@ colData <- SummarizedExperiment::colData
 hasInternet <- goalie::hasInternet
 rowData <- SummarizedExperiment::rowData
 rowRanges <- SummarizedExperiment::rowRanges
+simpleClass <- AcidBase::simpleClass
 ## nolint end
