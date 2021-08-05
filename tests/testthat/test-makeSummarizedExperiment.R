@@ -61,9 +61,9 @@ test_that("SummarizedExperiment", {
 
 test_that("Minimal input", {
     assays <- SimpleList(counts = matrix(nrow = 0L, ncol = 0L))
-    x <- makeSummarizedExperiment(assays = assays)
+    object <- makeSummarizedExperiment(assays = assays)
     expect_identical(simpleClass(object), "SummarizedExperiment")
-    x <- makeSummarizedExperiment(
+    object <- makeSummarizedExperiment(
         assays = assays,
         rowRanges = NULL,
         rowData = NULL,
