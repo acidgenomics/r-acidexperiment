@@ -102,7 +102,6 @@ NULL
 
 
 
-## NOTE Need to handle NA values here.
 ## Updated 2021-08-03.
 `convertGenesToSymbols,GRanges` <-  # nolint
     function(object) {
@@ -116,7 +115,6 @@ NULL
 
 
 
-## NOTE Need to handle NA values better here.
 ## Updated 2021-01-17.
 `convertGenesToSymbols,SE` <-  # nolint
     function(object) {
@@ -133,7 +131,6 @@ NULL
 
 
 
-## NOTE Need to harden against NA values here better.
 ## Updated 2021-01-17.
 `convertSymbolsToGenes,SE` <-  # nolint
     function(object) {
