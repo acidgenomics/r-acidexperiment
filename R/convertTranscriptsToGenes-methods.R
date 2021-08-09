@@ -90,15 +90,6 @@ NULL
 
 
 
-#' @rdname convertTranscriptsToGenes
-setMethod(
-    f = "convertTranscriptsToGenes",
-    signature = signature("character"),
-    definition = `convertTranscriptsToGenes,character`
-)
-
-
-
 ## Consider aggregating the matrix to gene level instead.
 ## Updated 2020-01-30.
 `convertTranscriptsToGenes,matrix` <-  # nolint
@@ -121,27 +112,9 @@ setMethod(
 
 
 
-#' @rdname convertTranscriptsToGenes
-#' @export
-setMethod(
-    f = "convertTranscriptsToGenes",
-    signature = signature("matrix"),
-    definition = `convertTranscriptsToGenes,matrix`
-)
-
-
-
 ## Updated 2020-01-30.
 `convertTranscriptsToGenes,Matrix` <-  # nolint
     `convertTranscriptsToGenes,matrix`
-
-#' @rdname convertTranscriptsToGenes
-#' @export
-setMethod(
-    f = "convertTranscriptsToGenes",
-    signature = signature("Matrix"),
-    definition = `convertTranscriptsToGenes,Matrix`
-)
 
 
 
@@ -174,6 +147,29 @@ setMethod(
 #' @export
 setMethod(
     f = "convertTranscriptsToGenes",
+    signature = signature("Matrix"),
+    definition = `convertTranscriptsToGenes,Matrix`
+)
+
+#' @rdname convertTranscriptsToGenes
+#' @export
+setMethod(
+    f = "convertTranscriptsToGenes",
     signature = signature("SummarizedExperiment"),
     definition = `convertTranscriptsToGenes,SE`
+)
+
+#' @rdname convertTranscriptsToGenes
+setMethod(
+    f = "convertTranscriptsToGenes",
+    signature = signature("character"),
+    definition = `convertTranscriptsToGenes,character`
+)
+
+#' @rdname convertTranscriptsToGenes
+#' @export
+setMethod(
+    f = "convertTranscriptsToGenes",
+    signature = signature("matrix"),
+    definition = `convertTranscriptsToGenes,matrix`
 )

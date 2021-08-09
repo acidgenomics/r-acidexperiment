@@ -37,29 +37,9 @@ NULL
 
 
 
-#' @describeIn headtail Same method as `data.frame`.
-#' @export
-setMethod(
-    f = "headtail",
-    signature = signature("DataFrame"),
-    definition = `headtail,DataFrame`
-)
-
-
-
 ## Updated 2020-10-07.
 `headtail,Matrix` <-  # nolint
     `headtail,matrix`
-
-
-
-#' @describeIn headtail Same method as `matrix`.
-#' @export
-setMethod(
-    f = "headtail",
-    signature = signature("Matrix"),
-    definition = `headtail,Matrix`
-)
 
 
 
@@ -73,16 +53,6 @@ formals(`headtail,GRanges`) <- formals(`headtail,matrix`)
 
 
 
-#' @describeIn headtail Summarize the ranges.
-#' @export
-setMethod(
-    f = "headtail",
-    signature = signature("GRanges"),
-    definition = `headtail,GRanges`
-)
-
-
-
 ## Updated 2020-05-11.
 `headtail,SummarizedExperiment` <-  # nolint
     function() {
@@ -92,6 +62,30 @@ setMethod(
 formals(`headtail,SummarizedExperiment`) <- formals(`headtail,matrix`)
 
 
+
+#' @describeIn headtail Same method as `data.frame`.
+#' @export
+setMethod(
+    f = "headtail",
+    signature = signature("DataFrame"),
+    definition = `headtail,DataFrame`
+)
+
+#' @describeIn headtail Summarize the ranges.
+#' @export
+setMethod(
+    f = "headtail",
+    signature = signature("GRanges"),
+    definition = `headtail,GRanges`
+)
+
+#' @describeIn headtail Same method as `matrix`.
+#' @export
+setMethod(
+    f = "headtail",
+    signature = signature("Matrix"),
+    definition = `headtail,Matrix`
+)
 
 #' @describeIn headtail Summarize the primary `assay`.
 #' @export

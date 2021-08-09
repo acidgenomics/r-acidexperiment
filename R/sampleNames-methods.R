@@ -43,16 +43,6 @@ NULL
 
 
 
-#' @rdname sampleData
-#' @export
-setMethod(
-    f = "sampleNames",
-    signature = signature("SummarizedExperiment"),
-    definition = `sampleNames,SE`
-)
-
-
-
 ## Updated 2019-07-22.
 `sampleNames<-,SE,character` <-  # nolint
     function(object, value) {
@@ -74,6 +64,16 @@ setMethod(
         validObject(object)
         object
     }
+
+
+
+#' @rdname sampleData
+#' @export
+setMethod(
+    f = "sampleNames",
+    signature = signature("SummarizedExperiment"),
+    definition = `sampleNames,SE`
+)
 
 
 

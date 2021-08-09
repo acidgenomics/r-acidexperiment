@@ -35,16 +35,6 @@ NULL
 
 
 
-#' @rdname melt
-#' @export
-setMethod(
-    f = "melt",
-    signature = signature("Matrix"),
-    definition = `melt,Matrix`
-)
-
-
-
 ## Updated 2019-08-24.
 `melt,SE` <-  # nolint
     function(
@@ -78,6 +68,14 @@ formals(`melt,SE`)[args] <- formals(`melt,matrix`)[args]
 rm(args)
 
 
+
+#' @rdname melt
+#' @export
+setMethod(
+    f = "melt",
+    signature = signature("Matrix"),
+    definition = `melt,Matrix`
+)
 
 #' @rdname melt
 #' @export

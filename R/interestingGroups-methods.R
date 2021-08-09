@@ -27,16 +27,6 @@ NULL
 
 
 
-#' @rdname interestingGroups
-#' @export
-setMethod(
-    f = "interestingGroups",
-    signature = signature("Annotated"),
-    definition = `interestingGroups,Annotated`
-)
-
-
-
 ## Updated 2019-07-22.
 `interestingGroups<-,Annotated,character` <-  # nolint
     function(object, value) {
@@ -44,19 +34,6 @@ setMethod(
         metadata(object)[["interestingGroups"]] <- value
         object
     }
-
-
-
-#' @rdname interestingGroups
-#' @export
-setReplaceMethod(
-    f = "interestingGroups",
-    signature = signature(
-        object = "Annotated",
-        value = "character"
-    ),
-    definition = `interestingGroups<-,Annotated,character`
-)
 
 
 
@@ -80,25 +57,22 @@ setReplaceMethod(
 
 
 
-#' @rdname interestingGroups
-#' @export
-setReplaceMethod(
-    f = "interestingGroups",
-    signature = signature(
-        object = "SummarizedExperiment",
-        value = "character"
-    ),
-    definition = `interestingGroups<-,SE,character`
-)
-
-
-
 ## Updated 2019-07-22.
 `interestingGroups<-,Annotated,NULL` <-  # nolint
     function(object, value) {
         metadata(object)[["interestingGroups"]] <- NULL
         object
     }
+
+
+
+#' @rdname interestingGroups
+#' @export
+setMethod(
+    f = "interestingGroups",
+    signature = signature("Annotated"),
+    definition = `interestingGroups,Annotated`
+)
 
 
 
@@ -111,4 +85,26 @@ setReplaceMethod(
         value = "NULL"
     ),
     definition = `interestingGroups<-,Annotated,NULL`
+)
+
+#' @rdname interestingGroups
+#' @export
+setReplaceMethod(
+    f = "interestingGroups",
+    signature = signature(
+        object = "Annotated",
+        value = "character"
+    ),
+    definition = `interestingGroups<-,Annotated,character`
+)
+
+#' @rdname interestingGroups
+#' @export
+setReplaceMethod(
+    f = "interestingGroups",
+    signature = signature(
+        object = "SummarizedExperiment",
+        value = "character"
+    ),
+    definition = `interestingGroups<-,SE,character`
 )

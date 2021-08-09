@@ -3,15 +3,15 @@
 \name{as.SummarizedExperiment}
 \alias{as.SummarizedExperiment}
 \alias{coerce}
-\alias{as.SummarizedExperiment,SummarizedExperiment-method}
 \alias{as.SummarizedExperiment,RangedSummarizedExperiment-method}
+\alias{as.SummarizedExperiment,SummarizedExperiment-method}
 \title{Coercion methods}
 \usage{
 as.SummarizedExperiment(x, ...)
 
-\S4method{as.SummarizedExperiment}{SummarizedExperiment}(x)
-
 \S4method{as.SummarizedExperiment}{RangedSummarizedExperiment}(x)
+
+\S4method{as.SummarizedExperiment}{SummarizedExperiment}(x)
 }
 \arguments{
 \item{x}{Object.}

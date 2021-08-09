@@ -39,16 +39,6 @@ NULL
 
 
 
-#' @rdname sizeFactors
-#' @export
-setMethod(
-    f = "sizeFactors",
-    signature = signature("SummarizedExperiment"),
-    definition = `sizeFactors,SE`
-)
-
-
-
 ## Updated 2019-08-06.
 `sizeFactors<-,SE,ANY` <-  # nolint
     function(object, value) {
@@ -65,6 +55,15 @@ setMethod(
         object
     }
 
+
+
+#' @rdname sizeFactors
+#' @export
+setMethod(
+    f = "sizeFactors",
+    signature = signature("SummarizedExperiment"),
+    definition = `sizeFactors,SE`
+)
 
 
 #' @rdname sizeFactors

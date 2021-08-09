@@ -54,16 +54,6 @@ NULL
 
 
 
-#' @rdname coerce
-#' @export
-setMethod(
-    f = "as.SummarizedExperiment",
-    signature = signature("SummarizedExperiment"),
-    definition = `as.SummarizedExperiment,SE`
-)
-
-
-
 ## Updated 2019-08-23.
 `as.SummarizedExperiment,RSE` <-  # nolint
     function(x) {
@@ -82,4 +72,12 @@ setMethod(
     f = "as.SummarizedExperiment",
     signature = signature("RangedSummarizedExperiment"),
     definition = `as.SummarizedExperiment,RSE`
+)
+
+#' @rdname coerce
+#' @export
+setMethod(
+    f = "as.SummarizedExperiment",
+    signature = signature("SummarizedExperiment"),
+    definition = `as.SummarizedExperiment,SE`
 )

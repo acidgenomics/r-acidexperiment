@@ -2,15 +2,15 @@
 % Please edit documentation in R/AllGenerics.R, R/autopadZeros-methods.R
 \name{autopadZeros}
 \alias{autopadZeros}
-\alias{autopadZeros,matrix-method}
 \alias{autopadZeros,SummarizedExperiment-method}
+\alias{autopadZeros,matrix-method}
 \title{Autopad zeros}
 \usage{
 autopadZeros(object, ...)
 
-\S4method{autopadZeros}{matrix}(object, rownames = FALSE, colnames = TRUE, sort = TRUE)
-
 \S4method{autopadZeros}{SummarizedExperiment}(object, rownames = FALSE, colnames = TRUE, sort = TRUE)
+
+\S4method{autopadZeros}{matrix}(object, rownames = FALSE, colnames = TRUE, sort = TRUE)
 }
 \arguments{
 \item{object}{Object.}

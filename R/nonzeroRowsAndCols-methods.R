@@ -58,29 +58,9 @@ NULL
 
 
 
-#' @rdname nonzeroRowsAndCols
-#' @export
-setMethod(
-    f = "nonzeroRowsAndCols",
-    signature = signature("matrix"),
-    definition = `nonzeroRowsAndCols,matrix`
-)
-
-
-
 ## Updated 2021-02-22.
 `nonzeroRowsAndCols,Matrix` <-  # nolint
     `nonzeroRowsAndCols,matrix`
-
-
-
-#' @rdname nonzeroRowsAndCols
-#' @export
-setMethod(
-    f = "nonzeroRowsAndCols",
-    signature = signature("Matrix"),
-    definition = `nonzeroRowsAndCols,Matrix`
-)
 
 
 
@@ -99,6 +79,22 @@ setMethod(
 #' @export
 setMethod(
     f = "nonzeroRowsAndCols",
+    signature = signature("Matrix"),
+    definition = `nonzeroRowsAndCols,Matrix`
+)
+
+#' @rdname nonzeroRowsAndCols
+#' @export
+setMethod(
+    f = "nonzeroRowsAndCols",
     signature = signature("SummarizedExperiment"),
     definition = `nonzeroRowsAndCols,SE`
+)
+
+#' @rdname nonzeroRowsAndCols
+#' @export
+setMethod(
+    f = "nonzeroRowsAndCols",
+    signature = signature("matrix"),
+    definition = `nonzeroRowsAndCols,matrix`
 )

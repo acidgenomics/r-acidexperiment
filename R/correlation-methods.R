@@ -83,19 +83,6 @@ formals(`correlation,numeric,numeric`)[["method"]] <- method
 
 
 
-#' @rdname correlation
-#' @export
-setMethod(
-    f = "correlation",
-    signature = signature(
-        x = "numeric",
-        y = "numeric"
-    ),
-    definition = `correlation,numeric,numeric`
-)
-
-
-
 ## Updated 2021-02-03.
 `correlation,matrix,missing` <-  # nolint
     function(x, y = NULL, method) {
@@ -111,19 +98,6 @@ formals(`correlation,matrix,missing`)[["method"]] <- method
 
 
 
-#' @rdname correlation
-#' @export
-setMethod(
-    f = "correlation",
-    signature = signature(
-        x = "matrix",
-        y = "missingOrNULL"
-    ),
-    definition = `correlation,matrix,missing`
-)
-
-
-
 ## Updated 2019-11-08.
 `correlation,matrix,matrix` <-  # nolint
     function(x, y, method) {
@@ -135,52 +109,13 @@ formals(`correlation,matrix,matrix`)[["method"]] <- method
 
 
 
-#' @rdname correlation
-#' @export
-setMethod(
-    f = "correlation",
-    signature = signature(
-        x = "matrix",
-        y = "matrix"
-    ),
-    definition = `correlation,matrix,matrix`
-)
-
-
-
 `correlation,Matrix,missing` <-  # nolint
     `correlation,matrix,missing`
 
 
 
-#' @rdname correlation
-#' @export
-setMethod(
-    f = "correlation",
-    signature = signature(
-        x = "Matrix",
-        y = "missingOrNULL"
-    ),
-    definition = `correlation,Matrix,missing`
-)
-
-
-
 `correlation,Matrix,Matrix` <-  # nolint
     `correlation,matrix,matrix`
-
-
-
-#' @rdname correlation
-#' @export
-setMethod(
-    f = "correlation",
-    signature = signature(
-        x = "Matrix",
-        y = "Matrix"
-    ),
-    definition = `correlation,Matrix,Matrix`
-)
 
 
 
@@ -211,19 +146,6 @@ formals(`correlation,SE,missing`)[["method"]] <- method
 
 
 
-#' @rdname correlation
-#' @export
-setMethod(
-    f = "correlation",
-    signature = signature(
-        x = "SummarizedExperiment",
-        y = "missingOrNULL"
-    ),
-    definition = `correlation,SE,missing`
-)
-
-
-
 ## Updated 2019-11-08.
 `correlation,SE,SE` <-  # nolint
     function(x, y, i = 1L, method) {
@@ -237,7 +159,31 @@ setMethod(
 
 formals(`correlation,SE,SE`)[["method"]] <- method
 
+rm(method)
 
+
+
+#' @rdname correlation
+#' @export
+setMethod(
+    f = "correlation",
+    signature = signature(
+        x = "Matrix",
+        y = "Matrix"
+    ),
+    definition = `correlation,Matrix,Matrix`
+)
+
+#' @rdname correlation
+#' @export
+setMethod(
+    f = "correlation",
+    signature = signature(
+        x = "Matrix",
+        y = "missingOrNULL"
+    ),
+    definition = `correlation,Matrix,missing`
+)
 
 #' @rdname correlation
 #' @export
@@ -250,6 +196,46 @@ setMethod(
     definition = `correlation,SE,SE`
 )
 
+#' @rdname correlation
+#' @export
+setMethod(
+    f = "correlation",
+    signature = signature(
+        x = "SummarizedExperiment",
+        y = "missingOrNULL"
+    ),
+    definition = `correlation,SE,missing`
+)
 
+#' @rdname correlation
+#' @export
+setMethod(
+    f = "correlation",
+    signature = signature(
+        x = "matrix",
+        y = "matrix"
+    ),
+    definition = `correlation,matrix,matrix`
+)
 
-rm(method)
+#' @rdname correlation
+#' @export
+setMethod(
+    f = "correlation",
+    signature = signature(
+        x = "matrix",
+        y = "missingOrNULL"
+    ),
+    definition = `correlation,matrix,missing`
+)
+
+#' @rdname correlation
+#' @export
+setMethod(
+    f = "correlation",
+    signature = signature(
+        x = "numeric",
+        y = "numeric"
+    ),
+    definition = `correlation,numeric,numeric`
+)

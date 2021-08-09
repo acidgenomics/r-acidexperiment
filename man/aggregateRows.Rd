@@ -2,18 +2,18 @@
 % Please edit documentation in R/AllGenerics.R, R/aggregateRows-methods.R
 \name{aggregateRows}
 \alias{aggregateRows}
-\alias{aggregateRows,matrix-method}
 \alias{aggregateRows,Matrix-method}
 \alias{aggregateRows,SummarizedExperiment-method}
+\alias{aggregateRows,matrix-method}
 \title{Aggregate rows}
 \usage{
 aggregateRows(x, ...)
 
-\S4method{aggregateRows}{matrix}(x, by, fun = c("sum", "mean", "median", "geometricMean", "n"))
-
 \S4method{aggregateRows}{Matrix}(x, by, fun = c("sum", "mean"))
 
 \S4method{aggregateRows}{SummarizedExperiment}(x, col = "aggregate", fun = "sum")
+
+\S4method{aggregateRows}{matrix}(x, by, fun = c("sum", "mean", "median", "geometricMean", "n"))
 }
 \arguments{
 \item{x}{Object.}

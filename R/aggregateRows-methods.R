@@ -71,16 +71,6 @@ NULL
 
 
 
-#' @rdname aggregateRows
-#' @export
-setMethod(
-    f = "aggregateRows",
-    signature = signature("matrix"),
-    definition = `aggregateRows,matrix`
-)
-
-
-
 ## Updated 2020-05-22.
 `aggregateRows,Matrix` <-  # nolint
     function(
@@ -98,16 +88,6 @@ setMethod(
         ## Using our internal Matrix S4 method here.
         aggregate(x = x, by = by, fun = fun)
     }
-
-
-
-#' @rdname aggregateRows
-#' @export
-setMethod(
-    f = "aggregateRows",
-    signature = signature("Matrix"),
-    definition = `aggregateRows,Matrix`
-)
 
 
 
@@ -153,6 +133,22 @@ setMethod(
 #' @export
 setMethod(
     f = "aggregateRows",
+    signature = signature("Matrix"),
+    definition = `aggregateRows,Matrix`
+)
+
+#' @rdname aggregateRows
+#' @export
+setMethod(
+    f = "aggregateRows",
     signature = signature("SummarizedExperiment"),
     definition = `aggregateRows,SE`
+)
+
+#' @rdname aggregateRows
+#' @export
+setMethod(
+    f = "aggregateRows",
+    signature = signature("matrix"),
+    definition = `aggregateRows,matrix`
 )
