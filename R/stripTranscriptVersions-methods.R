@@ -12,12 +12,10 @@
 #' ## SummarizedExperiment ====
 #' object <- SummarizedExperiment_transcripts
 #' head(rowData(object)[["txId"]])
-#' head(rowData(object)[["geneId"]])
+#' rownames(object) <- as.character(rowData(object)[["txId"]])
 #' head(rownames(object))
-#' object <- stripGeneVersions(object)
 #' object <- stripTranscriptVersions(object)
 #' head(rowData(object)[["txId"]])
-#' head(rowData(object)[["geneId"]])
 #' head(rownames(object))
 NULL
 

@@ -1,7 +1,3 @@
-## FIXME Split this out into separate files.
-
-
-
 #' @name stripGeneVersions
 #' @inherit AcidGenomes::stripGeneVersions
 #' @note Updated 2021-08-09.
@@ -10,17 +6,15 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(SummarizedExperiment_transcripts, package = "AcidTest")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #' rowData <- SummarizedExperiment::rowData
 #'
 #' ## SummarizedExperiment ====
-#' object <- SummarizedExperiment_transcripts
-#' head(rowData(object)[["txId"]])
+#' object <- RangedSummarizedExperiment
 #' head(rowData(object)[["geneId"]])
+#' rownames(object) <- as.character(rowData(object)[["geneId"]])
 #' head(rownames(object))
 #' object <- stripGeneVersions(object)
-#' object <- stripTranscriptVersions(object)
-#' head(rowData(object)[["txId"]])
 #' head(rowData(object)[["geneId"]])
 #' head(rownames(object))
 NULL
