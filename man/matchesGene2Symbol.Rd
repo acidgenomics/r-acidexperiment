@@ -27,7 +27,7 @@ Gene-to-symbol mappings. Must contain \code{geneId} and \code{geneName} columns.
 Check that user-defined gene input matches expected values
 }
 \note{
-Updated 2020-10-05.
+Updated 2021-06-10.
 }
 \examples{
 x <- DataFrame(

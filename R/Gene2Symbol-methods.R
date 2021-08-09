@@ -1,6 +1,6 @@
 #' @name Gene2Symbol
 #' @inherit AcidGenomes::Gene2Symbol
-#' @note Updated 2021-02-01.
+#' @note Updated 2021-08-09.
 #'
 #' @param ... Additional arguments.
 #'
@@ -15,13 +15,16 @@ NULL
 
 
 
-## Updated 2021-02-02.
+## Updated 2021-08-09.
 `Gene2Symbol,SE` <-  # nolint
     function(object, format) {
         object <- as.SummarizedExperiment(object)
         df <- rowData(object)
         rownames(df) <- rownames(object)
-        do.call(what = Gene2Symbol, args = list(object = df, format = format))
+        Gene2Symbol(
+            object = df,
+            format = match.arg(format)
+        )
     }
 
 formals(`Gene2Symbol,SE`) <-

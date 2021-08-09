@@ -44,7 +44,7 @@ Modified object of same class.
 Convert genes to symbols
 }
 \note{
-Updated 2021-02-02.
+Updated 2021-08-03.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
