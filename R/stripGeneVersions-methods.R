@@ -1,6 +1,10 @@
-#' @name stripVersions
-#' @inherit AcidGenomes::stripVersions
-#' @note Updated 2021-02-03.
+## FIXME Split this out into separate files.
+
+
+
+#' @name stripGeneVersions
+#' @inherit AcidGenomes::stripGeneVersions
+#' @note Updated 2021-08-09.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -33,30 +37,10 @@ NULL
 
 
 
-#' @rdname stripVersions
+#' @rdname stripGeneVersions
 #' @export
 setMethod(
     f = "stripGeneVersions",
     signature = signature("SummarizedExperiment"),
     definition = `stripGeneVersions,SE`
-)
-
-
-
-## Updated 2021-02-02.
-`stripTranscriptVersions,SE` <-  # nolint
-    methodFunction(
-        f = "stripTranscriptVersions",
-        signature = "matrix",
-        package = "AcidGenomes"
-    )
-
-
-
-#' @rdname stripVersions
-#' @export
-setMethod(
-    f = "stripTranscriptVersions",
-    signature = signature("SummarizedExperiment"),
-    definition = `stripTranscriptVersions,SE`
 )

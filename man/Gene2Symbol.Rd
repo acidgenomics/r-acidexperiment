@@ -7,7 +7,7 @@
 \usage{
 Gene2Symbol(object, ...)
 
-\S4method{Gene2Symbol}{SummarizedExperiment}(object, format = c("makeUnique", "unmodified", "1:1"))
+\S4method{Gene2Symbol}{SummarizedExperiment}(object, format = c("makeUnique", "1:1", "unmodified"))
 }
 \arguments{
 \item{object}{Object.}
@@ -32,7 +32,7 @@ long format.
 Gene-to-symbol mappings
 }
 \note{
-Updated 2021-02-01.
+Updated 2021-08-09.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
