@@ -156,7 +156,7 @@ NULL
 
 
 
-## Updated 2021-06-09.
+## Updated 2021-08-09.
 `mapGenesToRownames,SE` <-  # nolint
     function(
         object,
@@ -169,9 +169,9 @@ NULL
             isFlag(strict)
         )
         ## Check to see if object contains gene-to-symbol mappings.
-        tryCatch(
+        map <- tryCatch(
             expr = {
-                map <- .makeGeneMap(object)
+                .makeGeneMap(object)
             },
             error = function(e) {
                 NULL
