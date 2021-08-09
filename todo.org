@@ -1,6 +1,8 @@
 #+TITLE: pipette
 #+STARTUP: content
 * Development
+** TODO `convertGenesToSymbols`: Need to add coverage for object
+   containing NA values in gene symbols.
 ** TODO Error if metadata inpt contains values we automatically assign.
     e.g. date, wd, etc.
 ** TODO Improve messages when exporting assays: need to format the cli commas.
