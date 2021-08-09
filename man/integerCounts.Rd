@@ -2,18 +2,18 @@
 % Please edit documentation in R/AllGenerics.R, R/integerCounts-methods.R
 \name{integerCounts}
 \alias{integerCounts}
-\alias{integerCounts,matrix-method}
 \alias{integerCounts,Matrix-method}
 \alias{integerCounts,SummarizedExperiment-method}
+\alias{integerCounts,matrix-method}
 \title{Integer counts}
 \usage{
 integerCounts(object, ...)
 
-\S4method{integerCounts}{matrix}(object)
-
 \S4method{integerCounts}{Matrix}(object)
 
 \S4method{integerCounts}{SummarizedExperiment}(object)
+
+\S4method{integerCounts}{matrix}(object)
 }
 \arguments{
 \item{object}{Object.}

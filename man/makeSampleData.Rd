@@ -2,15 +2,15 @@
 % Please edit documentation in R/AllGenerics.R, R/makeSampleData-methods.R
 \name{makeSampleData}
 \alias{makeSampleData}
-\alias{makeSampleData,data.frame-method}
 \alias{makeSampleData,DataFrame-method}
+\alias{makeSampleData,data.frame-method}
 \title{Make sample data}
 \usage{
 makeSampleData(object, ...)
 
-\S4method{makeSampleData}{data.frame}(object)
-
 \S4method{makeSampleData}{DataFrame}(object)
+
+\S4method{makeSampleData}{data.frame}(object)
 }
 \arguments{
 \item{object}{Object.}

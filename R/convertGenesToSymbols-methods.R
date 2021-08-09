@@ -1,4 +1,4 @@
-## FIXME Need to add coverage for object containing NA values in gene symbols.
+## NOTE Need to add coverage for object containing NA values in gene symbols.
 
 
 
@@ -83,16 +83,6 @@ NULL
 
 
 
-#' @rdname convertGenesToSymbols
-#' @export
-setMethod(
-    f = "convertGenesToSymbols",
-    signature = signature("character"),
-    definition = `convertGenesToSymbols,character`
-)
-
-
-
 ## Updated 2021-01-17.
 `convertGenesToSymbols,matrix` <-  # nolint
     function(object, gene2symbol) {
@@ -106,33 +96,13 @@ setMethod(
 
 
 
-#' @rdname convertGenesToSymbols
-#' @export
-setMethod(
-    f = "convertGenesToSymbols",
-    signature = signature("matrix"),
-    definition = `convertGenesToSymbols,matrix`
-)
-
-
-
 ## Updated 2020-01-30.
 `convertGenesToSymbols,Matrix` <-  # nolint
     `convertGenesToSymbols,matrix`
 
 
 
-#' @rdname convertGenesToSymbols
-#' @export
-setMethod(
-    f = "convertGenesToSymbols",
-    signature = signature("Matrix"),
-    definition = `convertGenesToSymbols,Matrix`
-)
-
-
-
-## FIXME Need to handle NA values here.
+## NOTE Need to handle NA values here.
 ## Updated 2021-08-03.
 `convertGenesToSymbols,GRanges` <-  # nolint
     function(object) {
@@ -146,17 +116,7 @@ setMethod(
 
 
 
-#' @rdname convertGenesToSymbols
-#' @export
-setMethod(
-    f = "convertGenesToSymbols",
-    signature = signature("GRanges"),
-    definition = `convertGenesToSymbols,GRanges`
-)
-
-
-
-## FIXME Need to handle NA values better here.
+## NOTE Need to handle NA values better here.
 ## Updated 2021-01-17.
 `convertGenesToSymbols,SE` <-  # nolint
     function(object) {
@@ -173,17 +133,7 @@ setMethod(
 
 
 
-#' @rdname convertGenesToSymbols
-#' @export
-setMethod(
-    f = "convertGenesToSymbols",
-    signature = signature("SummarizedExperiment"),
-    definition = `convertGenesToSymbols,SE`
-)
-
-
-
-## FIXME Need to harden against NA values here better.
+## NOTE Need to harden against NA values here better.
 ## Updated 2021-01-17.
 `convertSymbolsToGenes,SE` <-  # nolint
     function(object) {
@@ -196,6 +146,48 @@ setMethod(
         rownames(object) <- as.character(gene2symbol[[1L]])
         object
     }
+
+
+
+#' @rdname convertGenesToSymbols
+#' @export
+setMethod(
+    f = "convertGenesToSymbols",
+    signature = signature("GRanges"),
+    definition = `convertGenesToSymbols,GRanges`
+)
+
+#' @rdname convertGenesToSymbols
+#' @export
+setMethod(
+    f = "convertGenesToSymbols",
+    signature = signature("Matrix"),
+    definition = `convertGenesToSymbols,Matrix`
+)
+
+#' @rdname convertGenesToSymbols
+#' @export
+setMethod(
+    f = "convertGenesToSymbols",
+    signature = signature("SummarizedExperiment"),
+    definition = `convertGenesToSymbols,SE`
+)
+
+#' @rdname convertGenesToSymbols
+#' @export
+setMethod(
+    f = "convertGenesToSymbols",
+    signature = signature("character"),
+    definition = `convertGenesToSymbols,character`
+)
+
+#' @rdname convertGenesToSymbols
+#' @export
+setMethod(
+    f = "convertGenesToSymbols",
+    signature = signature("matrix"),
+    definition = `convertGenesToSymbols,matrix`
+)
 
 
 

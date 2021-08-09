@@ -2,26 +2,22 @@
 % Please edit documentation in R/AllGenerics.R, R/correlation-methods.R
 \name{correlation}
 \alias{correlation}
-\alias{correlation,numeric,numeric-method}
-\alias{correlation,matrix,missingOrNULL-method}
-\alias{correlation,matrix,matrix-method}
-\alias{correlation,Matrix,missingOrNULL-method}
 \alias{correlation,Matrix,Matrix-method}
-\alias{correlation,SummarizedExperiment,missingOrNULL-method}
+\alias{correlation,Matrix,missingOrNULL-method}
 \alias{correlation,SummarizedExperiment,SummarizedExperiment-method}
+\alias{correlation,SummarizedExperiment,missingOrNULL-method}
+\alias{correlation,matrix,matrix-method}
+\alias{correlation,matrix,missingOrNULL-method}
+\alias{correlation,numeric,numeric-method}
 \title{Correlation}
 \usage{
 correlation(x, y, ...)
 
-\S4method{correlation}{numeric,numeric}(x, y, method = c("pearson", "kendall", "spearman"))
-
-\S4method{correlation}{matrix,missingOrNULL}(x, y = NULL, method = c("pearson", "kendall", "spearman"))
-
-\S4method{correlation}{matrix,matrix}(x, y, method = c("pearson", "kendall", "spearman"))
+\S4method{correlation}{Matrix,Matrix}(x, y, method = c("pearson", "kendall", "spearman"))
 
 \S4method{correlation}{Matrix,missingOrNULL}(x, y = NULL, method = c("pearson", "kendall", "spearman"))
 
-\S4method{correlation}{Matrix,Matrix}(x, y, method = c("pearson", "kendall", "spearman"))
+\S4method{correlation}{SummarizedExperiment,SummarizedExperiment}(x, y, i = 1L, method = c("pearson", "kendall", "spearman"))
 
 \S4method{correlation}{SummarizedExperiment,missingOrNULL}(
   x,
@@ -31,7 +27,11 @@ correlation(x, y, ...)
   method = c("pearson", "kendall", "spearman")
 )
 
-\S4method{correlation}{SummarizedExperiment,SummarizedExperiment}(x, y, i = 1L, method = c("pearson", "kendall", "spearman"))
+\S4method{correlation}{matrix,matrix}(x, y, method = c("pearson", "kendall", "spearman"))
+
+\S4method{correlation}{matrix,missingOrNULL}(x, y = NULL, method = c("pearson", "kendall", "spearman"))
+
+\S4method{correlation}{numeric,numeric}(x, y, method = c("pearson", "kendall", "spearman"))
 }
 \arguments{
 \item{x}{Object.}

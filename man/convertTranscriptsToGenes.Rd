@@ -3,21 +3,21 @@
 %   R/convertTranscriptsToGenes-methods.R
 \name{convertTranscriptsToGenes}
 \alias{convertTranscriptsToGenes}
-\alias{convertTranscriptsToGenes,character-method}
-\alias{convertTranscriptsToGenes,matrix-method}
 \alias{convertTranscriptsToGenes,Matrix-method}
 \alias{convertTranscriptsToGenes,SummarizedExperiment-method}
+\alias{convertTranscriptsToGenes,character-method}
+\alias{convertTranscriptsToGenes,matrix-method}
 \title{Convert transcripts to genes}
 \usage{
 convertTranscriptsToGenes(object, ...)
 
-\S4method{convertTranscriptsToGenes}{character}(object, tx2gene)
-
-\S4method{convertTranscriptsToGenes}{matrix}(object, tx2gene, aggregate = TRUE)
-
 \S4method{convertTranscriptsToGenes}{Matrix}(object, tx2gene, aggregate = TRUE)
 
 \S4method{convertTranscriptsToGenes}{SummarizedExperiment}(object)
+
+\S4method{convertTranscriptsToGenes}{character}(object, tx2gene)
+
+\S4method{convertTranscriptsToGenes}{matrix}(object, tx2gene, aggregate = TRUE)
 }
 \arguments{
 \item{object}{Object.}

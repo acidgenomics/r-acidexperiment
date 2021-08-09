@@ -4,9 +4,9 @@
 \alias{interestingGroups}
 \alias{interestingGroups<-}
 \alias{interestingGroups,Annotated-method}
+\alias{interestingGroups<-,Annotated,NULL-method}
 \alias{interestingGroups<-,Annotated,character-method}
 \alias{interestingGroups<-,SummarizedExperiment,character-method}
-\alias{interestingGroups<-,Annotated,NULL-method}
 \title{Interesting groups}
 \usage{
 interestingGroups(object, ...)
@@ -15,11 +15,11 @@ interestingGroups(object, ...)  <- value
 
 \S4method{interestingGroups}{Annotated}(object)
 
+\S4method{interestingGroups}{Annotated,`NULL`}(object) <- value
+
 \S4method{interestingGroups}{Annotated,character}(object) <- value
 
 \S4method{interestingGroups}{SummarizedExperiment,character}(object) <- value
-
-\S4method{interestingGroups}{Annotated,`NULL`}(object) <- value
 }
 \arguments{
 \item{object}{Object.}
