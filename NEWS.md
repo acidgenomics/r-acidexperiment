@@ -1,3 +1,11 @@
+## AcidExperiment 0.1.13 (2021-08-09)
+
+### Minor changes
+
+- Updated package dependency version cutoffs.
+- `Gene2Symbol`: Tightened up internal `match.arg` handling for `format`
+  argument, in defined `SummarizedExperiment` method.
+
 ## AcidExperiment 0.1.12 (2021-06-10)
 
 ### Minor changes

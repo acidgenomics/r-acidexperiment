@@ -89,16 +89,6 @@ NULL
 
 
 
-#' @rdname aggregate
-#' @export
-setMethod(
-    f = "aggregate",
-    signature = signature("matrix"),
-    definition = `aggregate,matrix`
-)
-
-
-
 ## Matrix multiplication using sparse model (design matrix).
 ## Note that this works row-wise, like stats data.frame method.
 ## Updated 2021-02-11.
@@ -138,4 +128,12 @@ setMethod(
     f = "aggregate",
     signature = signature("Matrix"),
     definition = `aggregate,Matrix`
+)
+
+#' @rdname aggregate
+#' @export
+setMethod(
+    f = "aggregate",
+    signature = signature("matrix"),
+    definition = `aggregate,matrix`
 )
