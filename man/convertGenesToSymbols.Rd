@@ -4,11 +4,11 @@
 \name{convertGenesToSymbols}
 \alias{convertGenesToSymbols}
 \alias{convertSymbolsToGenes}
+\alias{convertGenesToSymbols,GRanges-method}
+\alias{convertGenesToSymbols,Matrix-method}
+\alias{convertGenesToSymbols,SummarizedExperiment-method}
 \alias{convertGenesToSymbols,character-method}
 \alias{convertGenesToSymbols,matrix-method}
-\alias{convertGenesToSymbols,Matrix-method}
-\alias{convertGenesToSymbols,GRanges-method}
-\alias{convertGenesToSymbols,SummarizedExperiment-method}
 \alias{convertSymbolsToGenes,SummarizedExperiment-method}
 \title{Convert genes to symbols}
 \usage{
@@ -16,15 +16,15 @@ convertGenesToSymbols(object, ...)
 
 convertSymbolsToGenes(object, ...)
 
-\S4method{convertGenesToSymbols}{character}(object, gene2symbol)
-
-\S4method{convertGenesToSymbols}{matrix}(object, gene2symbol)
+\S4method{convertGenesToSymbols}{GRanges}(object)
 
 \S4method{convertGenesToSymbols}{Matrix}(object, gene2symbol)
 
-\S4method{convertGenesToSymbols}{GRanges}(object)
-
 \S4method{convertGenesToSymbols}{SummarizedExperiment}(object)
+
+\S4method{convertGenesToSymbols}{character}(object, gene2symbol)
+
+\S4method{convertGenesToSymbols}{matrix}(object, gene2symbol)
 
 \S4method{convertSymbolsToGenes}{SummarizedExperiment}(object)
 }

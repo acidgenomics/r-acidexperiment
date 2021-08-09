@@ -2,18 +2,18 @@
 % Please edit documentation in R/AllGenerics.R, R/nonzeroRowsAndCols-methods.R
 \name{nonzeroRowsAndCols}
 \alias{nonzeroRowsAndCols}
-\alias{nonzeroRowsAndCols,matrix-method}
 \alias{nonzeroRowsAndCols,Matrix-method}
 \alias{nonzeroRowsAndCols,SummarizedExperiment-method}
+\alias{nonzeroRowsAndCols,matrix-method}
 \title{Subset object to keep only non-zero rows and columns}
 \usage{
 nonzeroRowsAndCols(object, ...)
 
-\S4method{nonzeroRowsAndCols}{matrix}(object)
-
 \S4method{nonzeroRowsAndCols}{Matrix}(object)
 
 \S4method{nonzeroRowsAndCols}{SummarizedExperiment}(object, assay = 1L)
+
+\S4method{nonzeroRowsAndCols}{matrix}(object)
 }
 \arguments{
 \item{object}{Object.}
