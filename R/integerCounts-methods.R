@@ -35,32 +35,12 @@ NULL
 
 
 
-#' @rdname integerCounts
-#' @export
-setMethod(
-    f = "integerCounts",
-    signature = signature("matrix"),
-    definition = `integerCounts,matrix`
-)
-
-
-
 ## Updated 2019-12-04.
 `integerCounts,Matrix` <-  # nolint
     function(object) {
         object <- round(x = object, digits = 0L)
         object
     }
-
-
-
-#' @rdname integerCounts
-#' @export
-setMethod(
-    f = "integerCounts",
-    signature = signature("Matrix"),
-    definition = `integerCounts,Matrix`
-)
 
 
 
@@ -76,6 +56,22 @@ setMethod(
 #' @export
 setMethod(
     f = "integerCounts",
+    signature = signature("Matrix"),
+    definition = `integerCounts,Matrix`
+)
+
+#' @rdname integerCounts
+#' @export
+setMethod(
+    f = "integerCounts",
     signature = signature("SummarizedExperiment"),
     definition = `integerCounts,SE`
+)
+
+#' @rdname integerCounts
+#' @export
+setMethod(
+    f = "integerCounts",
+    signature = signature("matrix"),
+    definition = `integerCounts,matrix`
 )

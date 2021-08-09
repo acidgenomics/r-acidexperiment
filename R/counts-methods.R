@@ -35,16 +35,6 @@ NULL
 
 
 
-#' @rdname counts
-#' @export
-setMethod(
-    f = "counts",
-    signature = signature("SummarizedExperiment"),
-    definition = `counts,SE`
-)
-
-
-
 ## Updated 2019-08-06.
 `counts<-,SE,matrix` <-  # nolint
     function(object, value) {
@@ -60,22 +50,19 @@ setMethod(
 
 
 
-#' @rdname counts
-#' @export
-setReplaceMethod(
-    f = "counts",
-    signature = signature(
-        object = "SummarizedExperiment",
-        value = "matrix"
-    ),
-    definition = `counts<-,SE,matrix`
-)
-
-
-
 ## Updated 2019-08-06.
 `counts<-,SE,Matrix` <-  # nolint
     `counts<-,SE,matrix`
+
+
+
+#' @rdname counts
+#' @export
+setMethod(
+    f = "counts",
+    signature = signature("SummarizedExperiment"),
+    definition = `counts,SE`
+)
 
 
 
@@ -88,4 +75,15 @@ setReplaceMethod(
         value = "Matrix"
     ),
     definition = `counts<-,SE,Matrix`
+)
+
+#' @rdname counts
+#' @export
+setReplaceMethod(
+    f = "counts",
+    signature = signature(
+        object = "SummarizedExperiment",
+        value = "matrix"
+    ),
+    definition = `counts<-,SE,matrix`
 )

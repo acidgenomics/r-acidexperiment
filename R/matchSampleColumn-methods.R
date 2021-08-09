@@ -29,16 +29,6 @@ NULL
 
 
 
-#' @rdname matchSampleColumn
-#' @export
-setMethod(
-    f = "matchSampleColumn",
-    signature = signature("DataFrame"),
-    definition = `matchSampleColumn,DataFrame`
-)
-
-
-
 ## Updated 2021-01-16.
 `matchSampleColumn,SE` <-  # nolint
     function(object) {
@@ -46,6 +36,14 @@ setMethod(
 }
 
 
+
+#' @rdname matchSampleColumn
+#' @export
+setMethod(
+    f = "matchSampleColumn",
+    signature = signature("DataFrame"),
+    definition = `matchSampleColumn,DataFrame`
+)
 
 #' @rdname matchSampleColumn
 #' @export

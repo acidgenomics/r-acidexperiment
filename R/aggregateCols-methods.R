@@ -70,16 +70,6 @@ NULL
 
 
 
-#' @rdname aggregateCols
-#' @export
-setMethod(
-    f = "aggregateCols",
-    signature = signature("matrix"),
-    definition = `aggregateCols,matrix`
-)
-
-
-
 ## Updated 2021-02-22.
 `aggregateCols,Matrix` <-  # nolint
     function(
@@ -93,16 +83,6 @@ setMethod(
         x <- t(x)
         x
     }
-
-
-
-#' @rdname aggregateCols
-#' @export
-setMethod(
-    f = "aggregateCols",
-    signature = signature("Matrix"),
-    definition = `aggregateCols,Matrix`
-)
 
 
 
@@ -156,6 +136,22 @@ setMethod(
 #' @export
 setMethod(
     f = "aggregateCols",
+    signature = signature("Matrix"),
+    definition = `aggregateCols,Matrix`
+)
+
+#' @rdname aggregateCols
+#' @export
+setMethod(
+    f = "aggregateCols",
     signature = signature("SummarizedExperiment"),
     definition = `aggregateCols,SE`
+)
+
+#' @rdname aggregateCols
+#' @export
+setMethod(
+    f = "aggregateCols",
+    signature = signature("matrix"),
+    definition = `aggregateCols,matrix`
 )

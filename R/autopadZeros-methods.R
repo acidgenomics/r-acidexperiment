@@ -58,16 +58,6 @@ NULL
 
 
 
-#' @rdname autopadZeros
-#' @export
-setMethod(
-    f = "autopadZeros",
-    signature = signature("matrix"),
-    definition = `autopadZeros,matrix`
-)
-
-
-
 ## Updated 2019-08-05.
 `autopadZeros,SE` <-  # nolint
     function(object, rownames = FALSE, colnames = TRUE, sort = TRUE) {
@@ -94,4 +84,12 @@ setMethod(
     f = "autopadZeros",
     signature = signature("SummarizedExperiment"),
     definition = `autopadZeros,SE`
+)
+
+#' @rdname autopadZeros
+#' @export
+setMethod(
+    f = "autopadZeros",
+    signature = signature("matrix"),
+    definition = `autopadZeros,matrix`
 )

@@ -29,6 +29,12 @@ NULL
 
 
 
+## Updated 2019-07-22.
+`geneNames,SE` <-  # nolint
+    `geneNames,Vector`
+
+
+
 #' @rdname geneNames
 #' @export
 setMethod(
@@ -36,14 +42,6 @@ setMethod(
     signature = signature("GRanges"),
     definition = `geneNames,GRanges`
 )
-
-
-
-## Updated 2019-07-22.
-`geneNames,SE` <-  # nolint
-    `geneNames,Vector`
-
-
 
 #' @rdname geneNames
 #' @export

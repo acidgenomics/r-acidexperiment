@@ -187,29 +187,9 @@ NULL
 
 
 
-#' @rdname calculateMetrics
-#' @export
-setMethod(
-    f = "calculateMetrics",
-    signature = signature("matrix"),
-    definition = `calculateMetrics,matrix`
-)
-
-
-
 ## Updated 2021-02-22.
 `calculateMetrics,Matrix` <-  # nolint
     `calculateMetrics,matrix`
-
-
-
-#' @rdname calculateMetrics
-#' @export
-setMethod(
-    f = "calculateMetrics",
-    signature = signature("Matrix"),
-    definition = `calculateMetrics,Matrix`
-)
 
 
 
@@ -248,6 +228,22 @@ setMethod(
 #' @export
 setMethod(
     f = "calculateMetrics",
+    signature = signature("Matrix"),
+    definition = `calculateMetrics,Matrix`
+)
+
+#' @rdname calculateMetrics
+#' @export
+setMethod(
+    f = "calculateMetrics",
     signature = signature("RangedSummarizedExperiment"),
     definition = `calculateMetrics,RSE`
+)
+
+#' @rdname calculateMetrics
+#' @export
+setMethod(
+    f = "calculateMetrics",
+    signature = signature("matrix"),
+    definition = `calculateMetrics,matrix`
 )

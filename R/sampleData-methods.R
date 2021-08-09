@@ -123,16 +123,6 @@ NULL
 
 
 
-#' @rdname sampleData
-#' @export
-setMethod(
-    f = "sampleData",
-    signature = signature("SummarizedExperiment"),
-    definition = `sampleData,SE`
-)
-
-
-
 ## nolint start
 ##
 ## Note that attempting to use `NULL` to remove columns on a DataFrame
@@ -155,6 +145,16 @@ setMethod(
         validObject(object)
         object
     }
+
+
+
+#' @rdname sampleData
+#' @export
+setMethod(
+    f = "sampleData",
+    signature = signature("SummarizedExperiment"),
+    definition = `sampleData,SE`
+)
 
 
 

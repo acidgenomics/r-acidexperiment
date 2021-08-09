@@ -2,18 +2,18 @@
 % Please edit documentation in R/AllGenerics.R, R/aggregateCols-methods.R
 \name{aggregateCols}
 \alias{aggregateCols}
-\alias{aggregateCols,matrix-method}
 \alias{aggregateCols,Matrix-method}
 \alias{aggregateCols,SummarizedExperiment-method}
+\alias{aggregateCols,matrix-method}
 \title{Aggregate columns}
 \usage{
 aggregateCols(x, ...)
 
-\S4method{aggregateCols}{matrix}(x, by, fun = c("sum", "mean", "median", "geometricMean"))
-
 \S4method{aggregateCols}{Matrix}(x, by, fun = c("sum", "mean"))
 
 \S4method{aggregateCols}{SummarizedExperiment}(x, col = "aggregate", fun = "sum")
+
+\S4method{aggregateCols}{matrix}(x, by, fun = c("sum", "mean", "median", "geometricMean"))
 }
 \arguments{
 \item{x}{Object.}

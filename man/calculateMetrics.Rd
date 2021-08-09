@@ -2,18 +2,18 @@
 % Please edit documentation in R/AllGenerics.R, R/calculateMetrics-methods.R
 \name{calculateMetrics}
 \alias{calculateMetrics}
-\alias{calculateMetrics,matrix-method}
 \alias{calculateMetrics,Matrix-method}
 \alias{calculateMetrics,RangedSummarizedExperiment-method}
+\alias{calculateMetrics,matrix-method}
 \title{Calculate quality control metrics}
 \usage{
 calculateMetrics(object, ...)
 
-\S4method{calculateMetrics}{matrix}(object, rowRanges = NULL, prefilter = FALSE)
-
 \S4method{calculateMetrics}{Matrix}(object, rowRanges = NULL, prefilter = FALSE)
 
 \S4method{calculateMetrics}{RangedSummarizedExperiment}(object, prefilter = FALSE)
+
+\S4method{calculateMetrics}{matrix}(object, rowRanges = NULL, prefilter = FALSE)
 }
 \arguments{
 \item{object}{Object.}

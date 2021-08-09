@@ -51,16 +51,6 @@ NULL
 
 
 
-#' @rdname makeSampleData
-#' @export
-setMethod(
-    f = "makeSampleData",
-    signature = signature("data.frame"),
-    definition = `makeSampleData,data.frame`
-)
-
-
-
 ## Updated 2021-02-25.
 `makeSampleData,DataFrame` <-  # nolint
     function(object) {
@@ -133,4 +123,12 @@ setMethod(
     f = "makeSampleData",
     signature = signature("DataFrame"),
     definition = `makeSampleData,DataFrame`
+)
+
+#' @rdname makeSampleData
+#' @export
+setMethod(
+    f = "makeSampleData",
+    signature = signature("data.frame"),
+    definition = `makeSampleData,data.frame`
 )

@@ -55,7 +55,6 @@ NULL
 
 
 
-## Internal functions ==========================================================
 #' Make a gene mapping data frame
 #'
 #' Contains gene identifiers, gene names (symbols), and alternative (legacy)
@@ -137,7 +136,6 @@ NULL
 
 
 
-# S4 method definitions =======================================================
 ## Updated 2021-06-09.
 `mapGenesToIDs,SE` <-  # nolint
     function(
@@ -233,7 +231,6 @@ NULL
 
 
 
-## S4 method exports ===========================================================
 #' @rdname mapGenes
 #' @export
 setMethod(
