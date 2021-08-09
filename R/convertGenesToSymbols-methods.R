@@ -1,7 +1,3 @@
-## NOTE Need to add coverage for object containing NA values in gene symbols.
-
-
-
 #' @name convertGenesToSymbols
 #' @inherit AcidGenerics::convertGenesToSymbols
 #' @note Updated 2021-08-03.
