@@ -2,15 +2,15 @@
 % Please edit documentation in R/AllGenerics.R, R/aggregate-methods.R
 \name{aggregate}
 \alias{aggregate}
-\alias{aggregate,matrix-method}
 \alias{aggregate,Matrix-method}
+\alias{aggregate,matrix-method}
 \title{Aggregate}
 \usage{
 aggregate(x, ...)
 
-\S4method{aggregate}{matrix}(x, by, fun = c("sum", "mean", "median", "geometricMean", "n"))
-
 \S4method{aggregate}{Matrix}(x, by, fun = c("sum", "mean", "n"))
+
+\S4method{aggregate}{matrix}(x, by, fun = c("sum", "mean", "median", "geometricMean", "n"))
 }
 \arguments{
 \item{x}{Object.}

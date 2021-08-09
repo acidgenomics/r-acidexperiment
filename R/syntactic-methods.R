@@ -1,7 +1,7 @@
 #' Syntactic naming functions
 #'
 #' @name syntactic
-#' @note Updated 2021-02-03.
+#' @note Updated 2021-08-09.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @inheritParams syntactic::camelCase
@@ -42,16 +42,6 @@ NULL
 
 
 
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "camelCase",
-    signature = signature("atomic"),
-    definition = `camelCase,atomic`
-)
-
-
-
 `camelCase,factor` <-  # nolint
     function(object, names = TRUE, strict = TRUE) {
         assert(
@@ -72,27 +62,7 @@ setMethod(
 
 
 
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "camelCase",
-    signature = signature("factor"),
-    definition = `camelCase,factor`
-)
-
-
-
 `camelCase,list` <- `camelCase,atomic`  # nolint
-
-
-
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "camelCase",
-    signature = signature("list"),
-    definition = `camelCase,list`
-)
 
 
 
@@ -120,27 +90,7 @@ setMethod(
 
 
 
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "camelCase",
-    signature = signature("matrix"),
-    definition = `camelCase,matrix`
-)
-
-
-
 `camelCase,data.frame` <- `camelCase,matrix`  # nolint
-
-
-
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "camelCase",
-    signature = signature("data.frame"),
-    definition = `camelCase,data.frame`
-)
 
 
 
@@ -172,16 +122,6 @@ setMethod(
         }
         object
     }
-
-
-
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "camelCase",
-    signature = signature("Vector"),
-    definition = `camelCase,Vector`
-)
 
 
 
@@ -222,42 +162,12 @@ setMethod(
 
 
 
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "camelCase",
-    signature = signature("DataFrame"),
-    definition = `camelCase,DataFrame`
-)
-
-
-
 `camelCase,Ranges` <- `camelCase,Vector`  # nolint
 formals(`camelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "camelCase",
-    signature = signature("Ranges"),
-    definition = `camelCase,Ranges`
-)
-
-
-
 `camelCase,Matrix` <- `camelCase,matrix`  # nolint
-
-
-
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "camelCase",
-    signature = signature("Matrix"),
-    definition = `camelCase,Matrix`
-)
 
 
 
@@ -309,16 +219,6 @@ setMethod(
 
 
 
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "camelCase",
-    signature = signature("SummarizedExperiment"),
-    definition = `camelCase,SummarizedExperiment`
-)
-
-
-
 `dottedCase,atomic` <-  # nolint
     function(object, names = TRUE) {
         assert(isFlag(names))
@@ -327,16 +227,6 @@ setMethod(
         }
         object
     }
-
-
-
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "dottedCase",
-    signature = signature("atomic"),
-    definition = `dottedCase,atomic`
-)
 
 
 
@@ -357,27 +247,7 @@ setMethod(
 
 
 
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "dottedCase",
-    signature = signature("factor"),
-    definition = `dottedCase,factor`
-)
-
-
-
 `dottedCase,list` <- `dottedCase,atomic`  # nolint
-
-
-
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "dottedCase",
-    signature = signature("list"),
-    definition = `dottedCase,list`
-)
 
 
 
@@ -403,27 +273,7 @@ setMethod(
 
 
 
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "dottedCase",
-    signature = signature("matrix"),
-    definition = `dottedCase,matrix`
-)
-
-
-
 `dottedCase,data.frame` <- `dottedCase,matrix`  # nolint
-
-
-
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "dottedCase",
-    signature = signature("data.frame"),
-    definition = `dottedCase,data.frame`
-)
 
 
 
@@ -450,16 +300,6 @@ setMethod(
         }
         object
     }
-
-
-
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "dottedCase",
-    signature = signature("Vector"),
-    definition = `dottedCase,Vector`
-)
 
 
 
@@ -496,42 +336,12 @@ setMethod(
 
 
 
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "dottedCase",
-    signature = signature("DataFrame"),
-    definition = `dottedCase,DataFrame`
-)
-
-
-
 `dottedCase,Ranges` <- `dottedCase,Vector`  # nolint
 formals(`dottedCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "dottedCase",
-    signature = signature("Ranges"),
-    definition = `dottedCase,Ranges`
-)
-
-
-
 `dottedCase,Matrix` <- `dottedCase,matrix`  # nolint
-
-
-
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "dottedCase",
-    signature = signature("Matrix"),
-    definition = `dottedCase,Matrix`
-)
 
 
 
@@ -577,16 +387,6 @@ setMethod(
 
 
 
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "dottedCase",
-    signature = signature("SummarizedExperiment"),
-    definition = `dottedCase,SummarizedExperiment`
-)
-
-
-
 `snakeCase,atomic` <-  # nolint
     function(object, names = TRUE) {
         assert(isFlag(names))
@@ -595,16 +395,6 @@ setMethod(
         }
         object
     }
-
-
-
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "snakeCase",
-    signature = signature("atomic"),
-    definition = `snakeCase,atomic`
-)
 
 
 
@@ -625,27 +415,7 @@ setMethod(
 
 
 
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "snakeCase",
-    signature = signature("factor"),
-    definition = `snakeCase,factor`
-)
-
-
-
 `snakeCase,list` <- `snakeCase,atomic`  # nolint
-
-
-
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "snakeCase",
-    signature = signature("list"),
-    definition = `snakeCase,list`
-)
 
 
 
@@ -671,27 +441,7 @@ setMethod(
 
 
 
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "snakeCase",
-    signature = signature("matrix"),
-    definition = `snakeCase,matrix`
-)
-
-
-
 `snakeCase,data.frame` <- `snakeCase,matrix`  # nolint
-
-
-
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "snakeCase",
-    signature = signature("data.frame"),
-    definition = `snakeCase,data.frame`
-)
 
 
 
@@ -718,16 +468,6 @@ setMethod(
         }
         object
     }
-
-
-
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "snakeCase",
-    signature = signature("Vector"),
-    definition = `snakeCase,Vector`
-)
 
 
 
@@ -764,42 +504,12 @@ setMethod(
 
 
 
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "snakeCase",
-    signature = signature("DataFrame"),
-    definition = `snakeCase,DataFrame`
-)
-
-
-
 `snakeCase,Ranges` <- `snakeCase,Vector`  # nolint
 formals(`snakeCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "snakeCase",
-    signature = signature("Ranges"),
-    definition = `snakeCase,Ranges`
-)
-
-
-
 `snakeCase,Matrix` <- `snakeCase,matrix`  # nolint
-
-
-
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "snakeCase",
-    signature = signature("Matrix"),
-    definition = `snakeCase,Matrix`
-)
 
 
 
@@ -845,16 +555,6 @@ setMethod(
 
 
 
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "snakeCase",
-    signature = signature("SummarizedExperiment"),
-    definition = `snakeCase,SummarizedExperiment`
-)
-
-
-
 `upperCamelCase,atomic` <-  # nolint
     function(object, names = TRUE, strict = TRUE) {
         assert(
@@ -866,16 +566,6 @@ setMethod(
         }
         object
     }
-
-
-
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "upperCamelCase",
-    signature = signature("atomic"),
-    definition = `upperCamelCase,atomic`
-)
 
 
 
@@ -899,27 +589,7 @@ setMethod(
 
 
 
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "upperCamelCase",
-    signature = signature("factor"),
-    definition = `upperCamelCase,factor`
-)
-
-
-
 `upperCamelCase,list` <- `upperCamelCase,atomic`  # nolint
-
-
-
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "upperCamelCase",
-    signature = signature("list"),
-    definition = `upperCamelCase,list`
-)
 
 
 
@@ -949,27 +619,7 @@ setMethod(
 
 
 
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "upperCamelCase",
-    signature = signature("matrix"),
-    definition = `upperCamelCase,matrix`
-)
-
-
-
 `upperCamelCase,data.frame` <- `upperCamelCase,matrix`  # nolint
-
-
-
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "upperCamelCase",
-    signature = signature("data.frame"),
-    definition = `upperCamelCase,data.frame`
-)
 
 
 
@@ -1001,16 +651,6 @@ setMethod(
         }
         object
     }
-
-
-
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "upperCamelCase",
-    signature = signature("Vector"),
-    definition = `upperCamelCase,Vector`
-)
 
 
 
@@ -1053,42 +693,12 @@ setMethod(
 
 
 
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "upperCamelCase",
-    signature = signature("DataFrame"),
-    definition = `upperCamelCase,DataFrame`
-)
-
-
-
 `upperCamelCase,Ranges` <- `upperCamelCase,Vector`  # nolint
 formals(`upperCamelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "upperCamelCase",
-    signature = signature("Ranges"),
-    definition = `upperCamelCase,Ranges`
-)
-
-
-
 `upperCamelCase,Matrix` <- `upperCamelCase,matrix`  # nolint
-
-
-
-#' @rdname syntactic
-#' @export
-setMethod(
-    f = "upperCamelCase",
-    signature = signature("Matrix"),
-    definition = `upperCamelCase,Matrix`
-)
 
 
 
@@ -1145,7 +755,325 @@ setMethod(
 #' @rdname syntactic
 #' @export
 setMethod(
+    f = "camelCase",
+    signature = signature("DataFrame"),
+    definition = `camelCase,DataFrame`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "camelCase",
+    signature = signature("Matrix"),
+    definition = `camelCase,Matrix`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "camelCase",
+    signature = signature("Ranges"),
+    definition = `camelCase,Ranges`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "camelCase",
+    signature = signature("SummarizedExperiment"),
+    definition = `camelCase,SummarizedExperiment`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "camelCase",
+    signature = signature("Vector"),
+    definition = `camelCase,Vector`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "camelCase",
+    signature = signature("atomic"),
+    definition = `camelCase,atomic`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "camelCase",
+    signature = signature("data.frame"),
+    definition = `camelCase,data.frame`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "camelCase",
+    signature = signature("factor"),
+    definition = `camelCase,factor`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "camelCase",
+    signature = signature("list"),
+    definition = `camelCase,list`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "camelCase",
+    signature = signature("matrix"),
+    definition = `camelCase,matrix`
+)
+
+
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "dottedCase",
+    signature = signature("DataFrame"),
+    definition = `dottedCase,DataFrame`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "dottedCase",
+    signature = signature("Matrix"),
+    definition = `dottedCase,Matrix`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "dottedCase",
+    signature = signature("Ranges"),
+    definition = `dottedCase,Ranges`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "dottedCase",
+    signature = signature("SummarizedExperiment"),
+    definition = `dottedCase,SummarizedExperiment`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "dottedCase",
+    signature = signature("Vector"),
+    definition = `dottedCase,Vector`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "dottedCase",
+    signature = signature("atomic"),
+    definition = `dottedCase,atomic`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "dottedCase",
+    signature = signature("data.frame"),
+    definition = `dottedCase,data.frame`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "dottedCase",
+    signature = signature("factor"),
+    definition = `dottedCase,factor`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "dottedCase",
+    signature = signature("list"),
+    definition = `dottedCase,list`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "dottedCase",
+    signature = signature("matrix"),
+    definition = `dottedCase,matrix`
+)
+
+
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "snakeCase",
+    signature = signature("atomic"),
+    definition = `snakeCase,atomic`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "snakeCase",
+    signature = signature("data.frame"),
+    definition = `snakeCase,data.frame`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "snakeCase",
+    signature = signature("factor"),
+    definition = `snakeCase,factor`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "snakeCase",
+    signature = signature("list"),
+    definition = `snakeCase,list`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "snakeCase",
+    signature = signature("matrix"),
+    definition = `snakeCase,matrix`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "snakeCase",
+    signature = signature("DataFrame"),
+    definition = `snakeCase,DataFrame`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "snakeCase",
+    signature = signature("Matrix"),
+    definition = `snakeCase,Matrix`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "snakeCase",
+    signature = signature("Ranges"),
+    definition = `snakeCase,Ranges`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "snakeCase",
+    signature = signature("SummarizedExperiment"),
+    definition = `snakeCase,SummarizedExperiment`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "snakeCase",
+    signature = signature("Vector"),
+    definition = `snakeCase,Vector`
+)
+
+
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "upperCamelCase",
+    signature = signature("DataFrame"),
+    definition = `upperCamelCase,DataFrame`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "upperCamelCase",
+    signature = signature("Matrix"),
+    definition = `upperCamelCase,Matrix`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "upperCamelCase",
+    signature = signature("Ranges"),
+    definition = `upperCamelCase,Ranges`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
     f = "upperCamelCase",
     signature = signature("SummarizedExperiment"),
     definition = `upperCamelCase,SummarizedExperiment`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "upperCamelCase",
+    signature = signature("Vector"),
+    definition = `upperCamelCase,Vector`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "upperCamelCase",
+    signature = signature("atomic"),
+    definition = `upperCamelCase,atomic`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "upperCamelCase",
+    signature = signature("data.frame"),
+    definition = `upperCamelCase,data.frame`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "upperCamelCase",
+    signature = signature("factor"),
+    definition = `upperCamelCase,factor`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "upperCamelCase",
+    signature = signature("list"),
+    definition = `upperCamelCase,list`
+)
+
+#' @rdname syntactic
+#' @export
+setMethod(
+    f = "upperCamelCase",
+    signature = signature("matrix"),
+    definition = `upperCamelCase,matrix`
 )
