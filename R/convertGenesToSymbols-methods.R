@@ -70,6 +70,7 @@ NULL
         assert(
             isCharacter(object),
             !any(is.na(object)),
+            hasNoDuplicates(object),
             is(gene2symbol, "Gene2Symbol"),
             isFlag(strict),
             isFlag(quiet)
@@ -103,6 +104,7 @@ NULL
             }
             out[which(is.na(out))] <- names(out)[which(is.na(out))]
         }
+        assert(hasNoDuplicates(out))
         out
     }
 
@@ -134,52 +136,26 @@ NULL
 
 
 
-## Updated 2021-08-09.
+## Updated 2021-08-10.
 `convertGenesToSymbols,GRanges` <-  # nolint
-    function(object) {
+    function(
+        object,
+        strict = FALSE
+    ) {
         validObject(object)
         assert(hasNames(object))
-
-
-        ## FIXME Argh need to rethink the handling here.
-        ## FIXME Likely need to update the AcidGenomes package as well.
-        gene2symbol1 <- Gene2Symbol(object, format = "makeUnique")
-        ## FIXME This mapping isn't 1:1...
-        gene2symbol2 <- Gene2Symbol(object, format = "1:1")
-
-        assert(
-            hasRownames(gene2symbol),
-            all(complete.cases(gene2symbol))
+        gene2symbol <- Gene2Symbol(
+            object = object,
+            format = "makeUnique",
+            quiet = TRUE
         )
-
-
-
-        idx <- match(x = names(object), table = rownames(gene2symbol))
-        keep <- !is.na(idx)
-
-
-
-        if (!all(keep)) {
-            n <- sum(!keep)
-            object <- object[keep]
-        }
-        idx <- na.omit(idx)
-        assert(
-            hasLength(idx),
-            msg = "Failed to map any genes to symbols."
+        names <- convertGenesToSymbols(
+            object = names(object),
+            gene2symbol = gene2symbol,
+            strict = strict
         )
-
-        object <- object[idx]
-
-
-        xxx <- as.character(gene2symbol[["geneName"]])[idx]
-
-
-
-
-        symbols <- gene2symbol[[2L]]
-        assert(hasNoDuplicates(symbols))
-        names(object) <- as.character(symbols)
+        assert(identical(names(object), names(names)))
+        names(object) <- unname(names[names(object)])
         object
     }
 
