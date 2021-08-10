@@ -60,16 +60,12 @@ NULL
 #' Contains gene identifiers, gene names (symbols), and alternative (legacy)
 #' gene synonyms, when possible.
 #'
-#' @note Updated 2021-06-10.
+#' @note Updated 2021-08-10.
 #' @noRd
 .makeGeneMap <- function(object) {
     validObject(object)
     assert(is(object, "SummarizedExperiment"))
-    ## FIXME Need to check NA value handling here.
-    ## FIXME Add `quiet` call here, rather than using suppressMessages.
-    suppressMessages({
-        g2s <- Gene2Symbol(object, format = "unmodified")
-    })
+    g2s <- Gene2Symbol(object = object, format = "unmodified", quiet = TRUE)
     assert(identical(rownames(g2s), rownames(object)))
     df <- as(g2s, "DataFrame")
     colnames(df) <- camelCase(colnames(df), strict = TRUE)
