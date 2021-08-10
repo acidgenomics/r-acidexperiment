@@ -2,6 +2,7 @@ context("convertGenesToSymbols")
 
 skip_if_not(hasInternet())
 
+## NOTE Consider using a presaved object, to speed up tests.
 gene2symbol <-
     AcidGenomes::makeGene2SymbolFromEnsembl(
         organism = "Homo sapiens",
