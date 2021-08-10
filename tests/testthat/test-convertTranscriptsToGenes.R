@@ -3,13 +3,12 @@ context("convertTranscriptsToGenes")
 skip_if_not(hasInternet())
 
 ## NOTE Consider using a presaved object, to speed up tests.
-tx2gene <-
-    AcidGenomes::makeTx2GeneFromEnsembl(
-        organism = "Homo sapiens",
-        genomeBuild = "GRCh38",
-        release = 87L
-        ignoreVersion = TRUE
-    )
+tx2gene <- AcidGenomes::makeTx2GeneFromEnsembl(
+    organism = "Homo sapiens",
+    genomeBuild = "GRCh38",
+    release = 87L,
+    ignoreVersion = TRUE
+)
 
 test_that("character", {
     expect_identical(

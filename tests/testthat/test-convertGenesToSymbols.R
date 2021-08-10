@@ -3,14 +3,13 @@ context("convertGenesToSymbols")
 skip_if_not(hasInternet())
 
 ## NOTE Consider using a presaved object, to speed up tests.
-gene2symbol <-
-    AcidGenomes::makeGene2SymbolFromEnsembl(
-        organism = "Homo sapiens",
-        genomeBuild = "GRCh38",
-        release = 87L,
-        ignoreVersion = TRUE,
-        format = "makeUnique"
-    )
+gene2symbol <- AcidGenomes::makeGene2SymbolFromEnsembl(
+    organism = "Homo sapiens",
+    genomeBuild = "GRCh38",
+    release = 87L,
+    ignoreVersion = TRUE,
+    format = "makeUnique"
+)
 
 test_that("character", {
     expect_identical(
