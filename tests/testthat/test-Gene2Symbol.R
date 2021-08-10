@@ -1,7 +1,11 @@
 context("Gene2Symbol")
 
-formats <- eval(formals(`Gene2Symbol,SE`)[["format"]])
 test_that("Gene2Symbol", {
+    formats <- eval(methodFormals(
+        f = "Gene2Symbol",
+        signature = "GRanges",
+        package = "AcidGenomes"
+    )[["format"]])
     for (format in formats) {
         object <- rse
         object <- Gene2Symbol(object, format = format)
@@ -9,7 +13,6 @@ test_that("Gene2Symbol", {
         expect_identical(colnames(object), c("geneId", "geneName"))
     }
 })
-rm(formats)
 
 test_that("summary", {
     object <- rse

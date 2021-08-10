@@ -28,6 +28,7 @@ assays <- SummarizedExperiment::assays
 cause <- goalie::cause
 colData <- SummarizedExperiment::colData
 hasInternet <- goalie::hasInternet
+methodFormals <- AcidBase::methodFormals
 rowData <- SummarizedExperiment::rowData
 rowRanges <- SummarizedExperiment::rowRanges
 simpleClass <- AcidBase::simpleClass
