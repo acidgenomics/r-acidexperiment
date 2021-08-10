@@ -136,6 +136,7 @@ NULL
 
 
 
+## FIXME Rework this, can use simpler approach.
 ## Updated 2021-08-10.
 `convertGenesToSymbols,GRanges` <-  # nolint
     function(
@@ -161,21 +162,27 @@ NULL
 
 
 
-## FIXME This CANNOT RESIZE.
-## Updated 2021-01-17.
+## FIXME Rework this, can use simpler approach.
+## Updated 2021-08-10.
 `convertGenesToSymbols,SE` <-  # nolint
-    function(object) {
+    function(
+        object,
+        strict = FALSE
+    ) {
         validObject(object)
-
-        ## FIXME Use similar approach to GRanges method above...
-        gene2symbol <- Gene2Symbol(object, format = "1:1")
-        ## FIXME Need to handle NA values here.
-        symbols <- gene2symbol[[2L]]
-        assert(hasNoDuplicates(symbols))
-
-
-
-        rownames(object) <- as.character(symbols)
+        assert(hasRownames(object))
+        gene2symbol <- Gene2Symbol(
+            object = object,
+            format = "makeUnique",
+            quiet = TRUE
+        )
+        symbols <- as.character(gene2symbol[["geneName"]])
+        assert(
+            identical(rownames(object), rownames(gene2symbol)),
+            isCharacter(symbols),
+            hasNoDuplicates(symbols)
+        )
+        rownames(object) <- unname(symbols)
         if (is(object, "RangedSummarizedExperiment")) {
             assert(identical(rownames(object), names(rowRanges(object))))
         }
@@ -184,18 +191,15 @@ NULL
 
 
 
+## FIXME Need to tighten up assert check.
 ## Updated 2021-08-09.
 `convertSymbolsToGenes,SE` <-  # nolint
     function(object) {
         validObject(object)
-        gene2symbol <- Gene2Symbol(object, format = "makeUnique")
+        gene2symbol <- Gene2Symbol(object)
         assert(
-            identical(
-                x = rownames(object),
-                y = as.character(gene2symbol[[2L]])
-            ),
-            hasNoDuplicates(gene2symbol[[1L]]),
-            msg = "Failed to map gene symbols back to identifiers."
+            identical(rownames(object), gene2symbol[[2L]]),
+            hasNoDuplicates(gene2symbol[[1L]])
         )
         rownames(object) <- as.character(gene2symbol[[1L]])
         object
