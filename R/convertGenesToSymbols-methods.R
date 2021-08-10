@@ -2,6 +2,10 @@
 ## FIXME This is now causing a row mismatch on NAs...
 ## FIXME Inform when we're dropping values here...
 ## FIXME Our methods in GRanges and SummarizedExperiment should NEVER resize?
+## FIXME Consider adding allowMissing argument here?
+## FIXME This needs to be `FALSE` by default.
+## FIXME Add a quiet argument here?
+## FIXME Need to allow passthrough of FASTA spike-ins here, for example...
 
 
 
@@ -55,11 +59,6 @@ NULL
 
 
 
-## FIXME Consider adding allowMissing argument here?
-## FIXME This needs to be `FALSE` by default.
-## FIXME Add a quiet argument here?
-## FIXME Need to allow passthrough of FASTA spike-ins here, for example...
-
 ## Updated 2021-08-10.
 `convertGenesToSymbols,character` <-  # nolint
     function(
@@ -109,19 +108,21 @@ NULL
 
 
 
-## FIXME Can we pass through to character method better here?
-## Updated 2021-08-09.
+## Updated 2021-08-10.
 `convertGenesToSymbols,matrix` <-  # nolint
-    function(object, gene2symbol) {
-        gene2symbol <- convertGenesToSymbols(
+    function(
+        object,
+        gene2symbol,
+        strict = FALSE
+    ) {
+        assert(hasRownames(object))
+        rn <- convertGenesToSymbols(
             object = rownames(object),
-            gene2symbol = gene2symbol
+            gene2symbol = gene2symbol,
+            strict = strict
         )
-        assert(
-            isCharacter(gene2symbol),
-            identical(length(gene2symbol), nrow(object))
-        )
-        rownames(object) <- unname(gene2symbol)
+        assert(identical(rownames(object), names(rn)))
+        rownames(object) <- unname(rn[rownames(object)])
         object
     }
 
