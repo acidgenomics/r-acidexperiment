@@ -136,7 +136,6 @@ NULL
 
 
 
-## FIXME Rework this, can use simpler approach.
 ## Updated 2021-08-10.
 `convertGenesToSymbols,GRanges` <-  # nolint
     function(
@@ -150,13 +149,13 @@ NULL
             format = "makeUnique",
             quiet = TRUE
         )
-        names <- convertGenesToSymbols(
-            object = names(object),
-            gene2symbol = gene2symbol,
-            strict = strict
+        symbols <- as.character(gene2symbol[["geneName"]])
+        assert(
+            identical(names(object), rownames(gene2symbol)),
+            isCharacter(symbols),
+            hasNoDuplicates(symbols)
         )
-        assert(identical(names(object), names(names)))
-        names(object) <- unname(names[names(object)])
+        names(object) <- unname(symbols)
         object
     }
 
