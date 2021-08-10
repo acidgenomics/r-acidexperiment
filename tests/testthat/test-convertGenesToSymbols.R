@@ -5,7 +5,10 @@ skip_if_not(hasInternet())
 gene2symbol <-
     AcidGenomes::makeGene2SymbolFromEnsembl(
         organism = "Homo sapiens",
-        release = 87L
+        genomeBuild = "GRCh38",
+        release = 87L,
+        ignoreVersion = TRUE,
+        format = "makeUnique"
     )
 
 test_that("character", {
@@ -24,34 +27,35 @@ test_that("character", {
 ## Specify organism (to handle FASTA spike-ins (e.g. EGFP).
 test_that("FASTA spike-in support", {
     expect_identical(
-        object = suppressWarnings({
-            convertGenesToSymbols(
-                object = c("EGFP", "ENSG00000000003"),
-                gene2symbol = gene2symbol
-            )
-        }),
+        object = convertGenesToSymbols(
+            object = c(
+                "ENSG00000000003",
+                "ENSG00000000005",
+                "EGFP",
+                "mCherry"
+            ),
+            gene2symbol = gene2symbol,
+            strict = FALSE
+        ),
         expected = c(
+            "ENSG00000000003" = "TSPAN6",
+            "ENSG00000000005" = "TNMD",
             "EGFP" = "EGFP",
-            "ENSG00000000003" = "TSPAN6"
+            "mCherry" = "mCherry"
         )
     )
-})
-
-test_that("Invalid identifiers", {
-    expect_warning(
+    expect_error(
         object = convertGenesToSymbols(
-            object = "ENSG00000000000",
-            gene2symbol = gene2symbol
+            object = c(
+                "ENSG00000000003",
+                "ENSG00000000005",
+                "EGFP",
+                "mCherry"
+            ),
+            gene2symbol = gene2symbol,
+            strict = TRUE
         ),
-        regexp = "Failed to match genes: ENSG00000000000"
-    )
-    expect_error(
-        object = convertGenesToSymbols(c("ENSG00000000003", NA)),
-        regexp = "isCharacter"
-    )
-    expect_error(
-        object = convertGenesToSymbols(c("ENSG00000000003", "")),
-        regexp = "isCharacter"
+        regexp = "Failed to match all genes to symbols."
     )
 })
 
@@ -68,7 +72,8 @@ test_that("matrix", {
     )
     object <- convertGenesToSymbols(
         object = object,
-        gene2symbol = gene2symbol
+        gene2symbol = gene2symbol,
+        strict = TRUE
     )
     expect_identical(
         object = rownames(object),

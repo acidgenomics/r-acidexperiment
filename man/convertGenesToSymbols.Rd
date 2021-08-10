@@ -16,24 +16,32 @@ convertGenesToSymbols(object, ...)
 
 convertSymbolsToGenes(object, ...)
 
-\S4method{convertGenesToSymbols}{GRanges}(object)
+\S4method{convertGenesToSymbols}{GRanges}(object, strict = FALSE)
 
-\S4method{convertGenesToSymbols}{Matrix}(object, gene2symbol)
+\S4method{convertGenesToSymbols}{Matrix}(object, gene2symbol, strict = FALSE)
 
-\S4method{convertGenesToSymbols}{SummarizedExperiment}(object)
+\S4method{convertGenesToSymbols}{SummarizedExperiment}(object, strict = FALSE)
 
-\S4method{convertGenesToSymbols}{character}(object, gene2symbol)
+\S4method{convertGenesToSymbols}{character}(object, gene2symbol, strict = FALSE, quiet = FALSE)
 
-\S4method{convertGenesToSymbols}{matrix}(object, gene2symbol)
+\S4method{convertGenesToSymbols}{matrix}(object, gene2symbol, strict = FALSE)
 
 \S4method{convertSymbolsToGenes}{SummarizedExperiment}(object)
 }
 \arguments{
 \item{object}{Object.}
 
+\item{strict}{\code{logical(1)}.
+Require that all identifiers contain gene name (symbol) metadata stored
+in the object. Disabled by default, to support objects containing
+custom gene identifiers, such as FASTA spike-ins.}
+
 \item{gene2symbol}{\code{Gene2Symbol}.
 Gene-to-symbol mappings. Must contain \code{geneId} and \code{geneName} columns. See
 \code{Gene2Symbol} for more information.}
+
+\item{quiet}{\code{logical(1)}.
+Perform command quietly, suppressing messages.}
 
 \item{...}{Additional arguments.}
 }
@@ -44,7 +52,7 @@ Modified object of same class.
 Convert genes to symbols
 }
 \note{
-Updated 2021-08-03.
+Updated 2021-08-10.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
