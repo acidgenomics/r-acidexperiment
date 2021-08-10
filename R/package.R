@@ -20,9 +20,9 @@
 #'   packageVersion realpath requireNamespaces standardizeCall
 #' @importFrom AcidCLI alert alertInfo alertWarning
 #' @importFrom AcidGenerics DataFrame Rle SimpleList SplitDataFrameList %in%
-#'   aggregate as.data.frame coerce colSums cor decode do.call head lapply match
-#'   mcols mcols<- metadata metadata<- na.omit rowSums setdiff split summary t
-#'   unlist unsplit
+#'   aggregate as.data.frame complete.cases coerce colSums cor decode do.call
+#'   head lapply match mcols mcols<- metadata metadata<- na.omit rowSums setdiff
+#'   split summary t unlist unsplit
 #' @importFrom AcidGenomes detectOrganism emptyRanges
 #' @importFrom AcidPlyr leftJoin mutateAt
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
