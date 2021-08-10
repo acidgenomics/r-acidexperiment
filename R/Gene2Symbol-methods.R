@@ -15,24 +15,14 @@ NULL
 
 
 
-## Updated 2021-08-09.
+## Updated 2021-08-10.
 `Gene2Symbol,SE` <-  # nolint
-    function(object, format) {
+    function(object, ...) {
         object <- as.SummarizedExperiment(object)
         df <- rowData(object)
         rownames(df) <- rownames(object)
-        Gene2Symbol(
-            object = df,
-            format = match.arg(format)
-        )
+        Gene2Symbol(df, ...)
     }
-
-formals(`Gene2Symbol,SE`) <-
-    methodFormals(
-        f = "Gene2Symbol",
-        signature = "GRanges",
-        package = "AcidGenomes"
-    )
 
 
 

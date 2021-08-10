@@ -7,21 +7,10 @@
 \usage{
 Gene2Symbol(object, ...)
 
-\S4method{Gene2Symbol}{SummarizedExperiment}(object, format = c("makeUnique", "1:1", "unmodified"))
+\S4method{Gene2Symbol}{SummarizedExperiment}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
-
-\item{format}{\code{character(1)}.
-Formatting method to apply:
-\itemize{
-\item \code{"makeUnique"}: \emph{Recommended.} Apply \code{\link[base:make.unique]{make.unique()}}
-to the \code{geneName} column. Gene symbols are made unique, while the gene
-identifiers remain unmodified.
-\item \code{"unmodified"}: Return \code{geneId} and \code{geneName} columns unmodified, in
-long format.
-\item \code{"1:1"}: For gene symbols that map to multiple gene identifiers, select
-}}
 
 \item{...}{Additional arguments.}
 }
