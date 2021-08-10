@@ -3,7 +3,7 @@ context("Gene2Symbol")
 test_that("Gene2Symbol", {
     formats <- eval(methodFormals(
         f = "Gene2Symbol",
-        signature = "GRanges",
+        signature = "DataFrame",
         package = "AcidGenomes"
     )[["format"]])
     for (format in formats) {
