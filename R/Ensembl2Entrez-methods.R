@@ -1,6 +1,6 @@
 #' @inherit AcidGenomes::Ensembl2Entrez
 #' @name Ensembl2Entrez
-#' @note Updated 2021-02-03.
+#' @note Updated 2021-08-10.
 #'
 #' @param ... Additional arguments.
 #'
@@ -15,21 +15,11 @@ NULL
 
 
 
-## Updated 2021-02-02.
+## Updated 2021-08-10.
 `Ensembl2Entrez,RSE` <-  # nolint
-    function(object, format) {
-        Ensembl2Entrez(
-            object = rowRanges(object),
-            format = match.arg(format)
-        )
+    function(object, ...) {
+        Ensembl2Entrez(rowRanges(object), ...)
     }
-
-formals(`Ensembl2Entrez,RSE`) <-
-    methodFormals(
-        f = "Ensembl2Entrez",
-        signature = "GRanges",
-        package = "AcidGenomes"
-    )
 
 
 
