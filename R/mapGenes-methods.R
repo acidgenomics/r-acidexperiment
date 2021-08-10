@@ -65,6 +65,8 @@ NULL
 .makeGeneMap <- function(object) {
     validObject(object)
     assert(is(object, "SummarizedExperiment"))
+    ## FIXME Need to check NA value handling here.
+    ## FIXME Add `quiet` call here, rather than using suppressMessages.
     suppressMessages({
         g2s <- Gene2Symbol(object, format = "unmodified")
     })
