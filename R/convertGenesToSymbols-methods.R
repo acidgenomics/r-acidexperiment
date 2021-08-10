@@ -170,25 +170,26 @@ NULL
             hasNoDuplicates(symbols)
         )
         rownames(object) <- unname(symbols)
-        if (is(object, "RangedSummarizedExperiment")) {
-            assert(identical(rownames(object), names(rowRanges(object))))
-        }
         object
     }
 
 
 
-## FIXME Need to tighten up assert check.
-## Updated 2021-08-09.
+## Updated 2021-08-10.
 `convertSymbolsToGenes,SE` <-  # nolint
     function(object) {
         validObject(object)
-        gene2symbol <- Gene2Symbol(object)
-        assert(
-            identical(rownames(object), gene2symbol[[2L]]),
-            hasNoDuplicates(gene2symbol[[1L]])
+        assert(hasRownames(object))
+        gene2symbol <- Gene2Symbol(
+            object = object,
+            format = "makeUnique",
+            quiet = TRUE
         )
-        rownames(object) <- as.character(gene2symbol[[1L]])
+        assert(
+            identical(rownames(object), gene2symbol[["geneName"]]),
+            hasNoDuplicates(gene2symbol[["geneId"]])
+        )
+        rownames(object) <- as.character(gene2symbol[["geneId"]])
         object
     }
 
