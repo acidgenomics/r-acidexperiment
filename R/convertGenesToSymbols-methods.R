@@ -1,14 +1,3 @@
-## FIXME Need to handle NA values here better.
-## FIXME This is now causing a row mismatch on NAs...
-## FIXME Inform when we're dropping values here...
-## FIXME Our methods in GRanges and SummarizedExperiment should NEVER resize?
-## FIXME Consider adding allowMissing argument here?
-## FIXME This needs to be `FALSE` by default.
-## FIXME Add a quiet argument here?
-## FIXME Need to allow passthrough of FASTA spike-ins here, for example...
-
-
-
 #' @name convertGenesToSymbols
 #' @inherit AcidGenerics::convertGenesToSymbols
 #' @note Updated 2021-08-10.
@@ -161,7 +150,6 @@ NULL
 
 
 
-## FIXME Rework this, can use simpler approach.
 ## Updated 2021-08-10.
 `convertGenesToSymbols,SE` <-  # nolint
     function(
