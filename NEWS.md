@@ -1,4 +1,18 @@
-## AcidExperiment 0.1.14 (UNRELEASED)
+## AcidExperiment 0.1.14 (2021-08-11)
+
+### Major changes
+
+- `convertGenesToSymbols`: Added `strict` and `quiet` arguments. Improved and
+  hardened internal code, improving the verbosity of calls to `Gene2Symbol`
+  generator. Added additional asserts to ensure that mismatches (e.g. row
+  flipping) don't occur.
+- `Ensembl2Entrez`, `Gene2Symbol`: Updated formals to passthrough to other
+  primary methods defined in AcidGenomes package.
+
+### Minor changes
+
+- Hardened and expanded code coverage for expected gene-to-symbol mapping
+  behavior in main `Gene2Symbol` generator, focusing on the `format` argument.
 
 ## AcidExperiment 0.1.13 (2021-08-09)
 
