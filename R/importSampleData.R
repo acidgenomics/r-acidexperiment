@@ -168,10 +168,13 @@ importSampleData <- function(
             data[[idCol]] <- autopadZeros(data[[idCol]])
         }
     } else {
-        stop(paste(
-            "Sample data input file is malformed.",
-            "Refer to 'importSampleData()' for formatting requirements.",
-            sep = "\n"
+        abort(sprintf(
+            fmt = paste(
+                "Sample data input file is malformed.",
+                "Refer to {.fun %s} for formatting requirements.",
+                sep = "\n"
+            ),
+            "importSampleData"
         ))
     }
     ## Multiplexed samples -----------------------------------------------------

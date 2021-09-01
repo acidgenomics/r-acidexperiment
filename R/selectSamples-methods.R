@@ -17,19 +17,19 @@ NULL
 
 
 
-## Updated 2019-07-22.
+## Updated 2021-09-01.
 `selectSamples,SE` <-  # nolint
     function(object, ...) {
         validObject(object)
         args <- list(...)
-        ## Check that all arguments are atomic.
-        if (!all(vapply(
-            X = args,
-            FUN = is.atomic,
-            FUN.VALUE = logical(1L)
-        ))) {
-            stop("Arguments must be atomic.")  # nocov
-        }
+        assert(
+            all(vapply(
+                X = args,
+                FUN = is.atomic,
+                FUN.VALUE = logical(1L)
+            )),
+            msg = "Arguments must be atomic."
+        )
         ## Match the arguments against the sample metadata.
         sampleData <- sampleData(object)
         assert(isSubset(names(args), colnames(sampleData)))

@@ -92,7 +92,10 @@ NULL
             ## Bioconductor 3.10 is converting to "DFrame" class here.
             data[["sampleName"]] <- as.factor(rownames(data))
         } else if (!is.factor(data[["sampleName"]])) {
-            stop("'sampleData()' requires 'sampleName' factor in 'colData()'.")
+            abort(sprintf(
+                "{.fun %s} requires {.val %s} factor in {.fun %s}.",
+                "sampleData", "sampleName", "colData"
+            ))
         }
         ## Clean mode.
         if (isTRUE(clean)) {
