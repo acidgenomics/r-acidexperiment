@@ -18,7 +18,7 @@
 #' @importFrom AcidBase bapply formalsList geometricMean getNameInParent initDir
 #'   lanePattern metadataDenylist methodFunction packageName
 #'   packageVersion realpath requireNamespaces standardizeCall
-#' @importFrom AcidCLI alert alertInfo alertWarning
+#' @importFrom AcidCLI abort alert alertInfo alertWarning toInlineString
 #' @importFrom AcidGenerics DataFrame Rle SimpleList SplitDataFrameList %in%
 #'   aggregate as.data.frame complete.cases coerce colSums cor decode do.call
 #'   head lapply match mcols mcols<- metadata metadata<- na.omit rowSums setdiff

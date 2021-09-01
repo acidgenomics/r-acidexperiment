@@ -15,7 +15,7 @@
 #' - `wd`: Working directory, returned from `getwd`.
 #'
 #' @export
-#' @note Updated 2021-03-10.
+#' @note Updated 2021-09-01.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param denylist `logical(1)`.
@@ -132,7 +132,7 @@ makeSummarizedExperiment <- function(
             if (hasLength(assays, n = 1L)) {
                 names(assays) <- "counts"
             } else {
-                stop("Multiple assays defined without names.")
+                abort("Multiple assays defined without names.")
             }
         }
         assert(
@@ -154,10 +154,12 @@ makeSummarizedExperiment <- function(
             ## > assert(hasValidDimnames(assay))
             ok <- validNames(rownames(assay))
             if (!isTRUE(ok)) {
+                ## FIXME Rethink this?
                 alertWarning(cause(ok))
             }
             ok <- validNames(colnames(assay))
             if (!isTRUE(ok)) {
+                ## FIXME Rethink this?
                 alertWarning(cause(ok))
             }
         }
@@ -197,9 +199,12 @@ makeSummarizedExperiment <- function(
         }
         setdiff <- setdiff(rownames(assay), names(rowRanges))
         if (hasLength(setdiff) && !is(rowRanges, "GRanges")) {
-            stop(paste(
-                "Automatic mismatched feature handling only",
-                "curently supported for 'GRanges' (not 'GRangesList')."
+            abort(sprintf(
+                fmt = paste(
+                    "Automatic mismatched feature handling only",
+                    "curently supported for {.val %s} (not {.val %s})."
+                ),
+                "GRanges", "GRangesList"
             ))
         }
         ## Transgenes.
@@ -228,16 +233,19 @@ makeSummarizedExperiment <- function(
         ) {
             symbols <- setdiff[!grepl(pattern = pattern, x = setdiff)]
             alertWarning(sprintf(
-                fmt = "%d non-Ensembl %s detected: {.val %s}.",
+                fmt = "%d unannotated %s detected: %s.",
                 length(symbols),
                 ngettext(
                     n = length(symbols),
                     msg1 = "feature",
                     msg2 = "features"
                 ),
-                toString(symbols, width = 200L)
+                toInlineString(symbols, n = 10L, class = "val")
             ))
-            alertInfo("Define transgenes using {.arg transgeneNames}.")
+            alertInfo(sprintf(
+                "Define transgenes using {.arg %s}.",
+                "transgeneNames"
+            ))
             unknownRanges <- emptyRanges(
                 names = symbols,
                 mcolnames = names(mcols(rowRanges))
