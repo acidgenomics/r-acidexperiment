@@ -1,3 +1,12 @@
+## AcidExperiment 0.1.15 (2021-09-01)
+
+### Minor changes
+
+- Improved and hardened CLI messages. Now using `abort` instead of `stop`
+  internally, to support better stylized error messages.
+- Now calling `toStringInline` instead of base `toString` internally to
+  properly handle string handoff to cli package.
+
 ## AcidExperiment 0.1.14 (2021-08-11)
 
 ### Major changes

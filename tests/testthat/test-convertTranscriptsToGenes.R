@@ -65,7 +65,7 @@ test_that("Invalid params", {
             object = "ENST00000000000",
             tx2gene = tx2gene
         ),
-        regexp = "Failed to match transcripts: ENST00000000000"
+        regexp = "ENST00000000000"
     )
     expect_error(
         object = convertTranscriptsToGenes(c("ENST00000000233", NA)),
