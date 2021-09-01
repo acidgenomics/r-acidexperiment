@@ -78,8 +78,9 @@ NULL
         y <- as(object = y, Class = Class)
         ## Assays --------------------------------------------------------------
         alert(sprintf(
-            "Binding columns in {.fun assays}: {.var %s}.",
-            toString(assayNames(x))
+            "Binding columns in {.fun %s}: %s.",
+            "assays",
+            toInlineString(assayNames(x), n = 5L)
         ))
         assays <- mapply(
             x = assays(x),
@@ -118,14 +119,15 @@ NULL
         if (!isTRUE(identical(union, intersect))) {
             setdiff <- setdiff(union, intersect)
             alertWarning(sprintf(
-                "Fixing %d mismatched %s in {.fun colData}: {.var %s}.",
+                "Fixing %d mismatched %s in {.fun %s}: %s.",
                 length(setdiff),
                 ngettext(
                     n = length(setdiff),
                     msg1 = "column",
                     msg2 = "columns"
                 ),
-                toString(setdiff, width = 100L)
+                "colData",
+                toInlineString(setdiff, n = 10L, class = "val")
             ))
             diffx <- setdiff(setdiff, names(cdx))
             for (col in diffx) {
@@ -160,14 +162,14 @@ NULL
         if (!isTRUE(setequal(x = names(mx), y = names(my)))) {
             drop <- setdiff(x = union(names(mx), names(my)), y = keep)
             alertWarning(sprintf(
-                "Dropping %d disjoint metadata %s: {.var %s}.",
+                "Dropping %d disjoint metadata %s: %s.",
                 length(drop),
                 ngettext(
                     n = length(drop),
                     msg1 = "element",
                     msg2 = "elements"
                 ),
-                toString(drop, width = 100L)
+                toInlineString(drop, n = 10L, class = "val")
             ))
         }
         mx <- mx[keep]
@@ -183,14 +185,14 @@ NULL
         drop <- names(keep)[!keep]
         if (hasLength(drop)) {
             alertWarning(sprintf(
-                "Dropping %d non-identical metadata %s: {.var %s}.",
+                "Dropping %d non-identical metadata %s: %s.",
                 length(drop),
                 ngettext(
                     n = length(drop),
                     msg1 = "element",
                     msg2 = "elements"
                 ),
-                toString(drop, width = 100L)
+                toInlineString(drop, n = 10L, class = "val")
             ))
         }
         assert(identical(x = mx[keep], y = my[keep]))
