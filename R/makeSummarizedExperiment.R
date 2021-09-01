@@ -154,12 +154,10 @@ makeSummarizedExperiment <- function(
             ## > assert(hasValidDimnames(assay))
             ok <- validNames(rownames(assay))
             if (!isTRUE(ok)) {
-                ## FIXME Rethink this?
                 alertWarning(cause(ok))
             }
             ok <- validNames(colnames(assay))
             if (!isTRUE(ok)) {
-                ## FIXME Rethink this?
                 alertWarning(cause(ok))
             }
         }
