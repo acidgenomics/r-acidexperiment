@@ -41,8 +41,8 @@ NULL
         assert(isCharacter(assayNames))
         dir <- realpath(initDir(dir))
         alert(sprintf(
-            fmt = "Exporting assays {.var %s} to {.path %s}.",
-            toString(assayNames), dir
+            fmt = "Exporting assays %s to {.path %s}.",
+            toInlineString(assayNames, n = 5L, class = "val"), dir
         ))
         out <- lapply(
             X = assayNames,

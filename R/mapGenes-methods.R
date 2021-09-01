@@ -195,7 +195,7 @@ NULL
             if (length(unmapped) > 0L) {
                 alertFun(sprintf(
                     "Some genes failed to map: %s.",
-                    toString(genes[unmapped], width = 100L)
+                    toInlineString(genes[unmapped], n = 10L, class = "val")
                 ))
             }
             ## Return the identifiers that map to rownames.
