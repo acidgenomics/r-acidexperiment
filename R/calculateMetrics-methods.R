@@ -63,9 +63,13 @@ NULL
             alertWarning(sprintf(
                 fmt = paste0(
                     "Calculating metrics without biotype information.\n",
-                    "{.fun rowRanges} required to calculate: {.var %s}."
+                    "{.fun %s} required to calculate: %s."
                 ),
-                toString(c("nCoding", "nMito", "mitoRatio"))
+                "rowRanges",
+                toInlineString(
+                    x = c("nCoding", "nMito", "mitoRatio"),
+                    class = "val"
+                )
             ))
         }
         ## Calculate nCoding and nMito, which requires annotations.
@@ -77,9 +81,10 @@ NULL
             ## Error on missing features.
             setdiff <- setdiff(rownames(object), names(rowRanges))
             if (hasLength(setdiff)) {
-                stop(sprintf(
-                    fmt = "Features missing in 'rowRanges()': %s",
-                    toString(setdiff, width = 200L)
+                abort(sprintf(
+                    fmt = "Features missing in {.fun %s}: %s.",
+                    "rowRanges",
+                    toInlineString(setdiff, n = 10L, class = "val")
                 ))
             }
             ## Subset ranges to match matrix.
