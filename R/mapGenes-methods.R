@@ -95,7 +95,7 @@ NULL
     )
     object <- as(object, "DataFrame")
     if (isTRUE(strict)) {
-        alertFun <- stop
+        alertFun <- abort
     } else {
         alertFun <- alertWarning
     }
@@ -123,7 +123,7 @@ NULL
                 ))
                 if (isInt(idx)) return(idx)
             }
-            alertFun(sprintf("Failed to map gene: %s.", x))
+            alertFun(sprintf("Failed to map gene: {.val %s}.", x))
             -1L
         },
         FUN.VALUE = integer(1L)
@@ -187,7 +187,7 @@ NULL
             names(match) <- genes
             ## Stop or warn if there are unmapped genes.
             if (isTRUE(strict)) {
-                alertFun <- stop
+                alertFun <- abort
             } else {
                 alertFun <- alertWarning
             }

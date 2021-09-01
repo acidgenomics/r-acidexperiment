@@ -1,7 +1,7 @@
 #' @name aggregateCols
 #' @inherit AcidGenerics::aggregateCols
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2021-02-22.
+#' @note Updated 2021-09-01.
 #'
 #' @inherit aggregateRows
 #' @param ... Additional arguments.
@@ -101,8 +101,9 @@ NULL
         )
         ## Groupings -----------------------------------------------------------
         if (!all(isSubset(col, colnames(colData(x))))) {
-            stop(sprintf(
-                "'%s' column not defined in 'colData()'.", deparse(col)
+            abort(sprintf(
+                "{.val %s} column not defined in {.fun %s}.",
+                col, "colData"
             ))
         }
         by <- colData(x)[[col]]
