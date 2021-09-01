@@ -36,7 +36,7 @@
 #' @note Works with local or remote files.
 #'
 #' @author Michael Steinbaugh
-#' @note Updated 2021-06-04.
+#' @note Updated 2021-09-01.
 #' @export
 #'
 #' @inheritParams AcidRoxygen::params
@@ -261,7 +261,7 @@ importSampleData <- function(
 
 
 ## Sample metadata assert check for goalie engine.
-## Updated 2021-02-25.
+## Updated 2021-09-01.
 .isSampleData <- function(object, requiredCols = "sampleName") {
     assert(isCharacter(requiredCols))
     ok <- isAny(object, c("data.frame", "DataFrame"))
@@ -272,25 +272,27 @@ importSampleData <- function(
     intersect <- intersect(colnames(object), metadataDenylist)
     ok <- !hasLength(intersect)
     if (!isTRUE(ok)) {
-        return(false(
-            paste0(
+        return(false(sprintf(
+            fmt = paste0(
                 "Denylist columns detected: %s.\n",
-                "Refer to 'importSampleData()' for formatting requirements."
+                "Refer to '%s' for formatting requirements."
             ),
-            toString(intersect)
-        ))
+            toString(intersect, width = 100L),
+            "importSampleData()"
+        )))
     }
     ## Check for required columns (e.g. description).
     ok <- isSubset(requiredCols, colnames(object))
     if (!isTRUE(ok)) {
         setdiff <- setdiff(requiredCols, colnames(object))
-        return(false(
-            paste0(
+        return(false(sprintf(
+            fmt = paste0(
                 "Required columns missing: %s.\n",
-                "Refer to 'importSampleData()' for formatting requirements."
+                "Refer to '%s' for formatting requirements."
             ),
-            toString(setdiff)
-        ))
+            toString(setdiff, width = 100L),
+            "importSampleData()"
+        )))
     }
     TRUE
 }
