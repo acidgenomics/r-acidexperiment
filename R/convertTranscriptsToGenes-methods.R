@@ -68,7 +68,7 @@ NULL
         ## Arrange the tx2gene to match the input.
         cols <- c("txId", "geneId")
         if (!identical(cols, colnames(tx2gene))) {
-            colnames(tx2gene) <- cols
+            colnames(tx2gene) <- cols  # FIXME coverage
         }
         validObject(tx2gene)
         missing <- setdiff(object, tx2gene[["txId"]])
@@ -105,8 +105,10 @@ NULL
         if (isTRUE(aggregate)) {
             aggregateRows(object, by = t2g)
         } else {
+            ## FIXME coverage start
             rownames(object) <- as.character(t2g)
             object
+            ## FIXME coverage end
         }
     }
 
