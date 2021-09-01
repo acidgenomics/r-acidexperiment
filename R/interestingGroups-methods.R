@@ -46,9 +46,10 @@ NULL
         ## that column isn't defined in `colData()`.
         setdiff <- setdiff(value, colnames(sampleData(object)))
         if (hasLength(setdiff)) {
-            stop(sprintf(
-                "Columns not defined in 'sampleData()': %s.",
-                toString(setdiff, width = 100L)
+            abort(sprintf(
+                "Columns not defined in {.fun %s}: %s.",
+                "sampleData",
+                toInlineString(setdiff, n = 5L, class = "val")
             ))
         }
         metadata(object)[["interestingGroups"]] <- value
