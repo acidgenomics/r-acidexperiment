@@ -97,7 +97,7 @@ NULL
     if (isTRUE(strict)) {
         alertFun <- abort
     } else {
-        alertFun <- alertWarning
+        alertFun <- alertWarning  # FIXME coverage
     }
     suppressMessages({
         object[["geneIdNoVersion"]] <-
@@ -111,9 +111,10 @@ NULL
             idx <- match(x = x, table = object[["geneId"]])
             if (isInt(idx)) return(idx)
             idx <- match(x = x, table = object[["geneIdNoVersion"]])
-            if (isInt(idx)) return(idx)
+            if (isInt(idx)) return(idx)  # FIXME coverage
             idx <- match(x = x, table = object[["geneName"]])
             if (isInt(idx)) return(idx)
+            ## FIXME coverage start
             if (isSubset("geneSynonyms", colnames(object))) {
                 idx <- which(bapply(
                     X = object[["geneSynonyms"]],
@@ -125,6 +126,7 @@ NULL
             }
             alertFun(sprintf("Failed to map gene: {.val %s}.", x))
             -1L
+            ## FIXME coverage end
         },
         FUN.VALUE = integer(1L)
     )
@@ -172,10 +174,11 @@ NULL
                 .makeGeneMap(object)
             },
             error = function(e) {
-                NULL
+                NULL  # FIXME coverage
             }
         )
         if (!is.null(map)) {
+            ## FIXME coverage start
             idx <- .mapGenes(object = map, genes = genes, strict = strict)
             map <- map[idx, , drop = FALSE]
             out <- rownames(map)
@@ -202,6 +205,7 @@ NULL
             mapped <- na.omit(match)
             assert(hasLength(mapped))
             out <- table[mapped]
+            ## FIXME coverage end
         }
         assert(hasNoDuplicates(out))
         out

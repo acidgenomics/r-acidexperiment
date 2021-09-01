@@ -59,6 +59,7 @@ NULL
         ))
         codingFeatures <- character()
         mitoFeatures <- character()
+        ## FIXME coverage start
         missingBiotype <- function() {
             alertWarning(sprintf(
                 fmt = paste0(
@@ -72,6 +73,7 @@ NULL
                 )
             ))
         }
+        ## FIXME coverage end
         ## Calculate nCoding and nMito, which requires annotations.
         if (!is.null(rowRanges)) {
             assert(
@@ -81,11 +83,13 @@ NULL
             ## Error on missing features.
             setdiff <- setdiff(rownames(object), names(rowRanges))
             if (hasLength(setdiff)) {
+                ## FIXME coverage start
                 abort(sprintf(
                     fmt = "Features missing in {.fun %s}: %s.",
                     "rowRanges",
                     toInlineString(setdiff, n = 10L, class = "val")
                 ))
+                #
             }
             ## Subset ranges to match matrix.
             assert(isSubset(rownames(object), names(rowRanges)))
