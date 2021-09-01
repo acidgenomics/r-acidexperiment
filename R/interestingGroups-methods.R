@@ -30,9 +30,11 @@ NULL
 ## Updated 2019-07-22.
 `interestingGroups<-,Annotated,character` <-  # nolint
     function(object, value) {
+        ## FIXME coverage start
         assert(areDisjointSets(value, "interestingGroups"))
         metadata(object)[["interestingGroups"]] <- value
         object
+        ## FIXME coverage end
     }
 
 

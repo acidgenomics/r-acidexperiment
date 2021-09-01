@@ -33,8 +33,10 @@ NULL
             identical(as.character(sampleNames), colnames(object)) ||
             !identical(names(sampleNames), colnames(object))
         ) {
-            alertWarning("Returning with the sample names unmodified.")
+            ## FIXME coverage start
+            alertWarning("Returning object with sample names unmodified.")
             return(object)
+            ## FIXME coverage end
         }
         colnames <- as.character(sampleNames)
         assert(hasNoDuplicates(colnames))

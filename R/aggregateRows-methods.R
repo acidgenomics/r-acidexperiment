@@ -117,7 +117,7 @@ NULL
             colData = colData(x)
         )
         if (is(x, "RangedSummarizedExperiment")) {
-            args[["rowRanges"]] <- emptyRanges(names = rownames(counts))
+            args[["rowRanges"]] <- emptyRanges(names = rownames(counts))  # FIXME coverage
         } else {
             args[["rowData"]] <- DataFrame(row.names = rownames(counts))
         }
