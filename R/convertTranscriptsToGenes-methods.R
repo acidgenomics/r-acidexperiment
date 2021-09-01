@@ -57,7 +57,7 @@ NULL
 
 
 
-## Updated 2021-02-02.
+## Updated 2021-09-01.
 `convertTranscriptsToGenes,character` <-  # nolint
     function(object, tx2gene) {
         assert(
@@ -73,9 +73,9 @@ NULL
         validObject(tx2gene)
         missing <- setdiff(object, tx2gene[["txId"]])
         if (length(missing) > 0L) {
-            stop(sprintf(
+            abort(sprintf(
                 "Failed to match transcripts: %s.",
-                toString(missing, width = 100L)
+                toInlineString(missing, n = 10L, class = "val")
             ))
         }
         tx2gene <- tx2gene[
