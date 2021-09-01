@@ -83,17 +83,23 @@ NULL
         )
         type <- match.arg(type)
         alert(sprintf(
-            fmt = "Calculating library size factors using {.val %s} method.",
-            type
+            fmt = paste(
+                "Calculating library size factors using {.val %s}",
+                "method defined in {.arg %s}."
+            ),
+            type, "type"
         ))
         ## Get the sum of expression per cell.
         libSizes <- colSums(counts)
         ## Error on detection of cells without any expression.
-        zero <- libSizes == 0L
-        if (isTRUE(any(zero))) {
-            stop(sprintf(
+        if (any(libSizes == 0L)) {
+            abort(sprintf(
                 fmt = "Cells with no expression detected: %s.",
-                toString(unname(which(zero)), width = 100L)
+                toInlineString(
+                    x = as.character(which(libSizes == 0L)),
+                    n = 10L,
+                    class = "val"
+                )
             ))
         }
         ## Calculate the size factors per cell.

@@ -85,9 +85,10 @@ NULL
             if (isFALSE(quiet)) {
                 alertWarning(sprintf(
                     "Failed to match genes: %s.",
-                    toString(
+                    toInlineString(
                         x = names(out)[which(is.na(out))],
-                        width = 100L
+                        n = 5L,
+                        class = "val"
                     )
                 ))
             }
