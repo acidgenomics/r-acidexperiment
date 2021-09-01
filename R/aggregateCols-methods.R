@@ -101,12 +101,12 @@ NULL
         )
         ## Groupings -----------------------------------------------------------
         if (!all(isSubset(col, colnames(colData(x))))) {
-            ## FIXME coverage start
+            ## nocov start  FIXME
             abort(sprintf(
                 "{.val %s} column not defined in {.fun %s}.",
                 col, "colData"
             ))
-            ## FIXME coverage end
+            ## nocov end  FIXME
         }
         by <- colData(x)[[col]]
         assert(
@@ -123,7 +123,7 @@ NULL
             "colData" = DataFrame(row.names = colnames(counts))
         )
         if (is(x, "RangedSummarizedExperiment")) {
-            args[["rowRanges"]] <- rowRanges(x)  # FIXME coverage
+            args[["rowRanges"]] <- rowRanges(x)  # nocov  FIXME
         } else {
             args[["rowData"]] <- rowData(x)
         }

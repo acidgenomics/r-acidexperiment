@@ -25,7 +25,7 @@ matchesInterestingGroups <- function(
 ) {
     ok <- isS4(x)
     if (!isTRUE(ok)) {
-        return(false("'%s' is not S4 class.", .xname))  # FIXME coverage
+        return(false("'%s' is not S4 class.", .xname))  # nocov  FIXME
     }
     ## Early return on `NULL` interesting groups (e.g. example DESeqDataSet).
     ## Consider returning FALSE or warning in a future update?
@@ -35,7 +35,7 @@ matchesInterestingGroups <- function(
     ## Otherwise, require a character vector.
     ok <- isCharacter(interestingGroups)
     if (!isTRUE(ok)) {
-        return(ok)   # FIXME coverage
+        return(ok)   # nocov  FIXME
     }
     ## Using `sampleData()` to check against `interestingGroups` column.
     data <- sampleData(x)
@@ -51,7 +51,7 @@ matchesInterestingGroups <- function(
         FUN.VALUE = logical(1L)
     ))
     if (!isTRUE(ok)) {
-        return(false("Interesting group columns are not all factor."))  # FIXME coverage
+        return(false("Interesting group columns are not all factor."))  # nocov  FIXME
     }
     TRUE
 }

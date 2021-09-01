@@ -121,14 +121,14 @@ makeSummarizedExperiment <- function(
         assert(!hasLength(rowData))
     }
     if (!is(assays, "SimpleList")) {
-        assays <- SimpleList(assays)  # FIXME coverage
+        assays <- SimpleList(assays)  # nocov  FIXME
     }
     ## Assays ------------------------------------------------------------------
     ## Currently only allowing matrix or Matrix classes here.
     assays <- Filter(f = Negate(is.null), x = assays)
     if (hasLength(assays)) {
         ## Name the primary assay "counts" by default.
-        ## FIXME coverage start
+        ## nocov start  FIXME
         if (!hasNames(assays)) {
             if (hasLength(assays, n = 1L)) {
                 names(assays) <- "counts"
@@ -136,7 +136,7 @@ makeSummarizedExperiment <- function(
                 abort("Multiple assays defined without names.")
             }
         }
-        ## FIXME coverage end
+        ## nocov end  FIXME
         assert(
             hasNames(assays),
             hasValidNames(assays)
@@ -177,7 +177,7 @@ makeSummarizedExperiment <- function(
             areIntersectingSets(rownames(assay), names(rowRanges))
         )
         ## Ensure we unclass any special classes returned from AcidGenomes.
-        ## FIXME Coverage start.
+        ## nocov start  FIXME
         if (is(rowRanges, "GRangesList")) {
             rowRanges <- as(rowRanges, "GRangesList")
             if (hasCols(mcols(rowRanges[[1L]]))) {
@@ -256,7 +256,7 @@ makeSummarizedExperiment <- function(
             })
             setdiff <- setdiff(rownames(assay), names(rowRanges))
         }
-        ## FIXME coverage end
+        ## nocov end  FIXME
         ## Error on unannotated Ensembl features. This often indicates an
         ## accidental genome build release version mismatch.
         assert(isSubset(rownames(assay), names(rowRanges)))
@@ -319,7 +319,7 @@ makeSummarizedExperiment <- function(
             if (isSubset("counts", assayNames)) {
                 assayNames <- unique(c("counts", sort(assayNames)))
             } else {
-                assayNames <- sort(assayNames)  # FIXME coverage
+                assayNames <- sort(assayNames)  # nocov  FIXME
             }
             assays(se) <- assays(se)[assayNames]
         }
