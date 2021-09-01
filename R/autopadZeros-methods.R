@@ -71,7 +71,7 @@ NULL
             )
         )
         if ("sampleName" %in% colnames(colData(object))) {
-            sampleNames(object) <- autopadZeros(sampleNames(object))  # FIXME coverage
+            sampleNames(object) <- autopadZeros(sampleNames(object))  # nocov  FIXME
         }
         object
     }

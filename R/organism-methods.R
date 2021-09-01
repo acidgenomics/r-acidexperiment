@@ -36,7 +36,7 @@ NULL
         if (isSubset("geneId", colnames(rowData(object)))) {
             x <- as.character(rowData(object)[["geneId"]])
         } else {
-            x <- rownames(object)  # FIXME coverage
+            x <- rownames(object)  # nocov  FIXME
         }
         detectOrganism(x)
     }

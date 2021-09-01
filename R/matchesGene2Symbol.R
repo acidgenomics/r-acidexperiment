@@ -39,13 +39,13 @@ matchesGene2Symbol <- function(
 ) {
     ok <- hasRownames(x)
     if (!isTRUE(ok)) {
-        return(false("'%s' doesn't have row names.", .xname))
+        return(false("'%s' doesn't have row names.", .xname))  # nocov  FIXME
     }
     ok <- isCharacter(genes)
-    if (!isTRUE(ok)) return(ok)
+    if (!isTRUE(ok)) return(ok)  # nocov  FIXME
     ok <- is(gene2symbol, "Gene2Symbol")
     if (!isTRUE(ok)) {
-        return(false("'gene2symbol' must be Gene2Symbol S4 class."))
+        return(false("'gene2symbol' must be Gene2Symbol S4 class."))  # nocov  FIXME
     }
     ok <- identical(nrow(x), nrow(gene2symbol))
     if (!isTRUE(ok)) {
@@ -58,7 +58,7 @@ matchesGene2Symbol <- function(
     idx <- .mapGenes(object = gene2symbol, genes = genes, strict = TRUE)
     ok <- is.integer(idx) && !any(is.na(idx))
     if (!isTRUE(ok)) {
-        return(false("Failed to map genes to rownames in '%s'.", .xname))
+        return(false("Failed to map genes to rownames in '%s'.", .xname))  # nocov  FIXME
     }
     TRUE
 }

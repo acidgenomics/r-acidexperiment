@@ -50,7 +50,7 @@ NULL
                 file <- file.path(dir, name)
                 assay <- assay(x = object, i = name)
                 if (is(assay, "sparseMatrix")) {
-                    ext <- "mtx"  # FIXME coverage
+                    ext <- "mtx"  # nocov  FIXME
                 } else {
                     ext <- "csv"
                 }

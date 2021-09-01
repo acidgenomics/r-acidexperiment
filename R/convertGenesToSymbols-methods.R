@@ -66,7 +66,7 @@ NULL
         )
         cols <- c("geneId", "geneName")
         if (!identical(cols, colnames(gene2symbol))) {
-            colnames(gene2symbol) <- cols  # FIXME coverage
+            colnames(gene2symbol) <- cols  # nocov  FIXME
         }
         validObject(gene2symbol)
         idx <- match(x = object, table = gene2symbol[["geneId"]])
