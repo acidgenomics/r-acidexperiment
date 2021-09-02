@@ -278,9 +278,9 @@ importSampleData <- function(
 .isSampleData <- function(object, requiredCols = "sampleName") {
     assert(isCharacter(requiredCols))
     ok <- isAny(object, c("data.frame", "DataFrame"))
-    if (!isTRUE(ok)) return(ok)
+    if (!isTRUE(ok)) return(ok)  # nocov
     ok <- hasRows(object)
-    if (!isTRUE(ok)) return(ok)
+    if (!isTRUE(ok)) return(ok)  # nocov
     ## Check for denylist columns.
     intersect <- intersect(colnames(object), metadataDenylist)
     ok <- !hasLength(intersect)
