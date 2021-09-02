@@ -25,7 +25,7 @@ matchesInterestingGroups <- function(
 ) {
     ok <- isS4(x)
     if (!isTRUE(ok)) {
-        return(false("'%s' is not S4 class.", .xname))  # nocov  FIXME
+        return(false("'%s' is not S4 class.", .xname))
     }
     ## Early return on `NULL` interesting groups (e.g. example DESeqDataSet).
     ## Consider returning FALSE or warning in a future update?
@@ -35,23 +35,33 @@ matchesInterestingGroups <- function(
     ## Otherwise, require a character vector.
     ok <- isCharacter(interestingGroups)
     if (!isTRUE(ok)) {
-        return(ok)   # nocov  FIXME
+        return(ok)
     }
     ## Using `sampleData()` to check against `interestingGroups` column.
-    data <- sampleData(x)
+    data <- tryCatch(
+        expr = {
+            sampleData(x)
+        },
+        error = function(e) {
+            NULL
+        }
+    )
+    if (is.null(data)) {
+        return(false("'sampleData()' return error."))
+    }
     ## Check intersection with sample data.
     ok <- isSubset(interestingGroups, colnames(data))
     if (!isTRUE(ok)) {
         return(false("Interesting groups are not defined in 'sampleData()'."))
     }
     ## Check that interesting groups columns are factors.
-    ok <- all(vapply(
-        X = data[, interestingGroups, drop = FALSE],
-        FUN = is.factor,
-        FUN.VALUE = logical(1L)
-    ))
-    if (!isTRUE(ok)) {
-        return(false("Interesting group columns are not all factor."))  # nocov  FIXME
-    }
+    ## > ok <- all(vapply(
+    ## >     X = data[, interestingGroups, drop = FALSE],
+    ## >     FUN = is.factor,
+    ## >     FUN.VALUE = logical(1L)
+    ## > ))
+    ## > if (!isTRUE(ok)) {
+    ## >     return(false("Interesting group columns are not all factor."))
+    ## > }
     TRUE
 }
