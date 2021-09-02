@@ -189,7 +189,7 @@ NULL
                 .makeGeneMap(object)
             },
             error = function(e) {
-                NULL  # nocov
+                NULL
             }
         )
         if (!is.null(map)) {
