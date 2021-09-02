@@ -1,6 +1,6 @@
 #' @name export
 #' @inherit pipette::export
-#' @note Updated 2021-02-03.
+#' @note Updated 2021-09-02.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param compress `logical(1)`.
@@ -24,7 +24,7 @@ NULL
 
 #' Export assays
 #'
-#' @note Updated 2020-08-11.
+#' @note Updated 2021-09-02.
 #' @noRd
 .exportAssays <-
     function(object, name, dir, compress, overwrite, quiet) {
@@ -49,8 +49,8 @@ NULL
             FUN = function(name, dir) {
                 file <- file.path(dir, name)
                 assay <- assay(x = object, i = name)
-                if (is(assay, "sparseMatrix")) {
-                    ext <- "mtx"  # nocov  FIXME
+                if (is(assay, "Matrix")) {
+                    ext <- "mtx"
                 } else {
                     ext <- "csv"
                 }
@@ -97,7 +97,7 @@ NULL
 
 
 
-#' Export row data  (in SummarizedExperiment)
+#' Export row data (in SummarizedExperiment)
 #'
 #' @note Updated 2020-08-11.
 #' @noRd
