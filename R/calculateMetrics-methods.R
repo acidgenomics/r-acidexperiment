@@ -146,14 +146,14 @@ NULL
         ## This keeps only samples/cells with non-zero features.
         if (isTRUE(prefilter)) {
             ## Novelty score.
-            keep <- !is.na(data[["log10FeaturesPerCount"]])
-            data <- data[keep, , drop = FALSE]
-            keep <- data[["log10FeaturesPerCount"]] < 1L
+            keep <-
+                !is.na(data[["log10FeaturesPerCount"]]) &
+                data[["log10FeaturesPerCount"]] < 1L
             data <- data[keep, , drop = FALSE]
             ## Mito ratio.
-            keep <- !is.na(data[["mitoRatio"]])
-            data <- data[keep, , drop = FALSE]
-            keep <- data[["mitoRatio"]] < 1L
+            keep <-
+                is.na(data[["mitoRatio"]]) |
+                data[["mitoRatio"]] < 1L
             data <- data[keep, , drop = FALSE]
             ## Minimum number of read counts per sample.
             keep <- data[["nCount"]] > 0L
