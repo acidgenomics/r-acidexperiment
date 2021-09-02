@@ -1,6 +1,3 @@
-## FIXME Automatic SimpleList coercion.
-## FIXME Unnamed primary assay.
-## FIXME Multiple unnamed assays.
 ## FIXME Mismatched rowRanges handling.
 ## FIXME Check transgene handling.
 
@@ -17,7 +14,7 @@ counts <- matrix(
     dimnames = list(genes, samples)
 )
 
-assays <- SimpleList(counts = counts)
+assays <- SimpleList("counts" = counts)
 
 rowRanges <- GRanges(
     seqnames = replicate(n = 4L, expr = "1"),
@@ -31,8 +28,8 @@ names(rowRanges) <- genes
 rowData <- as(as.data.frame(rowRanges), "DataFrame")
 
 colData <- DataFrame(
-    genotype = rep(c("wildtype", "knockout"), each = 2L),
-    age = rep(c(3L, 6L), times = 2L),
+    "genotype" = rep(c("wildtype", "knockout"), each = 2L),
+    "age" = rep(c(3L, 6L), times = 2L),
     row.names = samples
 )
 
@@ -55,7 +52,7 @@ test_that("RangedSummarizedExperiment", {
     )
 })
 
-## Allowing legacy support of rowData pass-in.
+## Allowing legacy support of 'rowData' pass-in.
 test_that("SummarizedExperiment", {
     object <- makeSummarizedExperiment(
         assays = assays,
@@ -66,7 +63,7 @@ test_that("SummarizedExperiment", {
 })
 
 test_that("Minimal input", {
-    assays <- SimpleList(counts = matrix(nrow = 0L, ncol = 0L))
+    assays <- list(matrix(nrow = 0L, ncol = 0L))
     object <- makeSummarizedExperiment(assays = assays)
     expect_identical(simpleClass(object), "SummarizedExperiment")
     object <- makeSummarizedExperiment(
@@ -77,6 +74,16 @@ test_that("Minimal input", {
         metadata = NULL
     )
     expect_identical(simpleClass(object), "SummarizedExperiment")
+    expect_identical(assayNames(object), "counts")
+})
+
+test_that("Error on multiple unnamed assays", {
+    expect_error(
+        object = makeSummarizedExperiment(
+            assays = list(matrix(), matrix())
+        ),
+        regexp = "names"
+    )
 })
 
 test_that("Inform instead of error on invalid row and/or column names", {
@@ -151,7 +158,6 @@ test_that("Row annotation mismatch", {
         ),
         regexp = "gene1, gene2"
     )
-
     badRowData <- rowData
     rownames(badRowData)[c(3L, 4L)] <- LETTERS[seq_len(2L)]
     expect_error(
@@ -161,7 +167,6 @@ test_that("Row annotation mismatch", {
         ),
         regexp = "gene3, gene4"
     )
-
 })
 
 test_that("Invalid metadata", {
@@ -175,3 +180,42 @@ test_that("Invalid metadata", {
         regexp = "isAny.*metadata"
     )
 })
+
+
+
+## FIXME See lines 179-186.
+test_that("GRangesList support", {
+    rowRanges <- GRangesList(
+        list(
+            "gene1" = GRanges(
+                seqnames = replicate(n = 2L, expr = "1"),
+                ranges = IRanges(
+                    start = seq(from = 1L, to = 101L, by = 100L),
+                    end = seq(from = 100L, to = 201L, by = 100L)
+                )
+            ),
+            "gene2" = GRanges(
+                seqnames = replicate(n = 2L, expr = "1"),
+                ranges = IRanges(
+                    start = seq(from = 201L, to = 301L, by = 100L),
+                    end = seq(from = 300L, to = 401L, by = 100L)
+                )
+            )
+        )
+    )
+    assays <- SimpleList(
+        matrix(
+            data = 1L,
+            nrow = length(rowRanges),
+            ncol = 1L,
+            dimnames = list(
+                names(rowRanges),
+                "sample1"
+            )
+        )
+    )
+    makeSummarizedExperiment(assays = assays, rowRanges = rowRanges)
+})
+
+
+

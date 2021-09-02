@@ -257,7 +257,11 @@ makeSummarizedExperiment <- function(
         ## accidental genome build release version mismatch.
         assert(isSubset(rownames(assay), names(rowRanges)))
         rowRanges <- rowRanges[rownames(assay)]
-        rowRanges <- encode(rowRanges)
+        ## This step isn't currently supported for GRangesList. Consider
+        ## adding class support in future pipette package update.
+        if (is(rowRanges, "GRanges")) {
+            rowRanges <- encode(rowRanges)
+        }
     } else if (hasRows(rowData)) {
         assert(
             isSubset(rownames(assay), rownames(rowData)),
@@ -265,6 +269,7 @@ makeSummarizedExperiment <- function(
         )
         colnames(rowData) <- camelCase(colnames(rowData), strict = TRUE)
         rowData <- rowData[rownames(assay), , drop = FALSE]
+        rowData <- encode(rowData)
     }
     ## Column data -------------------------------------------------------------
     ## Allowing some single-cell RNA-seq automatic columns to pass through.
