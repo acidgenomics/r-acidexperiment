@@ -21,6 +21,7 @@ sparse <- sparseMatrix
 txse <- SummarizedExperiment_transcripts
 
 ## nolint start
+CharacterList <- AcidGenerics::CharacterList
 `assays<-` <- SummarizedExperiment::`assays<-`
 assay <- SummarizedExperiment::assay
 assayNames <- SummarizedExperiment::assayNames

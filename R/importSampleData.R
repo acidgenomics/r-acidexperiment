@@ -81,7 +81,7 @@ importSampleData <- function(
 ) {
     ## Coerce `detectLanes()` empty integer return to 0.
     if (!hasLength(lanes)) {
-        lanes <- 0L
+        lanes <- 0L  # nocov
     }
     assert(
         isAFile(file) || isAURL(file),
@@ -110,20 +110,27 @@ importSampleData <- function(
     if (isSubset(pipeline, c("bcbio", "cellranger"))) {
         assert(areDisjointSets("sampleId", colnames(data)))
     }
-    if (identical(pipeline, "none")) {
-        idCol <- "sampleId"
-    } else if (identical(pipeline, "bcbio")) {
-        ## Look for bcbio "samplename" column and rename to "fileName".
-        if (isSubset("samplename", colnames(data))) {
-            alertWarning("Renaming 'samplename' column to 'fileName'.")
-            assert(areDisjointSets(x = "fileName", y = colnames(data)))
-            colnames(data)[colnames(data) == "samplename"] <- "fileName"
+    switch(
+        EXPR = pipeline,
+        "none" = {
+            idCol <- "sampleId"
+        },
+        "bcbio" = {
+            ## Look for bcbio "samplename" column and rename to "fileName".
+            if (isSubset("samplename", colnames(data))) {
+                alertWarning("Renaming 'samplename' column to 'fileName'.")
+                assert(areDisjointSets(x = "fileName", y = colnames(data)))
+                colnames(data)[colnames(data) == "samplename"] <- "fileName"
+            }
+            idCol <- "description"
+        },
+        "cellranger" = {
+            ## nocov start
+            ## Consider renaming this to `sampleId`, for consistency.
+            idCol <- "directory"
+            ## nocov end
         }
-        idCol <- "description"
-    } else if (identical(pipeline, "cellranger")) {
-        ## Consider renaming this to `sampleId`, for consistency.
-        idCol <- "directory"
-    }
+    )
     ## Check that input passes denylist, and has all required columns.
     assert(
         .isSampleData(object = data, requiredCols = requiredCols),
@@ -157,9 +164,12 @@ importSampleData <- function(
             identical(idCol, "sampleId") &&
             !validNames(unique(data[[idCol]]))
         ) {
-            alertInfo(paste0(
-                "Sanitizing sample IDs defined in ",
-                "{.var ", idCol, "} column into snake case."
+            alertInfo(sprintf(
+                fmt = paste0(
+                    "Sanitizing sample identifiers defined in ",
+                    "{.var %s} column into snake case."
+                ),
+                idCol
             ))
             data[[idCol]] <- snakeCase(data[[idCol]])
         }
