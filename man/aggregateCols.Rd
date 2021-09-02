@@ -39,7 +39,7 @@ Modified object of same class, with columns aggregated.
 Aggregate columns
 }
 \note{
-Updated 2021-02-22.
+Updated 2021-09-01.
 }
 \section{Methods (by class)}{
 

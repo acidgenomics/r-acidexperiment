@@ -8,7 +8,13 @@
 \usage{
 autopadZeros(object, ...)
 
-\S4method{autopadZeros}{SummarizedExperiment}(object, rownames = FALSE, colnames = TRUE, sort = TRUE)
+\S4method{autopadZeros}{SummarizedExperiment}(
+  object,
+  rownames = FALSE,
+  colnames = TRUE,
+  sampleNames = TRUE,
+  sort = TRUE
+)
 
 \S4method{autopadZeros}{matrix}(object, rownames = FALSE, colnames = TRUE, sort = TRUE)
 }
@@ -21,6 +27,11 @@ Apply to row names.}
 \item{colnames}{\code{logical(1)}.
 Apply to column names.}
 
+\item{sampleNames}{\code{logical(1)}.
+\emph{Applies to \code{SummarizedExperiment} method.} #' If \code{sampleName} column is
+defined in \code{colData()}, these values will also get padded, if necessary.
+This improves downstream handling in functions that rely on this feature.}
+
 \item{sort}{\code{logical(1)}.
 Resort using \code{sort}.}
 
@@ -32,21 +43,14 @@ Resort using \code{sort}.}
 \description{
 Autopad zeros
 }
+\details{
+For methods on objects supporting \code{dim()} (e.g. \code{matrix}), the object will be
+returned with the rows and/or columns resorted by default. This does not
+apply to the \code{character} method defined in syntactic.
+}
 \note{
-For methods on objects supporting \code{dim()} (e.g. \code{matrix}), the object
-will be returned with the rows and/or columns resorted by default. This does
-not apply to the \code{character} method defined in syntactic.
-
-Updated 2020-06-15.
+Updated 2021-09-02.
 }
-\section{SummarizedExperiment sample names}{
-
-
-If \code{sampleName} column is defined in \code{colData()}, these values will also get
-padded, if necessary. This improves # downstream handling in functions that
-rely on this feature.
-}
-
 \examples{
 data( RangedSummarizedExperiment, package = "AcidTest")
 
