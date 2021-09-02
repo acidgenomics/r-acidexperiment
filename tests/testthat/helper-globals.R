@@ -22,6 +22,9 @@ txse <- SummarizedExperiment_transcripts
 
 ## nolint start
 CharacterList <- AcidGenerics::CharacterList
+GRanges <- pipette::GRanges
+GRangesList <- pipette::GRangesList
+IRanges <- AcidGenerics::IRanges
 `assays<-` <- SummarizedExperiment::`assays<-`
 assay <- SummarizedExperiment::assay
 assayNames <- SummarizedExperiment::assayNames
