@@ -33,30 +33,31 @@ test_that("SummarizedExperiment", {
 })
 
 test_that("Mapping priority and failure handling", {
+    rowData <- DataFrame(
+        "geneId" = c(
+            "ENSG00000000003.15",
+            "ENSG00000000005.6",
+            "ENSG00000000419.14"
+        ),
+        "geneName" = c(
+            "TSPAN6",
+            "TNMD",
+            "DPM1"
+        ),
+        "geneSynonyms" = CharacterList(
+            c("T245", "TM4SF6", "TSPAN-6"),
+            c("BRICD4", "CHM1L", "TEM"),
+            c("CDGIE", "MPDS")
+        ),
+        row.names = c(
+            "gene1",
+            "gene2",
+            "gene3"
+        )
+    )
     object <- SummarizedExperiment(
         assays = list(),
-        rowData = DataFrame(
-            "geneId" = c(
-                "ENSG00000000003.15",
-                "ENSG00000000005.6",
-                "ENSG00000000419.14"
-            ),
-            "geneName" = c(
-                "TSPAN6",
-                "TNMD",
-                "DPM1"
-            ),
-            "geneSynonyms" = I(CharacterList(
-                c("T245", "TM4SF6", "TSPAN-6"),
-                c("BRICD4", "CHM1L", "TEM"),
-                c("CDGIE", "MPDS")
-            )),
-            row.names = c(
-                "gene1",
-                "gene2",
-                "gene3"
-            )
-        )
+        rowData = rowData
     )
     ## geneId
     expect_identical(
