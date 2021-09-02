@@ -40,3 +40,33 @@ test_that("Low pass prefiltering", {
     x <- calculateMetrics(object, prefilter = TRUE)
     expect_identical(ncol(x), ncol(object) - 2L)
 })
+
+test_that("Missing rowRanges", {
+    object <- rse
+    rowData(object) <- NULL
+    expect_message(
+        object = calculateMetrics(object),
+        regexp = "biotype"
+    )
+    object <- rse
+    mcols(rowRanges(object))[["broadClass"]] <- NULL
+    expect_message(
+        object = calculateMetrics(object),
+        regexp = "biotype"
+    )
+
+    object <- rse
+})
+
+test_that("matrix : rowRanges mismatch", {
+    counts <- counts(rse)
+    rowRanges <- rowRanges(rse)
+    rowRanges <- rowRanges[2:length(rowRanges)]
+    expect_error(
+        object = calculateMetrics(
+            object = counts,
+            rowRanges = rowRanges
+        ),
+        regexp = "missing"
+    )
+})
