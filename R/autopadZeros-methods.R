@@ -1,18 +1,17 @@
 #' @name autopadZeros
 #' @inherit AcidGenerics::autopadZeros
+#' @note Updated 2021-09-02.
 #'
-#' @note For methods on objects supporting `dim()` (e.g. `matrix`), the object
-#' will be returned with the rows and/or columns resorted by default. This does
-#' not apply to the `character` method defined in syntactic.
-#' @note Updated 2020-06-15.
-#'
-#' @section SummarizedExperiment sample names:
-#'
-#' If `sampleName` column is defined in `colData()`, these values will also get
-#' padded, if necessary. This improves # downstream handling in functions that
-#' rely on this feature.
+#' @details
+#' For methods on objects supporting `dim()` (e.g. `matrix`), the object will be
+#' returned with the rows and/or columns resorted by default. This does not
+#' apply to the `character` method defined in syntactic.
 #'
 #' @inheritParams AcidRoxygen::params
+#' @param sampleNames `logical(1)`.
+#'   *Applies to `SummarizedExperiment` method.* #' If `sampleName` column is
+#'   defined in `colData()`, these values will also get padded, if necessary.
+#'   This improves downstream handling in functions that rely on this feature.
 #' @param ... Additional arguments.
 #'
 #' @return `character`.
@@ -58,20 +57,29 @@ NULL
 
 
 
-## Updated 2019-08-05.
+## Updated 2021-09-02.
 `autopadZeros,SE` <-  # nolint
-    function(object, rownames = FALSE, colnames = TRUE, sort = TRUE) {
-        object <- do.call(
-            what = `autopadZeros,matrix`,
-            args = list(
-                object = object,
-                rownames = rownames,
-                colnames = colnames,
-                sort = sort
-            )
+    function(
+        object,
+        rownames = FALSE,
+        colnames = TRUE,
+        sampleNames = TRUE,
+        sort = TRUE
+    ) {
+        assert(isFlag(sampleNames))
+        what <- `autopadZeros,matrix`
+        args <- list(
+            "object" = object,
+            "rownames" = rownames,
+            "colnames" = colnames,
+            "sort" = sort
         )
-        if ("sampleName" %in% colnames(colData(object))) {
-            sampleNames(object) <- autopadZeros(sampleNames(object))  # nocov  FIXME
+        object <- do.call(what = what, args = args)
+        if (
+            isTRUE(sampleNames) &&
+            "sampleName" %in% colnames(colData(object))
+        ) {
+            sampleNames(object) <- autopadZeros(sampleNames(object))
         }
         object
     }
