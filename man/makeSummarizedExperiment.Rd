@@ -66,7 +66,7 @@ automatic subsetting for row and column data, as well as automatic handling
 of transgenes and spike-ins.
 }
 \note{
-Updated 2021-09-01.
+Updated 2021-09-02.
 }
 \section{Session information}{
 

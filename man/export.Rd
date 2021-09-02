@@ -46,7 +46,7 @@ File path(s).
 Export data out of R and write to disk.
 }
 \note{
-Updated 2021-02-03.
+Updated 2021-09-02.
 }
 \section{Row names}{
 
