@@ -1,3 +1,9 @@
+## FIXME Automatic SimpleList coercion.
+## FIXME Unnamed primary assay.
+## FIXME Multiple unnamed assays.
+## FIXME Mismatched rowRanges handling.
+## FIXME Check transgene handling.
+
 context("makeSummarizedExperiment")
 
 genes <- paste0("gene", seq_len(4L))

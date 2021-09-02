@@ -15,7 +15,7 @@
 #' - `wd`: Working directory, returned from `getwd`.
 #'
 #' @export
-#' @note Updated 2021-09-01.
+#' @note Updated 2021-09-02.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param denylist `logical(1)`.
@@ -120,15 +120,14 @@ makeSummarizedExperiment <- function(
     if (hasLength(rowRanges)) {
         assert(!hasLength(rowData))
     }
-    if (!is(assays, "SimpleList")) {
-        assays <- SimpleList(assays)  # nocov  FIXME
+    if (!is(assays, "List")) {
+        assays <- SimpleList(assays)
     }
     ## Assays ------------------------------------------------------------------
     ## Currently only allowing matrix or Matrix classes here.
     assays <- Filter(f = Negate(is.null), x = assays)
     if (hasLength(assays)) {
         ## Name the primary assay "counts" by default.
-        ## nocov start  FIXME
         if (!hasNames(assays)) {
             if (hasLength(assays, n = 1L)) {
                 names(assays) <- "counts"
@@ -136,7 +135,6 @@ makeSummarizedExperiment <- function(
                 abort("Multiple assays defined without names.")
             }
         }
-        ## nocov end  FIXME
         assert(
             hasNames(assays),
             hasValidNames(assays)
@@ -177,7 +175,6 @@ makeSummarizedExperiment <- function(
             areIntersectingSets(rownames(assay), names(rowRanges))
         )
         ## Ensure we unclass any special classes returned from AcidGenomes.
-        ## nocov start  FIXME
         if (is(rowRanges, "GRangesList")) {
             rowRanges <- as(rowRanges, "GRangesList")
             if (hasCols(mcols(rowRanges[[1L]]))) {
@@ -256,7 +253,6 @@ makeSummarizedExperiment <- function(
             })
             setdiff <- setdiff(rownames(assay), names(rowRanges))
         }
-        ## nocov end  FIXME
         ## Error on unannotated Ensembl features. This often indicates an
         ## accidental genome build release version mismatch.
         assert(isSubset(rownames(assay), names(rowRanges)))
@@ -315,11 +311,10 @@ makeSummarizedExperiment <- function(
         if (isTRUE(sort)) {
         assayNames <- assayNames(se)
         if (hasLength(assayNames)) {
+            assayNames <- sort(assayNames)
             ## Always keep (raw) counts first, when defined.
             if (isSubset("counts", assayNames)) {
-                assayNames <- unique(c("counts", sort(assayNames)))
-            } else {
-                assayNames <- sort(assayNames)  # nocov  FIXME
+                assayNames <- unique(c("counts", assayNames))
             }
             assays(se) <- assays(se)[assayNames]
         }
