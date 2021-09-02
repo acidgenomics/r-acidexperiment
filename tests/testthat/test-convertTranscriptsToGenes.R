@@ -26,7 +26,7 @@ test_that("character", {
     )
 })
 
-test_that("matrix", {
+test_that("matrix : 'aggregate' TRUE mode", {
     object <- matrix(
         data = seq_len(8L),
         byrow = TRUE,
@@ -57,6 +57,39 @@ test_that("matrix", {
             object = object,
             tx2gene = tx2gene,
             aggregate = TRUE
+        ),
+        expected = expected
+    )
+})
+
+test_that("matrix : 'aggregate' FALSE mode", {
+    object <- matrix(
+        data = seq_len(8L),
+        byrow = TRUE,
+        nrow = 4L,
+        ncol = 2L,
+        dimnames = list(
+            c(
+                "ENST00000373020",
+                "ENST00000494424",
+                "ENST00000373031",
+                "ENST00000485971"
+            ),
+            c("sample1", "sample2")
+        )
+    )
+    expected <- object
+    rownames(expected) <- c(
+        "ENSG00000000003",
+        "ENSG00000000003",
+        "ENSG00000000005",
+        "ENSG00000000005"
+    )
+    expect_identical(
+        object = convertTranscriptsToGenes(
+            object = object,
+            tx2gene = tx2gene,
+            aggregate = FALSE
         ),
         expected = expected
     )
