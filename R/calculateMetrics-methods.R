@@ -1,7 +1,7 @@
 #' @name calculateMetrics
 #' @inherit AcidGenerics::calculateMetrics
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2020-02-03.
+#' @note Updated 2021-09-02.
 #'
 #' @details
 #' Input a raw count matrix. Do not use size factor adjusted or log normalized
@@ -31,17 +31,17 @@ NULL
 
 
 
-## Updated 2021-02-03.
+## Updated 2021-09-02.
 `calculateMetrics,matrix` <-  # nolint
     function(
         object,
-        rowRanges = NULL,
+        rowData = NULL,
         prefilter = FALSE
     ) {
         assert(
             hasValidDimnames(object),
             hasRows(object),
-            isAny(rowRanges, c("GRanges", "NULL")),
+            isAny(rowData, c("DataFrame", "NULL")),
             isFlag(prefilter)
         )
         if (isTRUE(prefilter)) {
@@ -65,7 +65,7 @@ NULL
                     "Calculating metrics without biotype information.\n",
                     "{.fun %s} required to calculate: %s."
                 ),
-                "rowRanges",
+                "rowData",
                 toInlineString(
                     x = c("nCoding", "nMito", "mitoRatio"),
                     class = "val"
@@ -73,36 +73,21 @@ NULL
             ))
         }
         ## Calculate nCoding and nMito, which requires annotations.
-        if (!is.null(rowRanges)) {
+        if (is.null(rowData)) {
+            missingBiotype()
+        } else {
             assert(
-                is(rowRanges, "GRanges"),
-                hasValidNames(rowRanges)
-            )
-            ## Error on missing features.
-            setdiff <- setdiff(rownames(object), names(rowRanges))
-            if (hasLength(setdiff)) {
-                abort(sprintf(
-                    fmt = "Features missing in {.fun %s}: %s.",
-                    "rowRanges",
-                    toInlineString(setdiff, n = 10L, class = "val")
-                ))
-            }
-            ## Subset ranges to match matrix.
-            assert(isSubset(rownames(object), names(rowRanges)))
-            rowRanges <- rowRanges[rownames(object)]
-            rowData <- mcols(rowRanges, use.names = TRUE)
-            assert(
+                is(rowData, "DataFrame"),
                 hasRownames(rowData),
-                identical(rownames(rowData), names(rowRanges))
+                isSubset(rownames(object), rownames(rowData))
             )
+            rowData <- rowData[rownames(object), ]
             if (isSubset("broadClass", colnames(rowData))) {
                 ## Drop rows with NA broad class.
                 keep <- !is.na(rowData[["broadClass"]])
-                assert(is(keep, "Rle"))
                 rowData <- rowData[keep, , drop = FALSE]
                 ## Coding features.
                 keep <- rowData[["broadClass"]] == "coding"
-                assert(is(keep, "Rle"))
                 codingFeatures <- rownames(rowData[keep, , drop = FALSE])
                 alertInfo(sprintf(
                     fmt = "%d coding %s detected.",
@@ -115,7 +100,6 @@ NULL
                 ))
                 ## Mitochondrial features.
                 keep <- rowData[["broadClass"]] == "mito"
-                assert(is(keep, "Rle"))
                 mitoFeatures <- rownames(rowData[keep, , drop = FALSE])
                 alertInfo(sprintf(
                     fmt = "%d mitochondrial %s detected.",
@@ -129,8 +113,6 @@ NULL
             } else {
                 missingBiotype()
             }
-        } else {
-            missingBiotype()  # FIXME This isn't covered.
         }
         ## Using S4 run-length encoding here to reduce memory overhead.
         ## We're following the naming conventions used in Seurat 3.
@@ -166,6 +148,13 @@ NULL
             ## Novelty score.
             keep <- !is.na(data[["log10FeaturesPerCount"]])
             data <- data[keep, , drop = FALSE]
+            keep <- data[["log10FeaturesPerCount"]] < 1L
+            data <- data[keep, , drop = FALSE]
+            ## Mito ratio.
+            keep <- !is.na(data[["mitoRatio"]])
+            data <- data[keep, , drop = FALSE]
+            keep <- data[["mitoRatio"]] < 1L
+            data <- data[keep, , drop = FALSE]
             ## Minimum number of read counts per sample.
             keep <- data[["nCount"]] > 0L
             data <- data[keep, , drop = FALSE]
@@ -198,8 +187,8 @@ NULL
 
 
 
-## Updated 2019-08-23.
-`calculateMetrics,RSE` <-  # nolint
+## Updated 2021-09-02.
+`calculateMetrics,SE` <-  # nolint
     function(object, prefilter = FALSE) {
         ## Drop zero rows and columns to first to speed up calculations.
         if (isTRUE(prefilter)) {
@@ -207,7 +196,7 @@ NULL
         }
         metrics <- calculateMetrics(
             object = counts(object),
-            rowRanges = rowRanges(object),
+            rowData = rowData(object),
             prefilter = prefilter
         )
         if (isTRUE(prefilter)) {
@@ -229,26 +218,22 @@ NULL
 
 
 
-#' @rdname calculateMetrics
-#' @export
 setMethod(
     f = "calculateMetrics",
     signature = signature("Matrix"),
     definition = `calculateMetrics,Matrix`
 )
 
-#' @rdname calculateMetrics
-#' @export
 setMethod(
     f = "calculateMetrics",
-    signature = signature("RangedSummarizedExperiment"),
-    definition = `calculateMetrics,RSE`
+    signature = signature("matrix"),
+    definition = `calculateMetrics,matrix`
 )
 
 #' @rdname calculateMetrics
 #' @export
 setMethod(
     f = "calculateMetrics",
-    signature = signature("matrix"),
-    definition = `calculateMetrics,matrix`
+    signature = signature("SummarizedExperiment"),
+    definition = `calculateMetrics,SE`
 )

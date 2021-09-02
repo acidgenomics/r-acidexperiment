@@ -2,25 +2,15 @@
 % Please edit documentation in R/AllGenerics.R, R/calculateMetrics-methods.R
 \name{calculateMetrics}
 \alias{calculateMetrics}
-\alias{calculateMetrics,Matrix-method}
-\alias{calculateMetrics,RangedSummarizedExperiment-method}
-\alias{calculateMetrics,matrix-method}
+\alias{calculateMetrics,SummarizedExperiment-method}
 \title{Calculate quality control metrics}
 \usage{
 calculateMetrics(object, ...)
 
-\S4method{calculateMetrics}{Matrix}(object, rowRanges = NULL, prefilter = FALSE)
-
-\S4method{calculateMetrics}{RangedSummarizedExperiment}(object, prefilter = FALSE)
-
-\S4method{calculateMetrics}{matrix}(object, rowRanges = NULL, prefilter = FALSE)
+\S4method{calculateMetrics}{SummarizedExperiment}(object, prefilter = FALSE)
 }
 \arguments{
 \item{object}{Object.}
-
-\item{rowRanges}{\code{GRanges} or \code{GRangesList}.
-Genomic ranges (e.g. genome annotations). Metadata describing the assay
-rows.}
 
 \item{prefilter}{\code{logical(1)}.
 Drop very low quality samples/cells from the object.
@@ -44,7 +34,7 @@ Input a raw count matrix. Do not use size factor adjusted or log normalized
 counts here.
 }
 \note{
-Updated 2020-02-03.
+Updated 2021-09-02.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
