@@ -1,3 +1,23 @@
+context("importSampleData : Simple input")
+
+test_that("Direct 'sampleId' column, requiring snake case sanitization", {
+    tmpfile <- tempfile(fileext = ".csv")
+    unlink(tmpfile, recursive = FALSE)
+    df <- data.frame("sampleId" = c("10001-A", "10002-B"))
+    export(df, file = tmpfile)
+    expect_identical(
+        object = importSampleData(tmpfile),
+        expected = DataFrame(
+            "sampleName" = as.factor(c("10001-A", "10002-B")),
+            "sampleId" = as.factor(c("x10001_a", "x10002_b")),
+            row.names = c("x10001_a", "x10002_b")
+        )
+    )
+    unlink(tmpfile, recursive = FALSE)
+})
+
+
+
 context("importSampleData : Demultiplexed samples")
 
 test_that("DataFrame return", {
@@ -46,6 +66,34 @@ test_that("Duplicated description", {
     expect_error(
         object = importSampleData(file, pipeline = "bcbio"),
         regexp = "Sample data input file is malformed."
+    )
+})
+
+## Recommend using `fileName` instead.
+test_that("bcbio 'samplename' column", {
+    file <- file.path(
+        "cache",
+        "bcbio-metadata-demultiplexed-invalid-legacy-samplename.csv"
+    )
+    out <- importSampleData(file, pipeline = "bcbio")
+    expect_identical(
+        object = colnames(out),
+        expected = c("sampleName", "fileName", "description")
+    )
+})
+
+test_that("'sampleId' column defined by user", {
+    file <- file.path(
+        "cache",
+        "bcbio-metadata-demultiplexed-invalid-sample-id.csv"
+    )
+    expect_error(
+        object = importSampleData(file, pipeline = "bcbio"),
+        regexp = "sampleId"
+    )
+    expect_s4_class(
+        object = importSampleData(file, pipeline = "none"),
+        class = "DataFrame"
     )
 })
 
@@ -195,33 +243,9 @@ test_that("Duplicate rows in 'sampleName' column", {
     )
 })
 
-## Recommend using `fileName` instead.
-test_that("bcbio 'samplename' column", {
-    file <- file.path(
-        "cache",
-        "bcbio-metadata-demultiplexed-invalid-legacy-samplename.csv"
-    )
-    out <- importSampleData(file, pipeline = "bcbio")
-    expect_identical(
-        object = colnames(out),
-        expected = c("sampleName", "fileName", "description")
-    )
-})
 
-test_that("'sampleId' column defined by user", {
-    file <- file.path(
-        "cache",
-        "bcbio-metadata-demultiplexed-invalid-sample-id.csv"
-    )
-    expect_error(
-        object = importSampleData(file, pipeline = "bcbio"),
-        regexp = "sampleId"
-    )
-    expect_s4_class(
-        object = importSampleData(file, pipeline = "none"),
-        class = "DataFrame"
-    )
-})
+
+context("importSampleData : Malformed input")
 
 test_that("Missing file", {
     expect_error(
@@ -229,10 +253,6 @@ test_that("Missing file", {
         regexp = "isAFile"
     )
 })
-
-
-
-context("importSampleData : Malformed input")
 
 test_that("Metadata denylist", {
     file <- file.path(
