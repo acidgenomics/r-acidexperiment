@@ -103,13 +103,11 @@ NULL
             )
         )
         if (isTRUE(aggregate)) {
-            aggregateRows(object, by = t2g)
+            object <- aggregateRows(object, by = t2g)
         } else {
-            ## nocov start  FIXME
             rownames(object) <- as.character(t2g)
-            object
-            ## nocov end  FIXME
         }
+        object
     }
 
 
