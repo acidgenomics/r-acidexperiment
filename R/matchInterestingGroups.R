@@ -29,11 +29,9 @@ matchInterestingGroups <- function(object, interestingGroups = NULL) {
     ) {
         interestingGroups <- NULL
     }
-
     if (is.null(interestingGroups)) {
         interestingGroups <- interestingGroups(object)
     }
-
     ## Check that this metadata is defined in `colData()`.
     ## Don't check against `sampleData()` return because this function is used
     ## inside that code. Note that `sampleName` is a magic column that is
@@ -50,12 +48,10 @@ matchInterestingGroups <- function(object, interestingGroups = NULL) {
             )
         )
     }
-
     ## Return `sampleName` by default, if necessary.
     if (is.null(interestingGroups)) {
         interestingGroups <- "sampleName"
     }
-
     assert(isCharacter(interestingGroups))
     interestingGroups
 }
