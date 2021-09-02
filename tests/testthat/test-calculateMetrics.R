@@ -1,6 +1,6 @@
 context("calculateMetrics")
 
-test_that("SummarizedExperiment", {
+test_that("SE", {
     object <- rse
     cols <- c(
         "log10FeaturesPerCount",
@@ -30,7 +30,7 @@ test_that("SummarizedExperiment", {
     )
 })
 
-test_that("Low pass prefiltering", {
+test_that("SE : Low pass prefiltering", {
     ## All barcodes in example should pass.
     object <- rse
     x <- calculateMetrics(object, prefilter = TRUE)
@@ -41,7 +41,7 @@ test_that("Low pass prefiltering", {
     expect_identical(ncol(x), ncol(object) - 2L)
 })
 
-test_that("Missing rowRanges", {
+test_that("SE : Missing rowRanges", {
     object <- rse
     rowData(object) <- NULL
     expect_message(
