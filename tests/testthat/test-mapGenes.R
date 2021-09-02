@@ -32,6 +32,138 @@ test_that("SummarizedExperiment", {
     )
 })
 
+test_that("Mapping priority and failure handling", {
+    object <- SummarizedExperiment(
+        assays = list(),
+        rowData = DataFrame(
+            "geneId" = c(
+                "ENSG00000000003.15",
+                "ENSG00000000005.6",
+                "ENSG00000000419.14"
+            ),
+            "geneName" = c(
+                "TSPAN6",
+                "TNMD",
+                "DPM1"
+            ),
+            "geneSynonyms" = I(CharacterList(
+                c("T245", "TM4SF6", "TSPAN-6"),
+                c("BRICD4", "CHM1L", "TEM"),
+                c("CDGIE", "MPDS")
+            )),
+            row.names = c(
+                "gene1",
+                "gene2",
+                "gene3"
+            )
+        )
+    )
+    ## geneId
+    expect_identical(
+        object =
+            mapGenesToRownames(
+                object = object,
+                genes = c(
+                    "ENSG00000000419.14",
+                    "ENSG00000000003.15",
+                    "ENSG00000000005.6"
+                )
+            ),
+        expected = c(
+            "ENSG00000000419.14" = "gene3",
+            "ENSG00000000003.15" = "gene1",
+            "ENSG00000000005.6" = "gene2"
+        )
+    )
+    ## geneIdNoVersion
+    expect_identical(
+        object =
+            mapGenesToRownames(
+                object = object,
+                genes = c(
+                    "ENSG00000000419",
+                    "ENSG00000000003",
+                    "ENSG00000000005"
+                )
+            ),
+        expected = c(
+            "ENSG00000000419" = "gene3",
+            "ENSG00000000003" = "gene1",
+            "ENSG00000000005" = "gene2"
+        )
+    )
+    ## geneName
+    expect_identical(
+        object =
+            mapGenesToRownames(
+                object = object,
+                genes = c(
+                    "DPM1",
+                    "TSPAN6",
+                    "TNMD"
+                )
+            ),
+        expected = c(
+            "DPM1" = "gene3",
+            "TSPAN6" = "gene1",
+            "TNMD" = "gene2"
+        )
+    )
+    ## geneSynonyms
+    expect_identical(
+        object = mapGenesToRownames(
+            object = object,
+            genes = c(
+                "TSPAN-6",
+                "BRICD4",
+                "MPDS"
+            )
+        ),
+        expected = c(
+            "TSPAN-6" = "gene1",
+            "BRICD4" = "gene2",
+            "MPDS" = "gene3"
+        )
+    )
+    ## We're currently supported mixed input of gene identifiers.
+    expect_identical(
+        object = mapGenesToRownames(
+            object = object,
+            genes = c(
+                "T245",
+                "ENSG00000000005.6",
+                "DPM1"
+            )
+        ),
+        expected = c(
+            "T245" = "gene1",
+            "ENSG00000000005.6" = "gene2",
+            "DPM1" = "gene3"
+        )
+    )
+    ## Check error handling on mismatch.
+    expect_error(
+        object = mapGenesToRownames(
+            object = object,
+            genes = c("TSPAN-6", "BRICD4", "XXX"),
+            strict = TRUE
+        ),
+        regexp = "XXX"
+    )
+    ## Consider returning with NA instead in a future release.
+    expect_identical(
+        object = mapGenesToRownames(
+            object = object,
+            genes = c("TSPAN-6", "BRICD4", "XXX"),
+            strict = FALSE
+        ),
+        c(
+            "TSPAN-6" = "gene1",
+            "BRICD4" = "gene2"
+        )
+    )
+})
+
 
 
 context("mapGenesToIDs")
