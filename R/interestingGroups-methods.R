@@ -30,11 +30,9 @@ NULL
 ## Updated 2019-07-22.
 `interestingGroups<-,Annotated,character` <-  # nolint
     function(object, value) {
-        ## nocov start  FIXME
         assert(areDisjointSets(value, "interestingGroups"))
         metadata(object)[["interestingGroups"]] <- value
         object
-        ## nocov end  FIXME
     }
 
 
