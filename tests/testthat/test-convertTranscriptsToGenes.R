@@ -11,10 +11,13 @@ tx2gene <- AcidGenomes::makeTx2GeneFromEnsembl(
 )
 
 test_that("character", {
+    ## Ensure that function supports remapping of column names.
+    t2g <- tx2gene
+    colnames(t2g) <- c("x1", "x2")
     expect_identical(
         object = convertTranscriptsToGenes(
             object = c("ENST00000000233", "ENST00000000412"),
-            tx2gene = tx2gene
+            tx2gene = t2g
         ),
         expected = factor(c(
             "ENST00000000233" = "ENSG00000004059",

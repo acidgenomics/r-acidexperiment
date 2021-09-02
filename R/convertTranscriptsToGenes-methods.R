@@ -68,7 +68,7 @@ NULL
         ## Arrange the tx2gene to match the input.
         cols <- c("txId", "geneId")
         if (!identical(cols, colnames(tx2gene))) {
-            colnames(tx2gene) <- cols  # nocov  FIXME
+            colnames(tx2gene) <- cols
         }
         validObject(tx2gene)
         missing <- setdiff(object, tx2gene[["txId"]])
