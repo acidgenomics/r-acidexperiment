@@ -165,6 +165,34 @@ test_that("Mapping priority and failure handling", {
     )
 })
 
+test_that("Direct matching against rownames, for a minimal object", {
+    object = rse
+    rowData(object) <- NULL
+    expect_identical(
+        object = mapGenesToRownames(
+            object = object,
+            genes = head(rownames(object))
+        ),
+        expected = head(rownames(object))
+    )
+    expect_error(
+        object = mapGenesToRownames(
+            object = object,
+            genes = c(head(rownames(object)), "XXX"),
+            strict = TRUE
+        ),
+        regexp = "XXX"
+    )
+    expect_identical(
+        object = mapGenesToRownames(
+            object = object,
+            genes = c(head(rownames(object)), "XXX"),
+            strict = FALSE
+        ),
+        expected = head(rownames(object))
+    )
+})
+
 
 
 context("mapGenesToIDs")
