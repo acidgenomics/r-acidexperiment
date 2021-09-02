@@ -39,13 +39,13 @@ NULL
 
 
 
+## Note that we're always allowing `sampleName` to be slotted, even if that
+## column isn't defined in `colData()`.
+##
 ## Updated 2019-08-11.
 `interestingGroups<-,SE,character` <-  # nolint
     function(object, value) {
-        ## Check for attempt to use `interestingGroups` automatic column.
         assert(areDisjointSets(value, "interestingGroups"))
-        ## Note that we're always allowing `sampleName` to be slotted, even if
-        ## that column isn't defined in `colData()`.
         setdiff <- setdiff(value, colnames(sampleData(object)))
         if (hasLength(setdiff)) {
             abort(sprintf(
