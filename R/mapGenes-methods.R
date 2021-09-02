@@ -189,10 +189,9 @@ NULL
                 .makeGeneMap(object)
             },
             error = function(e) {
-                NULL  # nocov  FIXME
+                NULL  # nocov
             }
         )
-        ## nocov start  FIXME
         if (!is.null(map)) {
             idx <- .mapGenes(object = map, genes = genes, strict = strict)
             map <- map[idx, , drop = FALSE]
@@ -221,7 +220,6 @@ NULL
             assert(hasLength(mapped))
             out <- table[mapped]
         }
-        ## nocov end  FIXME
         assert(hasNoDuplicates(out))
         out
     }
