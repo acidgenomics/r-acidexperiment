@@ -35,8 +35,6 @@ test_that("SummarizedExperiment", {
     )
 })
 
-## FIXME Can we test SCE coverage here too?
-
 test_that("SummarizedExperiment with 'sampleName' colData", {
     object <- rse
     colnames(object) <- gsub(
@@ -51,5 +49,3 @@ test_that("SummarizedExperiment with 'sampleName' colData", {
         sort = TRUE
     )
 })
-
-## FIXME Need to handle sampleName edge case.
