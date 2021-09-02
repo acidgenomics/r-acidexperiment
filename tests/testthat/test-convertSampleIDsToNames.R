@@ -1,8 +1,18 @@
 context("convertSampleIDsToNames")
 
-test_that("SummarizedExperiment", {
-    newNames <- letters[seq_len(ncol(rse))]
-    colData(rse)[["sampleName"]] <- as.factor(newNames)
-    x <- convertSampleIDsToNames(rse)
-    expect_identical(colnames(x), newNames)
+test_that("SE", {
+    object <- rse
+    newNames <- letters[seq_len(ncol(object))]
+    colData(object)[["sampleName"]] <- as.factor(newNames)
+    object <- convertSampleIDsToNames(object)
+    expect_identical(colnames(object), newNames)
+})
+
+test_that("SE : return unmodified", {
+    object <- rse
+    colData(object)[["sampleName"]] <- NULL
+    expect_message(
+        object = convertSampleIDsToNames(object),
+        regexp = "unmodified"
+    )
 })

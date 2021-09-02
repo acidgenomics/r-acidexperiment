@@ -12,6 +12,9 @@ gene2symbol <- AcidGenomes::makeGene2SymbolFromEnsembl(
 )
 
 test_that("character", {
+    ## Ensure that function supports remapping of column names.
+    g2s <- gene2symbol
+    colnames(g2s) <- c("x1", "x2")
     expect_identical(
         object = convertGenesToSymbols(
             object = c("ENSG00000000003", "ENSG00000000005"),
