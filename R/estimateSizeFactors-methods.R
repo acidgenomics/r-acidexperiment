@@ -14,7 +14,7 @@
 #' can also be supplied using the assignment function `sizeFactors<-()`.
 #'
 #' @name estimateSizeFactors
-#' @note Updated 2021-02-22.
+#' @note Updated 2021-09-02.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param type `character(1)`.
@@ -67,7 +67,7 @@ NULL
 
 
 
-## Updated 2021-02-22.
+## Updated 2021-09-02.
 .librarySizeFactors <-  # nolint
     function(
         counts,
@@ -92,16 +92,10 @@ NULL
         ## Get the sum of expression per cell.
         libSizes <- colSums(counts)
         ## Error on detection of cells without any expression.
-        if (any(libSizes == 0L)) {
-            abort(sprintf(
-                fmt = "Cells with no expression detected: %s.",
-                toInlineString(
-                    x = as.character(which(libSizes == 0L)),
-                    n = 10L,
-                    class = "val"
-                )
-            ))
-        }
+        assert(
+            all(libSizes > 0L),
+            msg = "Zero values from 'colSums()' detected."
+        )
         ## Calculate the size factors per cell.
         sf <- switch(
             EXPR = type,
