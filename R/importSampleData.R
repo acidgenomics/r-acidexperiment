@@ -175,7 +175,7 @@ importSampleData <- function(
         }
         ## Autopad zeros in sample IDs to improve sorting.
         if (isTRUE(autopadZeros)) {
-            data[[idCol]] <- autopadZeros(data[[idCol]])
+            data[[idCol]] <- autopadZeros(data[[idCol]])  # nocov
         }
     } else {
         abort(sprintf(
