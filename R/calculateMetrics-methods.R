@@ -130,7 +130,7 @@ NULL
                 missingBiotype()
             }
         } else {
-            missingBiotype()
+            missingBiotype()  # FIXME This isn't covered.
         }
         ## Using S4 run-length encoding here to reduce memory overhead.
         ## We're following the naming conventions used in Seurat 3.

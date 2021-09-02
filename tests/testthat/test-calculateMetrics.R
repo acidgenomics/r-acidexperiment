@@ -70,3 +70,11 @@ test_that("matrix : rowRanges mismatch", {
         regexp = "missing"
     )
 })
+
+test_that("matrix : no rowRanges", {
+    object <- mat
+    expect_message(
+        object = calculateMetrics(object),
+        regexp = "biotype"
+    )
+})
