@@ -100,14 +100,13 @@ NULL
             isString(fun)
         )
         ## Groupings -----------------------------------------------------------
-        if (!all(isSubset(col, colnames(colData(x))))) {
-            ## nocov start  FIXME
-            abort(sprintf(
-                "{.val %s} column not defined in {.fun %s}.",
-                col, "colData"
-            ))
-            ## nocov end  FIXME
-        }
+        assert(
+            all(isSubset(col, colnames(colData(x)))),
+            msg = sprintf(
+                "'%s' column not defined in '%s'.",
+                col, "colData()"
+            )
+        )
         by <- colData(x)[[col]]
         assert(
             is.factor(by),
@@ -123,7 +122,7 @@ NULL
             "colData" = DataFrame(row.names = colnames(counts))
         )
         if (is(x, "RangedSummarizedExperiment")) {
-            args[["rowRanges"]] <- rowRanges(x)  # nocov  FIXME
+            args[["rowRanges"]] <- rowRanges(x)  # nocov
         } else {
             args[["rowData"]] <- rowData(x)
         }
