@@ -13,7 +13,7 @@
 #' is duplicated, these functions will return a warning.
 #'
 #' @name mapGenes
-#' @note Updated 2021-06-10.
+#' @note Updated 2021-09-02.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param strict `logical(1)`.
@@ -77,7 +77,7 @@ NULL
 
 
 
-## Updated 2021-06-10.
+## Updated 2021-09-02.
 .mapGenes <- function(
     object,
     genes,
@@ -97,12 +97,17 @@ NULL
     if (isTRUE(strict)) {
         alertFun <- abort
     } else {
-        alertFun <- alertWarning  # nocov  FIXME
+        alertFun <- alertWarning
     }
-    suppressMessages({
-        object[["geneIdNoVersion"]] <-
-            stripGeneVersions(object[["geneId"]])
-    })
+    if (!isSubset("geneIdNoVersion", colnames(object))) {
+        suppressMessages({
+            object[["geneIdNoVersion"]] <-
+                stripGeneVersions(object[["geneId"]])
+        })
+    }
+    if (isSubset("geneSynonyms", colnames(object))) {
+        assert(is(object[["geneSynonyms"]], "CharacterList"))
+    }
     out <- vapply(
         X = genes,
         FUN = function(x) {
@@ -111,10 +116,9 @@ NULL
             idx <- match(x = x, table = object[["geneId"]])
             if (isInt(idx)) return(idx)
             idx <- match(x = x, table = object[["geneIdNoVersion"]])
-            if (isInt(idx)) return(idx)  # nocov  FIXME
+            if (isInt(idx)) return(idx)
             idx <- match(x = x, table = object[["geneName"]])
             if (isInt(idx)) return(idx)
-            ## nocov start  FIXME
             if (isSubset("geneSynonyms", colnames(object))) {
                 idx <- which(bapply(
                     X = object[["geneSynonyms"]],
@@ -124,12 +128,23 @@ NULL
                 ))
                 if (isInt(idx)) return(idx)
             }
-            alertFun(sprintf("Failed to map gene: {.val %s}.", x))
             -1L
-            ## nocov end  FIXME
         },
         FUN.VALUE = integer(1L)
     )
+    if (any(out < 0L)) {
+        failures <- genes[which(out < 0L)]
+        alertFun(sprintf(
+            "Failed to map %d %s: %s.",
+            length(failures),
+            ngettext(
+                n = length(failures),
+                msg1 = "gene",
+                msg2 = "genes"
+            ),
+            toInlineString(failures, n = 5L, class = "val")
+        ))
+    }
     out <- out[out > 0L]
     out
 }
