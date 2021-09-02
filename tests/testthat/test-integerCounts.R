@@ -31,3 +31,32 @@ test_that("SE", {
         expected = expected
     )
 })
+
+test_that("Matrix", {
+    object <- matrix(
+        data = c(
+            0, 0, 1.1, 1.2,
+            2.1, 2.2, 0, 0,
+            3.1, 0, 3.2, 0
+        ),
+        nrow = 3L,
+        ncol = 4L,
+        byrow = TRUE
+    )
+    object <- as(object, "sparseMatrix")
+    expected <- matrix(
+        data = c(
+            0L, 0L, 1L, 1L,
+            2L, 2L, 0L, 0L,
+            3L, 0L, 3L, 0L
+        ),
+        nrow = 3L,
+        ncol = 4L,
+        byrow = TRUE
+    )
+    expected <- as(expected, "sparseMatrix")
+    expect_identical(
+        object = integerCounts(object),
+        expected = expected
+    )
+})
