@@ -18,7 +18,7 @@ test_that("character", {
     expect_identical(
         object = convertGenesToSymbols(
             object = c("ENSG00000000003", "ENSG00000000005"),
-            gene2symbol = gene2symbol
+            gene2symbol = g2s
         ),
         expected = c(
             "ENSG00000000003" = "TSPAN6",
