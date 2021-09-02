@@ -105,19 +105,17 @@ NULL
             identical(names(by), rownames(x))
         )
         fun <- match.arg(fun)
-        if (fun == "n") {
+        if (identical(fun, "n")) {
             x <- x != 0L
         }
         model <- Matrix::fac2sparse(by)
         ## This step calculates the sum.
         result <- model %*% x
-        if (fun == "mean") {
-            ## nocov start  FIXME
+        if (identical(fun, "mean")) {
             n <- aggregate(x = x, by = by, fun = "n")
             ## Avoid NaN from diving by zero.
             n[n == 0L] <- 1L
             result <- result / n
-            ## nocov end  FIXME
         }
         result
     }
