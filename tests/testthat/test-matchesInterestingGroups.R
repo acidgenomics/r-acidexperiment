@@ -15,7 +15,46 @@ test_that("Match failure", {
     expect_false(ok)
     expect_s4_class(ok, "goalie")
     expect_identical(
-        cause(ok),
-        "Interesting groups are not defined in 'sampleData()'."
+        object = cause(ok),
+        expected = "Interesting groups are not defined in 'sampleData()'."
+    )
+})
+
+test_that("Invalid input", {
+    ok <- matchesInterestingGroups(x = FALSE, interestingGroups = FALSE)
+    expect_false(ok)
+    expect_s4_class(ok, "goalie")
+    expect_identical(
+        object = cause(ok),
+        expected = "'FALSE' is not S4 class."
+    )
+    ok <- matchesInterestingGroups(x = rse, interestingGroups = FALSE)
+    expect_false(ok)
+    expect_s4_class(ok, "goalie")
+    expect_identical(
+        object = cause(ok),
+        expected = "'interestingGroups' is not character."
+    )
+    ok <- matchesInterestingGroups(
+        x = DataFrame(),
+        interestingGroups = "a"
+    )
+    expect_false(ok)
+    expect_s4_class(ok, "goalie")
+    expect_identical(
+        object = cause(ok),
+        expected = "'sampleData()' return error."
+    )
+    object <- rse
+    colData(object)[["aaa"]] <- NULL
+    ok <- matchesInterestingGroups(
+        x = object,
+        interestingGroups = "aaa"
+    )
+    expect_false(ok)
+    expect_s4_class(ok, "goalie")
+    expect_identical(
+        object = cause(ok),
+        expected = "Interesting groups are not defined in 'sampleData()'."
     )
 })
