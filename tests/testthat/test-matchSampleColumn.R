@@ -3,11 +3,13 @@ context("matchSampleColumn")
 test_that("matchSampleColumn", {
     expect_identical(
         object = matchSampleColumn(
-            object = DataFrame(
-                "sampleId" = "XXX",
-                "sampleID" = "XXX",
-                "sampleid" = "XXX",
-                "sample" = "XXX"
+            object = SummarizedExperiment(
+                colData = DataFrame(
+                    "sampleId" = "XXX",
+                    "sampleID" = "XXX",
+                    "sampleid" = "XXX",
+                    "sample" = "XXX"
+                )
             )
         ),
         expected = "sampleId"
