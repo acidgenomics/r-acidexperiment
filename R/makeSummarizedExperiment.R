@@ -180,9 +180,9 @@ makeSummarizedExperiment <- function(
             if (hasCols(mcols(rowRanges[[1L]]))) {
                 assert(
                     identical(
-                        x = colnames(mcols(rowRanges)[[1L]]),
+                        x = colnames(mcols(rowRanges[[1L]])),
                         y = camelCase(
-                            object = colnames(mcols(rowRanges)[[1L]]),
+                            object = colnames(mcols(rowRanges[[1L]])),
                             strict = TRUE
                         )
                     )

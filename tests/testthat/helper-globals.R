@@ -35,5 +35,6 @@ hasInternet <- goalie::hasInternet
 methodFormals <- AcidBase::methodFormals
 rowData <- SummarizedExperiment::rowData
 rowRanges <- SummarizedExperiment::rowRanges
+seqnames <- pipette::seqnames
 simpleClass <- AcidBase::simpleClass
 ## nolint end
