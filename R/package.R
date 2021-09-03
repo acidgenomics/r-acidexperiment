@@ -15,9 +15,9 @@
 #' @importMethodsFrom SummarizedExperiment coerce
 #' @importMethodsFrom pipette as.data.frame coerce droplevels export
 #'
-#' @importFrom AcidBase bapply formalsList geometricMean getNameInParent initDir
-#'   lanePattern metadataDenylist methodFunction packageName
-#'   packageVersion realpath requireNamespaces standardizeCall
+#' @importFrom AcidBase formalsList geometricMean getNameInParent initDir
+#'   lanePattern metadataDenylist methodFunction packageName packageVersion
+#'   realpath requireNamespaces standardizeCall
 #' @importFrom AcidCLI abort alert alertInfo alertWarning toInlineString
 #' @importFrom AcidGenerics DataFrame Rle SimpleList SplitDataFrameList %in%
 #'   aggregate as.data.frame complete.cases coerce colSums cor decode do.call
@@ -29,8 +29,8 @@
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
 #'   rowRanges rowRanges<-
 #' @importFrom goalie allAreAtomic allAreMatchingRegex areDisjointSets
-#'   areIntersectingSets areSetEqual assert cause false hasColnames hasCols
-#'   hasDimnames hasLength hasNames hasNoDuplicates hasRownames hasRows
+#'   areIntersectingSets areSetEqual assert bapply cause false hasColnames
+#'   hasCols hasDimnames hasLength hasNames hasNoDuplicates hasRownames hasRows
 #'   hasValidDimnames hasValidNames isAFile isAURL isAny isCharacter isFlag
 #'   isInRange isInt isNonNegative isNumber isPositive isScalar isString
 #'   isSubset matchesUniqueGeneNames validNames
