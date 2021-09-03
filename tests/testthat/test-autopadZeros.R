@@ -34,18 +34,3 @@ test_that("SummarizedExperiment", {
         expected = "sample01"
     )
 })
-
-test_that("SummarizedExperiment with 'sampleName' colData", {
-    object <- rse
-    colnames(object) <- gsub(
-        pattern = "^sample0",
-        replacement = "sample",
-        x = colnames(object)
-    )
-    object <- autopadZeros(
-        object = object,
-        rownames = TRUE,
-        colnames = TRUE,
-        sort = TRUE
-    )
-})

@@ -1,6 +1,3 @@
-## FIXME Mismatched rowRanges handling.
-## FIXME Check transgene handling.
-
 context("makeSummarizedExperiment")
 
 genes <- paste0("gene", seq_len(4L))
@@ -202,13 +199,19 @@ test_that("Mismatched rowRanges support", {
         rowRanges = rowRanges
     )
     expect_s4_class(object, "RangedSummarizedExperiment")
-    expect_message(
-        object = makeSummarizedExperiment(
-            assays = assays,
-            rowRanges = rowRanges[seq_len(2L)]
-        ),
-        regexp = "unknown"
+    object <- makeSummarizedExperiment(
+        assays = assays,
+        rowRanges = rowRanges[2L:length(rowRanges)]
     )
+    expect_true("unknown" %in% levels(seqnames(object)))
+    expect_false("transgene" %in% levels(seqnames(object)))
+    object <- makeSummarizedExperiment(
+        assays = assays,
+        rowRanges = rowRanges[2L:length(rowRanges)],
+        transgeneNames = names(rowRanges)[[1L]]
+    )
+    expect_true("transgene" %in% levels(seqnames(object)))
+    expect_false("unknown" %in% levels(seqnames(object)))
 })
 
 test_that("GRangesList support", {
@@ -219,14 +222,16 @@ test_that("GRangesList support", {
                 ranges = IRanges(
                     start = seq(from = 1L, to = 101L, by = 100L),
                     end = seq(from = 100L, to = 201L, by = 100L)
-                )
+                ),
+                geneName = c("aaa", "bbb")
             ),
             "gene2" = GRanges(
                 seqnames = replicate(n = 2L, expr = "1"),
                 ranges = IRanges(
                     start = seq(from = 201L, to = 301L, by = 100L),
                     end = seq(from = 300L, to = 401L, by = 100L)
-                )
+                ),
+                geneName = c("ccc", "ddd")
             )
         )
     )

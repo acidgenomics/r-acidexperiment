@@ -106,7 +106,7 @@ test_that("SE : Missing rowData", {
 test_that("matrix : rowData mismatch", {
     counts <- counts(rse)
     rowData <- rowData(rse)
-    rowData <- rowData[2:nrow(rowData), ]
+    rowData <- rowData[2L:nrow(rowData), , drop = FALSE]
     expect_error(
         object = calculateMetrics(
             object = counts,
