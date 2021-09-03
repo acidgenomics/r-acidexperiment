@@ -181,9 +181,36 @@ test_that("Invalid metadata", {
     )
 })
 
+## This situation can happen when users input the incorrect genome release.
+## Currently is a common case for bcbio RNA-seq output, when a user selects
+## an incorrect Ensembl release or uses the latest release.
+test_that("Mismatched rowRanges support", {
+    rowRanges <- gr
+    assays <- SimpleList(
+        matrix(
+            data = 1L,
+            nrow = length(rowRanges),
+            ncol = 1L,
+            dimnames = list(
+                names(rowRanges),
+                "sample1"
+            )
+        )
+    )
+    object <- makeSummarizedExperiment(
+        assays = assays,
+        rowRanges = rowRanges
+    )
+    expect_s4_class(object, "RangedSummarizedExperiment")
+    expect_message(
+        object = makeSummarizedExperiment(
+            assays = assays,
+            rowRanges = rowRanges[seq_len(2L)]
+        ),
+        regexp = "unknown"
+    )
+})
 
-
-## FIXME See lines 179-186.
 test_that("GRangesList support", {
     rowRanges <- GRangesList(
         list(
@@ -214,8 +241,16 @@ test_that("GRangesList support", {
             )
         )
     )
-    makeSummarizedExperiment(assays = assays, rowRanges = rowRanges)
+    object <- makeSummarizedExperiment(
+        assays = assays,
+        rowRanges = rowRanges
+    )
+    expect_s4_class(object, "RangedSummarizedExperiment")
+    expect_error(
+        object = makeSummarizedExperiment(
+            assays = assays,
+            rowRanges = rowRanges[1L]  # nolint
+        ),
+        regexp = "mismatched"
+    )
 })
-
-
-
