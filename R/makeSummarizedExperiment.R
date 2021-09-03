@@ -229,29 +229,29 @@ makeSummarizedExperiment <- function(
             hasLength(setdiff) &&
             any(grepl(pattern = pattern, x = names(rowRanges)))
         ) {
-            symbols <- setdiff[!grepl(pattern = pattern, x = setdiff)]
             alertWarning(sprintf(
-                fmt = "%d unannotated %s detected: %s.",
-                length(symbols),
+                fmt = paste(
+                    "%d unknown %s detected: %s.",
+                    "Check that {.arg %s} or {.arg %s} are correct.",
+                    "Define transgenes using {.arg %s}."
+                ),
+                length(setdiff),
                 ngettext(
-                    n = length(symbols),
+                    n = length(setdiff),
                     msg1 = "feature",
                     msg2 = "features"
                 ),
-                toInlineString(symbols, n = 10L, class = "val")
-            ))
-            alertInfo(sprintf(
-                "Define transgenes using {.arg %s}.",
+                toInlineString(setdiff, n = 5L, class = "val"),
+                "ensemblRelease", "gffFile",
                 "transgeneNames"
             ))
             unknownRanges <- emptyRanges(
-                names = symbols,
+                names = setdiff,
                 mcolnames = names(mcols(rowRanges))
             )
             suppressWarnings({
                 rowRanges <- c(unknownRanges, rowRanges)
             })
-            setdiff <- setdiff(rownames(assay), names(rowRanges))
         }
         ## Error on unannotated Ensembl features. This often indicates an
         ## accidental genome build release version mismatch.
