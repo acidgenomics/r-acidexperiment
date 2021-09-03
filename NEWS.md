@@ -3,13 +3,35 @@
 ### Major changes
 
 - Reworked and improved unit tests to achieve 100% code coverage.
+- `calculateMetrics`: Simplifed internal assert checks. The `matrix` and
+  `Matrix` methods (handed off from `SummarizedExperiment` method) now work
+  primarily on `rowData` instead of `rowRanges`, since we're not using any
+  genomic coordinates here in checks. Prefiltering (disabled by default, but
+  can be enabled with `prefilter = TRUE`) now removes column elements (e.g.
+  cells and/or samples) with all mito counts (`mitoRatio >= 1`) and an
+  artifically high `log10FeaturesPerCount >= 1` value. These settings help
+  make 100% code coverage possible on minimal test datasets.
+- `makeSummarizedExperiment`: Improved and fixed CLI messages on detected of
+  mismatched features to be slotted into `rowRanges`. This can happen when
+  incorrect values are defined in `ensemblRelease` or `gffFile`. This should
+  help resolve the cryptic CLI error message seen in
+  [bcbioRNASeq issue #170](https://github.com/hbc/bcbioRNASeq/issues/170).
 
 ### Minor changes
 
+- Made unused `matchesGene2Symbol` and `matchesInterestingGroups` functions
+  defunct. These are still reexported in basejump and DESeqAnalysis, which will
+  be cleaned up in future releases.
 - Improved and hardened CLI messages. Now using `abort` instead of `stop`
   internally, to support better stylized error messages.
 - Now calling `toStringInline` instead of base `toString` internally to
   properly handle string handoff to cli package.
+- `autopadZeros`: `SummarizedExperiment` method now has `sampleNames` argument,
+  which allows the user to selectively pad the sample names column `sampleNames`
+  defined in `colData`. Enabled by default, matching previous internal behavior.
+- `estimateSizeFactors`: Simplified internal assert checks that look for any
+  zero `libSizes`. Also improved code coverage to check for specific values
+  returned by `type` argument.
 
 ## AcidExperiment 0.1.14 (2021-08-11)
 
