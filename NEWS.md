@@ -1,4 +1,8 @@
-## AcidExperiment 0.1.15 (2021-09-01)
+## AcidExperiment 0.2.0 (2021-09-03)
+
+### Major changes
+
+- Reworked and improved unit tests to achieve 100% code coverage.
 
 ### Minor changes
 

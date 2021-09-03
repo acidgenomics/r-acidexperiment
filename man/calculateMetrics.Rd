@@ -2,15 +2,25 @@
 % Please edit documentation in R/AllGenerics.R, R/calculateMetrics-methods.R
 \name{calculateMetrics}
 \alias{calculateMetrics}
+\alias{calculateMetrics,Matrix-method}
+\alias{calculateMetrics,matrix-method}
 \alias{calculateMetrics,SummarizedExperiment-method}
 \title{Calculate quality control metrics}
 \usage{
 calculateMetrics(object, ...)
 
+\S4method{calculateMetrics}{Matrix}(object, rowData = NULL, prefilter = FALSE)
+
+\S4method{calculateMetrics}{matrix}(object, rowData = NULL, prefilter = FALSE)
+
 \S4method{calculateMetrics}{SummarizedExperiment}(object, prefilter = FALSE)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{rowData}{\code{DataFrame}.
+Metadata describing the assay rows, if genomic ranges are not available.
+\emph{Use rowRanges (GRanges) instead, if possible}.}
 
 \item{prefilter}{\code{logical(1)}.
 Drop very low quality samples/cells from the object.

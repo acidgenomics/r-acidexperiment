@@ -218,12 +218,16 @@ NULL
 
 
 
+#' @rdname calculateMetrics
+#' @export
 setMethod(
     f = "calculateMetrics",
     signature = signature("Matrix"),
     definition = `calculateMetrics,Matrix`
 )
 
+#' @rdname calculateMetrics
+#' @export
 setMethod(
     f = "calculateMetrics",
     signature = signature("matrix"),
