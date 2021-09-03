@@ -166,7 +166,7 @@ test_that("Mapping priority and failure handling", {
 })
 
 test_that("Direct matching against rownames, for a minimal object", {
-    object = rse
+    object <- rse
     rowData(object) <- NULL
     expect_identical(
         object = mapGenesToRownames(
