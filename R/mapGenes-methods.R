@@ -66,7 +66,7 @@ NULL
     validObject(object)
     assert(is(object, "SummarizedExperiment"))
     g2s <- Gene2Symbol(object = object, format = "unmodified", quiet = TRUE)
-    assert(isSubset(rownames(object), rownames(g2s)))
+    assert(areSetEqual(rownames(g2s), rownames(object)))
     df <- as(g2s, "DataFrame")
     df <- df[rownames(object), , drop = FALSE]
     colnames(df) <- camelCase(colnames(df), strict = TRUE)
