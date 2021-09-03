@@ -60,14 +60,15 @@ NULL
 #' Contains gene identifiers, gene names (symbols), and alternative (legacy)
 #' gene synonyms, when possible.
 #'
-#' @note Updated 2021-08-10.
+#' @note Updated 2021-09-03.
 #' @noRd
 .makeGeneMap <- function(object) {
     validObject(object)
     assert(is(object, "SummarizedExperiment"))
     g2s <- Gene2Symbol(object = object, format = "unmodified", quiet = TRUE)
-    assert(identical(rownames(g2s), rownames(object)))
+    assert(isSubset(rownames(object), rownames(g2s)))
     df <- as(g2s, "DataFrame")
+    df <- df[rownames(object), , drop = FALSE]
     colnames(df) <- camelCase(colnames(df), strict = TRUE)
     if (isSubset("geneSynonyms", colnames(rowData(object)))) {
         df[["geneSynonyms"]] <- rowData(object)[["geneSynonyms"]]
