@@ -1,3 +1,11 @@
+## AcidExperiment 0.2.1 (2021-09-08)
+
+### Minor changes
+
+- Now importing `bapply` from goalie instead of AcidBase.
+- Updated internal gene mapping code to better handle mismatched Gene2Symbol
+  input, which can happen in pointillism package.
+
 ## AcidExperiment 0.2.0 (2021-09-03)
 
 ### Major changes
