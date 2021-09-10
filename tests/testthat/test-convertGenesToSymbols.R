@@ -1,3 +1,7 @@
+## FIXME Need to add coverage for objects containing `NA` in `geneName`.
+
+
+
 context("convertGenesToSymbols")
 
 skip_if_not(hasInternet())
