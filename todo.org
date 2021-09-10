@@ -2,7 +2,9 @@
 #+STARTUP: content
 * Development
 ** TODO `convertGenesToSymbols`: Need to add coverage for object
-   containing NA values in gene symbols.
+        containing NA values in gene symbols.
 ** TODO `makeSummarizedExperiment: Error if metadata input contains values we
-   automatically assign (e.g. date, wd, etc).
+        automatically assign (e.g. date, wd, etc).
 ** TODO sampleData assignment method needs to check for camelCase names.
+** TODO All SummarizedExperiment S4 methods need to support `assay` argument
+        when applicable.
