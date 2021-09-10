@@ -1,9 +1,18 @@
-## FIXME Add support for SummarizedExperiment.
-## FIXME Needs to support assay.
+## FIXME Needs to loop across the assays for SE method.
+## FIXME Need to make this clearer about direction...
+
+## FIXME Allow user to set MARGIN here?
+## FIXME If we do this, how is it different from aggregateRows, aggregateCols?
+## FIXME These seem a bit confusing currently.
+
+## FIXME If we change the MARGIN, need to keep track here.
+## FIXME Allow the user to calculate across columns with MARGIN argument.
 
 
 
 #' Aggregate
+#'
+#' This function
 #'
 #' @name aggregate
 #' @note Updated 2021-09-10.
@@ -20,12 +29,14 @@
 #' @seealso
 #' - `stats::aggregate()`.
 #' - `S4Vectors::aggregate()`.
-#' - `Matrix.utils::aggregate.Matrix()` (defunct).
+#' - `Matrix.utils::aggregate.Matrix()`.
 #' - `muscat::aggregateData()`.
 #'
 #' @return Modified object.
 #'
 #' @examples
+#' data(RangedSummarizedExperiment, package = "AcidTest")
+#'
 #' counts <- matrix(
 #'     data = c(
 #'         0L, 2L, 2L, 2L,
@@ -50,32 +61,45 @@
 #' names(genes) <- rownames(counts)
 #' print(genes)
 #'
+#' samples <- factor(paste0("sample", rep(seq_len(2L), each = 2L)))
+#' names(samples) <- colnames(counts)
+#' print(samples)
+#'
 #' ## matrix ====
 #' print(counts)
-#' aggregate(counts, by = genes)
+#' aggregate(counts, by = genes, MARGIN = 1L)
 #'
 #' ## Matrix ====
 #' sparse <- as(counts, "sparseMatrix")
 #' print(sparse)
-#' aggregate(sparse, by = genes)
+#' aggregate(sparse, by = genes, MARGIN = 1L)
+#'
+#' ## SummarizedExperiment ====
+#' ## FIXME
+#' ## FIXME Need to define the "by" argument here.
 NULL
 
 
 
 ## Using the `stats::aggregate.data.frame()` S3 method internally here.
-## Updated 2020-05-22.
+## Updated 2021-09-10.
 `aggregate,matrix` <-  # nolint
     function(
         x,
         by,
-        fun = c("sum", "mean", "median", "geometricMean", "n")
+        fun = c("sum", "mean", "median", "geometricMean", "n"),
+        MARGIN = 1L  # nolint
     ) {
         assert(
             hasDimnames(x),
             is.factor(by),
-            identical(rownames(x), names(by))
+            isInt(MARGIN)
         )
         fun <- match.arg(fun)
+        if (MARGIN == 2L) {
+            x <- t(x)
+        }
+        assert(identical(rownames(x), names(by)))
         if (fun == "n") {
             x <- x != 0L
             mode(x) <- "integer"
@@ -89,6 +113,9 @@ NULL
         rownames(x) <- x[["rowname"]]
         x[["rowname"]] <- NULL
         x <- as.matrix(x)
+        if (MARGIN == 2L) {
+            x <- t(x)
+        }
         x
     }
 
@@ -96,20 +123,25 @@ NULL
 
 ## Matrix multiplication using sparse model (design matrix).
 ## Note that this works row-wise, like stats data.frame method.
-## Updated 2021-02-11.
+## Updated 2021-09-10.
 `aggregate,Matrix` <-  # nolint
     function(
         x,
         by,
-        fun = c("sum", "mean", "n")
+        fun = c("sum", "mean", "n"),
+        MARGIN = 1L  # nolint
     ) {
         requireNamespaces("Matrix")
         assert(
             hasDimnames(x),
             is.factor(by),
-            identical(names(by), rownames(x))
+            isInt(MARGIN)
         )
         fun <- match.arg(fun)
+        if (MARGIN == 2L) {
+            x <- t(x)
+        }
+        assert(identical(names(by), rownames(x)))
         if (identical(fun, "n")) {
             x <- x != 0L
         }
@@ -122,19 +154,22 @@ NULL
             n[n == 0L] <- 1L
             result <- result / n
         }
+        if (MARGIN == 2L) {
+            result <- t(result)
+        }
         result
     }
 
 
 
+## FIXME Attempt to consolidate the code in aggregateRows and aggregateCols
+## here into a single, simpler method.
+##
+## Updated 2021-09-10.
 `aggregate,SE` <-  # nolint
-    function(
-        x,
-        assay = 1L,
-        ...
-    ) {
+    function(x, ...) {
         validObject(x)
-        assert(isScalar(assay))
+        assays <- lapply(X = assays(x), FUN = aggregate, ...)
         aggregate(
             x = assay(x, i = assay),
             ...
