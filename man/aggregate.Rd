@@ -144,24 +144,23 @@ aggregate(object, by = samples, MARGIN = 2L)
 aggregateCols(object, by = samples)
 
 ## SummarizedExperiment ====
-## FIXME Need to add a primary `aggregate()` example here.
-
-se <- SummarizedExperiment(
-    assays = SimpleList("counts" = counts),
-    rowData = DataFrame("aggregate" = genes)
-)
-print(se)
-aggregateRows(se)
-
-se <- SummarizedExperiment(
-    assays = SimpleList("counts" = counts),
+object <- SummarizedExperiment(
+    assays = SimpleList(
+        "counts" = counts
+    ),
+    rowData = DataFrame(
+        "aggregate" = genes
+    ),
     colData = DataFrame(
         "sampleName" = as.factor(names(samples)),
         "aggregate" = samples
     )
 )
-print(se)
-aggregateCols(se)
+print(object)
+aggregate(object, MARGIN = 1L)
+aggregateRows(object)
+aggregate(object, MARGIN = 2L)
+aggregateCols(object)
 }
 \seealso{
 \itemize{
