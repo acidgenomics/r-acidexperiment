@@ -2,18 +2,47 @@
 % Please edit documentation in R/AllGenerics.R, R/aggregate-methods.R
 \name{aggregate}
 \alias{aggregate}
+\alias{aggregateCols}
+\alias{aggregateRows}
 \alias{aggregate,Matrix-method}
 \alias{aggregate,SummarizedExperiment-method}
 \alias{aggregate,matrix-method}
+\alias{aggregateRows,Matrix-method}
+\alias{aggregateRows,SummarizedExperiment-method}
+\alias{aggregateRows,matrix-method}
+\alias{aggregateCols,Matrix-method}
+\alias{aggregateCols,SummarizedExperiment-method}
+\alias{aggregateCols,matrix-method}
 \title{Aggregate}
 \usage{
 aggregate(x, ...)
 
-\S4method{aggregate}{Matrix}(x, by, fun = c("sum", "mean", "n"))
+aggregateCols(x, ...)
 
-\S4method{aggregate}{SummarizedExperiment}(x, assay = 1L, ...)
+aggregateRows(x, ...)
 
-\S4method{aggregate}{matrix}(x, by, fun = c("sum", "mean", "median", "geometricMean", "n"))
+\S4method{aggregate}{Matrix}(x, by, fun = c("sum", "mean", "n"), MARGIN = 1L)
+
+\S4method{aggregate}{SummarizedExperiment}(x, ...)
+
+\S4method{aggregate}{matrix}(
+  x,
+  by,
+  fun = c("sum", "mean", "median", "geometricMean", "n"),
+  MARGIN = 1L
+)
+
+\S4method{aggregateRows}{Matrix}(x, ...)
+
+\S4method{aggregateRows}{SummarizedExperiment}(x, col = "aggregate", fun = "sum")
+
+\S4method{aggregateRows}{matrix}(x, ...)
+
+\S4method{aggregateCols}{Matrix}(x, by, fun = c("sum", "mean"))
+
+\S4method{aggregateCols}{SummarizedExperiment}(x, col = "aggregate", fun = "sum")
+
+\S4method{aggregateCols}{matrix}(x, by, fun = c("sum", "mean", "median", "geometricMean"))
 }
 \arguments{
 \item{x}{Object.}
@@ -26,10 +55,18 @@ Aggregation groupings. The new aggregate names are defined as the \code{factor}
 Name of the aggregation function to apply.
 Uses \code{match.arg()} internally.}
 
-\item{assay}{\code{vector(1)}.
-Assay name or index position.}
+\item{MARGIN}{\code{integer(1-2)}.
+Dimension where the function will be applied.
+For a two-dimensional matrix:
+\code{1} indicates rows;
+\code{2} indicates columns;
+\code{c(1, 2)} indicates rows and columns.}
 
 \item{...}{Additional arguments.}
+
+\item{col}{\code{character(1)}.
+Name of column in either \code{rowData()} or \code{colData()} that defines the
+desired aggregation groupings.}
 }
 \value{
 Modified object.
@@ -46,7 +83,24 @@ of matrix defined in requested \code{assay}.
 \note{
 Updated 2021-09-10.
 }
+\section{Methods (by class)}{
+
+\itemize{
+\item \code{matrix}, \code{Matrix}:
+Aggregate using a grouping \code{factor}.
+\item \code{SummarizedExperiment}:
+Aggregate data slotted in \code{assays()} using an automatically generated
+grouping \code{factor}, which is obtained from a user-defined column
+(\code{col} argument) in either the \code{rowData()} or \code{colData()} of the object.
+Slot an \code{aggregate} column into \code{rowData()} for \code{aggregateRows()}, or into
+\code{colData()} for \code{aggregateCols()}. This method will define the \code{groupings}
+automatically, and perform the aggregation.
+}
+}
+
 \examples{
+data(RangedSummarizedExperiment, package = "AcidTest")
+
 counts <- matrix(
     data = c(
         0L, 2L, 2L, 2L,
@@ -71,20 +125,54 @@ genes <- factor(paste0("gene", rep(seq_len(2L), each = 2L)))
 names(genes) <- rownames(counts)
 print(genes)
 
+samples <- factor(paste0("sample", rep(seq_len(2L), each = 2L)))
+names(samples) <- colnames(counts)
+print(samples)
+
 ## matrix ====
-print(counts)
-aggregate(counts, by = genes)
+object <- counts
+print(object)
+aggregate(object, by = genes, MARGIN = 1L)
+aggregateRows(object, by = genes)
+aggregate(object, by = samples, MARGIN = 2L)
+aggregateCols(object, by = samples)
 
 ## Matrix ====
-sparse <- as(counts, "sparseMatrix")
-print(sparse)
-aggregate(sparse, by = genes)
+object <- as(counts, "sparseMatrix")
+print(object)
+aggregate(object, by = genes, MARGIN = 1L)
+aggregateRows(object, by = genes)
+aggregate(object, by = samples, MARGIN = 2L)
+aggregateCols(object, by = samples)
+
+## SummarizedExperiment ====
+## FIXME Need to add a primary `aggregate()` example here.
+
+se <- SummarizedExperiment(
+    assays = SimpleList("counts" = counts),
+    rowData = DataFrame("aggregate" = genes)
+)
+print(se)
+aggregateRows(se)
+
+se <- SummarizedExperiment(
+    assays = SimpleList("counts" = counts),
+    colData = DataFrame(
+        "sampleName" = as.factor(names(samples)),
+        "aggregate" = samples
+    )
+)
+print(se)
+aggregateCols(se)
 }
 \seealso{
 \itemize{
 \item \code{stats::aggregate()}.
 \item \code{S4Vectors::aggregate()}.
-\item \code{Matrix.utils::aggregate.Matrix()} (defunct).
+\item \code{Matrix.utils::aggregate.Matrix()}.
 \item \code{muscat::aggregateData()}.
 }
+}
+\author{
+Michael Steinbaugh, Rory Kirchner
 }
