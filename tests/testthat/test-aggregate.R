@@ -235,11 +235,17 @@ test_that("'n' count mode", {
         "matrix" = counts,
         "Matrix" = sparse
     )) {
-        object <- aggregate(object, by = genes, fun = "n")
-        object <- as.matrix(object)
-        mode(object) <- "integer"
+        ## Aggregate down the rows.
+        aggObject <- aggregate(
+            x = object,
+            by = genes,
+            fun = "n",
+            MARGIN = 1L
+        )
+        aggObject <- as.matrix(aggObject)
+        mode(aggObject) <- "integer"
         expect_identical(
-            object = object,
+            object = aggObject,
             expected = matrix(
                 data = c(
                     1L, 1L, 2L, 2L,
@@ -258,6 +264,41 @@ test_that("'n' count mode", {
                         "sample1_replicate2",
                         "sample2_replicate1",
                         "sample2_replicate2"
+                    )
+                )
+            )
+        )
+        ## Aggregate across the columns.
+        aggObject <- aggregate(
+            x = object,
+            by = samples,
+            fun = "n",
+            MARGIN = 2L
+        )
+        aggObject <- as.matrix(aggObject)
+        mode(aggObject) <- "integer"
+        expect_identical(
+            object = aggObject,
+            expected = matrix(
+                data = c(
+                    1L, 2L,
+                    1L, 2L,
+                    2L, 1L,
+                    2L, 1L
+                ),
+                nrow = 4L,
+                ncol = 2L,
+                byrow = TRUE,
+                dimnames = list(
+                    c(
+                        "transcript1",
+                        "transcript2",
+                        "transcript3",
+                        "transcript4"
+                    ),
+                    c(
+                        "sample1",
+                        "sample2"
                     )
                 )
             )
