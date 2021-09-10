@@ -1,7 +1,12 @@
+## FIXME Add support for SummarizedExperiment.
+## FIXME Needs to support assay.
+
+
+
 #' Aggregate
 #'
 #' @name aggregate
-#' @note Updated 2020-05-22.
+#' @note Updated 2021-09-10.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param by `factor`.
@@ -122,12 +127,38 @@ NULL
 
 
 
+`aggregate,SE` <-  # nolint
+    function(
+        x,
+        assay = 1L,
+        ...
+    ) {
+        validObject(x)
+        assert(isScalar(assay))
+        aggregate(
+            x = assay(x, i = assay),
+            ...
+        )
+    }
+
+
+
 #' @rdname aggregate
 #' @export
 setMethod(
     f = "aggregate",
     signature = signature("Matrix"),
     definition = `aggregate,Matrix`
+)
+
+#' @describeIn aggregate
+#' Arguments pass through to `matrix` or `Matrix` method, depending on the class
+#' of matrix defined in requested `assay`.
+#' @export
+setMethod(
+    f = "aggregate",
+    signature = signature("SummarizedExperiment"),
+    definition = `aggregate,SE`
 )
 
 #' @rdname aggregate

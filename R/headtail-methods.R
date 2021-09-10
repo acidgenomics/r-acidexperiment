@@ -54,12 +54,12 @@ formals(`headtail,GRanges`) <- formals(`headtail,matrix`)
 
 
 ## Updated 2020-05-11.
-`headtail,SummarizedExperiment` <-  # nolint
+`headtail,SE` <-  # nolint
     function() {
         headtail(x = assay(x), n = n)
     }
 
-formals(`headtail,SummarizedExperiment`) <- formals(`headtail,matrix`)
+formals(`headtail,SE`) <- formals(`headtail,matrix`)
 
 
 
@@ -92,5 +92,5 @@ setMethod(
 setMethod(
     f = "headtail",
     signature = signature("SummarizedExperiment"),
-    definition = `headtail,SummarizedExperiment`
+    definition = `headtail,SE`
 )

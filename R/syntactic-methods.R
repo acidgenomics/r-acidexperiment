@@ -171,7 +171,7 @@ formals(`camelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`camelCase,SummarizedExperiment` <-  # nolint
+`camelCase,SE` <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -345,7 +345,7 @@ formals(`dottedCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`dottedCase,SummarizedExperiment` <-  # nolint
+`dottedCase,SE` <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -513,7 +513,7 @@ formals(`snakeCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`snakeCase,SummarizedExperiment` <-  # nolint
+`snakeCase,SE` <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -702,7 +702,7 @@ formals(`upperCamelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`upperCamelCase,SummarizedExperiment` <-  # nolint
+`upperCamelCase,SE` <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -781,7 +781,7 @@ setMethod(
 setMethod(
     f = "camelCase",
     signature = signature("SummarizedExperiment"),
-    definition = `camelCase,SummarizedExperiment`
+    definition = `camelCase,SE`
 )
 
 #' @rdname syntactic
@@ -863,7 +863,7 @@ setMethod(
 setMethod(
     f = "dottedCase",
     signature = signature("SummarizedExperiment"),
-    definition = `dottedCase,SummarizedExperiment`
+    definition = `dottedCase,SE`
 )
 
 #' @rdname syntactic
@@ -985,7 +985,7 @@ setMethod(
 setMethod(
     f = "snakeCase",
     signature = signature("SummarizedExperiment"),
-    definition = `snakeCase,SummarizedExperiment`
+    definition = `snakeCase,SE`
 )
 
 #' @rdname syntactic
@@ -1027,7 +1027,7 @@ setMethod(
 setMethod(
     f = "upperCamelCase",
     signature = signature("SummarizedExperiment"),
-    definition = `upperCamelCase,SummarizedExperiment`
+    definition = `upperCamelCase,SE`
 )
 
 #' @rdname syntactic

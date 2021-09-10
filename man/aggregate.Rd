@@ -3,12 +3,15 @@
 \name{aggregate}
 \alias{aggregate}
 \alias{aggregate,Matrix-method}
+\alias{aggregate,SummarizedExperiment-method}
 \alias{aggregate,matrix-method}
 \title{Aggregate}
 \usage{
 aggregate(x, ...)
 
 \S4method{aggregate}{Matrix}(x, by, fun = c("sum", "mean", "n"))
+
+\S4method{aggregate}{SummarizedExperiment}(x, assay = 1L, ...)
 
 \S4method{aggregate}{matrix}(x, by, fun = c("sum", "mean", "median", "geometricMean", "n"))
 }
@@ -23,6 +26,9 @@ Aggregation groupings. The new aggregate names are defined as the \code{factor}
 Name of the aggregation function to apply.
 Uses \code{match.arg()} internally.}
 
+\item{assay}{\code{vector(1)}.
+Assay name or index position.}
+
 \item{...}{Additional arguments.}
 }
 \value{
@@ -31,8 +37,14 @@ Modified object.
 \description{
 Aggregate
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{SummarizedExperiment}: Arguments pass through to \code{matrix} or \code{Matrix} method, depending on the class
+of matrix defined in requested \code{assay}.
+}}
+
 \note{
-Updated 2020-05-22.
+Updated 2021-09-10.
 }
 \examples{
 counts <- matrix(
