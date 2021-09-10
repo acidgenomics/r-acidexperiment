@@ -86,24 +86,23 @@
 #' aggregateCols(object, by = samples)
 #'
 #' ## SummarizedExperiment ====
-#' ## FIXME Need to add a primary `aggregate()` example here.
-#'
-#' se <- SummarizedExperiment(
-#'     assays = SimpleList("counts" = counts),
-#'     rowData = DataFrame("aggregate" = genes)
-#' )
-#' print(se)
-#' aggregateRows(se)
-#'
-#' se <- SummarizedExperiment(
-#'     assays = SimpleList("counts" = counts),
+#' object <- SummarizedExperiment(
+#'     assays = SimpleList(
+#'         "counts" = counts
+#'     ),
+#'     rowData = DataFrame(
+#'         "aggregate" = genes
+#'     ),
 #'     colData = DataFrame(
 #'         "sampleName" = as.factor(names(samples)),
 #'         "aggregate" = samples
 #'     )
 #' )
-#' print(se)
-#' aggregateCols(se)
+#' print(object)
+#' aggregate(object, MARGIN = 1L)
+#' aggregateRows(object)
+#' aggregate(object, MARGIN = 2L)
+#' aggregateCols(object)
 NULL
 
 
@@ -121,7 +120,8 @@ NULL
         assert(
             hasDimnames(x),
             is.factor(by),
-            isInt(MARGIN)
+            isInt(MARGIN),
+            isInRange(MARGIN, lower = 1L, upper = 2L)
         )
         fun <- match.arg(fun)
         if (MARGIN == 2L) {
@@ -163,7 +163,8 @@ NULL
         assert(
             hasDimnames(x),
             is.factor(by),
-            isInt(MARGIN)
+            isInt(MARGIN),
+            isInRange(MARGIN, lower = 1L, upper = 2L)
         )
         fun <- match.arg(fun)
         if (MARGIN == 2L) {
@@ -190,7 +191,6 @@ NULL
 
 
 
-## FIXME Need to rework this.
 ## Updated 2021-09-10.
 `aggregate,SE` <-  # nolint
     function(
@@ -205,7 +205,7 @@ NULL
             isString(col),
             isString(fun),
             isInt(MARGIN),
-            isInRange(MARGIN, lower = 0L, upper = 1L)
+            isInRange(MARGIN, lower = 1L, upper = 2L)
         )
         ## Groupings -----------------------------------------------------------
         annoDataFun <- get(
@@ -266,7 +266,7 @@ NULL
 
 
 
-## aggregateCols ===============================================================
+## Legacy methods ==============================================================
 ## Updated 2021-09-10.
 `aggregateCols,matrix` <-  # nolint
     function(x, ...) {
@@ -287,7 +287,6 @@ NULL
 
 
 
-## aggregateRows ===============================================================
 ## Updated 2021-09-10.
 `aggregateRows,matrix` <-  # nolint
     function(x, ...) {
