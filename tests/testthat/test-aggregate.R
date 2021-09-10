@@ -39,7 +39,7 @@ se <- SummarizedExperiment(
 
 context("aggregate")
 
-test_that("'fun' argument", {
+test_that("'sum' count mode", {
     invisible(mapply(
         object = list(
             "matrix" = counts,
@@ -50,124 +50,23 @@ test_that("'fun' argument", {
             "Matrix"
         ),
         FUN = function(object, class) {
-            invisible(mapply(
-                fun = c(
-                    "sum",
-                    "mean",
-                    "n"
-                ),
-                expectedRows = list(
-                    "sum" = matrix(
-                        data = c(
-                            4L, 1L, 7L, 9L,
-                            17L, 19L, 12L, 9L
-                        ),
-                        nrow = 2L,
-                        ncol = 4L,
-                        byrow = TRUE,
-                        dimnames = list(
-                            c(
-                                "gene1",
-                                "gene2"
-                            ),
-                            c(
-                                "sample1_replicate1",
-                                "sample1_replicate2",
-                                "sample2_replicate1",
-                                "sample2_replicate2"
-                            )
-                        )
-                    ),
-                    "mean" = "FIXME",
-                    "n" = "FIXME"
-                ),
-                expectedCols = list(
-                    "sum" = "FIXME",
-                    "mean" = "FIXME",
-                    "n" = "FIXME"
-                ),
-                MoreArgs = list(
-                    object = object,
-                    genes = genes,
-                    samples = samples
-                ),
-                FUN = function(
-                    object,
-                    fun,
-                    genes,
-                    samples,
-                    expectedRows,
-                    expectedCols
-                ) {
-                    aggObject <- aggregate(
-                        x = object,
-                        by = genes,
-                        fun = fun,
-                        MARGIN = 1L
-                    )
-                    expect_is(aggObject, class)
-                    aggObject <- as.matrix(aggObject)
-                    mode(aggObject) <- "integer"
-                    expect_identical(
-                        object = aggObject,
-                        expected = expectedRows
-                    )
-                    aggObject <- aggregate(
-                        x = object,
-                        by = samples,
-                        fun = fun,
-                        MARGIN = 2L
-                    )
-                    expect_is(aggObject, class)
-                    aggObject <- as.matrix(aggObject)
-                    mode(aggObject) <- "integer"
-                    expect_identical(
-                        object = aggObject,
-                        expected = expectedCols
-                    )
-                },
-                SIMPLIFY = FALSE,
-                USE.NAMES = FALSE
-            ))
-        },
-        SIMPLIFY = FALSE
-    ))
-})
-
-test_that("'mean' count mode", {
-    invisible(mapply(
-        object = list(
-            "matrix" = counts,
-            "Matrix" = sparse
-        ),
-        class = c(
-            "matrix",
-            "Matrix"
-        ),
-        data = list(
-            "matrix" = c(
-                2L, 0L, 3L, 4L,
-                8L, 9L, 6L, 4L
-            ),
-            "Matrix" = c(
-                4L, 1L, 3L, 4L,
-                8L, 9L, 12L, 9L
-            )
-        ),
-        FUN = function(object, class, data) {
-            object <- aggregate(
+            ## Aggregate down the rows.
+            aggObject <- aggregate(
                 x = object,
                 by = genes,
-                fun = "mean",
+                fun = "sum",
                 MARGIN = 1L
             )
-            expect_is(object, class)
-            object <- as.matrix(object)
-            mode(object) <- "integer"
+            expect_is(aggObject, class)
+            aggObject <- as.matrix(aggObject)
+            mode(aggObject) <- "integer"
             expect_identical(
-                object = object,
+                object = aggObject,
                 expected = matrix(
-                    data = data,
+                    data = c(
+                        4L, 1L, 7L, 9L,
+                        17L, 19L, 12L, 9L
+                    ),
                     nrow = 2L,
                     ncol = 4L,
                     byrow = TRUE,
@@ -185,6 +84,147 @@ test_that("'mean' count mode", {
                     )
                 )
             )
+            ## Aggregate across the columns.
+            aggObject <- aggregate(
+                x = object,
+                by = samples,
+                fun = "sum",
+                MARGIN = 2L
+            )
+            expect_is(aggObject, class)
+            aggObject <- as.matrix(aggObject)
+            mode(aggObject) <- "integer"
+            expect_identical(
+                object = aggObject,
+                expected = matrix(
+                    data = c(
+                        1L, 5L,
+                        4L, 11L,
+                        15L, 9L,
+                        21L, 12L
+                    ),
+                    nrow = 4L,
+                    ncol = 2L,
+                    byrow = TRUE,
+                    dimnames = list(
+                        c(
+                            "transcript1",
+                            "transcript2",
+                            "transcript3",
+                            "transcript4"
+                        ),
+                        c(
+                            "sample1",
+                            "sample2"
+                        )
+                    )
+                )
+            )
+        },
+        SIMPLIFY = FALSE
+    ))
+})
+
+test_that("'mean' count mode", {
+    invisible(mapply(
+        object = list(
+            "matrix" = counts,
+            "Matrix" = sparse
+        ),
+        class = c(
+            "matrix",
+            "Matrix"
+        ),
+        rowExpectedData = list(
+            "matrix" = c(
+                2.0, 0.5, 3.5, 4.5,
+                8.5, 9.5, 6.0, 4.5
+            ),
+            "Matrix" = c(
+                4.0, 1.0, 3.5, 4.5,
+                8.5, 9.5, 12.0, 9.0
+            )
+        ),
+        colExpectedData = list(
+            "matrix" = c(
+                0.5, 2.5,
+                2.0, 5.5,
+                7.5, 4.5,
+                10.5, 6.0
+            ),
+            "Matrix" = c(
+                1.0, 2.5,
+                4.0, 5.5,
+                7.5, 9.0,
+                10.5, 12.0
+            )
+        ),
+        FUN = function(
+            object,
+            class,
+            rowExpectedData,
+            colExpectedData
+        ) {
+            ## Aggregate down the rows.
+            aggObject <- aggregate(
+                x = object,
+                by = genes,
+                fun = "mean",
+                MARGIN = 1L
+            )
+            expect_is(aggObject, class)
+            aggObject <- as.matrix(aggObject)
+            expect_identical(
+                object = aggObject,
+                expected = matrix(
+                    data = rowExpectedData,
+                    nrow = 2L,
+                    ncol = 4L,
+                    byrow = TRUE,
+                    dimnames = list(
+                        c(
+                            "gene1",
+                            "gene2"
+                        ),
+                        c(
+                            "sample1_replicate1",
+                            "sample1_replicate2",
+                            "sample2_replicate1",
+                            "sample2_replicate2"
+                        )
+                    )
+                )
+            )
+            ## Aggregate across the columns.
+            aggObject <- aggregate(
+                x = object,
+                by = samples,
+                fun = "mean",
+                MARGIN = 2L
+            )
+            expect_is(aggObject, class)
+            aggObject <- as.matrix(aggObject)
+            expect_identical(
+                object = aggObject,
+                expected = matrix(
+                    data = colExpectedData,
+                    nrow = 4L,
+                    ncol = 2L,
+                    byrow = TRUE,
+                    dimnames = list(
+                        c(
+                            "transcript1",
+                            "transcript2",
+                            "transcript3",
+                            "transcript4"
+                        ),
+                        c(
+                            "sample1",
+                            "sample2"
+                        )
+                    )
+                )
+            )
         },
         SIMPLIFY = FALSE
     ))
@@ -195,12 +235,7 @@ test_that("'n' count mode", {
         "matrix" = counts,
         "Matrix" = sparse
     )) {
-        object <- aggregate(
-            x = object,
-            by = genes,
-            fun = "n",
-            MARGIN = 1L
-        )
+        object <- aggregate(object, by = genes, fun = "n")
         object <- as.matrix(object)
         mode(object) <- "integer"
         expect_identical(
