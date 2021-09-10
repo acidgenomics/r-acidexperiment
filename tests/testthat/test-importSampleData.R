@@ -65,7 +65,7 @@ test_that("Duplicated description", {
     )
     expect_error(
         object = importSampleData(file, pipeline = "bcbio"),
-        regexp = "Sample data input file is malformed."
+        regexp = "malformed"
     )
 })
 
