@@ -41,7 +41,7 @@ NULL
 
 
 
-#' @rdname aggregateCols
+#' @rdname aggregate
 #' @name aggregateCols
 #' @importFrom AcidGenerics aggregateCols
 #' @usage aggregateCols(x, ...)
@@ -50,7 +50,7 @@ NULL
 
 
 
-#' @rdname aggregateRows
+#' @rdname aggregate
 #' @name aggregateRows
 #' @importFrom AcidGenerics aggregateRows
 #' @usage aggregateRows(x, ...)
