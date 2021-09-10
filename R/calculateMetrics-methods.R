@@ -1,3 +1,8 @@
+## FIXME Should this just work directly on SummarizedExperiment?
+## FIXME Need to support assay argument.
+
+
+
 #' @name calculateMetrics
 #' @inherit AcidGenerics::calculateMetrics
 #' @author Michael Steinbaugh, Rory Kirchner
