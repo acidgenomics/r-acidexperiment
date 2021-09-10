@@ -7,12 +7,12 @@
 \alias{aggregate,Matrix-method}
 \alias{aggregate,SummarizedExperiment-method}
 \alias{aggregate,matrix-method}
-\alias{aggregateRows,Matrix-method}
-\alias{aggregateRows,SummarizedExperiment-method}
-\alias{aggregateRows,matrix-method}
 \alias{aggregateCols,Matrix-method}
 \alias{aggregateCols,SummarizedExperiment-method}
 \alias{aggregateCols,matrix-method}
+\alias{aggregateRows,Matrix-method}
+\alias{aggregateRows,SummarizedExperiment-method}
+\alias{aggregateRows,matrix-method}
 \title{Aggregate}
 \usage{
 aggregate(x, ...)
@@ -23,7 +23,7 @@ aggregateRows(x, ...)
 
 \S4method{aggregate}{Matrix}(x, by, fun = c("sum", "mean", "n"), MARGIN = 1L)
 
-\S4method{aggregate}{SummarizedExperiment}(x, ...)
+\S4method{aggregate}{SummarizedExperiment}(x, col = "aggregate", fun = "sum", MARGIN = 1L)
 
 \S4method{aggregate}{matrix}(
   x,
@@ -32,17 +32,17 @@ aggregateRows(x, ...)
   MARGIN = 1L
 )
 
+\S4method{aggregateCols}{Matrix}(x, ...)
+
+\S4method{aggregateCols}{SummarizedExperiment}(x, ...)
+
+\S4method{aggregateCols}{matrix}(x, ...)
+
 \S4method{aggregateRows}{Matrix}(x, ...)
 
-\S4method{aggregateRows}{SummarizedExperiment}(x, col = "aggregate", fun = "sum")
+\S4method{aggregateRows}{SummarizedExperiment}(x, ...)
 
 \S4method{aggregateRows}{matrix}(x, ...)
-
-\S4method{aggregateCols}{Matrix}(x, by, fun = c("sum", "mean"))
-
-\S4method{aggregateCols}{SummarizedExperiment}(x, col = "aggregate", fun = "sum")
-
-\S4method{aggregateCols}{matrix}(x, by, fun = c("sum", "mean", "median", "geometricMean"))
 }
 \arguments{
 \item{x}{Object.}
@@ -62,11 +62,11 @@ For a two-dimensional matrix:
 \code{2} indicates columns;
 \code{c(1, 2)} indicates rows and columns.}
 
-\item{...}{Additional arguments.}
-
 \item{col}{\code{character(1)}.
 Name of column in either \code{rowData()} or \code{colData()} that defines the
 desired aggregation groupings.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Modified object.
@@ -99,8 +99,6 @@ automatically, and perform the aggregation.
 }
 
 \examples{
-data(RangedSummarizedExperiment, package = "AcidTest")
-
 counts <- matrix(
     data = c(
         0L, 2L, 2L, 2L,
