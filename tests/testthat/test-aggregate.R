@@ -27,19 +27,19 @@ samples <- factor(paste0("sample", rep(seq_len(2L), each = 2L)))
 names(samples) <- colnames(counts)
 
 se <- SummarizedExperiment(
-    assays = SimpleList(counts = counts),
+    assays = SimpleList("counts" = counts),
     colData = DataFrame(
-        sampleName = as.factor(names(samples)),
-        aggregate = samples
+        "sampleName" = as.factor(names(samples)),
+        "aggregate" = samples
     ),
-    rowData = DataFrame(aggregate = genes)
+    rowData = DataFrame("aggregate" = genes)
 )
 
 
 
 context("aggregate")
 
-test_that("'sum' count mode", {
+test_that("'fun' argument", {
     invisible(mapply(
         object = list(
             "matrix" = counts,
@@ -50,34 +50,85 @@ test_that("'sum' count mode", {
             "Matrix"
         ),
         FUN = function(object, class) {
-            object <- aggregate(object, by = genes, fun = "sum")
-            expect_is(object, class)
-            object <- as.matrix(object)
-            mode(object) <- "integer"
-            expect_identical(
-                object = object,
-                expected = matrix(
-                    data = c(
-                        4L, 1L, 7L, 9L,
-                        17L, 19L, 12L, 9L
-                    ),
-                    nrow = 2L,
-                    ncol = 4L,
-                    byrow = TRUE,
-                    dimnames = list(
-                        c(
-                            "gene1",
-                            "gene2"
+            invisible(mapply(
+                fun = c(
+                    "sum",
+                    "mean",
+                    "n"
+                ),
+                expectedRows = list(
+                    "sum" = matrix(
+                        data = c(
+                            4L, 1L, 7L, 9L,
+                            17L, 19L, 12L, 9L
                         ),
-                        c(
-                            "sample1_replicate1",
-                            "sample1_replicate2",
-                            "sample2_replicate1",
-                            "sample2_replicate2"
+                        nrow = 2L,
+                        ncol = 4L,
+                        byrow = TRUE,
+                        dimnames = list(
+                            c(
+                                "gene1",
+                                "gene2"
+                            ),
+                            c(
+                                "sample1_replicate1",
+                                "sample1_replicate2",
+                                "sample2_replicate1",
+                                "sample2_replicate2"
+                            )
                         )
+                    ),
+                    "mean" = "FIXME",
+                    "n" = "FIXME"
+                ),
+                expectedCols = list(
+                    "sum" = "FIXME",
+                    "mean" = "FIXME",
+                    "n" = "FIXME"
+                ),
+                MoreArgs = list(
+                    object = object,
+                    genes = genes,
+                    samples = samples
+                ),
+                FUN = function(
+                    object,
+                    fun,
+                    genes,
+                    samples,
+                    expectedRows,
+                    expectedCols
+                ) {
+                    aggObject <- aggregate(
+                        x = object,
+                        by = genes,
+                        fun = fun,
+                        MARGIN = 1L
                     )
-                )
-            )
+                    expect_is(aggObject, class)
+                    aggObject <- as.matrix(aggObject)
+                    mode(aggObject) <- "integer"
+                    expect_identical(
+                        object = aggObject,
+                        expected = expectedRows
+                    )
+                    aggObject <- aggregate(
+                        x = object,
+                        by = samples,
+                        fun = fun,
+                        MARGIN = 2L
+                    )
+                    expect_is(aggObject, class)
+                    aggObject <- as.matrix(aggObject)
+                    mode(aggObject) <- "integer"
+                    expect_identical(
+                        object = aggObject,
+                        expected = expectedCols
+                    )
+                },
+                SIMPLIFY = FALSE,
+                USE.NAMES = FALSE
+            ))
         },
         SIMPLIFY = FALSE
     ))
@@ -104,7 +155,12 @@ test_that("'mean' count mode", {
             )
         ),
         FUN = function(object, class, data) {
-            object <- aggregate(object, by = genes, fun = "mean")
+            object <- aggregate(
+                x = object,
+                by = genes,
+                fun = "mean",
+                MARGIN = 1L
+            )
             expect_is(object, class)
             object <- as.matrix(object)
             mode(object) <- "integer"
@@ -139,7 +195,12 @@ test_that("'n' count mode", {
         "matrix" = counts,
         "Matrix" = sparse
     )) {
-        object <- aggregate(object, by = genes, fun = "n")
+        object <- aggregate(
+            x = object,
+            by = genes,
+            fun = "n",
+            MARGIN = 1L
+        )
         object <- as.matrix(object)
         mode(object) <- "integer"
         expect_identical(
@@ -169,145 +230,37 @@ test_that("'n' count mode", {
     }
 })
 
-
-
-context("aggregateCols")
-
-expected <- matrix(
-    data = c(
-        1L, 5L,
-        4L, 11L,
-        15L, 9L,
-        21L, 12L
-    ),
-    nrow = 4L,
-    ncol = 2L,
-    byrow = TRUE,
-    dimnames = list(
-        rownames(counts),
-        levels(samples)
+test_that("SummarizedExperiment", {
+    object <- aggregate(se, col = "aggregate", MARGIN = 1L)
+    expect_s4_class(object, "SummarizedExperiment")
+    expect_identical(
+        object = assayNames(object),
+        expected = assayNames(se)
     )
-)
-
-test_that("matrix", {
-    object <- aggregateCols(counts, by = samples)
-    expect_identical(object, expected)
-})
-
-test_that("matrix : AcidTest example", {
-    by <- as.factor(paste0("sample", rep(seq_len(2L), each = 2L)))
-    names(by) <- colnames(mat)
-    object <- aggregateCols(mat, by = by)
-    expect_is(object, "matrix")
-    expected <- matrix(
-        data = c(
-            3L, 11L, 19L, 27L,
-            7L, 15L, 23L, 31L
-        ),
-        nrow = 4L,
-        ncol = 2L,
-        byrow = FALSE,
-        dimnames = list(
-            rownames(mat),
-            levels(by)
+    expect_identical(
+        object = dimnames(object),
+        expected = list(
+            c("gene1", "gene2"),
+            colnames(se)
         )
     )
-    expect_identical(object, expected)
-})
-
-test_that("matrix : Invalid groupings", {
-    expect_error(
-        object = aggregateCols(counts, by = "XXX"),
-        regexp = "is.factor"
-    )
-    expect_error(
-        object = aggregateCols(counts, by = factor(c("XXX", "YYY"))),
-        regexp = "identical"
-    )
-})
-
-test_that("sparseMatrix", {
-    object <- aggregateCols(sparse, by = samples)
-    expect_is(object, "sparseMatrix")
-    object <- as.matrix(object)
-    mode(object) <- "integer"
-    expect_identical(object, expected)
-})
-
-test_that("SummarizedExperiment", {
-    object <- aggregateCols(se)
-    expect_s4_class(object, "SummarizedExperiment")
-    expect_identical(assayNames(object), "counts")
-    expect_identical(counts(object), expected)
-})
-
-
-
-context("aggregateRows")
-
-expected <- matrix(
-    data = c(
-        4L, 1L, 7L, 9L,
-        17L, 19L, 12L, 9L
-    ),
-    nrow = 2L,
-    ncol = 4L,
-    byrow = TRUE,
-    dimnames = list(
-        levels(genes),
-        colnames(counts)
-    )
-)
-
-test_that("matrix", {
-    object <- aggregateRows(counts, by = genes)
-    expect_identical(object, expected)
-})
-
-test_that("matrix : AcidTest example", {
-    by <- as.factor(paste0("gene", rep(seq_len(2L), each = 2L)))
-    names(by) <- rownames(mat)
-    object <- aggregateRows(mat, by = by)
-    expect_is(object, "matrix")
-    expected <- matrix(
-        data = c(
-             6L,  8L, 10L, 12L,
-            22L, 24L, 26L, 28L
-        ),
-        nrow = 2L,
-        ncol = 4L,
-        byrow = TRUE,
-        dimnames = list(
-            levels(by),
-            colnames(mat)
+    object <- aggregate(se, col = "aggregate", MARGIN = 2L)
+    expect_identical(
+        object = dimnames(object),
+        expected = list(
+            rownames(se),
+            c("sample1", "sample2")
         )
     )
-    expect_identical(object, expected)
-})
-
-test_that("sparseMatrix", {
-    object <- aggregateRows(sparse, by = genes)
-    expect_is(object, "sparseMatrix")
-    object <- as.matrix(object)
-    mode(object) <- "integer"
-    expect_identical(object, expected)
-})
-
-## Now requiring "counts" assay to be defined, as of v0.11.4.
-test_that("SummarizedExperiment", {
-    object <- aggregateRows(se)
-    expect_s4_class(object, "SummarizedExperiment")
-    expect_identical(assayNames(object), "counts")
-    expect_identical(counts(object), expected)
 })
 
 test_that("Invalid groupings", {
     expect_error(
-        object = aggregateRows(counts, by = "XXX"),
+        object = aggregate(counts, by = "XXX"),
         regexp = "is.factor"
     )
     expect_error(
-        object = aggregateRows(counts, by = factor(c("XXX", "YYY"))),
+        object = aggregate(counts, by = factor(c("XXX", "YYY"))),
         regexp = "identical"
     )
 })
