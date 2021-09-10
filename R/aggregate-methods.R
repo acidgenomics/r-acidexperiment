@@ -1,15 +1,3 @@
-## FIXME Needs to loop across the assays for SE method.
-## FIXME Need to make this clearer about direction...
-
-## FIXME Allow user to set MARGIN here?
-## FIXME If we do this, how is it different from aggregateRows, aggregateCols?
-## FIXME These seem a bit confusing currently.
-
-## FIXME If we change the MARGIN, need to keep track here.
-## FIXME Allow the user to calculate across columns with MARGIN argument.
-##
-## FIXME SE methods need to work on all assays.
-
 ## FIXME Need to update SingleCellExperiment method in AcidSingleCell.
 
 
@@ -53,8 +41,6 @@
 #' @return Modified object.
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "AcidTest")
-#'
 #' counts <- matrix(
 #'     data = c(
 #'         0L, 2L, 2L, 2L,
@@ -207,14 +193,97 @@ NULL
 ## FIXME Need to rework this.
 ## Updated 2021-09-10.
 `aggregate,SE` <-  # nolint
-    function(x, ...) {
+    function(
+        x,
+        col = "aggregate",
+        fun = "sum",
+        MARGIN = 1L  # nolint
+    ) {
         validObject(x)
-        assays <- lapply(X = assays(x), FUN = aggregate, ...)
-        aggregate(
-            x = assay(x, i = assay),
-            ...
+        assert(
+            hasDimnames(x),
+            isString(col),
+            isString(fun),
+            isInt(MARGIN),
+            isInRange(MARGIN, lower = 0L, upper = 1L)
         )
+        ## Groupings -----------------------------------------------------------
+        annoDataFun <- get(
+            x = switch(
+                EXPR = as.character(MARGIN),
+                "1" = "rowData",
+                "2" = "colData"
+            ),
+            envir = asNamespace("SummarizedExperiment"),
+            inherits = FALSE
+        )
+        assert(is.function(annoDataFun))
+        annoData <- annoDataFun(x)
+        assert(
+            is(annoData, "DataFrame"),
+            isSubset(col, colnames(annoData))
+        )
+        by <- decode(annoData[[col]])
+        assert(is.factor(by))
+        names(by) <- switch(
+            EXPR = as.character(MARGIN),
+            "1" = rownames(x),
+            "2" = colnames(x)
+        )
+        ## Assays --------------------------------------------------------------
+        assays <- lapply(
+            X = assays(x),
+            FUN = function(x) {
+                aggregate(
+                    x = x,
+                    by = by,
+                    fun = fun,
+                    MARGIN = MARGIN
+                )
+            }
+        )
+        ## Return --------------------------------------------------------------
+        args <- list()
+        args[["assays"]] <- assays
+        switch(
+            EXPR = as.character(MARGIN),
+            "1" = {
+                args[["colData"]] <- colData(x)
+            },
+            "2" = {
+                if (is(x, "RangedSummarizedExperiment")) {
+                    args[["rowRanges"]] <- rowRanges(x)  # nocov
+                } else {
+                    args[["rowData"]] <- rowData(x)
+                }
+            }
+        )
+        out <- do.call(what = SummarizedExperiment, args = args)
+        metadata(out)[["aggregate"]] <- TRUE
+        validObject(out)
+        out
     }
+
+
+
+## aggregateCols ===============================================================
+## Updated 2021-09-10.
+`aggregateCols,matrix` <-  # nolint
+    function(x, ...) {
+        aggregate(x = x, MARGIN = 2L, ...)
+    }
+
+
+
+## Updated 2021-09-10.
+`aggregateCols,Matrix` <-  # nolint
+    `aggregateCols,matrix`
+
+
+
+## Updated 2021-09-10.
+`aggregateCols,SE` <-  # nolint
+    `aggregateCols,matrix`
 
 
 
@@ -233,127 +302,9 @@ NULL
 
 
 
-## FIXME Rework this, considering how we can fold into main `aggregate` method.
-## FIXME Needs to work on all assays, not just the primary counts.
-## Updated 2020-05-22.
+## Updated 2021-09-10.
 `aggregateRows,SE` <-  # nolint
-    function(
-        x,
-        col = "aggregate",
-        fun = "sum"
-    ) {
-        validObject(x)
-        assert(
-            hasDimnames(x),
-            isString(col),
-            isString(fun)
-        )
-        ## Groupings -----------------------------------------------------------
-        assert(isSubset(col, colnames(rowData(x))))
-        by <- rowData(x)[[col]]
-        assert(is.factor(by))
-        names(by) <- rownames(x)
-        ## Counts --------------------------------------------------------------
-        counts <- aggregateRows(x = counts(x), by = by, fun = fun)
-        ## Return --------------------------------------------------------------
-        args <- list(
-            assays = SimpleList(counts = counts),
-            colData = colData(x)
-        )
-        if (is(x, "RangedSummarizedExperiment")) {
-            args[["rowRanges"]] <- emptyRanges(names = rownames(counts)) # nocov
-        } else {
-            args[["rowData"]] <- DataFrame(row.names = rownames(counts))
-        }
-        se <- do.call(what = SummarizedExperiment, args = args)
-        metadata(se)[["aggregate"]] <- TRUE
-        validObject(se)
-        se
-    }
-
-
-
-
-## aggregateCols ===============================================================
-## FIXME Rework this.
-## Updated 2020-01-30.
-`aggregateCols,matrix` <-  # nolint
-    function(
-        x,
-        by,
-        fun = c("sum", "mean", "median", "geometricMean")
-    ) {
-        fun <- match.arg(fun)
-        x <- t(x)
-        x <- aggregateRows(x = x, by = by, fun = fun)
-        x <- t(x)
-        x
-    }
-
-
-
-## FIXME Rework this.
-## Updated 2021-02-22.
-`aggregateCols,Matrix` <-  # nolint
-    function(
-        x,
-        by,
-        fun = c("sum", "mean")
-    ) {
-        fun <- match.arg(fun)
-        x <- t(x)
-        x <- aggregateRows(x = x, by = by, fun = fun)
-        x <- t(x)
-        x
-    }
-
-
-
-## Updated 2021-02-08.
-`aggregateCols,SE` <-  # nolint
-    function(
-        x,
-        col = "aggregate",
-        fun = "sum"
-    ) {
-        validObject(x)
-        assert(
-            hasDimnames(x),
-            isString(col),
-            isString(fun)
-        )
-        ## Groupings -----------------------------------------------------------
-        assert(
-            all(isSubset(col, colnames(colData(x)))),
-            msg = sprintf(
-                "'%s' column not defined in '%s'.",
-                col, "colData()"
-            )
-        )
-        by <- colData(x)[[col]]
-        assert(
-            is.factor(by),
-            identical(length(by), ncol(x))
-        )
-        names(by) <- colnames(x)
-        ## Counts --------------------------------------------------------------
-        counts <- aggregateCols(x = counts(x), by = by, fun = fun)
-        assert(identical(nrow(counts), nrow(x)))
-        ## Return --------------------------------------------------------------
-        args <- list(
-            "assays" = SimpleList(counts = counts),
-            "colData" = DataFrame(row.names = colnames(counts))
-        )
-        if (is(x, "RangedSummarizedExperiment")) {
-            args[["rowRanges"]] <- rowRanges(x)  # nocov
-        } else {
-            args[["rowData"]] <- rowData(x)
-        }
-        se <- do.call(what = SummarizedExperiment, args = args)
-        metadata(se)[["aggregate"]] <- TRUE
-        validObject(se)
-        se
-    }
+    `aggregateRows,matrix`
 
 
 
@@ -389,32 +340,6 @@ setMethod(
 #' @rdname aggregate
 #' @export
 setMethod(
-    f = "aggregateRows",
-    signature = signature("Matrix"),
-    definition = `aggregateRows,Matrix`
-)
-
-#' @rdname aggregate
-#' @export
-setMethod(
-    f = "aggregateRows",
-    signature = signature("SummarizedExperiment"),
-    definition = `aggregateRows,SE`
-)
-
-#' @rdname aggregate
-#' @export
-setMethod(
-    f = "aggregateRows",
-    signature = signature("matrix"),
-    definition = `aggregateRows,matrix`
-)
-
-
-
-#' @rdname aggregate
-#' @export
-setMethod(
     f = "aggregateCols",
     signature = signature("Matrix"),
     definition = `aggregateCols,Matrix`
@@ -434,4 +359,30 @@ setMethod(
     f = "aggregateCols",
     signature = signature("matrix"),
     definition = `aggregateCols,matrix`
+)
+
+
+
+#' @rdname aggregate
+#' @export
+setMethod(
+    f = "aggregateRows",
+    signature = signature("Matrix"),
+    definition = `aggregateRows,Matrix`
+)
+
+#' @rdname aggregate
+#' @export
+setMethod(
+    f = "aggregateRows",
+    signature = signature("SummarizedExperiment"),
+    definition = `aggregateRows,SE`
+)
+
+#' @rdname aggregate
+#' @export
+setMethod(
+    f = "aggregateRows",
+    signature = signature("matrix"),
+    definition = `aggregateRows,matrix`
 )
