@@ -1,6 +1,10 @@
+## FIXME Work on assay instead of `counts()` slot directly.
+
+
+
 #' @name integerCounts
 #' @inherit AcidGenerics::integerCounts
-#' @note Updated 2020-12-21.
+#' @note Updated 2021-09-11.
 #'
 #' @note For a `SummarizedExperiment` object, `"counts"` must be explicitly
 #'   defined in `assayNames`.
@@ -44,10 +48,16 @@ NULL
 
 
 
-## Updated 2019-12-04.
+## Updated 2021-09-11.
 `integerCounts,SE` <-  # nolint
-    function(object) {
-        integerCounts(counts(object))
+    function(
+        object,
+        assay = 1L
+    ) {
+        validObject(object)
+        assert(isScalar(assay))
+        assay <- assay(object, i = assay)
+        integerCounts(assay)
     }
 
 

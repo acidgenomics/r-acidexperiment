@@ -194,6 +194,7 @@ NULL
         assay = 1L,
         prefilter = FALSE
     ) {
+        validObject(object)
         assert(
             isScalar(assay),
             isFlag(prefilter)

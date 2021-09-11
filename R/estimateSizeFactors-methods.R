@@ -14,7 +14,7 @@
 #' can also be supplied using the assignment function `sizeFactors<-()`.
 #'
 #' @name estimateSizeFactors
-#' @note Updated 2021-09-02.
+#' @note Updated 2021-09-11.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param type `character(1)`.
@@ -132,16 +132,22 @@ NULL
 
 
 
-## Updated 2019-10-09.
+## Updated 2021-09-11.
 `estimateSizeFactors,SE` <-  # nolint
-    function(object, type, center) {
+    function(
+        object,
+        assay = 1L,
+        type,
+        center
+    ) {
         validObject(object)
         assert(
+            isScalar(assay),
             isNumber(center),
             isNonNegative(center)
         )
         type <- match.arg(type)
-        counts <- counts(object)
+        counts <- assay(object, i = assay)
         sf <- .librarySizeFactors(counts = counts, type = type)
         if (center > 0L) {
             sf <- .centerSizeFactors(sf = sf, center = center)
