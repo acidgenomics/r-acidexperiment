@@ -13,7 +13,7 @@ calculateMetrics(object, ...)
 
 \S4method{calculateMetrics}{matrix}(object, rowData = NULL, prefilter = FALSE)
 
-\S4method{calculateMetrics}{SummarizedExperiment}(object, prefilter = FALSE)
+\S4method{calculateMetrics}{SummarizedExperiment}(object, assay = 1L, prefilter = FALSE)
 }
 \arguments{
 \item{object}{Object.}
@@ -26,6 +26,9 @@ Metadata describing the assay rows, if genomic ranges are not available.
 Drop very low quality samples/cells from the object.
 This can resize the number of columns but the rows (i.e. features) do not
 change with this operation.}
+
+\item{assay}{\code{vector(1)}.
+Assay name or index position.}
 
 \item{...}{Additional arguments.}
 }
@@ -44,7 +47,7 @@ Input a raw count matrix. Do not use size factor adjusted or log normalized
 counts here.
 }
 \note{
-Updated 2021-09-02.
+Updated 2021-09-11.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
