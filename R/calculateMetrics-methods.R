@@ -1,12 +1,7 @@
-## FIXME Should this just work directly on SummarizedExperiment?
-## FIXME Need to support assay argument.
-
-
-
 #' @name calculateMetrics
 #' @inherit AcidGenerics::calculateMetrics
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2021-09-02.
+#' @note Updated 2021-09-11.
 #'
 #' @details
 #' Input a raw count matrix. Do not use size factor adjusted or log normalized
@@ -192,15 +187,26 @@ NULL
 
 
 
-## Updated 2021-09-02.
+## Updated 2021-09-11.
 `calculateMetrics,SE` <-  # nolint
-    function(object, prefilter = FALSE) {
+    function(
+        object,
+        assay = 1L,
+        prefilter = FALSE
+    ) {
+        assert(
+            isScalar(assay),
+            isFlag(prefilter)
+        )
         ## Drop zero rows and columns to first to speed up calculations.
         if (isTRUE(prefilter)) {
-            object <- nonzeroRowsAndCols(object)
+            object <- nonzeroRowsAndCols(
+                object = object,
+                assay = assay
+            )
         }
         metrics <- calculateMetrics(
-            object = counts(object),
+            object = assay(object, i = assay),
             rowData = rowData(object),
             prefilter = prefilter
         )
