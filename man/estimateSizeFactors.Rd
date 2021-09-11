@@ -9,12 +9,16 @@ estimateSizeFactors(object, ...)
 
 \S4method{estimateSizeFactors}{SummarizedExperiment}(
   object,
+  assay = 1L,
   type = c("mean-ratio", "geometric-mean-ratio", "log-geometric-mean-ratio"),
   center = 1L
 )
 }
 \arguments{
 \item{object}{Object.}
+
+\item{assay}{\code{vector(1)}.
+Assay name or index position.}
 
 \item{type}{\code{character(1)}.
 Method for estimation:\preformatted{libSize <- colSums(counts(object))
@@ -54,7 +58,7 @@ the accessor function \code{sizeFactors()}. Alternative library size estimators
 can also be supplied using the assignment function \verb{sizeFactors<-()}.
 }
 \note{
-Updated 2021-09-02.
+Updated 2021-09-11.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")

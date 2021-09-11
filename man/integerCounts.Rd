@@ -11,12 +11,15 @@ integerCounts(object, ...)
 
 \S4method{integerCounts}{Matrix}(object)
 
-\S4method{integerCounts}{SummarizedExperiment}(object)
+\S4method{integerCounts}{SummarizedExperiment}(object, assay = 1L)
 
 \S4method{integerCounts}{matrix}(object)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{assay}{\code{vector(1)}.
+Assay name or index position.}
 
 \item{...}{Additional arguments.}
 }
@@ -28,7 +31,7 @@ Typically \code{matrix} or \code{Matrix} class.
 Integer counts
 }
 \note{
-Updated 2020-12-21.
+Updated 2021-09-11.
 
 For a \code{SummarizedExperiment} object, \code{"counts"} must be explicitly
 defined in \code{assayNames}.
