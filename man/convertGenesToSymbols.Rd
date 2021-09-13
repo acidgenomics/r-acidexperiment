@@ -20,7 +20,7 @@ convertSymbolsToGenes(object, ...)
 
 \S4method{convertGenesToSymbols}{Matrix}(object, gene2symbol, strict = FALSE)
 
-\S4method{convertGenesToSymbols}{SummarizedExperiment}(object, strict = FALSE)
+\S4method{convertGenesToSymbols}{SummarizedExperiment}(object)
 
 \S4method{convertGenesToSymbols}{character}(object, gene2symbol, strict = FALSE, quiet = FALSE)
 
