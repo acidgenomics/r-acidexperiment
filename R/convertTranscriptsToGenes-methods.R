@@ -98,8 +98,8 @@ NULL
         t2g <- do.call(
             what = convertTranscriptsToGenes,
             args = list(
-                object = rownames(object),
-                tx2gene = tx2gene
+                "object" = rownames(object),
+                "tx2gene" = tx2gene
             )
         )
         if (isTRUE(aggregate)) {
@@ -118,26 +118,17 @@ NULL
 
 
 
-## Consider returning RSE here in a future update.
-## Need to add code that handles rowRanges.
-## Updated 2019-07-22.
+## Updated 2021-09-13.
 `convertTranscriptsToGenes,SE` <-  # nolint
     function(object) {
-        counts <- counts(object)
-        t2g <- Tx2Gene(object)
-        counts <- convertTranscriptsToGenes(
-            object = counts,
-            tx2gene = t2g,
-            aggregate = TRUE
-        )
         se <- SummarizedExperiment(
-            assays = list(counts = counts),
+            assays = lapply(
+                X = assays(object),
+                FUN = convertTranscriptsToGenes,
+                tx2gene = Tx2Gene(object)
+            ),
             colData = colData(object)
         )
-        assert(identical(
-            x = colSums(counts(object)),
-            y = colSums(counts(se))
-        ))
         se
     }
 

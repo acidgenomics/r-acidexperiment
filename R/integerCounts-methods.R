@@ -1,7 +1,3 @@
-## FIXME Work on assay instead of `counts()` slot directly.
-
-
-
 #' @name integerCounts
 #' @inherit AcidGenerics::integerCounts
 #' @note Updated 2021-09-11.
@@ -48,11 +44,11 @@ NULL
 
 
 
-## Updated 2021-09-11.
+## Updated 2021-09-13.
 `integerCounts,SE` <-  # nolint
     function(
         object,
-        assay = 1L
+        assay = "counts"
     ) {
         validObject(object)
         assert(isScalar(assay))

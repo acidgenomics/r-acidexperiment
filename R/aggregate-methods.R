@@ -1,7 +1,3 @@
-## FIXME Need to update SingleCellExperiment method in AcidSingleCell.
-
-
-
 #' Aggregate
 #'
 #' @name aggregate
