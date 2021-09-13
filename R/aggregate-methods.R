@@ -2,7 +2,7 @@
 #'
 #' @name aggregate
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2021-09-10.
+#' @note Updated 2021-09-13.
 #'
 #' @section Methods (by class):
 #'
@@ -187,7 +187,7 @@ NULL
 
 
 
-## Updated 2021-09-10.
+## Updated 2021-09-13.
 `aggregate,SE` <-  # nolint
     function(
         x,
@@ -256,6 +256,16 @@ NULL
         )
         out <- do.call(what = SummarizedExperiment, args = args)
         metadata(out)[["aggregate"]] <- TRUE
+        ## Keep track of mapping factor used for aggregation.
+        switch(
+            EXPR = as.character(MARGIN),
+            "1" = {
+                metadata(out)[["aggregateRows"]] <- by
+            },
+            "2" = {
+                metadata(out)[["aggregateCols"]] <- by
+            }
+        )
         validObject(out)
         out
     }

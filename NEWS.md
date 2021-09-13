@@ -18,6 +18,9 @@
   `Gene2Symbol` internally.
 - `estimateSizeFactors` now supports `assay` argument.
 - `integerCounts` now supports `assay` argument.
+- `aggregate` keeps track of mapping factor used internally for
+  `SummarizedExperiment` method. This is defined as `aggregateRows` or
+  `aggregateCols` in the object metadata.
 
 ## AcidExperiment 0.2.1 (2021-09-08)
 
