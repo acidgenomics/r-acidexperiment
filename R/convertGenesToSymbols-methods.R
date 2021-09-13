@@ -151,22 +151,16 @@ NULL
 
 
 
-## Updated 2021-08-10.
+## Updated 2021-09-13.
 `convertGenesToSymbols,SE` <-  # nolint
-    function(
-        object,
-        strict = FALSE
-    ) {
+    function(object) {
         validObject(object)
         assert(hasRownames(object))
-        gene2symbol <- Gene2Symbol(
-            object = object,
-            format = "makeUnique",
-            quiet = TRUE
-        )
+        gene2symbol <- Gene2Symbol(object, format = "makeUnique", quiet = TRUE)
+        assert(areSetEqual(rownames(object), rownames(gene2symbol)))
+        gene2symbol <- gene2symbol[rownames(object), ]
         symbols <- as.character(gene2symbol[["geneName"]])
         assert(
-            identical(rownames(object), rownames(gene2symbol)),
             isCharacter(symbols),
             hasNoDuplicates(symbols)
         )
@@ -176,7 +170,7 @@ NULL
 
 
 
-## Updated 2021-08-10.
+## Updated 2021-09-13.
 `convertSymbolsToGenes,SE` <-  # nolint
     function(object) {
         validObject(object)
