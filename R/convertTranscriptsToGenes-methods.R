@@ -2,9 +2,9 @@
 #' @inherit AcidGenerics::convertTranscriptsToGenes
 #'
 #' @note For objects containing a count matrix, the object rows will be
-#'   collapsed to gene level using `aggregateRows`. This applies to our
+#'   collapsed to gene level using `aggregate()`. This applies to our
 #'   `SummarizedExperiment` method.
-#' @note Updated 2021-02-02.
+#' @note Updated 2021-09-13.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param aggregate `logical(1)`.
@@ -19,7 +19,8 @@
 #'     Object containing counts collapsed to gene level by default
 #'     (see `aggregate` argument).
 #'
-#' @seealso `aggregateRows()`.
+#' @seealso
+#' - `aggregate()`.
 #'
 #' @examples
 #' data(SummarizedExperiment_transcripts, package = "AcidTest")
@@ -103,7 +104,12 @@ NULL
             )
         )
         if (isTRUE(aggregate)) {
-            object <- aggregateRows(object, by = t2g)
+            object <- aggregate(
+                x = object,
+                by = t2g,
+                fun = "sum",
+                MARGIN = 1L
+            )
         } else {
             rownames(object) <- as.character(t2g)
         }
