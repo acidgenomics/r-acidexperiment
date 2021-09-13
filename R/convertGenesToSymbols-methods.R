@@ -180,10 +180,9 @@ NULL
             format = "makeUnique",
             quiet = TRUE
         )
-        assert(
-            identical(rownames(object), gene2symbol[["geneName"]]),
-            hasNoDuplicates(gene2symbol[["geneId"]])
-        )
+        assert(areSetEqual(rownames(object), rownames(gene2symbol)))
+        gene2symbol <- gene2symbol[rownames(object), ]
+        assert(hasNoDuplicates(gene2symbol[["geneId"]]))
         rownames(object) <- as.character(gene2symbol[["geneId"]])
         object
     }
