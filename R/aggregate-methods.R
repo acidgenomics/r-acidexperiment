@@ -131,7 +131,7 @@ NULL
         }
         x <- aggregate(
             x = as.data.frame(x),
-            by = list(rowname = by),
+            by = list("rowname" = by),
             FUN = get(x = fun, inherits = TRUE)
         )
         rownames(x) <- x[["rowname"]]
@@ -276,7 +276,7 @@ NULL
 ## Updated 2021-09-10.
 `aggregateCols,matrix` <-  # nolint
     function(x, ...) {
-        aggregate(x = x, MARGIN = 2L, ...)
+        aggregate(x = x, MARGIN = 2L, ...)  # nocov
     }
 
 
@@ -296,7 +296,7 @@ NULL
 ## Updated 2021-09-10.
 `aggregateRows,matrix` <-  # nolint
     function(x, ...) {
-        aggregate(x = x, MARGIN = 1L, ...)
+        aggregate(x = x, MARGIN = 1L, ...)  # nocov
     }
 
 
