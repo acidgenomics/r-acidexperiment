@@ -1,7 +1,3 @@
-## FIXME Cover transcript-level RSE with rowRanges.
-
-
-
 context("convertTranscriptsToGenes")
 
 skip_if_not(hasInternet())
@@ -117,7 +113,6 @@ test_that("Invalid params", {
     )
 })
 
-## FIXME our txse object should contain GRanges, so we can cover easier.
 test_that("SummarizedExperiment", {
     object <- txse
     object <- convertTranscriptsToGenes(object)

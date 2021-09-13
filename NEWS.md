@@ -1,4 +1,23 @@
-## AcidExperiment 0.2.2 (UNRELEASED)
+## AcidExperiment 0.2.2 (2021-09-13)
+
+### Major changes
+
+- `aggregate`: Added support via `MARGIN` argument to work either row-wise
+  (`1`; default) or column-wise (`2`). `SummarizedExperiment` method has been
+  updated to support these conventions. Corresponding `aggregateCols` and
+  `aggregateRows` functions have been simplified to merely wrap an `aggregate`
+  call with `MARGIN` argument predefined.
+- `convertTranscriptsToGenes`: Now all assays are aggregated, rather than
+  simplify returning primary `counts` assay.
+
+### Minor changes
+
+- `calculateMetrics`: Updated to support `assay` argument.
+- `convertGenesToSymbols`: Removed unnecessary `strict` argument for
+  `SummarizedExperiment` method, and simplified handling of mismatched
+  `Gene2Symbol` internally.
+- `estimateSizeFactors` now supports `assay` argument.
+- `integerCounts` now supports `assay` argument.
 
 ## AcidExperiment 0.2.1 (2021-09-08)
 

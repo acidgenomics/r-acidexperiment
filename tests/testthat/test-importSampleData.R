@@ -228,7 +228,7 @@ test_that("Required column check failure.", {
     )
     expect_error(
         object = importSampleData(file, pipeline = "bcbio"),
-        regexp = "Sample data input file is malformed."
+        regexp = "malformed"
     )
 })
 
@@ -272,6 +272,6 @@ test_that("Invalid description", {
     )
     expect_error(
         object = importSampleData(file, pipeline = "bcbio"),
-        regexp = "Sample data input file is malformed."
+        regexp = "malformed"
     )
 })
