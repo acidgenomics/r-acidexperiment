@@ -11,7 +11,7 @@ integerCounts(object, ...)
 
 \S4method{integerCounts}{Matrix}(object)
 
-\S4method{integerCounts}{SummarizedExperiment}(object, assay = 1L)
+\S4method{integerCounts}{SummarizedExperiment}(object, assay = "counts")
 
 \S4method{integerCounts}{matrix}(object)
 }
