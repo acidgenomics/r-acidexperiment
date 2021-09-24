@@ -45,10 +45,10 @@ Convert transcripts to genes
 }
 \note{
 For objects containing a count matrix, the object rows will be
-collapsed to gene level using \code{aggregateRows}. This applies to our
+collapsed to gene level using \code{aggregate()}. This applies to our
 \code{SummarizedExperiment} method.
 
-Updated 2021-02-02.
+Updated 2021-09-13.
 }
 \examples{
 data(SummarizedExperiment_transcripts, package = "AcidTest")
@@ -84,5 +84,7 @@ x <- convertTranscriptsToGenes(object)
 print(x)
 }
 \seealso{
-\code{aggregateRows()}.
+\itemize{
+\item \code{aggregate()}.
+}
 }

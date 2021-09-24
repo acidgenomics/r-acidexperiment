@@ -1,6 +1,12 @@
+## FIXME Need to rework using BiocIO approach.
+## FIXME Consider restricting
+## FIXME Need to rework the documentation reexport here.
+
+
+
 #' @name export
 #' @inherit pipette::export
-#' @note Updated 2021-09-02.
+#' @note Updated 2021-09-24.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param compress `logical(1)`.
@@ -211,9 +217,11 @@ NULL
         invisible(files)
     }
 
-formals(`export,SE`)[
-    c("compress", "dir", "overwrite", "quiet")] <-
-    formalsList[c("export.compress", "export.dir", "overwrite", "quiet")]
+## FIXME Rework this using methodFormals instead.
+
+## > formals(`export,SE`)[
+## >     c("compress", "dir", "overwrite", "quiet")] <-
+## >     formalsList[c("export.compress", "export.dir", "overwrite", "quiet")]
 
 
 

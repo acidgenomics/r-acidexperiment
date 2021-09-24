@@ -15,9 +15,9 @@
 #' @importMethodsFrom SummarizedExperiment coerce
 #' @importMethodsFrom pipette as.data.frame coerce droplevels export
 #'
-#' @importFrom AcidBase formalsList geometricMean getNameInParent initDir
-#'   lanePattern metadataDenylist methodFunction packageName packageVersion
-#'   realpath requireNamespaces standardizeCall
+#' @importFrom AcidBase geometricMean getNameInParent initDir lanePattern
+#'   metadataDenylist methodFunction packageName packageVersion realpath
+#'   requireNamespaces standardizeCall
 #' @importFrom AcidCLI abort alert alertInfo alertWarning toInlineString
 #' @importFrom AcidGenerics DataFrame Rle SimpleList SplitDataFrameList %in%
 #'   aggregate as.data.frame complete.cases coerce colSums cor decode do.call
