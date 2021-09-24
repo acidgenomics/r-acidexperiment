@@ -81,7 +81,7 @@ of matrix defined in requested \code{assay}.
 }}
 
 \note{
-Updated 2021-09-10.
+Updated 2021-09-13.
 }
 \section{Methods (by class)}{
 
