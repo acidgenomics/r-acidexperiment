@@ -33,7 +33,15 @@ NULL
 #' @note Updated 2021-09-02.
 #' @noRd
 .exportAssays <-
-    function(object, name, dir, compress, overwrite, quiet) {
+    function(
+        ## FIXME Rework argument passthrough here.
+        object,
+        name,
+        dir,
+        compress,
+        overwrite,
+        quiet
+    ) {
         validObject(object)
         assert(
             is(object, "SummarizedExperiment"),
@@ -84,7 +92,14 @@ NULL
 #' @note Updated 2020-08-11.
 #' @noRd
 .exportColData <-
-    function(object, ext, dir, overwrite, quiet) {
+    function(
+        ## FIXME Rework argument passthrough here.
+        object,
+        ext,
+        dir,
+        overwrite,
+        quiet
+    ) {
         validObject(object)
         assert(
             is(object, "SummarizedExperiment"),
@@ -112,7 +127,14 @@ NULL
 #' The standard `rowData()` output is okay but doesn't include genomic ranges
 #' coordinates. That's why we're coercing from `rowRanges()` for RSE.
 .exportRowData <-
-    function(object, ext, dir, overwrite, quiet) {
+    function(
+        ## FIXME Rework argument passthrough here.
+        object,
+        ext,
+        dir,
+        overwrite,
+        quiet
+    ) {
         validObject(object)
         assert(
             is(object, "SummarizedExperiment"),
@@ -152,7 +174,10 @@ NULL
 #' "assay" before exporting.
 `export,SE` <-  # nolint
     function(
+        ## FIXME Rework argument passthrough here.
         object,
+        con,  # FIXME Rethink this.
+        format,  # FIXME Rethink this.
         name = NULL,
         dir,
         compress,
@@ -188,6 +213,7 @@ NULL
             assayNames(object) <- "assay"
         }
         files[["assays"]] <-
+            ## FIXME Need to pass "con" and "format" here?
             .exportAssays(
                 object = object,
                 name = name,
@@ -197,6 +223,7 @@ NULL
                 quiet = quiet
             )
         files[["colData"]] <-
+            ## FIXME Need to pass "con" and "format" here?
             .exportColData(
                 object = object,
                 ext = ext,
@@ -205,6 +232,7 @@ NULL
                 quiet = quiet
             )
         files[["rowData"]] <-
+            ## FIXME Need to pass "con" and "format" here?
             .exportRowData(
                 object = object,
                 ext = ext,
@@ -229,6 +257,10 @@ NULL
 #' @export
 setMethod(
     f = "export",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(
+        object = "SummarizedExperiment",
+        con = "ANY",  # FIXME
+        format = "ANY"  # FIXME
+    ),
     definition = `export,SE`
 )

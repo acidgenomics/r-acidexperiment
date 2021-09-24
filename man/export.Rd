@@ -2,24 +2,21 @@
 % Please edit documentation in R/AllGenerics.R, R/export-methods.R
 \name{export}
 \alias{export}
-\alias{export,SummarizedExperiment-method}
-\title{Export}
+\alias{export,SummarizedExperiment,ANY,ANY-method}
+\title{Objects exported from other packages}
 \usage{
 export(object, ...)
 
-\S4method{export}{SummarizedExperiment}(
-  object,
-  name = NULL,
-  dir = getOption("acid.export.dir", default = "."),
-  compress = getOption("acid.export.compress", default = FALSE),
-  overwrite = getOption("acid.overwrite", default = TRUE),
-  quiet = getOption("acid.quiet", default = FALSE)
-)
+\S4method{export}{SummarizedExperiment,ANY,ANY}(object, con, format, name = NULL, dir, compress, overwrite, quiet)
 }
 \arguments{
 \item{object}{Object.
 An object supporting \code{dim()}, or a supported class capable of being coerced
 to \code{data.frame}, to be written to disk.}
+
+\item{con}{FIXME}
+
+\item{format}{FIXME}
 
 \item{name}{\code{character(1)}.
 Name to use on disk. If \code{NULL}, will use the name of the object instead.}
@@ -43,10 +40,17 @@ Invisible \code{character}.
 File path(s).
 }
 \description{
-Export data out of R and write to disk.
+These objects are imported from other packages. Follow the links
+below to see their documentation.
+
+\describe{
+  \item{IRanges}{\code{\link[IRanges:AtomicList-class]{CharacterList}}, \code{\link[IRanges:DataFrameList-class]{DataFrameList}}, \code{\link[IRanges:AtomicList-class]{FactorList}}, \code{\link[IRanges:IRanges-constructor]{IRanges}}, \code{\link[IRanges:AtomicList-class]{IntegerList}}, \code{\link[IRanges:AtomicList-class]{LogicalList}}, \code{\link[IRanges:AtomicList-class]{NumericList}}, \code{\link[IRanges:AtomicList-class]{RleList}}, \code{\link[IRanges:DataFrameList-class]{SplitDataFrameList}}}
+
+  \item{S4Vectors}{\code{\link[S4Vectors:DataFrame-class]{DataFrame}}, \code{\link[S4Vectors:Factor-class]{Factor}}, \code{\link[S4Vectors:LLint-class]{LLint}}, \code{\link[S4Vectors:List-class]{List}}, \code{\link[S4Vectors:Rle-class]{Rle}}, \code{\link[S4Vectors:SimpleList-class]{SimpleList}}}
+}
 }
 \note{
-Updated 2021-09-02.
+Updated 2021-09-24.
 }
 \section{Row names}{
 
