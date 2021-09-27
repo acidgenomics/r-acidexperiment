@@ -8,7 +8,8 @@ importSampleData(
   file,
   lanes = 0L,
   pipeline = c("none", "bcbio", "cellranger"),
-  autopadZeros = FALSE
+  autopadZeros = FALSE,
+  ...
 )
 }
 \arguments{
@@ -33,6 +34,9 @@ Autopad zeros in sample identifiers, for improved sorting.
 Currently supported only for non-multiplexed samples.
 For example: \code{sample_1}, \code{sample_2}, ... \code{sample_10} becomes
 \code{sample_01}, \code{sample_02}, ... \code{sample10}.}
+
+\item{...}{Passthrough arguments to \code{import} method.
+For example, supports \code{sheet} argument for Microsoft Excel files.}
 }
 \value{
 \code{DataFrame}.
@@ -43,7 +47,7 @@ This function imports user-defined sample metadata saved in a spreadsheet.
 \note{
 Works with local or remote files.
 
-Updated 2021-09-01.
+Updated 2021-09-27.
 }
 \section{bcbio pipeline}{
 

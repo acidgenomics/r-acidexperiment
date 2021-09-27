@@ -1,3 +1,7 @@
+## FIXME Add back support for `sheet` argument, if an excel file.
+
+
+
 #' Import sample metadata
 #'
 #' This function imports user-defined sample metadata saved in a spreadsheet.
@@ -36,7 +40,7 @@
 #' @note Works with local or remote files.
 #'
 #' @author Michael Steinbaugh
-#' @note Updated 2021-09-01.
+#' @note Updated 2021-09-27.
 #' @export
 #'
 #' @inheritParams AcidRoxygen::params
@@ -54,6 +58,8 @@
 #'   Currently supported only for non-multiplexed samples.
 #'   For example: `sample_1`, `sample_2`, ... `sample_10` becomes
 #'   `sample_01`, `sample_02`, ... `sample10`.
+#' @param ... Passthrough arguments to `import` method.
+#'   For example, supports `sheet` argument for Microsoft Excel files.
 #'
 #' @return `DataFrame`.
 #'
@@ -77,7 +83,8 @@ importSampleData <- function(
     file,
     lanes = 0L,
     pipeline = c("none", "bcbio", "cellranger"),
-    autopadZeros = FALSE
+    autopadZeros = FALSE,
+    ...
 ) {
     ## Coerce `detectLanes()` empty integer return to 0.
     if (!hasLength(lanes)) {
@@ -102,7 +109,7 @@ importSampleData <- function(
         lanes <- seq_len(lanes)
     }
     ## Import ------------------------------------------------------------------
-    data <- import(file = file)
+    data <- import(file, ...)
     data <- as(data, "DataFrame")
     colnames(data) <- camelCase(colnames(data), strict = TRUE)
     data <- removeNA(data)
