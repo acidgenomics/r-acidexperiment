@@ -3,7 +3,7 @@
 \name{export}
 \alias{export}
 \alias{export,SummarizedExperiment,ANY,ANY-method}
-\title{Objects exported from other packages}
+\title{Export}
 \usage{
 export(object, ...)
 
@@ -14,9 +14,18 @@ export(object, ...)
 An object supporting \code{dim()}, or a supported class capable of being coerced
 to \code{data.frame}, to be written to disk.}
 
-\item{con}{FIXME}
+\item{con}{\code{character(1)}, \code{connection}, or \code{missing}.
+The connection from which data is loaded or to which data is saved. If this
+is a character vector, it is assumed to be a filename, and a corresponding
+file connection is created and then closed after exporting the object. If a
+\code{BiocFile} derivative, the data is loaded from or saved to the underlying
+resource.  If missing, the function will return the output as a character
+vector, rather than writing to a connection.}
 
-\item{format}{FIXME}
+\item{format}{\code{character(1)} or \code{missing}.
+An optional file format type, which can be used to override the file format
+inferred from \code{con}. Only recommended for file and URL paths that don't
+contain an extension.}
 
 \item{name}{\code{character(1)}.
 Name to use on disk. If \code{NULL}, will use the name of the object instead.}
@@ -40,14 +49,7 @@ Invisible \code{character}.
 File path(s).
 }
 \description{
-These objects are imported from other packages. Follow the links
-below to see their documentation.
-
-\describe{
-  \item{IRanges}{\code{\link[IRanges:AtomicList-class]{CharacterList}}, \code{\link[IRanges:DataFrameList-class]{DataFrameList}}, \code{\link[IRanges:AtomicList-class]{FactorList}}, \code{\link[IRanges:IRanges-constructor]{IRanges}}, \code{\link[IRanges:AtomicList-class]{IntegerList}}, \code{\link[IRanges:AtomicList-class]{LogicalList}}, \code{\link[IRanges:AtomicList-class]{NumericList}}, \code{\link[IRanges:AtomicList-class]{RleList}}, \code{\link[IRanges:DataFrameList-class]{SplitDataFrameList}}}
-
-  \item{S4Vectors}{\code{\link[S4Vectors:DataFrame-class]{DataFrame}}, \code{\link[S4Vectors:Factor-class]{Factor}}, \code{\link[S4Vectors:LLint-class]{LLint}}, \code{\link[S4Vectors:List-class]{List}}, \code{\link[S4Vectors:Rle-class]{Rle}}, \code{\link[S4Vectors:SimpleList-class]{SimpleList}}}
-}
+Export
 }
 \note{
 Updated 2021-09-24.
@@ -96,6 +98,7 @@ Packages:
 
 Export functions:
 \itemize{
+\item \code{BiocIO::export()}.
 \item \code{data.table::fwrite()}.
 \item \code{readr::write_csv()}.
 \item \code{rio::export()}.
