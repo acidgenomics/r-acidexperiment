@@ -1,3 +1,7 @@
+## FIXME This needs to run droplevels automatically.
+
+
+
 #' @name selectSamples
 #' @inherit AcidGenerics::selectSamples
 #' @note Updated 2021-02-03.
