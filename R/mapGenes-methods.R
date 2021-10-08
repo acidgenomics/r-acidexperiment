@@ -1,3 +1,7 @@
+## FIXME Need to ensure this is working with new DESeq datasets.
+
+
+
 #' Map genes
 #'
 #' Take a user-defined gene vector and dynamically map the input to either the
