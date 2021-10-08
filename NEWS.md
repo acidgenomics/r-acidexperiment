@@ -1,5 +1,10 @@
 ## AcidExperiment 0.2.3 (UNRELEASED)
 
+### Minor changes
+
+- `selectSamples`: The function now automatically relevels factors defined
+  in `colData`.
+
 ## AcidExperiment 0.2.2 (2021-09-13)
 
 ### Major changes

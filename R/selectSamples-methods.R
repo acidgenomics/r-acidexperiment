@@ -51,7 +51,9 @@ NULL
         samples <- sort(as.character(Reduce(f = intersect, x = list)))
         assert(hasLength(samples))
         ## Return.
-        object[, samples, drop = FALSE]
+        out <- object[, samples, drop = FALSE]
+        out <- droplevels(out)
+        out
     }
 
 
