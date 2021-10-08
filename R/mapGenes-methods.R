@@ -113,13 +113,21 @@ NULL
         X = genes,
         FUN = function(x) {
             idx <- match(x = x, table = rownames(object))
-            if (isInt(idx)) return(idx)
+            if (isInt(idx)) {
+                return(idx)
+            }
             idx <- match(x = x, table = object[["geneId"]])
-            if (isInt(idx)) return(idx)
+            if (isInt(idx)) {
+                return(idx)
+            }
             idx <- match(x = x, table = object[["geneIdNoVersion"]])
-            if (isInt(idx)) return(idx)
+            if (isInt(idx)) {
+                return(idx)
+            }
             idx <- match(x = x, table = object[["geneName"]])
-            if (isInt(idx)) return(idx)
+            if (isInt(idx)) {
+                return(idx)
+            }
             if (isSubset("geneSynonyms", colnames(object))) {
                 idx <- which(bapply(
                     X = object[["geneSynonyms"]],
@@ -127,7 +135,9 @@ NULL
                         x %in% table
                     }
                 ))
-                if (isInt(idx)) return(idx)
+                if (isInt(idx)) {
+                    return(idx)
+                }
             }
             -1L
         },
