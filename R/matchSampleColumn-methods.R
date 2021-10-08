@@ -22,7 +22,9 @@ NULL
         x <- colnames(object)
         table <- c("sampleId", "sampleID", "sampleid", "sample")
         match <- match(x = x, table = table)
-        if (all(is.na(match))) return(NULL)
+        if (all(is.na(match))) {
+            return(NULL)
+        }
         id <- table[min(na.omit(match))]
         id
     }

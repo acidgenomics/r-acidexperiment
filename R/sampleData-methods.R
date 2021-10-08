@@ -75,7 +75,9 @@ NULL
         )
     ) {
         data <- colData(object)
-        if (!hasRows(data)) return(data)
+        if (!hasRows(data)) {
+            return(data)
+        }
         assert(
             hasRownames(data),
             isFlag(clean),

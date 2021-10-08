@@ -1,3 +1,5 @@
+## AcidExperiment 0.2.3 (UNRELEASED)
+
 ## AcidExperiment 0.2.2 (2021-09-13)
 
 ### Major changes
