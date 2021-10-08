@@ -1,8 +1,8 @@
 Package: AcidExperiment
 Title: Acid Genomics Summarized Experiment
 Description: Toolkit to extend the functionality of SummarizedExperiment.
-Version: 0.2.3
-Date: 2021-09-27
+Version: 0.2.3.9000
+Date: 2021-10-08
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -34,7 +34,7 @@ Imports:
     AcidGenomes (>= 0.2.20),
     AcidPlyr (>= 0.1.22),
     SummarizedExperiment (>= 1.22.0),
-    goalie (>= 0.5.5),
+    goalie (>= 0.6.0),
     methods,
     pipette (>= 0.8.0),
     scales (>= 1.1.1),
