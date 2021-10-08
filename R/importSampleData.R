@@ -1,7 +1,3 @@
-## FIXME Add back support for `sheet` argument, if an excel file.
-
-
-
 #' Import sample metadata
 #'
 #' This function imports user-defined sample metadata saved in a spreadsheet.
@@ -40,7 +36,7 @@
 #' @note Works with local or remote files.
 #'
 #' @author Michael Steinbaugh
-#' @note Updated 2021-09-27.
+#' @note Updated 2021-10-08.
 #' @export
 #'
 #' @inheritParams AcidRoxygen::params
