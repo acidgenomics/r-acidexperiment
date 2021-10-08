@@ -1,7 +1,3 @@
-## FIXME Need to ensure this is working with new DESeq datasets.
-
-
-
 #' Map genes
 #'
 #' Take a user-defined gene vector and dynamically map the input to either the
@@ -17,7 +13,7 @@
 #' is duplicated, these functions will return a warning.
 #'
 #' @name mapGenes
-#' @note Updated 2021-09-02.
+#' @note Updated 2021-10-08.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param strict `logical(1)`.
@@ -64,19 +60,27 @@ NULL
 #' Contains gene identifiers, gene names (symbols), and alternative (legacy)
 #' gene synonyms, when possible.
 #'
-#' @note Updated 2021-09-03.
+#' @note Updated 2021-10-08.
 #' @noRd
 .makeGeneMap <- function(object) {
     validObject(object)
     assert(is(object, "SummarizedExperiment"))
-    g2s <- Gene2Symbol(object = object, format = "unmodified", quiet = TRUE)
-    assert(areSetEqual(rownames(g2s), rownames(object)))
-    df <- as(g2s, "DataFrame")
-    df <- df[rownames(object), , drop = FALSE]
-    colnames(df) <- camelCase(colnames(df), strict = TRUE)
-    if (isSubset("geneSynonyms", colnames(rowData(object)))) {
-        df[["geneSynonyms"]] <- rowData(object)[["geneSynonyms"]]
+    df <- rowData(object)
+    if (!hasCols(df)) {
+        return(NULL)
     }
+    colnames(df) <- camelCase(colnames(df), strict = TRUE)
+    cols <- c("geneId", "geneName")
+    assert(
+        identical(rownames(df), rownames(object)),
+        isSubset(cols, colnames(df))
+    )
+    cols <- intersect(
+        x = colnames(df),
+        y = c(cols, "geneSynonyms")
+    )
+    df <- df[, cols, drop = FALSE]
+    df <- decode(df)
     df
 }
 
@@ -199,14 +203,7 @@ NULL
             isFlag(strict)
         )
         ## Check to see if object contains gene-to-symbol mappings.
-        map <- tryCatch(
-            expr = {
-                .makeGeneMap(object)
-            },
-            error = function(e) {
-                NULL
-            }
-        )
+        map <- .makeGeneMap(object)
         if (!is.null(map)) {
             idx <- .mapGenes(object = map, genes = genes, strict = strict)
             map <- map[idx, , drop = FALSE]
