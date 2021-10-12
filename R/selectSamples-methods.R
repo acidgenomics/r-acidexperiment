@@ -1,10 +1,6 @@
-## FIXME This needs to run droplevels automatically.
-
-
-
 #' @name selectSamples
 #' @inherit AcidGenerics::selectSamples
-#' @note Updated 2021-02-03.
+#' @note Updated 2021-10-12.
 #'
 #' @inheritParams AcidRoxygen::params
 #'
@@ -21,7 +17,7 @@ NULL
 
 
 
-## Updated 2021-09-01.
+## Updated 2021-10-12.
 `selectSamples,SE` <-  # nolint
     function(object, ...) {
         validObject(object)
