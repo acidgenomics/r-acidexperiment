@@ -9,13 +9,11 @@ export(object, ...)
 
 \S4method{export}{SummarizedExperiment,character,missingOrNULL}(
   object,
-  con = getOption("acid.export.dir", default = "."),
-  format = c("csv", "tsv"),
+  con,
+  format,
   compress = getOption("acid.export.compress", default = FALSE),
   overwrite = getOption("acid.overwrite", default = TRUE),
-  quiet = getOption("acid.quiet", default = FALSE),
-  name = NULL,
-  dir = NULL
+  quiet = getOption("acid.quiet", default = FALSE)
 )
 }
 \arguments{
@@ -55,9 +53,6 @@ Perform command quietly, suppressing messages.}
 
 \item{name}{\code{character(1)}.
 Name to use on disk. If \code{NULL}, will use the name of the object instead.}
-
-\item{dir}{\code{character(1)}.
-Directory path.}
 
 \item{...}{Additional arguments.}
 }

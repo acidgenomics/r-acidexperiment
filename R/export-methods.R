@@ -176,46 +176,33 @@ NULL
 `export,SE` <-  # nolint
     function(
         object,
-        con = getOption("acid.export.dir", default = "."),
-        ## FIXME Use a default argument here?
-        format = c("csv", "tsv"),
+        con,
+        format,  # NULL
         compress = getOption("acid.export.compress", default = FALSE),
         overwrite = getOption("acid.overwrite", default = TRUE),
-        quiet = getOption("acid.quiet", default = FALSE),
-
-
-        name = NULL,  # deprecated
-        dir = NULL  # deprecated
+        quiet = getOption("acid.quiet", default = FALSE)
     ) {
         validObject(object)
-        if (!is.null(dir)) {
-            con <- dir
-        }
         assert(
             isString(con),
-            isString(name, nullOK = TRUE),
+            is.null(format),
             isFlag(compress),
             isFlag(overwrite),
             isFlag(quiet)
         )
-        format <- match.arg(format)
-        call <- standardizeCall()
-        if (is.null(name)) {
-            sym <- call[["object"]]
-            assert(is.symbol(sym))
-            name <- as.character(sym)
-        }
-        ## FIXME Need to rename this to "con" instead of "dir".
-        dir <- initDir(file.path(dir, name))
+        dir <- initDir(con)
         if (!isTRUE(quiet)) {
             alert(sprintf(
-                fmt = "Exporting {.envvar %s} to {.path %s}.",
-                name, dir
+                fmt = "Exporting {.cls %s} to {.path %s}.",
+                "SummarizedExperiment", dir
             ))
         }
         files <- list()
+        ## This extension only applies to colData and rowData below.
         ext <- "csv"
-        if (isTRUE(compress)) ext <- paste0(ext, ".gz")
+        if (isTRUE(compress)) {
+            ext <- paste0(ext, ".gz")
+        }
         ext <- paste0(".", ext)
         if (is.null(assayNames(object))) {
             assayNames(object) <- "assay"
@@ -251,6 +238,33 @@ NULL
 
 
 
+## Updated 2021-10-12.
+`export,SE,deprecated` <-  # nolint
+    function(
+        object,
+        con,  # NULL,
+        name,
+        dir,
+        ...
+    ) {
+        ## FIXME Rework this.
+        #isString(name, nullOK = TRUE),
+
+        ## FIXME Avoid this when "con" is defined...
+        #call <- standardizeCall()
+        #if (is.null(name)) {
+        #    sym <- call[["object"]]
+        #    assert(is.symbol(sym))
+        #    name <- as.character(sym)
+        #}
+
+        ## FIXME Need to rename this to "con" instead of "dir".
+        ## FIXME Rework this...
+        #dir <- initDir(file.path(dir, name))
+    }
+
+
+
 #' @rdname export
 #' @export
 setMethod(
@@ -258,7 +272,7 @@ setMethod(
     signature = signature(
         object = "SummarizedExperiment",
         con = "character",
-        format = "missingOrNULL"  # FIXME
+        format = "missingOrNULL"
     ),
     definition = `export,SE`
 )
