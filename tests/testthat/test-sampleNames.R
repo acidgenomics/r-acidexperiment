@@ -17,12 +17,12 @@ test_that("SE assignment", {
 
 test_that("SE assignment failures", {
     expect_error(
-        sampleNames(rse) <- "xxx",
-        "The names of 'value' are NULL."
+        object = sampleNames(rse) <- "xxx",
+        regexp = "NULL"
     )
     expect_error(
-        sampleNames(rse) <- c(aaa = "bbb"),
-        "areSetEqual"
+        object = sampleNames(rse) <- c(aaa = "bbb"),
+        regexp = "areSetEqual"
     )
 })
 
@@ -30,9 +30,6 @@ test_that("sampleName column isn't factor", {
     colData(rse)[["sampleName"]] <- "xxx"
     expect_error(
         object = sampleNames(rse),
-        expected = paste(
-            "sampleData() requires a 'sampleName'",
-            "factor column in 'colData()'."
-        )
+        regexp = "factor"
     )
 })
