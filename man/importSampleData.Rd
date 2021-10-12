@@ -47,7 +47,7 @@ This function imports user-defined sample metadata saved in a spreadsheet.
 \note{
 Works with local or remote files.
 
-Updated 2021-09-27.
+Updated 2021-10-08.
 }
 \section{bcbio pipeline}{
 
