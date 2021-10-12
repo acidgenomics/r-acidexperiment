@@ -1,12 +1,6 @@
-## FIXME Need to rework using BiocIO approach.
-## FIXME Consider restricting
-## FIXME Need to rework the documentation reexport here.
-
-
-
 #' @name export
 #' @inherit pipette::export
-#' @note Updated 2021-09-24.
+#' @note Updated 2021-10-12.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param compress `logical(1)`.
@@ -20,7 +14,7 @@
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' dir <- "example"
+#' dir <- file.path(tempdir(), "example")
 #' x <- export(object = object, dir = dir)
 #' print(x)
 #' unlink(dir, recursive = TRUE)
@@ -30,11 +24,10 @@ NULL
 
 #' Export assays
 #'
-#' @note Updated 2021-09-02.
+#' @note Updated 2021-10-12.
 #' @noRd
 .exportAssays <-
     function(
-        ## FIXME Rework argument passthrough here.
         object,
         name,
         dir,
@@ -74,7 +67,7 @@ NULL
                 file <- paste0(file, ".", ext)
                 export(
                     object = assay,
-                    file = file,
+                    con = file,
                     overwrite = overwrite,
                     quiet = quiet
                 )
@@ -89,11 +82,10 @@ NULL
 
 #' Export column data (in SummarizedExperiment)
 #'
-#' @note Updated 2020-08-11.
+#' @note Updated 2021-10-12.
 #' @noRd
 .exportColData <-
     function(
-        ## FIXME Rework argument passthrough here.
         object,
         ext,
         dir,
@@ -108,9 +100,11 @@ NULL
             isFlag(overwrite),
             isFlag(quiet)
         )
+        data <- atomize(colData(object))
+        assert(identical(rownames(data), colnames(object)))
         export(
-            object = atomize(colData(object)),
-            file = file.path(dir, paste0("colData", ext)),
+            object = data,
+            con = file.path(dir, paste0("colData", ext)),
             overwrite = overwrite,
             quiet = quiet
         )
@@ -120,7 +114,7 @@ NULL
 
 #' Export row data (in SummarizedExperiment)
 #'
-#' @note Updated 2020-08-11.
+#' @note Updated 2021-10-12.
 #' @noRd
 #'
 #' @details
@@ -128,7 +122,6 @@ NULL
 #' coordinates. That's why we're coercing from `rowRanges()` for RSE.
 .exportRowData <-
     function(
-        ## FIXME Rework argument passthrough here.
         object,
         ext,
         dir,
@@ -143,18 +136,14 @@ NULL
             isFlag(overwrite),
             isFlag(quiet)
         )
-        data <- rowData(object)
-        ## Note that SummarizedExperiment in BioC 3.6/R 3.4 release doesn't
-        ## set row names properly, so keep this step here for compatibility.
-        if (!hasRownames(data)) {
-            rownames(data) <- rownames(object)  # nocov
-        }
+        data <- rowData(object, use.names = TRUE)
         data <- atomize(data)
+        ## This step is necessary to keep track of genomic coordinates.
         data <- as.data.frame(data)
         assert(identical(rownames(data), rownames(object)))
         export(
             object = data,
-            file = file.path(dir, paste0("rowData", ext)),
+            con = file.path(dir, paste0("rowData", ext)),
             overwrite = overwrite,
             quiet = quiet
         )
@@ -164,7 +153,7 @@ NULL
 
 #' export SummarizedExperiment method
 #'
-#' @note Updated 2020-08-11
+#' @note Updated 2020-08-11.
 #' @noRd
 #'
 #' @details
@@ -174,18 +163,25 @@ NULL
 #' "assay" before exporting.
 `export,SE` <-  # nolint
     function(
-        ## FIXME Rework argument passthrough here.
         object,
-        con,  # FIXME Rethink this.
-        format,  # FIXME Rethink this.
+        con = NULL,
+        format = NULL,
         name = NULL,
-        dir,
-        compress,
-        overwrite,
-        quiet
+        dir = getOption("acid.export.dir", default = "."),
+        compress = getOption("acid.export.compress", default = FALSE),
+        overwrite = getOption("acid.overwrite", default = TRUE),
+        quiet = getOption("acid.quiet", default = FALSE)
     ) {
         validObject(object)
+        if (missing(con)) {
+            con <- NULL
+        }
+        if (missing(format)) {
+            format <- NULL
+        }
         assert(
+            is.null(con),
+            is.null(format),
             isString(name, nullOK = TRUE),
             isString(dir),
             isFlag(compress),
@@ -213,7 +209,6 @@ NULL
             assayNames(object) <- "assay"
         }
         files[["assays"]] <-
-            ## FIXME Need to pass "con" and "format" here?
             .exportAssays(
                 object = object,
                 name = name,
@@ -223,7 +218,6 @@ NULL
                 quiet = quiet
             )
         files[["colData"]] <-
-            ## FIXME Need to pass "con" and "format" here?
             .exportColData(
                 object = object,
                 ext = ext,
@@ -232,7 +226,6 @@ NULL
                 quiet = quiet
             )
         files[["rowData"]] <-
-            ## FIXME Need to pass "con" and "format" here?
             .exportRowData(
                 object = object,
                 ext = ext,
@@ -245,12 +238,6 @@ NULL
         invisible(files)
     }
 
-## FIXME Rework this using methodFormals instead.
-
-## > formals(`export,SE`)[
-## >     c("compress", "dir", "overwrite", "quiet")] <-
-## >     formalsList[c("export.compress", "export.dir", "overwrite", "quiet")]
-
 
 
 #' @rdname export
@@ -259,8 +246,8 @@ setMethod(
     f = "export",
     signature = signature(
         object = "SummarizedExperiment",
-        con = "ANY",  # FIXME
-        format = "ANY"  # FIXME
+        con = "missingOrNULL",  # FIXME
+        format = "missingOrNULL"  # FIXME
     ),
     definition = `export,SE`
 )
