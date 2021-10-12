@@ -1,7 +1,9 @@
 context("export")
 
-testdir <- file.path(tempdir(), "XXX")
+testdir <- file.path(tempdir(), "example")
 
+
+## FIXME This is now deprecated.
 test_that("'dir' argument, no 'name'", {
     unlink(testdir, recursive = TRUE)
     object <- rse
