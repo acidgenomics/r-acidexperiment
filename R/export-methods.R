@@ -1,6 +1,9 @@
 ## FIXME Should we map "dir" to "con" here instead?
 ## That seems to make more sense. Ensure "dir" argument is deprecated.
 
+## FIXME Need to ensure we're providing legacy support for "name" and "dir"
+## arguments here, which are used by bcbioRNASeq and other packages.
+
 
 
 #' @name export
@@ -34,7 +37,6 @@ NULL
 .exportAssays <-
     function(
         object,
-        name,
         dir,
         compress,
         overwrite,
@@ -43,7 +45,6 @@ NULL
         validObject(object)
         assert(
             is(object, "SummarizedExperiment"),
-            isString(name),
             isString(dir),
             isFlag(compress),
             isFlag(overwrite),
@@ -51,13 +52,14 @@ NULL
         )
         assayNames <- assayNames(object)
         assert(isCharacter(assayNames))
-        dir <- realpath(initDir(dir))
+        dir <- initDir(dir)
         alert(sprintf(
             fmt = "Exporting assays %s to {.path %s}.",
             toInlineString(assayNames, n = 5L, class = "val"), dir
         ))
         out <- lapply(
             X = assayNames,
+            dir = initDir(file.path(dir, "assays")),
             FUN = function(name, dir) {
                 file <- file.path(dir, name)
                 assay <- assay(x = object, i = name)
@@ -76,8 +78,7 @@ NULL
                     overwrite = overwrite,
                     quiet = quiet
                 )
-            },
-            dir = initDir(file.path(dir, "assays"))
+            }
         )
         names(out) <- assayNames
         out
@@ -161,6 +162,7 @@ NULL
 ## FIXME The name argument here now doesn't really make sense. Need to re-work.
 
 
+
 #' export SummarizedExperiment method
 #'
 #' @note Updated 2021-10-12.
@@ -177,10 +179,12 @@ NULL
         con = getOption("acid.export.dir", default = "."),
         ## FIXME Use a default argument here?
         format = c("csv", "tsv"),
-        name = NULL,
         compress = getOption("acid.export.compress", default = FALSE),
         overwrite = getOption("acid.overwrite", default = TRUE),
         quiet = getOption("acid.quiet", default = FALSE),
+
+
+        name = NULL,  # deprecated
         dir = NULL  # deprecated
     ) {
         validObject(object)
@@ -219,7 +223,6 @@ NULL
         files[["assays"]] <-
             .exportAssays(
                 object = object,
-                name = name,
                 dir = dir,
                 compress = compress,
                 overwrite = overwrite,

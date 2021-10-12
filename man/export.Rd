@@ -2,20 +2,20 @@
 % Please edit documentation in R/AllGenerics.R, R/export-methods.R
 \name{export}
 \alias{export}
-\alias{export,SummarizedExperiment,missingOrNULL,missingOrNULL-method}
+\alias{export,SummarizedExperiment,character,missingOrNULL-method}
 \title{Export}
 \usage{
 export(object, ...)
 
-\S4method{export}{SummarizedExperiment,missingOrNULL,missingOrNULL}(
+\S4method{export}{SummarizedExperiment,character,missingOrNULL}(
   object,
-  con = NULL,
-  format = NULL,
-  name = NULL,
-  dir = getOption("acid.export.dir", default = "."),
+  con = getOption("acid.export.dir", default = "."),
+  format = c("csv", "tsv"),
   compress = getOption("acid.export.compress", default = FALSE),
   overwrite = getOption("acid.overwrite", default = TRUE),
-  quiet = getOption("acid.quiet", default = FALSE)
+  quiet = getOption("acid.quiet", default = FALSE),
+  name = NULL,
+  dir = NULL
 )
 }
 \arguments{
@@ -44,12 +44,6 @@ Output file format extension.
 \code{"mtx"}, \code{"mtx.bz2"}, \code{"mtx.gz"}, \code{"mtx.xz"}, \code{"mtx.zip"}.
 }}
 
-\item{name}{\code{character(1)}.
-Name to use on disk. If \code{NULL}, will use the name of the object instead.}
-
-\item{dir}{\code{character(1)}.
-Directory path.}
-
 \item{compress}{\code{logical(1)}.
 Apply gzip compression to all files.}
 
@@ -58,6 +52,12 @@ Overwrite existing file on disk.}
 
 \item{quiet}{\code{logical(1)}.
 Perform command quietly, suppressing messages.}
+
+\item{name}{\code{character(1)}.
+Name to use on disk. If \code{NULL}, will use the name of the object instead.}
+
+\item{dir}{\code{character(1)}.
+Directory path.}
 
 \item{...}{Additional arguments.}
 }
