@@ -1,11 +1,3 @@
-## FIXME Should we map "dir" to "con" here instead?
-## That seems to make more sense. Ensure "dir" argument is deprecated.
-
-## FIXME Need to ensure we're providing legacy support for "name" and "dir"
-## arguments here, which are used by bcbioRNASeq and other packages.
-
-
-
 #' @name export
 #' @inherit pipette::export
 #' @note Updated 2021-10-12.
