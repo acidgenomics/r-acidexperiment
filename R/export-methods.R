@@ -22,10 +22,10 @@
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' dir <- file.path(tempdir(), "example")
-#' x <- export(object = object, dir = dir)
+#' con <- file.path(tempdir(), "example")
+#' x <- export(object = object, con = con)
 #' print(x)
-#' unlink(dir, recursive = TRUE)
+#' unlink(con, recursive = TRUE)
 NULL
 
 
@@ -157,12 +157,6 @@ NULL
 
 
 
-## FIXME Allow the user to request CSV or TSV.
-## FIXME Need to handle sparseMatrix / Matrix defined in assays.
-## FIXME The name argument here now doesn't really make sense. Need to re-work.
-
-
-
 #' export SummarizedExperiment method
 #'
 #' @note Updated 2021-10-12.
@@ -183,6 +177,9 @@ NULL
         quiet = getOption("acid.quiet", default = FALSE)
     ) {
         validObject(object)
+        if (missing(format)) {
+            format <- NULL
+        }
         assert(
             isString(con),
             is.null(format),
@@ -243,24 +240,39 @@ NULL
     function(
         object,
         con,  # NULL,
-        name,
+        format,  # NULL,
+        name = NULL,
         dir,
         ...
     ) {
-        ## FIXME Rework this.
-        #isString(name, nullOK = TRUE),
-
-        ## FIXME Avoid this when "con" is defined...
-        #call <- standardizeCall()
-        #if (is.null(name)) {
-        #    sym <- call[["object"]]
-        #    assert(is.symbol(sym))
-        #    name <- as.character(sym)
-        #}
-
-        ## FIXME Need to rename this to "con" instead of "dir".
-        ## FIXME Rework this...
-        #dir <- initDir(file.path(dir, name))
+        validObject(object)
+        ## > .Deprecated(msg = sprintf(
+        ## >     "Use '%s' instead of '%s'.",
+        ## >     "con", "dir"
+        ## > ))
+        if (missing(con)) {
+            con <- NULL
+        }
+        if (missing(format)) {
+            format <- NULL
+        }
+        assert(
+            is.null(con),
+            is.null(format),
+            isString(dir)
+        )
+        if (is.null(name)) {
+            call <- standardizeCall()
+            sym <- call[["object"]]
+            assert(is.symbol(sym))
+            name <- as.character(sym)
+        }
+        export(
+            object = object,
+            con = file.path(dir, name),
+            format = format,
+            ...
+        )
     }
 
 
@@ -275,4 +287,16 @@ setMethod(
         format = "missingOrNULL"
     ),
     definition = `export,SE`
+)
+
+#' @rdname export
+#' @export
+setMethod(
+    f = "export",
+    signature = signature(
+        object = "SummarizedExperiment",
+        con = "missingOrNULL",
+        format = "missingOrNULL"
+    ),
+    definition = `export,SE,deprecated`
 )

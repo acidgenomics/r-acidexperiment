@@ -3,6 +3,7 @@
 \name{export}
 \alias{export}
 \alias{export,SummarizedExperiment,character,missingOrNULL-method}
+\alias{export,SummarizedExperiment,missingOrNULL,missingOrNULL-method}
 \title{Export}
 \usage{
 export(object, ...)
@@ -15,6 +16,8 @@ export(object, ...)
   overwrite = getOption("acid.overwrite", default = TRUE),
   quiet = getOption("acid.quiet", default = FALSE)
 )
+
+\S4method{export}{SummarizedExperiment,missingOrNULL,missingOrNULL}(object, con, format, name = NULL, dir, ...)
 }
 \arguments{
 \item{object}{Object.
@@ -53,6 +56,9 @@ Perform command quietly, suppressing messages.}
 
 \item{name}{\code{character(1)}.
 Name to use on disk. If \code{NULL}, will use the name of the object instead.}
+
+\item{dir}{\code{character(1)}.
+Directory path.}
 
 \item{...}{Additional arguments.}
 }
@@ -93,10 +99,10 @@ data(RangedSummarizedExperiment, package = "AcidTest")
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
-dir <- file.path(tempdir(), "example")
-x <- export(object = object, dir = dir)
+con <- file.path(tempdir(), "example")
+x <- export(object = object, con = con)
 print(x)
-unlink(dir, recursive = TRUE)
+unlink(con, recursive = TRUE)
 }
 \seealso{
 Packages:
