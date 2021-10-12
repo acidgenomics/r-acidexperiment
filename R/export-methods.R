@@ -1,3 +1,8 @@
+## FIXME Should we map "dir" to "con" here instead?
+## That seems to make more sense. Ensure "dir" argument is deprecated.
+
+
+
 #' @name export
 #' @inherit pipette::export
 #' @note Updated 2021-10-12.
@@ -151,9 +156,14 @@ NULL
 
 
 
+## FIXME Allow the user to request CSV or TSV.
+## FIXME Need to handle sparseMatrix / Matrix defined in assays.
+## FIXME The name argument here now doesn't really make sense. Need to re-work.
+
+
 #' export SummarizedExperiment method
 #'
-#' @note Updated 2020-08-11.
+#' @note Updated 2021-10-12.
 #' @noRd
 #'
 #' @details
@@ -164,36 +174,34 @@ NULL
 `export,SE` <-  # nolint
     function(
         object,
-        con = NULL,
-        format = NULL,
+        con = getOption("acid.export.dir", default = "."),
+        ## FIXME Use a default argument here?
+        format = c("csv", "tsv"),
         name = NULL,
-        dir = getOption("acid.export.dir", default = "."),
         compress = getOption("acid.export.compress", default = FALSE),
         overwrite = getOption("acid.overwrite", default = TRUE),
-        quiet = getOption("acid.quiet", default = FALSE)
+        quiet = getOption("acid.quiet", default = FALSE),
+        dir = NULL  # deprecated
     ) {
         validObject(object)
-        if (missing(con)) {
-            con <- NULL
-        }
-        if (missing(format)) {
-            format <- NULL
+        if (!is.null(dir)) {
+            con <- dir
         }
         assert(
-            is.null(con),
-            is.null(format),
+            isString(con),
             isString(name, nullOK = TRUE),
-            isString(dir),
             isFlag(compress),
             isFlag(overwrite),
             isFlag(quiet)
         )
+        format <- match.arg(format)
         call <- standardizeCall()
         if (is.null(name)) {
             sym <- call[["object"]]
             assert(is.symbol(sym))
             name <- as.character(sym)
         }
+        ## FIXME Need to rename this to "con" instead of "dir".
         dir <- initDir(file.path(dir, name))
         if (!isTRUE(quiet)) {
             alert(sprintf(
@@ -246,7 +254,7 @@ setMethod(
     f = "export",
     signature = signature(
         object = "SummarizedExperiment",
-        con = "missingOrNULL",  # FIXME
+        con = "character",
         format = "missingOrNULL"  # FIXME
     ),
     definition = `export,SE`

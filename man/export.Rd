@@ -2,30 +2,47 @@
 % Please edit documentation in R/AllGenerics.R, R/export-methods.R
 \name{export}
 \alias{export}
-\alias{export,SummarizedExperiment,ANY,ANY-method}
+\alias{export,SummarizedExperiment,missingOrNULL,missingOrNULL-method}
 \title{Export}
 \usage{
 export(object, ...)
 
-\S4method{export}{SummarizedExperiment,ANY,ANY}(object, con, format, name = NULL, dir, compress, overwrite, quiet)
+\S4method{export}{SummarizedExperiment,missingOrNULL,missingOrNULL}(
+  object,
+  con = NULL,
+  format = NULL,
+  name = NULL,
+  dir = getOption("acid.export.dir", default = "."),
+  compress = getOption("acid.export.compress", default = FALSE),
+  overwrite = getOption("acid.overwrite", default = TRUE),
+  quiet = getOption("acid.quiet", default = FALSE)
+)
 }
 \arguments{
 \item{object}{Object.
 An object supporting \code{dim()}, or a supported class capable of being coerced
 to \code{data.frame}, to be written to disk.}
 
-\item{con}{\code{character(1)}, \code{connection}, or \code{missing}.
-The connection from which data is loaded or to which data is saved. If this
-is a character vector, it is assumed to be a filename, and a corresponding
-file connection is created and then closed after exporting the object. If a
-\code{BiocFile} derivative, the data is loaded from or saved to the underlying
-resource.  If missing, the function will return the output as a character
-vector, rather than writing to a connection.}
+\item{con}{\code{character(1)}.
+File path.
+Alternatively, can leave unset and use \code{ext} and \code{dir} arguments instead.}
 
-\item{format}{\code{character(1)} or \code{missing}.
-An optional file format type, which can be used to override the file format
-inferred from \code{con}. Only recommended for file and URL paths that don't
-contain an extension.}
+\item{format}{\code{character(1)}.
+Output file format extension.
+
+\code{matrix} supported arguments:
+\itemize{
+\item Comma separated values (CSV):
+\code{"csv"}, \code{"csv.bz2"}, \code{"csv.gz"}, \code{"csv.xz"}, \code{"csv.zip"}.
+\item Tab separated values (TSV):
+\code{"tsv"}, \code{"tsv.bz2"}, \code{"tsv.gz"}, \code{"tsv.xz"}, \code{"tsv.zip"}.
+}
+
+\code{Matrix} (\code{sparseMatrix}) supported arguments:
+\itemize{
+\item MatrixMarket exchange (MTX):
+\code{"mtx"}, \code{"mtx.bz2"}, \code{"mtx.gz"}, \code{"mtx.xz"}, \code{"mtx.zip"}.
+}}
 
 \item{name}{\code{character(1)}.
 Name to use on disk. If \code{NULL}, will use the name of the object instead.}
@@ -52,7 +69,7 @@ File path(s).
 Export
 }
 \note{
-Updated 2021-09-24.
+Updated 2021-10-12.
 }
 \section{Row names}{
 
@@ -81,7 +98,7 @@ data(RangedSummarizedExperiment, package = "AcidTest")
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
-dir <- "example"
+dir <- file.path(tempdir(), "example")
 x <- export(object = object, dir = dir)
 print(x)
 unlink(dir, recursive = TRUE)
