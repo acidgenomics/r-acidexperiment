@@ -90,7 +90,7 @@ NULL
 #' @export
 setMethod(
     f = "autopadZeros",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `autopadZeros,SE`
 )
 
@@ -98,6 +98,6 @@ setMethod(
 #' @export
 setMethod(
     f = "autopadZeros",
-    signature = signature("matrix"),
+    signature = signature(object = "matrix"),
     definition = `autopadZeros,matrix`
 )

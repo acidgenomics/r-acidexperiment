@@ -76,7 +76,7 @@ nrow(x)
 print(x)
 }
 \seealso{
-tidyr:\if{html}{\out{<div class="r">}}\preformatted{methods("gather")
+tidyr:\if{html}{\out{<div class="sourceCode r">}}\preformatted{methods("gather")
 methods("gather_")
 getS3method("gather", "data.frame", envir = asNamespace("tidyr"))
 getS3method("gather_", "data.frame", envir = asNamespace("tidyr"))
@@ -86,7 +86,7 @@ tidyr:::melt_dataframe
 https://github.com/tidyverse/tidyr/blob/master/src/melt.cpp
 https://github.com/tidyverse/tidyr/blob/master/src/RcppExports.cpp
 
-reshape2 (deprecated):\if{html}{\out{<div class="r">}}\preformatted{help(topic = "melt.array", package = "reshape2")
+reshape2 (deprecated):\if{html}{\out{<div class="sourceCode r">}}\preformatted{help(topic = "melt.array", package = "reshape2")
 methods("melt")
 getS3method("melt", "data.array", envir = asNamespace("tidyr"))
 getS3method("melt", "data.frame", envir = asNamespace("tidyr"))

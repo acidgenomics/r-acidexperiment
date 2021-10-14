@@ -138,8 +138,8 @@ NULL
 
 
 
-## Updated 2021-02-25.
-`sampleData<-,SE,DataFrame` <-  # nolint
+## Updated 2021-10-13.
+`sampleData<-,SE,DFrame` <-  # nolint
     function(object, value) {
         assert(hasRownames(value))
         denylist <- c("interestingGroups", "rowname", "sampleId")
@@ -157,7 +157,7 @@ NULL
 #' @export
 setMethod(
     f = "sampleData",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `sampleData,SE`
 )
 
@@ -169,7 +169,7 @@ setReplaceMethod(
     f = "sampleData",
     signature = signature(
         object = "SummarizedExperiment",
-        value = "DataFrame"
+        value = "DFrame"
     ),
-    definition = `sampleData<-,SE,DataFrame`
+    definition = `sampleData<-,SE,DFrame`
 )

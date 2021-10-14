@@ -109,8 +109,8 @@ makeSummarizedExperiment <- function(
     assert(
         isAny(assays, c("SimpleList", "list")),
         isAny(rowRanges, c("GRanges", "GRangesList", "NULL")),
-        isAny(rowData, c("DataFrame", "NULL")),
-        isAny(colData, c("DataFrame", "NULL")),
+        isAny(rowData, c("DFrame", "NULL")),
+        isAny(colData, c("DFrame", "NULL")),
         isAny(metadata, c("list", "NULL")),
         isAny(transgeneNames, c("character", "NULL")),
         isFlag(denylist),

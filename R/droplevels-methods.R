@@ -35,6 +35,6 @@ NULL
 #' @rdname droplevels
 setMethod(
     f = "droplevels",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(x = "SummarizedExperiment"),
     definition = `droplevels,SE`
 )

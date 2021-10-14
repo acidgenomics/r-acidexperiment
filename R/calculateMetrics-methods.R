@@ -41,7 +41,7 @@ NULL
         assert(
             hasValidDimnames(object),
             hasRows(object),
-            isAny(rowData, c("DataFrame", "NULL")),
+            isAny(rowData, c("DFrame", "NULL")),
             isFlag(prefilter)
         )
         if (isTRUE(prefilter)) {
@@ -77,7 +77,7 @@ NULL
             missingBiotype()
         } else {
             assert(
-                is(rowData, "DataFrame"),
+                is(rowData, "DFrame"),
                 hasRownames(rowData),
                 isSubset(rownames(object), rownames(rowData))
             )
@@ -234,7 +234,7 @@ NULL
 #' @export
 setMethod(
     f = "calculateMetrics",
-    signature = signature("Matrix"),
+    signature = signature(object = "Matrix"),
     definition = `calculateMetrics,Matrix`
 )
 
@@ -242,14 +242,14 @@ setMethod(
 #' @export
 setMethod(
     f = "calculateMetrics",
-    signature = signature("matrix"),
-    definition = `calculateMetrics,matrix`
+    signature = signature(object = "SummarizedExperiment"),
+    definition = `calculateMetrics,SE`
 )
 
 #' @rdname calculateMetrics
 #' @export
 setMethod(
     f = "calculateMetrics",
-    signature = signature("SummarizedExperiment"),
-    definition = `calculateMetrics,SE`
+    signature = signature(object = "matrix"),
+    definition = `calculateMetrics,matrix`
 )

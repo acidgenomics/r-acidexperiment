@@ -216,7 +216,7 @@ NULL
         assert(is.function(annoDataFun))
         annoData <- annoDataFun(x)
         assert(
-            is(annoData, "DataFrame"),
+            is(annoData, "DFrame"),
             isSubset(col, colnames(annoData))
         )
         by <- decode(annoData[[col]])
@@ -318,7 +318,7 @@ NULL
 #' @export
 setMethod(
     f = "aggregate",
-    signature = signature("Matrix"),
+    signature = signature(x = "Matrix"),
     definition = `aggregate,Matrix`
 )
 
@@ -328,7 +328,7 @@ setMethod(
 #' @export
 setMethod(
     f = "aggregate",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(x = "SummarizedExperiment"),
     definition = `aggregate,SE`
 )
 
@@ -336,7 +336,7 @@ setMethod(
 #' @export
 setMethod(
     f = "aggregate",
-    signature = signature("matrix"),
+    signature = signature(x = "matrix"),
     definition = `aggregate,matrix`
 )
 
@@ -346,7 +346,7 @@ setMethod(
 #' @export
 setMethod(
     f = "aggregateCols",
-    signature = signature("Matrix"),
+    signature = signature(x = "Matrix"),
     definition = `aggregateCols,Matrix`
 )
 
@@ -354,7 +354,7 @@ setMethod(
 #' @export
 setMethod(
     f = "aggregateCols",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(x = "SummarizedExperiment"),
     definition = `aggregateCols,SE`
 )
 
@@ -362,7 +362,7 @@ setMethod(
 #' @export
 setMethod(
     f = "aggregateCols",
-    signature = signature("matrix"),
+    signature = signature(x = "matrix"),
     definition = `aggregateCols,matrix`
 )
 
@@ -372,7 +372,7 @@ setMethod(
 #' @export
 setMethod(
     f = "aggregateRows",
-    signature = signature("Matrix"),
+    signature = signature(x = "Matrix"),
     definition = `aggregateRows,Matrix`
 )
 
@@ -380,7 +380,7 @@ setMethod(
 #' @export
 setMethod(
     f = "aggregateRows",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(x = "SummarizedExperiment"),
     definition = `aggregateRows,SE`
 )
 
@@ -388,6 +388,6 @@ setMethod(
 #' @export
 setMethod(
     f = "aggregateRows",
-    signature = signature("matrix"),
+    signature = signature(x = "matrix"),
     definition = `aggregateRows,matrix`
 )

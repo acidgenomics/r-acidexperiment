@@ -47,6 +47,6 @@ NULL
 #' @export
 setMethod(
     f = "convertSampleIDsToNames",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `convertSampleIDsToNames,SE`
 )

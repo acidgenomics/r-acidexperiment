@@ -71,7 +71,7 @@ NULL
 #' @export
 setMethod(
     f = "interestingGroups",
-    signature = signature("Annotated"),
+    signature = signature(object = "Annotated"),
     definition = `interestingGroups,Annotated`
 )
 

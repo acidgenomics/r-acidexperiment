@@ -10,7 +10,7 @@
 #' @param colData `logical(1)`.
 #'   Sanitize column names of column data.
 #' @param mcols `logical(1)`.
-#'   Sanitize names of metadata columns (i.e. `DataFrame`).
+#'   Sanitize names of metadata columns (i.e. `DFrame`).
 #' @param metadata `logical(1)`.
 #'   Sanitize metadata names.
 #' @param rowData `logical(1)`.
@@ -125,7 +125,7 @@ NULL
 
 
 
-`camelCase,DataFrame` <-  # nolint
+`camelCase,DFrame` <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -303,7 +303,7 @@ formals(`camelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`dottedCase,DataFrame` <-  # nolint
+`dottedCase,DFrame` <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -471,7 +471,7 @@ formals(`dottedCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`snakeCase,DataFrame` <-  # nolint
+`snakeCase,DFrame` <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -654,7 +654,7 @@ formals(`snakeCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`upperCamelCase,DataFrame` <-  # nolint
+`upperCamelCase,DFrame` <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -756,15 +756,15 @@ formals(`upperCamelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 #' @export
 setMethod(
     f = "camelCase",
-    signature = signature("DataFrame"),
-    definition = `camelCase,DataFrame`
+    signature = signature(object = "DFrame"),
+    definition = `camelCase,DFrame`
 )
 
 #' @rdname syntactic
 #' @export
 setMethod(
     f = "camelCase",
-    signature = signature("Matrix"),
+    signature = signature(object = "Matrix"),
     definition = `camelCase,Matrix`
 )
 
@@ -772,7 +772,7 @@ setMethod(
 #' @export
 setMethod(
     f = "camelCase",
-    signature = signature("Ranges"),
+    signature = signature(object = "Ranges"),
     definition = `camelCase,Ranges`
 )
 
@@ -780,7 +780,7 @@ setMethod(
 #' @export
 setMethod(
     f = "camelCase",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `camelCase,SE`
 )
 
@@ -788,7 +788,7 @@ setMethod(
 #' @export
 setMethod(
     f = "camelCase",
-    signature = signature("Vector"),
+    signature = signature(object = "Vector"),
     definition = `camelCase,Vector`
 )
 
@@ -796,7 +796,7 @@ setMethod(
 #' @export
 setMethod(
     f = "camelCase",
-    signature = signature("atomic"),
+    signature = signature(object = "atomic"),
     definition = `camelCase,atomic`
 )
 
@@ -804,7 +804,7 @@ setMethod(
 #' @export
 setMethod(
     f = "camelCase",
-    signature = signature("data.frame"),
+    signature = signature(object = "data.frame"),
     definition = `camelCase,data.frame`
 )
 
@@ -812,7 +812,7 @@ setMethod(
 #' @export
 setMethod(
     f = "camelCase",
-    signature = signature("factor"),
+    signature = signature(object = "factor"),
     definition = `camelCase,factor`
 )
 
@@ -820,7 +820,7 @@ setMethod(
 #' @export
 setMethod(
     f = "camelCase",
-    signature = signature("list"),
+    signature = signature(object = "list"),
     definition = `camelCase,list`
 )
 
@@ -828,7 +828,7 @@ setMethod(
 #' @export
 setMethod(
     f = "camelCase",
-    signature = signature("matrix"),
+    signature = signature(object = "matrix"),
     definition = `camelCase,matrix`
 )
 
@@ -838,15 +838,15 @@ setMethod(
 #' @export
 setMethod(
     f = "dottedCase",
-    signature = signature("DataFrame"),
-    definition = `dottedCase,DataFrame`
+    signature = signature(object = "DFrame"),
+    definition = `dottedCase,DFrame`
 )
 
 #' @rdname syntactic
 #' @export
 setMethod(
     f = "dottedCase",
-    signature = signature("Matrix"),
+    signature = signature(object = "Matrix"),
     definition = `dottedCase,Matrix`
 )
 
@@ -854,7 +854,7 @@ setMethod(
 #' @export
 setMethod(
     f = "dottedCase",
-    signature = signature("Ranges"),
+    signature = signature(object = "Ranges"),
     definition = `dottedCase,Ranges`
 )
 
@@ -862,7 +862,7 @@ setMethod(
 #' @export
 setMethod(
     f = "dottedCase",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `dottedCase,SE`
 )
 
@@ -870,7 +870,7 @@ setMethod(
 #' @export
 setMethod(
     f = "dottedCase",
-    signature = signature("Vector"),
+    signature = signature(object = "Vector"),
     definition = `dottedCase,Vector`
 )
 
@@ -878,7 +878,7 @@ setMethod(
 #' @export
 setMethod(
     f = "dottedCase",
-    signature = signature("atomic"),
+    signature = signature(object = "atomic"),
     definition = `dottedCase,atomic`
 )
 
@@ -886,7 +886,7 @@ setMethod(
 #' @export
 setMethod(
     f = "dottedCase",
-    signature = signature("data.frame"),
+    signature = signature(object = "data.frame"),
     definition = `dottedCase,data.frame`
 )
 
@@ -894,7 +894,7 @@ setMethod(
 #' @export
 setMethod(
     f = "dottedCase",
-    signature = signature("factor"),
+    signature = signature(object = "factor"),
     definition = `dottedCase,factor`
 )
 
@@ -902,7 +902,7 @@ setMethod(
 #' @export
 setMethod(
     f = "dottedCase",
-    signature = signature("list"),
+    signature = signature(object = "list"),
     definition = `dottedCase,list`
 )
 
@@ -910,7 +910,7 @@ setMethod(
 #' @export
 setMethod(
     f = "dottedCase",
-    signature = signature("matrix"),
+    signature = signature(object = "matrix"),
     definition = `dottedCase,matrix`
 )
 
@@ -920,7 +920,7 @@ setMethod(
 #' @export
 setMethod(
     f = "snakeCase",
-    signature = signature("atomic"),
+    signature = signature(object = "atomic"),
     definition = `snakeCase,atomic`
 )
 
@@ -928,7 +928,7 @@ setMethod(
 #' @export
 setMethod(
     f = "snakeCase",
-    signature = signature("data.frame"),
+    signature = signature(object = "data.frame"),
     definition = `snakeCase,data.frame`
 )
 
@@ -936,7 +936,7 @@ setMethod(
 #' @export
 setMethod(
     f = "snakeCase",
-    signature = signature("factor"),
+    signature = signature(object = "factor"),
     definition = `snakeCase,factor`
 )
 
@@ -944,7 +944,7 @@ setMethod(
 #' @export
 setMethod(
     f = "snakeCase",
-    signature = signature("list"),
+    signature = signature(object = "list"),
     definition = `snakeCase,list`
 )
 
@@ -952,7 +952,7 @@ setMethod(
 #' @export
 setMethod(
     f = "snakeCase",
-    signature = signature("matrix"),
+    signature = signature(object = "matrix"),
     definition = `snakeCase,matrix`
 )
 
@@ -960,15 +960,15 @@ setMethod(
 #' @export
 setMethod(
     f = "snakeCase",
-    signature = signature("DataFrame"),
-    definition = `snakeCase,DataFrame`
+    signature = signature(object = "DFrame"),
+    definition = `snakeCase,DFrame`
 )
 
 #' @rdname syntactic
 #' @export
 setMethod(
     f = "snakeCase",
-    signature = signature("Matrix"),
+    signature = signature(object = "Matrix"),
     definition = `snakeCase,Matrix`
 )
 
@@ -976,7 +976,7 @@ setMethod(
 #' @export
 setMethod(
     f = "snakeCase",
-    signature = signature("Ranges"),
+    signature = signature(object = "Ranges"),
     definition = `snakeCase,Ranges`
 )
 
@@ -984,7 +984,7 @@ setMethod(
 #' @export
 setMethod(
     f = "snakeCase",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `snakeCase,SE`
 )
 
@@ -992,7 +992,7 @@ setMethod(
 #' @export
 setMethod(
     f = "snakeCase",
-    signature = signature("Vector"),
+    signature = signature(object = "Vector"),
     definition = `snakeCase,Vector`
 )
 
@@ -1002,15 +1002,15 @@ setMethod(
 #' @export
 setMethod(
     f = "upperCamelCase",
-    signature = signature("DataFrame"),
-    definition = `upperCamelCase,DataFrame`
+    signature = signature(object = "DFrame"),
+    definition = `upperCamelCase,DFrame`
 )
 
 #' @rdname syntactic
 #' @export
 setMethod(
     f = "upperCamelCase",
-    signature = signature("Matrix"),
+    signature = signature(object = "Matrix"),
     definition = `upperCamelCase,Matrix`
 )
 
@@ -1018,7 +1018,7 @@ setMethod(
 #' @export
 setMethod(
     f = "upperCamelCase",
-    signature = signature("Ranges"),
+    signature = signature(object = "Ranges"),
     definition = `upperCamelCase,Ranges`
 )
 
@@ -1026,7 +1026,7 @@ setMethod(
 #' @export
 setMethod(
     f = "upperCamelCase",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `upperCamelCase,SE`
 )
 
@@ -1034,7 +1034,7 @@ setMethod(
 #' @export
 setMethod(
     f = "upperCamelCase",
-    signature = signature("Vector"),
+    signature = signature(object = "Vector"),
     definition = `upperCamelCase,Vector`
 )
 
@@ -1042,7 +1042,7 @@ setMethod(
 #' @export
 setMethod(
     f = "upperCamelCase",
-    signature = signature("atomic"),
+    signature = signature(object = "atomic"),
     definition = `upperCamelCase,atomic`
 )
 
@@ -1050,7 +1050,7 @@ setMethod(
 #' @export
 setMethod(
     f = "upperCamelCase",
-    signature = signature("data.frame"),
+    signature = signature(object = "data.frame"),
     definition = `upperCamelCase,data.frame`
 )
 
@@ -1058,7 +1058,7 @@ setMethod(
 #' @export
 setMethod(
     f = "upperCamelCase",
-    signature = signature("factor"),
+    signature = signature(object = "factor"),
     definition = `upperCamelCase,factor`
 )
 
@@ -1066,7 +1066,7 @@ setMethod(
 #' @export
 setMethod(
     f = "upperCamelCase",
-    signature = signature("list"),
+    signature = signature(object = "list"),
     definition = `upperCamelCase,list`
 )
 
@@ -1074,6 +1074,6 @@ setMethod(
 #' @export
 setMethod(
     f = "upperCamelCase",
-    signature = signature("matrix"),
+    signature = signature(object = "matrix"),
     definition = `upperCamelCase,matrix`
 )

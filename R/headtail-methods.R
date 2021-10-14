@@ -17,8 +17,18 @@ NULL
 
 
 
+## Updated 2021-10-13.
+`headtail,DFrame` <-  # nolint
+    methodFunction(
+        f = "headtail",
+        signature = "data.frame",
+        package = "AcidBase"
+    )
+
+
+
 ## Updated 2020-10-07.
-`headtail,matrix` <-  # nolint
+`headtail,Matrix` <-  # nolint
     methodFunction(
         f = "headtail",
         signature = "matrix",
@@ -27,29 +37,16 @@ NULL
 
 
 
-## Updated 2020-10-07.
-`headtail,DataFrame` <-  # nolint
-    getMethod(
-        f = "headtail",
-        signature = "data.frame",
-        where = asNamespace("AcidBase")
-    )
+## FIXME Rework the formals approach here.
 
-
-
-## Updated 2020-10-07.
-`headtail,Matrix` <-  # nolint
-    `headtail,matrix`
-
-
-
-## Updated 2020-05-11.
+## Updated 2021-10-13.
 `headtail,GRanges` <-  # nolint
     function() {
         headtail(x = as(x, "data.frame"), n = n)
     }
 
-formals(`headtail,GRanges`) <- formals(`headtail,matrix`)
+## FIXME Rework the formals approach here.
+formals(`headtail,GRanges`) <- formals(`headtail,Matrix`)
 
 
 
@@ -59,7 +56,8 @@ formals(`headtail,GRanges`) <- formals(`headtail,matrix`)
         headtail(x = assay(x), n = n)
     }
 
-formals(`headtail,SE`) <- formals(`headtail,matrix`)
+## FIXME Rework the formals approach here.
+formals(`headtail,SE`) <- formals(`headtail,Matrix`)
 
 
 
@@ -67,15 +65,15 @@ formals(`headtail,SE`) <- formals(`headtail,matrix`)
 #' @export
 setMethod(
     f = "headtail",
-    signature = signature("DataFrame"),
-    definition = `headtail,DataFrame`
+    signature = signature(x = "DFrame"),
+    definition = `headtail,DFrame`
 )
 
 #' @describeIn headtail Summarize the ranges.
 #' @export
 setMethod(
     f = "headtail",
-    signature = signature("GRanges"),
+    signature = signature(x = "GRanges"),
     definition = `headtail,GRanges`
 )
 
@@ -83,7 +81,7 @@ setMethod(
 #' @export
 setMethod(
     f = "headtail",
-    signature = signature("Matrix"),
+    signature = signature(x = "Matrix"),
     definition = `headtail,Matrix`
 )
 
@@ -91,6 +89,6 @@ setMethod(
 #' @export
 setMethod(
     f = "headtail",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(x = "SummarizedExperiment"),
     definition = `headtail,SE`
 )

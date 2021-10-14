@@ -30,6 +30,6 @@ NULL
 #' @export
 setMethod(
     f = "Gene2Symbol",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `Gene2Symbol,SE`
 )

@@ -61,7 +61,7 @@ NULL
 #' @export
 setMethod(
     f = "sizeFactors",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `sizeFactors,SE`
 )
 

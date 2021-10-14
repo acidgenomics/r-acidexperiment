@@ -62,7 +62,7 @@ NULL
 #' @export
 setMethod(
     f = "integerCounts",
-    signature = signature("Matrix"),
+    signature = signature(object = "Matrix"),
     definition = `integerCounts,Matrix`
 )
 
@@ -70,7 +70,7 @@ setMethod(
 #' @export
 setMethod(
     f = "integerCounts",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `integerCounts,SE`
 )
 
@@ -78,6 +78,6 @@ setMethod(
 #' @export
 setMethod(
     f = "integerCounts",
-    signature = signature("matrix"),
+    signature = signature(object = "matrix"),
     definition = `integerCounts,matrix`
 )

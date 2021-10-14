@@ -7,7 +7,7 @@
 \usage{
 metrics(object, ...)
 
-\S4method{metrics}{SummarizedExperiment}(object, return = c("tbl_df", "DataFrame"))
+\S4method{metrics}{SummarizedExperiment}(object, return = c("tbl_df", "DFrame"))
 }
 \arguments{
 \item{object}{Object.}

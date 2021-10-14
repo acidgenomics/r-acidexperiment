@@ -20,8 +20,8 @@ NULL
 
 
 
-## Updated 2019-07-22.
-`uniteInterestingGroups,DataFrame` <-  # nolint
+## Updated 2021-10-13.
+`uniteInterestingGroups,DFrame` <-  # nolint
     function(object, interestingGroups) {
         assert(
             isCharacter(interestingGroups),
@@ -54,6 +54,6 @@ NULL
 #' @export
 setMethod(
     f = "uniteInterestingGroups",
-    signature = signature("DataFrame"),
-    definition = `uniteInterestingGroups,DataFrame`
+    signature = signature(object = "DFrame"),
+    definition = `uniteInterestingGroups,DFrame`
 )

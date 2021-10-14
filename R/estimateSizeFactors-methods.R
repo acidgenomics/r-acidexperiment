@@ -170,6 +170,6 @@ formals(`estimateSizeFactors,SE`)[
 #' @export
 setMethod(
     f = "estimateSizeFactors",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `estimateSizeFactors,SE`
 )

@@ -27,6 +27,6 @@ NULL
 #' @export
 setMethod(
     f = "Ensembl2Entrez",
-    signature = signature("RangedSummarizedExperiment"),
+    signature = signature(object = "RangedSummarizedExperiment"),
     definition = `Ensembl2Entrez,RSE`
 )

@@ -77,7 +77,7 @@ NULL
                 msg = "Failed to match all genes to symbols."
             )
         }
-        out <- as(gene2symbol, "DataFrame")
+        out <- as(gene2symbol, "DFrame")
         out <- out[idx, "geneName", drop = TRUE]
         assert(identical(length(object), length(out)))
         names(out) <- object
@@ -193,7 +193,7 @@ NULL
 #' @export
 setMethod(
     f = "convertGenesToSymbols",
-    signature = signature("GRanges"),
+    signature = signature(object = "GRanges"),
     definition = `convertGenesToSymbols,GRanges`
 )
 
@@ -201,7 +201,7 @@ setMethod(
 #' @export
 setMethod(
     f = "convertGenesToSymbols",
-    signature = signature("Matrix"),
+    signature = signature(object = "Matrix"),
     definition = `convertGenesToSymbols,Matrix`
 )
 
@@ -209,7 +209,7 @@ setMethod(
 #' @export
 setMethod(
     f = "convertGenesToSymbols",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `convertGenesToSymbols,SE`
 )
 
@@ -217,7 +217,7 @@ setMethod(
 #' @export
 setMethod(
     f = "convertGenesToSymbols",
-    signature = signature("character"),
+    signature = signature(object = "character"),
     definition = `convertGenesToSymbols,character`
 )
 
@@ -225,7 +225,7 @@ setMethod(
 #' @export
 setMethod(
     f = "convertGenesToSymbols",
-    signature = signature("matrix"),
+    signature = signature(object = "matrix"),
     definition = `convertGenesToSymbols,matrix`
 )
 
@@ -235,6 +235,6 @@ setMethod(
 #' @export
 setMethod(
     f = "convertSymbolsToGenes",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `convertSymbolsToGenes,SE`
 )

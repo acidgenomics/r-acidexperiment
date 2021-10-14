@@ -47,6 +47,6 @@ NULL
 #' @export
 setMethod(
     f = "organism",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `organism,SE`
 )
