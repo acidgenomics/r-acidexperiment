@@ -1,8 +1,3 @@
-## FIXME Double check that removal of as.data.frame coercion methods here
-## isn't problematic.
-
-
-
 #' AcidExperiment
 #'
 #' Toolkit to extend the functionality of SummarizedExperiment.
