@@ -2,8 +2,6 @@ context("convertGenesToSymbols")
 
 skip_if_not(hasInternet())
 
-## FIXME This step is now failing in AcidGenomes update, need to address.
-
 ## NOTE Consider using a presaved object, to speed up tests.
 gene2symbol <- AcidGenomes::makeGene2SymbolFromEnsembl(
     organism = "Homo sapiens",
