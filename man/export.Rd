@@ -6,7 +6,7 @@
 \alias{export,SummarizedExperiment,missingOrNULL,missingOrNULL-method}
 \title{Export}
 \usage{
-export(object, ...)
+export(object, con, format, ...)
 
 \S4method{export}{SummarizedExperiment,character,missingOrNULL}(
   object,
