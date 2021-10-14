@@ -25,7 +25,7 @@ test_that("`sampleName` column can't contain duplicates", {
 test_that("All columns should return factor", {
     object[["sampleName"]] <- paste("sample", seq_len(nrow(object)))
     data <- sanitizeSampleData(object)
-    expect_is(data, "DataFrame")
+    expect_is(data, "DFrame")
     expect_true(all(vapply(
         X = data,
         FUN = is.factor,

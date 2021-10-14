@@ -162,7 +162,7 @@ context("syntactic : DataFrame")
 mcols(df) <- DataFrame(TEST = seq_len(ncol(df)))
 metadata(df) <- list(TEST = "XXX")
 
-test_that("DataFrame", {
+test_that("DFrame", {
     for (f in funs) {
         x <- f(
             object = df,
@@ -171,7 +171,7 @@ test_that("DataFrame", {
             mcols = TRUE,
             metadata = TRUE
         )
-        expect_s4_class(x, "DataFrame")
+        expect_s4_class(x, "DFrame")
     }
 })
 
