@@ -162,7 +162,7 @@ context("syntactic : DataFrame")
 mcols(df) <- DataFrame(TEST = seq_len(ncol(df)))
 metadata(df) <- list(TEST = "XXX")
 
-test_that("DFrame", {
+test_that("DataFrame", {
     for (f in funs) {
         x <- f(
             object = df,
@@ -171,15 +171,15 @@ test_that("DFrame", {
             mcols = TRUE,
             metadata = TRUE
         )
-        expect_s4_class(x, "DFrame")
+        expect_s4_class(x, "DataFrame")
     }
 })
 
 
 
-context("syntactic : GRanges")
+context("syntactic : GenomicRanges")
 
-test_that("GRanges", {
+test_that("GenomicRanges", {
     mapply(
         f = funs,
         expected = list(
@@ -194,7 +194,7 @@ test_that("GRanges", {
                 names = TRUE,
                 mcols = TRUE
             )
-            expect_s4_class(x, "GRanges")
+            expect_s4_class(x, "GenomicRanges")
             expect_identical(
                 object = colnames(mcols(x)),
                 expected = expected

@@ -1,6 +1,6 @@
 context("headtail")
 
-test_that("GRanges", {
+test_that("GenomicRanges", {
     expect_output(
         object = headtail(gr),
         regexp = "ENSG00000000003"

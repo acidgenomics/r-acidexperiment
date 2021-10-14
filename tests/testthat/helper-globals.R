@@ -1,6 +1,6 @@
 data(
-    DFrame,
-    GRanges,
+    DataFrame,
+    GenomicRanges,
     RangedSummarizedExperiment,
     SummarizedExperiment_transcripts,
     matrix,
@@ -13,8 +13,8 @@ stopifnot(
     is(RangedSummarizedExperiment, "RangedSummarizedExperiment")
 )
 
-df <- DFrame
-gr <- GRanges
+df <- DataFrame
+gr <- GenomicRanges
 mat <- matrix
 rse <- RangedSummarizedExperiment
 sparse <- sparseMatrix
@@ -35,6 +35,6 @@ hasInternet <- goalie::hasInternet
 methodFormals <- AcidBase::methodFormals
 rowData <- SummarizedExperiment::rowData
 rowRanges <- SummarizedExperiment::rowRanges
-seqnames <- pipette::seqnames
+seqnames <- AcidGenerics::seqnames
 simpleClass <- AcidBase::simpleClass
 ## nolint end

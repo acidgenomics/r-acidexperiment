@@ -41,7 +41,7 @@ NULL
         assert(
             hasValidDimnames(object),
             hasRows(object),
-            isAny(rowData, c("DFrame", "NULL")),
+            isAny(rowData, c("DataFrame", "NULL")),
             isFlag(prefilter)
         )
         if (isTRUE(prefilter)) {
@@ -77,7 +77,7 @@ NULL
             missingBiotype()
         } else {
             assert(
-                is(rowData, "DFrame"),
+                is(rowData, "DataFrame"),
                 hasRownames(rowData),
                 isSubset(rownames(object), rownames(rowData))
             )

@@ -2,13 +2,13 @@
 % Please edit documentation in R/AllGenerics.R, R/makeSampleData-methods.R
 \name{makeSampleData}
 \alias{makeSampleData}
-\alias{makeSampleData,DFrame-method}
+\alias{makeSampleData,DataFrame-method}
 \alias{makeSampleData,data.frame-method}
 \title{Make sample data}
 \usage{
 makeSampleData(object, ...)
 
-\S4method{makeSampleData}{DFrame}(object)
+\S4method{makeSampleData}{DataFrame}(object)
 
 \S4method{makeSampleData}{data.frame}(object)
 }
@@ -56,9 +56,9 @@ Denylist columns:
 }
 \examples{
 object <- DataFrame(
-    genotype = rep(c("control", "wildtype"), times = 2L),
-    treatment = rep(c("vector", "RNAi"), each = 2L),
-    sampleName = paste("sample", seq_len(4L)),
+    "genotype" = rep(c("control", "wildtype"), times = 2L),
+    "treatment" = rep(c("vector", "RNAi"), each = 2L),
+    "sampleName" = paste("sample", seq_len(4L)),
     row.names = paste0("GSM000000", seq_len(4L))
 )
 makeSampleData(object)

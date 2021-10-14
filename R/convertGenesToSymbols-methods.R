@@ -77,7 +77,7 @@ NULL
                 msg = "Failed to match all genes to symbols."
             )
         }
-        out <- as(gene2symbol, "DFrame")
+        out <- as(gene2symbol, "DataFrame")
         out <- out[idx, "geneName", drop = TRUE]
         assert(identical(length(object), length(out)))
         names(out) <- object
@@ -127,7 +127,7 @@ NULL
 
 
 ## Updated 2021-08-10.
-`convertGenesToSymbols,GRanges` <-  # nolint
+`convertGenesToSymbols,GenomicRanges` <-  # nolint
     function(
         object,
         strict = FALSE
@@ -193,8 +193,8 @@ NULL
 #' @export
 setMethod(
     f = "convertGenesToSymbols",
-    signature = signature(object = "GRanges"),
-    definition = `convertGenesToSymbols,GRanges`
+    signature = signature(object = "GenomicRanges"),
+    definition = `convertGenesToSymbols,GenomicRanges`
 )
 
 #' @rdname convertGenesToSymbols

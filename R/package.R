@@ -1,3 +1,8 @@
+## FIXME Double check that removal of as.data.frame coercion methods here
+## isn't problematic.
+
+
+
 #' AcidExperiment
 #'
 #' Toolkit to extend the functionality of SummarizedExperiment.
@@ -13,7 +18,7 @@
 #' @importMethodsFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
 #'   Tx2Gene stripGeneVersions stripTranscriptVersions
 #' @importMethodsFrom SummarizedExperiment coerce
-#' @importMethodsFrom pipette as.data.frame coerce droplevels export
+#' @importMethodsFrom pipette coerce droplevels export
 #'
 #' @importFrom AcidBase geometricMean initDir lanePattern metadataDenylist
 #'   methodFunction packageName packageVersion realpath requireNamespaces
@@ -23,7 +28,7 @@
 #'   aggregate as.data.frame complete.cases coerce colSums cor decode do.call
 #'   head lapply match mcols mcols<- metadata metadata<- na.omit rowSums setdiff
 #'   split summary t unlist unsplit
-#' @importFrom AcidGenomes detectOrganism emptyRanges
+#' @importFrom AcidGenomes detectOrganism emptyRanges seqnames
 #' @importFrom AcidPlyr leftJoin mutateAt
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-

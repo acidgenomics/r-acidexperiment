@@ -2,13 +2,13 @@
 % Please edit documentation in R/AllGenerics.R, R/matchSampleColumn-methods.R
 \name{matchSampleColumn}
 \alias{matchSampleColumn}
-\alias{matchSampleColumn,DFrame-method}
+\alias{matchSampleColumn,DataFrame-method}
 \alias{matchSampleColumn,SummarizedExperiment-method}
 \title{Match sample identifier column}
 \usage{
 matchSampleColumn(object, ...)
 
-\S4method{matchSampleColumn}{DFrame}(object)
+\S4method{matchSampleColumn}{DataFrame}(object)
 
 \S4method{matchSampleColumn}{SummarizedExperiment}(object)
 }

@@ -2,17 +2,17 @@
 % Please edit documentation in R/AllGenerics.R, R/headtail-methods.R
 \name{headtail}
 \alias{headtail}
-\alias{headtail,DFrame-method}
-\alias{headtail,GRanges-method}
+\alias{headtail,DataFrame-method}
+\alias{headtail,GenomicRanges-method}
 \alias{headtail,Matrix-method}
 \alias{headtail,SummarizedExperiment-method}
 \title{Return the first and last parts of an object}
 \usage{
 headtail(x, ...)
 
-\S4method{headtail}{DFrame}(x, n = 2L)
+\S4method{headtail}{DataFrame}(x, n = 2L)
 
-\S4method{headtail}{GRanges}(x, n = 2L)
+\S4method{headtail}{GenomicRanges}(x, n = 2L)
 
 \S4method{headtail}{Matrix}(x, n = 2L)
 
@@ -39,9 +39,9 @@ objects.
 }
 \section{Functions}{
 \itemize{
-\item \code{headtail,DFrame-method}: Same method as \code{data.frame}.
+\item \code{headtail,DataFrame-method}: Same method as \code{data.frame}.
 
-\item \code{headtail,GRanges-method}: Summarize the ranges.
+\item \code{headtail,GenomicRanges-method}: Summarize the ranges.
 
 \item \code{headtail,Matrix-method}: Same method as \code{matrix}.
 
