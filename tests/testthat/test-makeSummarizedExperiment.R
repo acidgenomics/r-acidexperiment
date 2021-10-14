@@ -22,7 +22,7 @@ rowRanges <- GRanges(
 )
 names(rowRanges) <- genes
 
-rowData <- as(as.data.frame(rowRanges), "DFrame")
+rowData <- as(as.data.frame(rowRanges), "DataFrame")
 
 colData <- DataFrame(
     "genotype" = rep(c("wildtype", "knockout"), each = 2L),
@@ -214,7 +214,7 @@ test_that("Mismatched rowRanges support", {
     expect_false("unknown" %in% levels(seqnames(object)))
 })
 
-test_that("GRangesList support", {
+test_that("GenomicRangesList support", {
     rowRanges <- GRangesList(
         list(
             "gene1" = GRanges(

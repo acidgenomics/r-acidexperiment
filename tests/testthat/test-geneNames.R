@@ -2,7 +2,7 @@ context("geneNames")
 
 genes <- c("TSPAN6", "TNMD", "DPM1", "SCYL3", "C1orf112")
 
-test_that("GRanges", {
+test_that("GenomicRanges", {
     expect_identical(
         object = geneNames(gr),
         expected = genes

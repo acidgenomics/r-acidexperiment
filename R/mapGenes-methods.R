@@ -94,7 +94,7 @@ NULL
 ) {
     validObject(object)
     assert(
-        is(object, "DFrame"),
+        is(object, "DataFrame"),
         isSubset(
             x = c("geneId", "geneName"),
             y = colnames(object)
@@ -102,7 +102,7 @@ NULL
         isCharacter(genes),
         isFlag(strict)
     )
-    object <- as(object, "DFrame")
+    object <- as(object, "DataFrame")
     if (isTRUE(strict)) {
         alertFun <- abort
     } else {

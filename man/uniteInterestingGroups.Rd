@@ -3,12 +3,12 @@
 %   R/uniteInterestingGroups-methods.R
 \name{uniteInterestingGroups}
 \alias{uniteInterestingGroups}
-\alias{uniteInterestingGroups,DFrame-method}
+\alias{uniteInterestingGroups,DataFrame-method}
 \title{Unite interesting groups into a single column}
 \usage{
 uniteInterestingGroups(object, ...)
 
-\S4method{uniteInterestingGroups}{DFrame}(object, interestingGroups)
+\S4method{uniteInterestingGroups}{DataFrame}(object, interestingGroups)
 }
 \arguments{
 \item{object}{Object.}

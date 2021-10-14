@@ -93,7 +93,7 @@ test_that("'sampleId' column defined by user", {
     )
     expect_s4_class(
         object = importSampleData(file, pipeline = "none"),
-        class = "DFrame"
+        class = "DataFrame"
     )
 })
 

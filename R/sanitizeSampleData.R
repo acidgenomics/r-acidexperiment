@@ -29,7 +29,7 @@
 #' print(to)
 sanitizeSampleData <- function(object) {
     assert(
-        is(object, "DFrame"),
+        is(object, "DataFrame"),
         hasRownames(object),
         hasColnames(object),
         identical(
@@ -44,7 +44,7 @@ sanitizeSampleData <- function(object) {
     object <- atomize(object)
     object <- factorize(object)
     assert(
-        is(object, "DFrame"),
+        is(object, "DataFrame"),
         hasRownames(object)
     )
     object

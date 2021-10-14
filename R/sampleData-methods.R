@@ -91,7 +91,7 @@ NULL
         }
         ## Require `sampleName` column.
         if (!isSubset("sampleName", colnames(data))) {
-            ## Bioconductor 3.10 is converting to "DFrame" class here.
+            ## Bioconductor 3.10 is converting to "DataFrame" class here.
             data[["sampleName"]] <- as.factor(rownames(data))
         } else if (!is.factor(data[["sampleName"]])) {
             abort(sprintf(
@@ -139,7 +139,7 @@ NULL
 
 
 ## Updated 2021-10-13.
-`sampleData<-,SE,DFrame` <-  # nolint
+`sampleData<-,SE,DataFrame` <-  # nolint
     function(object, value) {
         assert(hasRownames(value))
         denylist <- c("interestingGroups", "rowname", "sampleId")
@@ -169,7 +169,7 @@ setReplaceMethod(
     f = "sampleData",
     signature = signature(
         object = "SummarizedExperiment",
-        value = "DFrame"
+        value = "DataFrame"
     ),
-    definition = `sampleData<-,SE,DFrame`
+    definition = `sampleData<-,SE,DataFrame`
 )

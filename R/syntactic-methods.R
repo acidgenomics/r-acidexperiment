@@ -10,7 +10,7 @@
 #' @param colData `logical(1)`.
 #'   Sanitize column names of column data.
 #' @param mcols `logical(1)`.
-#'   Sanitize names of metadata columns (i.e. `DFrame`).
+#'   Sanitize names of metadata columns.
 #' @param metadata `logical(1)`.
 #'   Sanitize metadata names.
 #' @param rowData `logical(1)`.
@@ -125,7 +125,7 @@ NULL
 
 
 
-`camelCase,DFrame` <-  # nolint
+`camelCase,DataFrame` <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -303,7 +303,7 @@ formals(`camelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`dottedCase,DFrame` <-  # nolint
+`dottedCase,DataFrame` <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -471,7 +471,7 @@ formals(`dottedCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`snakeCase,DFrame` <-  # nolint
+`snakeCase,DataFrame` <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -654,7 +654,7 @@ formals(`snakeCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`upperCamelCase,DFrame` <-  # nolint
+`upperCamelCase,DataFrame` <-  # nolint
     function(
         object,
         rownames = FALSE,
@@ -756,8 +756,8 @@ formals(`upperCamelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 #' @export
 setMethod(
     f = "camelCase",
-    signature = signature(object = "DFrame"),
-    definition = `camelCase,DFrame`
+    signature = signature(object = "DataFrame"),
+    definition = `camelCase,DataFrame`
 )
 
 #' @rdname syntactic
@@ -838,8 +838,8 @@ setMethod(
 #' @export
 setMethod(
     f = "dottedCase",
-    signature = signature(object = "DFrame"),
-    definition = `dottedCase,DFrame`
+    signature = signature(object = "DataFrame"),
+    definition = `dottedCase,DataFrame`
 )
 
 #' @rdname syntactic
@@ -960,8 +960,8 @@ setMethod(
 #' @export
 setMethod(
     f = "snakeCase",
-    signature = signature(object = "DFrame"),
-    definition = `snakeCase,DFrame`
+    signature = signature(object = "DataFrame"),
+    definition = `snakeCase,DataFrame`
 )
 
 #' @rdname syntactic
@@ -1002,8 +1002,8 @@ setMethod(
 #' @export
 setMethod(
     f = "upperCamelCase",
-    signature = signature(object = "DFrame"),
-    definition = `upperCamelCase,DFrame`
+    signature = signature(object = "DataFrame"),
+    definition = `upperCamelCase,DataFrame`
 )
 
 #' @rdname syntactic

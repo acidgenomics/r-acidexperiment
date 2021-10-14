@@ -106,7 +106,7 @@ importSampleData <- function(
     }
     ## Import ------------------------------------------------------------------
     data <- import(file, ...)
-    data <- as(data, "DFrame")
+    data <- as(data, "DataFrame")
     colnames(data) <- camelCase(colnames(data), strict = TRUE)
     data <- removeNA(data)
     ## Manual "sampleId" column is not allowed for bcbio or Cell Ranger input.
@@ -280,7 +280,7 @@ importSampleData <- function(
 ## Updated 2021-09-01.
 .isSampleData <- function(object, requiredCols = "sampleName") {
     assert(isCharacter(requiredCols))
-    ok <- isAny(object, c("data.frame", "DFrame"))
+    ok <- isAny(object, c("data.frame", "DataFrame"))
     if (!isTRUE(ok)) {
         return(ok)  # nocov
     }

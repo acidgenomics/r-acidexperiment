@@ -3,7 +3,7 @@ context("Ensembl2Entrez")
 test_that("RangedSummarizedExperiment", {
     formats <- eval(methodFormals(
         f = "Ensembl2Entrez",
-        signature = "GRanges",
+        signature = "GenomicRanges",
         package = "AcidGenomes"
     )[["format"]])
     for (format in formats) {

@@ -6,7 +6,7 @@
 \alias{snakeCase}
 \alias{upperCamelCase}
 \alias{syntactic}
-\alias{camelCase,DFrame-method}
+\alias{camelCase,DataFrame-method}
 \alias{camelCase,Matrix-method}
 \alias{camelCase,Ranges-method}
 \alias{camelCase,SummarizedExperiment-method}
@@ -16,7 +16,7 @@
 \alias{camelCase,factor-method}
 \alias{camelCase,list-method}
 \alias{camelCase,matrix-method}
-\alias{dottedCase,DFrame-method}
+\alias{dottedCase,DataFrame-method}
 \alias{dottedCase,Matrix-method}
 \alias{dottedCase,Ranges-method}
 \alias{dottedCase,SummarizedExperiment-method}
@@ -31,12 +31,12 @@
 \alias{snakeCase,factor-method}
 \alias{snakeCase,list-method}
 \alias{snakeCase,matrix-method}
-\alias{snakeCase,DFrame-method}
+\alias{snakeCase,DataFrame-method}
 \alias{snakeCase,Matrix-method}
 \alias{snakeCase,Ranges-method}
 \alias{snakeCase,SummarizedExperiment-method}
 \alias{snakeCase,Vector-method}
-\alias{upperCamelCase,DFrame-method}
+\alias{upperCamelCase,DataFrame-method}
 \alias{upperCamelCase,Matrix-method}
 \alias{upperCamelCase,Ranges-method}
 \alias{upperCamelCase,SummarizedExperiment-method}
@@ -56,7 +56,7 @@ snakeCase(object, ...)
 
 upperCamelCase(object, ...)
 
-\S4method{camelCase}{DFrame}(
+\S4method{camelCase}{DataFrame}(
   object,
   rownames = FALSE,
   colnames = TRUE,
@@ -92,7 +92,7 @@ upperCamelCase(object, ...)
 
 \S4method{camelCase}{matrix}(object, rownames = FALSE, colnames = TRUE, strict = TRUE)
 
-\S4method{dottedCase}{DFrame}(
+\S4method{dottedCase}{DataFrame}(
   object,
   rownames = FALSE,
   colnames = TRUE,
@@ -136,7 +136,7 @@ upperCamelCase(object, ...)
 
 \S4method{snakeCase}{matrix}(object, rownames = FALSE, colnames = TRUE)
 
-\S4method{snakeCase}{DFrame}(
+\S4method{snakeCase}{DataFrame}(
   object,
   rownames = FALSE,
   colnames = TRUE,
@@ -160,7 +160,7 @@ upperCamelCase(object, ...)
 
 \S4method{snakeCase}{Vector}(object, names = TRUE, mcols = TRUE, metadata = TRUE)
 
-\S4method{upperCamelCase}{DFrame}(
+\S4method{upperCamelCase}{DataFrame}(
   object,
   rownames = FALSE,
   colnames = TRUE,
@@ -220,7 +220,7 @@ be modified.}
 Apply to column names.}
 
 \item{mcols}{\code{logical(1)}.
-Sanitize names of metadata columns (i.e. \code{DFrame}).}
+Sanitize names of metadata columns.}
 
 \item{metadata}{\code{logical(1)}.
 Sanitize metadata names.}

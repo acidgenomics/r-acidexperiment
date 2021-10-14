@@ -4,7 +4,7 @@
 \name{convertGenesToSymbols}
 \alias{convertGenesToSymbols}
 \alias{convertSymbolsToGenes}
-\alias{convertGenesToSymbols,GRanges-method}
+\alias{convertGenesToSymbols,GenomicRanges-method}
 \alias{convertGenesToSymbols,Matrix-method}
 \alias{convertGenesToSymbols,SummarizedExperiment-method}
 \alias{convertGenesToSymbols,character-method}
@@ -16,7 +16,7 @@ convertGenesToSymbols(object, ...)
 
 convertSymbolsToGenes(object, ...)
 
-\S4method{convertGenesToSymbols}{GRanges}(object, strict = FALSE)
+\S4method{convertGenesToSymbols}{GenomicRanges}(object, strict = FALSE)
 
 \S4method{convertGenesToSymbols}{Matrix}(object, gene2symbol, strict = FALSE)
 

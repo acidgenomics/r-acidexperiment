@@ -33,7 +33,7 @@ NULL
 
 ## Updated 2021-10-13.
 `metrics,SE` <-  # nolint
-    function(object, return = c("tbl_df", "DFrame")) {
+    function(object, return = c("tbl_df", "DataFrame")) {
         validObject(object)
         return <- match.arg(return)
         data <- sampleData(object, clean = FALSE)
@@ -47,7 +47,7 @@ NULL
         data <- decode(data)
         switch(
             EXPR = return,
-            "DFrame" = data,
+            "DataFrame" = data,
             "tbl_df" = as_tibble(data, rownames = sampleCol)
         )
     }

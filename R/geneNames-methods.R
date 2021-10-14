@@ -24,7 +24,7 @@ NULL
 
 
 ## Updated 2019-07-22.
-`geneNames,GRanges` <-  # nolint
+`geneNames,GenomicRanges` <-  # nolint
     `geneNames,Vector`
 
 
@@ -39,8 +39,8 @@ NULL
 #' @export
 setMethod(
     f = "geneNames",
-    signature = signature(object = "GRanges"),
-    definition = `geneNames,GRanges`
+    signature = signature(object = "GenomicRanges"),
+    definition = `geneNames,GenomicRanges`
 )
 
 #' @rdname geneNames
