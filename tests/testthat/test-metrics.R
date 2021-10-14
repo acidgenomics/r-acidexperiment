@@ -22,8 +22,8 @@ test_that("SummarizedExperiment : tibble", {
     )
 })
 
-test_that("SummarizedExperiment : DataFrame", {
-    x <- metrics(object, return = "DataFrame")
-    expect_s4_class(x, "DataFrame")
+test_that("SummarizedExperiment : DFrame", {
+    x <- metrics(object, return = "DFrame")
+    expect_s4_class(x, "DFrame")
     expect_true(hasRownames(x))
 })
