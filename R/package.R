@@ -26,9 +26,9 @@
 #' @importFrom AcidCLI abort alert alertInfo alertWarning toInlineString
 #' @importFrom AcidGenerics DataFrame Rle SimpleList SplitDataFrameList %in%
 #'   aggregate as.data.frame complete.cases coerce colSums cor decode do.call
-#'   head lapply match mcols mcols<- metadata metadata<- na.omit rowSums setdiff
-#'   split summary t unlist unsplit
-#' @importFrom AcidGenomes detectOrganism emptyRanges seqnames
+#'   head lapply match mcols mcols<- metadata metadata<- na.omit rowSums
+#'   seqnames setdiff split summary t unlist unsplit
+#' @importFrom AcidGenomes detectOrganism emptyRanges
 #' @importFrom AcidPlyr leftJoin mutateAt
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
