@@ -27,6 +27,16 @@ NULL
 
 
 
+## Updated 2021-10-13.
+`headtail,GRanges` <-  # nolint
+    function() {
+        headtail(x = as(x, "data.frame"), n = n)
+    }
+
+formals(`headtail,GRanges`) <- formals(`headtail,DFrame`)
+
+
+
 ## Updated 2020-10-07.
 `headtail,Matrix` <-  # nolint
     methodFunction(
@@ -37,27 +47,13 @@ NULL
 
 
 
-## FIXME Rework the formals approach here.
-
-## Updated 2021-10-13.
-`headtail,GRanges` <-  # nolint
-    function() {
-        headtail(x = as(x, "data.frame"), n = n)
-    }
-
-## FIXME Rework the formals approach here.
-formals(`headtail,GRanges`) <- formals(`headtail,Matrix`)
-
-
-
 ## Updated 2020-05-11.
 `headtail,SE` <-  # nolint
     function() {
         headtail(x = assay(x), n = n)
     }
 
-## FIXME Rework the formals approach here.
-formals(`headtail,SE`) <- formals(`headtail,Matrix`)
+formals(`headtail,SE`) <- formals(`headtail,DFrame`)
 
 
 

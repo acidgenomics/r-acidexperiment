@@ -112,11 +112,10 @@ NULL
 
 
 
-## Updated 2019-08-19.
+## Updated 2021-10-14.
 `makeSampleData,data.frame` <-  # nolint
     function(object) {
-        object <- as(object, "DFrame")
-        makeSampleData(object)
+        makeSampleData(as(object, "DFrame"))
     }
 
 
