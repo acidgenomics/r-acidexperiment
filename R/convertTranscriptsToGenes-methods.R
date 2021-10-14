@@ -144,7 +144,7 @@ NULL
 #' @export
 setMethod(
     f = "convertTranscriptsToGenes",
-    signature = signature("Matrix"),
+    signature = signature(object = "Matrix"),
     definition = `convertTranscriptsToGenes,Matrix`
 )
 
@@ -152,14 +152,14 @@ setMethod(
 #' @export
 setMethod(
     f = "convertTranscriptsToGenes",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `convertTranscriptsToGenes,SE`
 )
 
 #' @rdname convertTranscriptsToGenes
 setMethod(
     f = "convertTranscriptsToGenes",
-    signature = signature("character"),
+    signature = signature(object = "character"),
     definition = `convertTranscriptsToGenes,character`
 )
 
@@ -167,6 +167,6 @@ setMethod(
 #' @export
 setMethod(
     f = "convertTranscriptsToGenes",
-    signature = signature("matrix"),
+    signature = signature(object = "matrix"),
     definition = `convertTranscriptsToGenes,matrix`
 )

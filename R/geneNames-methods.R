@@ -39,7 +39,7 @@ NULL
 #' @export
 setMethod(
     f = "geneNames",
-    signature = signature("GRanges"),
+    signature = signature(object = "GRanges"),
     definition = `geneNames,GRanges`
 )
 
@@ -47,6 +47,6 @@ setMethod(
 #' @export
 setMethod(
     f = "geneNames",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `geneNames,SE`
 )

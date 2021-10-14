@@ -22,7 +22,7 @@ rowRanges <- GRanges(
 )
 names(rowRanges) <- genes
 
-rowData <- as(as.data.frame(rowRanges), "DataFrame")
+rowData <- as(as.data.frame(rowRanges), "DFrame")
 
 colData <- DataFrame(
     "genotype" = rep(c("wildtype", "knockout"), each = 2L),

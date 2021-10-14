@@ -1,3 +1,7 @@
+## FIXME Class this against DFrame instead of DataFrame virtual class?
+
+
+
 #' @name makeSampleData
 #' @inherit AcidGenerics::makeSampleData
 #' @note Updated 2021-02-25.
@@ -42,17 +46,8 @@ NULL
 
 
 
-## Updated 2019-08-19.
-`makeSampleData,data.frame` <-  # nolint
-    function(object) {
-        object <- as(object, "DataFrame")
-        makeSampleData(object)
-    }
-
-
-
-## Updated 2021-02-25.
-`makeSampleData,DataFrame` <-  # nolint
+## Updated 2021-10-13.
+`makeSampleData,DFrame` <-  # nolint
     function(object) {
         ## Check for complex S4 columns, which are discouraged.
         assert(
@@ -117,18 +112,27 @@ NULL
 
 
 
+## Updated 2019-08-19.
+`makeSampleData,data.frame` <-  # nolint
+    function(object) {
+        object <- as(object, "DFrame")
+        makeSampleData(object)
+    }
+
+
+
 #' @rdname makeSampleData
 #' @export
 setMethod(
     f = "makeSampleData",
-    signature = signature("DataFrame"),
-    definition = `makeSampleData,DataFrame`
+    signature = signature(object = "DFrame"),
+    definition = `makeSampleData,DFrame`
 )
 
 #' @rdname makeSampleData
 #' @export
 setMethod(
     f = "makeSampleData",
-    signature = signature("data.frame"),
+    signature = signature(object = "data.frame"),
     definition = `makeSampleData,data.frame`
 )

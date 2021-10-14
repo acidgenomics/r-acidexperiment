@@ -2,13 +2,13 @@ context("melt")
 
 test_that("Default", {
     for (object in list(
-        "matrix" = mat,
+        "DFrame" = df,
         "Matrix" = sparse,
-        "DataFrame" = df,
-        "SummarizedExperiment" = rse
+        "SummarizedExperiment" = rse,
+        "matrix" = mat
     )) {
         x <- melt(object)
-        expect_s4_class(x, "DataFrame")
+        expect_s4_class(x, "DFrame")
     }
 })
 
@@ -38,7 +38,7 @@ test_that("trans", {
                 minMethod = "perRow",
                 trans = trans
             )
-            expect_s4_class(object, "DataFrame")
+            expect_s4_class(object, "DFrame")
             object <-
                 decode(round(head(object[["value"]], n = 3L), digits = 2L))
             expect_identical(object, expected)

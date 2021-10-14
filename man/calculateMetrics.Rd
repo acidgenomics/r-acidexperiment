@@ -3,17 +3,17 @@
 \name{calculateMetrics}
 \alias{calculateMetrics}
 \alias{calculateMetrics,Matrix-method}
-\alias{calculateMetrics,matrix-method}
 \alias{calculateMetrics,SummarizedExperiment-method}
+\alias{calculateMetrics,matrix-method}
 \title{Calculate quality control metrics}
 \usage{
 calculateMetrics(object, ...)
 
 \S4method{calculateMetrics}{Matrix}(object, rowData = NULL, prefilter = FALSE)
 
-\S4method{calculateMetrics}{matrix}(object, rowData = NULL, prefilter = FALSE)
-
 \S4method{calculateMetrics}{SummarizedExperiment}(object, assay = 1L, prefilter = FALSE)
+
+\S4method{calculateMetrics}{matrix}(object, rowData = NULL, prefilter = FALSE)
 }
 \arguments{
 \item{object}{Object.}

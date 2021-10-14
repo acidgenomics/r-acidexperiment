@@ -31,9 +31,9 @@ NULL
 
 
 
-## Updated 2021-02-05.
+## Updated 2021-10-13.
 `metrics,SE` <-  # nolint
-    function(object, return = c("tbl_df", "DataFrame")) {
+    function(object, return = c("tbl_df", "DFrame")) {
         validObject(object)
         return <- match.arg(return)
         data <- sampleData(object, clean = FALSE)
@@ -47,7 +47,7 @@ NULL
         data <- decode(data)
         switch(
             EXPR = return,
-            "DataFrame" = data,
+            "DFrame" = data,
             "tbl_df" = as_tibble(data, rownames = sampleCol)
         )
     }
@@ -58,6 +58,6 @@ NULL
 #' @export
 setMethod(
     f = "metrics",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `metrics,SE`
 )

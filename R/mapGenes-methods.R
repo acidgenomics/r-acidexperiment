@@ -94,7 +94,7 @@ NULL
 ) {
     validObject(object)
     assert(
-        is(object, "DataFrame"),
+        is(object, "DFrame"),
         isSubset(
             x = c("geneId", "geneName"),
             y = colnames(object)
@@ -102,7 +102,7 @@ NULL
         isCharacter(genes),
         isFlag(strict)
     )
-    object <- as(object, "DataFrame")
+    object <- as(object, "DFrame")
     if (isTRUE(strict)) {
         alertFun <- abort
     } else {
@@ -262,7 +262,7 @@ NULL
 #' @export
 setMethod(
     f = "mapGenesToRownames",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `mapGenesToRownames,SE`
 )
 
@@ -270,7 +270,7 @@ setMethod(
 #' @export
 setMethod(
     f = "mapGenesToIDs",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `mapGenesToIDs,SE`
 )
 
@@ -278,6 +278,6 @@ setMethod(
 #' @export
 setMethod(
     f = "mapGenesToSymbols",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `mapGenesToSymbols,SE`
 )

@@ -60,7 +60,7 @@ NULL
 #' @export
 setMethod(
     f = "counts",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `counts,SE`
 )
 

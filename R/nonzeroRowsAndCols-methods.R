@@ -79,7 +79,7 @@ NULL
 #' @export
 setMethod(
     f = "nonzeroRowsAndCols",
-    signature = signature("Matrix"),
+    signature = signature(object = "Matrix"),
     definition = `nonzeroRowsAndCols,Matrix`
 )
 
@@ -87,7 +87,7 @@ setMethod(
 #' @export
 setMethod(
     f = "nonzeroRowsAndCols",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `nonzeroRowsAndCols,SE`
 )
 
@@ -95,6 +95,6 @@ setMethod(
 #' @export
 setMethod(
     f = "nonzeroRowsAndCols",
-    signature = signature("matrix"),
+    signature = signature(object = "matrix"),
     definition = `nonzeroRowsAndCols,matrix`
 )

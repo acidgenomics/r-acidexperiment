@@ -45,6 +45,6 @@ NULL
 #' @export
 setMethod(
     f = "decode",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(x = "SummarizedExperiment"),
     definition = `decode,SE`
 )

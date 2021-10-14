@@ -29,6 +29,6 @@ NULL
 #' @export
 setMethod(
     f = "Tx2Gene",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `Tx2Gene,SE`
 )

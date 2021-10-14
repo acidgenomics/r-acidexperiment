@@ -70,7 +70,7 @@ NULL
 #' @export
 setMethod(
     f = "as.SummarizedExperiment",
-    signature = signature("RangedSummarizedExperiment"),
+    signature = signature(x = "RangedSummarizedExperiment"),
     definition = `as.SummarizedExperiment,RSE`
 )
 
@@ -78,6 +78,6 @@ setMethod(
 #' @export
 setMethod(
     f = "as.SummarizedExperiment",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(x = "SummarizedExperiment"),
     definition = `as.SummarizedExperiment,SE`
 )

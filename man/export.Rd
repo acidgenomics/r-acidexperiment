@@ -12,9 +12,9 @@ export(object, ...)
   object,
   con,
   format,
-  compress = getOption("acid.export.compress", default = FALSE),
-  overwrite = getOption("acid.overwrite", default = TRUE),
-  quiet = getOption("acid.quiet", default = FALSE)
+  compress = getOption(x = "acid.export.compress", default = FALSE),
+  overwrite = getOption(x = "acid.overwrite", default = TRUE),
+  quiet = getOption(x = "acid.quiet", default = FALSE)
 )
 
 \S4method{export}{SummarizedExperiment,missingOrNULL,missingOrNULL}(object, con, format, name = NULL, dir, ...)

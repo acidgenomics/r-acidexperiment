@@ -73,7 +73,7 @@ rm(args)
 #' @export
 setMethod(
     f = "melt",
-    signature = signature("Matrix"),
+    signature = signature(object = "Matrix"),
     definition = `melt,Matrix`
 )
 
@@ -81,6 +81,6 @@ setMethod(
 #' @export
 setMethod(
     f = "melt",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `melt,SE`
 )

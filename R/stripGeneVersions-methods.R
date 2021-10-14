@@ -35,6 +35,6 @@ NULL
 #' @export
 setMethod(
     f = "stripGeneVersions",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `stripGeneVersions,SE`
 )
