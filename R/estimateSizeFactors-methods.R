@@ -1,3 +1,8 @@
+## FIXME Take this out in favor of simpler `normalize()` approach defined in
+## AcidSingleCell, based on new scuttle approach.
+
+
+
 #' Estimate size factors
 #'
 #' Define size factors from the library sizes, and then apply centering at
