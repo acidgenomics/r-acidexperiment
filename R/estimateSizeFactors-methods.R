@@ -1,8 +1,3 @@
-## FIXME Take this out in favor of simpler `normalize()` approach defined in
-## AcidSingleCell, based on new scuttle approach.
-
-
-
 #' Estimate size factors
 #'
 #' Define size factors from the library sizes, and then apply centering at
@@ -19,7 +14,7 @@
 #' can also be supplied using the assignment function `sizeFactors<-()`.
 #'
 #' @name estimateSizeFactors
-#' @note Updated 2021-09-11.
+#' @note Updated 2021-10-19.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param type `character(1)`.
@@ -49,10 +44,9 @@
 #' - `DESeq2::estimateSizeFactors()`.
 #' - `DESeq2::estimateSizeFactorsForMatrix().`
 #'
-#' scater:
-#' - `scater::librarySizeFactors()`.
-#' - `scater::centreSizeFactors()`.
-#' - `scater::normalizeSCE()`.
+#' scuttle (now inherited in scater):
+#' - `scuttle::librarySizeFactors()`.
+#' - `scuttle::logNormCounts()`.
 #'
 #' monocle3:
 #' - `monocle3::estimate_size_factors()`.

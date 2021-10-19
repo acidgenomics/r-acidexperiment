@@ -58,7 +58,7 @@ the accessor function \code{sizeFactors()}. Alternative library size estimators
 can also be supplied using the assignment function \verb{sizeFactors<-()}.
 }
 \note{
-Updated 2021-09-11.
+Updated 2021-10-19.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
@@ -75,11 +75,10 @@ DESeq2:
 \item \verb{DESeq2::estimateSizeFactorsForMatrix().}
 }
 
-scater:
+scuttle (now inherited in scater):
 \itemize{
-\item \code{scater::librarySizeFactors()}.
-\item \code{scater::centreSizeFactors()}.
-\item \code{scater::normalizeSCE()}.
+\item \code{scuttle::librarySizeFactors()}.
+\item \code{scuttle::logNormCounts()}.
 }
 
 monocle3:
