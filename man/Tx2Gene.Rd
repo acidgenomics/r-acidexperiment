@@ -3,7 +3,7 @@
 \name{Tx2Gene}
 \alias{Tx2Gene}
 \alias{Tx2Gene,SummarizedExperiment-method}
-\title{Transcript-to-gene identifier mappings}
+\title{Transcript-to-gene mappings}
 \usage{
 Tx2Gene(object, ...)
 
@@ -18,7 +18,7 @@ Tx2Gene(object, ...)
 \code{Tx2Gene}.
 }
 \description{
-Transcript-to-gene identifier mappings
+Transcript-to-gene mappings
 }
 \note{
 Updated 2021-02-03.
