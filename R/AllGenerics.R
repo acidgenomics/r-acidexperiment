@@ -1,36 +1,34 @@
 #' @rdname Ensembl2Entrez
 #' @name Ensembl2Entrez
-#' @importFrom AcidGenomes Ensembl2Entrez
+#' @importFrom AcidGenerics Ensembl2Entrez
+#' @importMethodsFrom AcidGenomes Ensembl2Entrez
 #' @usage Ensembl2Entrez(object, ...)
 #' @export
 NULL
 
 #' @rdname Ensembl2Entrez
 #' @name Entrez2Ensembl
-#' @importFrom AcidGenomes Entrez2Ensembl
+#' @importFrom AcidGenerics Entrez2Ensembl
+#' @importMethodsFrom AcidGenomes Entrez2Ensembl
 #' @usage Entrez2Ensembl(object, ...)
 #' @export
 NULL
 
-
-
 #' @rdname Gene2Symbol
 #' @name Gene2Symbol
-#' @importFrom AcidGenomes Gene2Symbol
+#' @importFrom AcidGenerics Gene2Symbol
+#' @importMethodsFrom AcidGenomes Gene2Symbol
 #' @usage Gene2Symbol(object, ...)
 #' @export
 NULL
 
-
-
 #' @rdname Tx2Gene
 #' @name Tx2Gene
-#' @importFrom AcidGenomes Tx2Gene
+#' @importFrom AcidGenerics Tx2Gene
+#' @importMethodsFrom AcidGenomes Tx2Gene
 #' @usage Tx2Gene(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname aggregate
 #' @name aggregate
@@ -39,8 +37,6 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname aggregate
 #' @name aggregateCols
 #' @importFrom AcidGenerics aggregateCols
@@ -48,25 +44,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname aggregate
 #' @name aggregateRows
 #' @importFrom AcidGenerics aggregateRows
 #' @usage aggregateRows(x, ...)
 #' @export
 NULL
-
-
-
-#' @rdname calculateMetrics
-#' @name calculateMetrics
-#' @importFrom AcidGenerics calculateMetrics
-#' @usage calculateMetrics(object, ...)
-#' @export
-NULL
-
-
 
 #' @rdname autopadZeros
 #' @name autopadZeros
@@ -76,7 +59,12 @@ NULL
 #' @export
 NULL
 
-
+#' @rdname calculateMetrics
+#' @name calculateMetrics
+#' @importFrom AcidGenerics calculateMetrics
+#' @usage calculateMetrics(object, ...)
+#' @export
+NULL
 
 #' @rdname coerce
 #' @name as.SummarizedExperiment
@@ -85,16 +73,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname combine
 #' @name combine
 #' @importFrom AcidGenerics combine
 #' @usage combine(x, y, ...)
 #' @export
 NULL
-
-
 
 #' @rdname convertGenesToSymbols
 #' @name convertGenesToSymbols
@@ -110,16 +94,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname convertSampleIDsToNames
 #' @name convertSampleIDsToNames
 #' @importFrom AcidGenerics convertSampleIDsToNames
 #' @usage convertSampleIDsToNames(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname convertTranscriptsToGenes
 #' @name convertTranscriptsToGenes
@@ -128,16 +108,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname correlation
 #' @name correlation
 #' @importFrom AcidGenerics correlation
 #' @usage correlation(x, y, ...)
 #' @export
 NULL
-
-
 
 #' @rdname counts
 #' @name counts
@@ -153,16 +129,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname decode
 #' @name decode
 #' @importFrom AcidGenerics decode
 #' @usage decode(x, ...)
 #' @export
 NULL
-
-
 
 #' @rdname droplevels
 #' @name droplevels
@@ -171,16 +143,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname encode
 #' @name encode
 #' @importFrom AcidGenerics encode
 #' @usage encode(x, ...)
 #' @export
 NULL
-
-
 
 #' @rdname estimateSizeFactors
 #' @name estimateSizeFactors
@@ -189,8 +157,6 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname export
 #' @name export
 #' @importFrom AcidGenerics export
@@ -198,16 +164,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname geneNames
 #' @name geneNames
 #' @importFrom AcidGenerics geneNames
 #' @usage geneNames(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname headtail
 #' @name headtail
@@ -217,8 +179,6 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname humanize
 #' @name humanize
 #' @importFrom AcidGenerics humanize
@@ -226,16 +186,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname integerCounts
 #' @name integerCounts
 #' @importFrom AcidGenerics integerCounts
 #' @usage integerCounts(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname interestingGroups
 #' @name interestingGroups
@@ -251,16 +207,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname makeSampleData
 #' @name makeSampleData
 #' @importFrom AcidGenerics makeSampleData
 #' @usage makeSampleData(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname mapGenes
 #' @name mapGenesToRownames
@@ -283,16 +235,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname matchSampleColumn
 #' @name matchSampleColumn
 #' @importFrom AcidGenerics matchSampleColumn
 #' @usage matchSampleColumn(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname melt
 #' @name melt
@@ -301,8 +249,6 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname metrics
 #' @name metrics
 #' @importFrom AcidGenerics metrics
@@ -310,16 +256,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname nonzeroRowsAndCols
 #' @name nonzeroRowsAndCols
 #' @importFrom AcidGenerics nonzeroRowsAndCols
 #' @usage nonzeroRowsAndCols(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname organism
 #' @name organism
@@ -335,8 +277,6 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname sampleData
 #' @name sampleData
 #' @importFrom AcidGenerics sampleData
@@ -350,8 +290,6 @@ NULL
 #' @usage sampleData(object, ...) <- value
 #' @export
 NULL
-
-
 
 #' @rdname sampleNames
 #' @name sampleNames
@@ -367,16 +305,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname selectSamples
 #' @name selectSamples
 #' @importFrom AcidGenerics selectSamples
 #' @usage selectSamples(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname sizeFactors
 #' @name sizeFactors
@@ -392,8 +326,6 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname stripGeneVersions
 #' @name stripGeneVersions
 #' @importFrom AcidGenerics stripGeneVersions
@@ -401,16 +333,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname stripTranscriptVersions
 #' @name stripTranscriptVersions
 #' @importFrom AcidGenerics stripTranscriptVersions
 #' @usage stripTranscriptVersions(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname syntactic
 #' @name camelCase
@@ -444,16 +372,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname tpm
 #' @name tpm
 #' @importFrom AcidGenerics tpm
 #' @usage tpm(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname uniteInterestingGroups
 #' @name uniteInterestingGroups
