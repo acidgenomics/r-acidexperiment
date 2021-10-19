@@ -1,4 +1,5 @@
 ## FIXME Need to improve handling of NA values here.
+## FIXME Need to add code coverage for this edge case.
 
 
 
