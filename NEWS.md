@@ -1,5 +1,15 @@
 ## AcidExperiment 0.2.3 (UNRELEASED)
 
+### Major changes
+
+- `export`: Reworked `SummarizedExperiment` to use new BiocIO generic approach.
+  This generic now uses `con` instead of `dir` to define the directory path.
+  Note that previously, the object name would be defined as a subdirectory
+  when using `dir` to define the path. We are currently keeping this legacy
+  approach when using `dir`, but no attempt to parse the object name and
+  create a corresponding subdirectory is employed when using the new `con`
+  argument.
+
 ### Minor changes
 
 - `selectSamples`: The function now automatically relevels factors defined
@@ -9,6 +19,10 @@
   only exported in goalie package. Also removed import of now defunct
   `as.data.frame` methods previously defined in pipette package.
 - S4 methods are now defined alphabetically in package documentation.
+- Hardened internal `mapGenes` code to no longer use `tryCatch` call and
+  silently error on map failure.
+- `selectSamples`: Factors defined in `colData` are now automatically releveled
+  via internal `droplevels` call for `SummarizedExperiment` method.
 
 ## AcidExperiment 0.2.2 (2021-09-13)
 
