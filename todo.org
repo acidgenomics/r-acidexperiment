@@ -1,6 +1,9 @@
 #+TITLE: AcidExperiment
 #+STARTUP: content
 * Development
+** TODO Consider removing `estimateSizeFactors` code defined here in favor of
+   simpler `normalize()` approach defined in AcidSingleCell.
+## AcidSingleCell, based on new scuttle approach.
 ** TODO `convertGenesToSymbols`: Need to add coverage for object
         containing NA values in gene symbols.
 ** TODO `makeSummarizedExperiment: Error if metadata input contains values we

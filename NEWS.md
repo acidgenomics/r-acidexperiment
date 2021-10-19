@@ -4,6 +4,11 @@
 
 - `selectSamples`: The function now automatically relevels factors defined
   in `colData`.
+- Reworked internal code to no longer depend on `formalsList` and
+  `getNameInParent` from AcidBase package. Note that `getNameInParent` is now
+  only exported in goalie package. Also removed import of now defunct
+  `as.data.frame` methods previously defined in pipette package.
+- S4 methods are now defined alphabetically in package documentation.
 
 ## AcidExperiment 0.2.2 (2021-09-13)
 
