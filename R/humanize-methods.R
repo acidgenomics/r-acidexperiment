@@ -1,4 +1,5 @@
 ## FIXME Think about how we want to handle NA gene symbols in rows here.
+## FIXME Make SummarizedExperiment the only exported method. Simplify.
 
 
 

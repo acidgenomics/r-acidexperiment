@@ -53,6 +53,7 @@ NULL
 
 
 ## FIXME Should we require GRanges here instead?
+## FIXME Consider not exporting this?
 
 ## Updated 2021-08-10.
 `convertGenesToSymbols,character` <-  # nolint
@@ -106,6 +107,7 @@ NULL
 
 
 
+## FIXME Consider not exporting this?
 ## Updated 2021-08-10.
 `convertGenesToSymbols,matrix` <-  # nolint
     function(
@@ -126,12 +128,14 @@ NULL
 
 
 
+## FIXME Consider not exporting this?
 ## Updated 2020-01-30.
 `convertGenesToSymbols,Matrix` <-  # nolint
     `convertGenesToSymbols,matrix`
 
 
 
+## FIXME Consider not exporting this?
 ## Updated 2021-08-10.
 `convertGenesToSymbols,GenomicRanges` <-  # nolint
     function(
@@ -157,6 +161,7 @@ NULL
 
 
 
+## FIXME Make this the only exported method.
 ## Updated 2021-09-13.
 `convertGenesToSymbols,SE` <-  # nolint
     function(object) {
