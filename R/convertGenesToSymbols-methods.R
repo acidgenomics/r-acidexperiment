@@ -1,11 +1,6 @@
-## FIXME Need to improve handling of NA gene symbols here.
-## FIXME Need to add code coverage for this edge case.
-
-
-
 #' @name convertGenesToSymbols
 #' @inherit AcidGenerics::convertGenesToSymbols
-#' @note Updated 2021-08-10.
+#' @note Updated 2021-10-21.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param strict `logical(1)`.
@@ -32,30 +27,32 @@ NULL
 
 ## Updated 2021-10-21.
 .interconvertGenesAndSymbols <-
-    function(
-        object,
-        strict,
-        rownamesCol
-    ) {
+    function(object, from, to, strict) {
         validObject(object)
         assert(
             is(object, "SummarizedExperiment"),
             hasRownames(object),
-            isFlag(strict),
-            isString(rownamesCol)
+            isString(from),
+            isString(to),
+            isFlag(strict)
         )
         if (isTRUE(strict)) {
             rowData <- rowData(object)
-            cols <- c("geneId", "geneName")
+            cols <- c(from, to)
             assert(
                 isSubset(cols, colnames(rowData)),
-                all(complete.cases(rowData[, cols, drop = FALSE]))
+                all(complete.cases(rowData[, cols, drop = FALSE])),
+                identical(
+                    x = rownames(object),
+                    y = unname(as.character(rowData[[from]]))
+                ),
+                msg = "Strict mode check failure."
             )
         }
         g2s <- Gene2Symbol(object, format = "makeUnique", quiet = TRUE)
         assert(areSetEqual(rownames(object), rownames(g2s)))
         g2s <- g2s[rownames(object), , drop = FALSE]
-        rn <- unname(as.character(g2s[[rownamesCol]]))
+        rn <- unname(as.character(g2s[[to]]))
         assert(
             isCharacter(rn),
             hasNoDuplicates(rn),
@@ -69,14 +66,12 @@ NULL
 
 ## Updated 2021-10-21.
 `convertGenesToSymbols,SE` <-  # nolint
-    function(
-        object,
-        strict = FALSE
-    ) {
+    function(object, strict = FALSE) {
         .interconvertGenesAndSymbols(
             object = object,
-            strict = strict,
-            rownamesCol = "geneName"
+            from = "geneId",
+            to = "geneName",
+            strict = strict
         )
     }
 
@@ -87,8 +82,9 @@ NULL
     function(object, strict = FALSE) {
         .interconvertGenesAndSymbols(
             object = object,
-            strict = strict,
-            rownamesCol = "geneId"
+            from = "geneName",
+            to = "geneId",
+            strict = strict
         )
     }
 
