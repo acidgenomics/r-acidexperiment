@@ -27,7 +27,7 @@ This can make dimnames invalid (see \code{\link[base:make.names]{make.names()}})
 should only be called prior to writing files to disk.
 }
 \note{
-Updated 2021-02-02.
+Updated 2021-10-21.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")

@@ -1,11 +1,6 @@
-## FIXME Think about how we want to handle NA gene symbols in rows here.
-## FIXME Make SummarizedExperiment the only exported method. Simplify.
-
-
-
 #' @name humanize
 #' @inherit AcidGenerics::humanize
-#' @note Updated 2021-02-02.
+#' @note Updated 2021-10-21.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -22,7 +17,7 @@ NULL
 
 
 
-## Updated 2020-01-20.
+## Updated 2021-10-21.
 `humanize,SE` <-  # nolint
     function(object) {
         to <- object
