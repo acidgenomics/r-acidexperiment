@@ -9,6 +9,10 @@
   approach when using `dir`, but no attempt to parse the object name and
   create a corresponding subdirectory is employed when using the new `con`
   argument.
+- `convertGenesToSymbols` and `convertSymbolsToGenes`: Simplified the number
+  of exported methods to now simply dispatch on `SummarizedExperiment`. Added
+  support for new `strict` mode check, which intentionally does not allow
+  propagation of any `NA` values during interconversion steps.
 
 ### Minor changes
 
