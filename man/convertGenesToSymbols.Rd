@@ -4,11 +4,7 @@
 \name{convertGenesToSymbols}
 \alias{convertGenesToSymbols}
 \alias{convertSymbolsToGenes}
-\alias{convertGenesToSymbols,GenomicRanges-method}
-\alias{convertGenesToSymbols,Matrix-method}
 \alias{convertGenesToSymbols,SummarizedExperiment-method}
-\alias{convertGenesToSymbols,character-method}
-\alias{convertGenesToSymbols,matrix-method}
 \alias{convertSymbolsToGenes,SummarizedExperiment-method}
 \title{Convert genes to symbols}
 \usage{
@@ -16,17 +12,9 @@ convertGenesToSymbols(object, ...)
 
 convertSymbolsToGenes(object, ...)
 
-\S4method{convertGenesToSymbols}{GenomicRanges}(object, strict = FALSE)
+\S4method{convertGenesToSymbols}{SummarizedExperiment}(object, strict = FALSE)
 
-\S4method{convertGenesToSymbols}{Matrix}(object, gene2symbol, strict = FALSE)
-
-\S4method{convertGenesToSymbols}{SummarizedExperiment}(object)
-
-\S4method{convertGenesToSymbols}{character}(object, gene2symbol, strict = FALSE, quiet = FALSE)
-
-\S4method{convertGenesToSymbols}{matrix}(object, gene2symbol, strict = FALSE)
-
-\S4method{convertSymbolsToGenes}{SummarizedExperiment}(object)
+\S4method{convertSymbolsToGenes}{SummarizedExperiment}(object, strict = FALSE)
 }
 \arguments{
 \item{object}{Object.}
@@ -35,13 +23,6 @@ convertSymbolsToGenes(object, ...)
 Require that all identifiers contain gene name (symbol) metadata stored
 in the object. Disabled by default, to support objects containing
 custom gene identifiers, such as FASTA spike-ins.}
-
-\item{gene2symbol}{\code{Gene2Symbol}.
-Gene-to-symbol mappings. Must contain \code{geneId} and \code{geneName} columns. See
-\code{Gene2Symbol} for more information.}
-
-\item{quiet}{\code{logical(1)}.
-Perform command quietly, suppressing messages.}
 
 \item{...}{Additional arguments.}
 }
@@ -56,33 +37,10 @@ Updated 2021-08-10.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
-rse <- RangedSummarizedExperiment
-object <- rse
-
-g2s <- Gene2Symbol(object)
-print(g2s)
-genes <- head(g2s[["geneId"]])
-print(genes)
-
-## character ====
-x <- convertGenesToSymbols(genes, gene2symbol = g2s)
-print(x)
-
-## matrix ====
-samples <- head(colnames(object))
-counts <- matrix(
-    data = seq_len(length(genes) * length(samples)),
-    byrow = TRUE,
-    nrow = length(genes),
-    ncol = length(samples),
-    dimnames = list(genes, samples)
-)
-print(counts)
-x <- convertGenesToSymbols(counts, gene2symbol = g2s)
-print(x)
 
 ## SummarizedExperiment ====
-x <- convertGenesToSymbols(rse)
+object <- RangedSummarizedExperiment
+x <- convertGenesToSymbols(object)
 print(x)
 ## Interconvert back to gene IDs.
 y <- convertSymbolsToGenes(x)

@@ -18,33 +18,10 @@
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")
-#' rse <- RangedSummarizedExperiment
-#' object <- rse
-#'
-#' g2s <- Gene2Symbol(object)
-#' print(g2s)
-#' genes <- head(g2s[["geneId"]])
-#' print(genes)
-#'
-#' ## character ====
-#' x <- convertGenesToSymbols(genes, gene2symbol = g2s)
-#' print(x)
-#'
-#' ## matrix ====
-#' samples <- head(colnames(object))
-#' counts <- matrix(
-#'     data = seq_len(length(genes) * length(samples)),
-#'     byrow = TRUE,
-#'     nrow = length(genes),
-#'     ncol = length(samples),
-#'     dimnames = list(genes, samples)
-#' )
-#' print(counts)
-#' x <- convertGenesToSymbols(counts, gene2symbol = g2s)
-#' print(x)
 #'
 #' ## SummarizedExperiment ====
-#' x <- convertGenesToSymbols(rse)
+#' object <- RangedSummarizedExperiment
+#' x <- convertGenesToSymbols(object)
 #' print(x)
 #' ## Interconvert back to gene IDs.
 #' y <- convertSymbolsToGenes(x)
@@ -52,169 +29,70 @@
 NULL
 
 
-## FIXME Should we require GRanges here instead?
-## FIXME Consider not exporting this?
 
-## Updated 2021-08-10.
-`convertGenesToSymbols,character` <-  # nolint
+## Updated 2021-10-21.
+.interconvertGenesAndSymbols <-
     function(
         object,
-        gene2symbol,
-        strict = FALSE,
-        quiet = FALSE
+        strict,
+        rownamesCol
     ) {
+        validObject(object)
         assert(
-            isCharacter(object),
-            !any(is.na(object)),
-            hasNoDuplicates(object),
-            is(gene2symbol, "Gene2Symbol"),
+            is(object, "SummarizedExperiment"),
+            hasRownames(object),
             isFlag(strict),
-            isFlag(quiet)
+            isString(rownamesCol)
         )
-        cols <- c("geneId", "geneName")
-        if (!identical(cols, colnames(gene2symbol))) {
-            colnames(gene2symbol) <- cols
-        }
-        validObject(gene2symbol)
-        idx <- match(x = object, table = gene2symbol[["geneId"]])
         if (isTRUE(strict)) {
+            rowData <- rowData(object)
+            cols <- c("geneId", "geneName")
             assert(
-                !any(is.na(idx)),
-                identical(length(idx), length(object)),
-                msg = "Failed to match all genes to symbols."
+                isSubset(cols, colnames(rowData)),
+                all(complete.cases(rowData[, cols, drop = FALSE]))
             )
         }
-        out <- as(gene2symbol, "DataFrame")
-        out <- out[idx, "geneName", drop = TRUE]
-        assert(identical(length(object), length(out)))
-        names(out) <- object
-        if (any(is.na(out))) {
-            if (isFALSE(quiet)) {
-                alertWarning(sprintf(
-                    "Failed to match genes: %s.",
-                    toInlineString(
-                        x = names(out)[which(is.na(out))],
-                        n = 5L,
-                        class = "val"
-                    )
-                ))
-            }
-            out[which(is.na(out))] <- names(out)[which(is.na(out))]
-        }
-        assert(hasNoDuplicates(out))
-        out
-    }
-
-
-
-## FIXME Consider not exporting this?
-## Updated 2021-08-10.
-`convertGenesToSymbols,matrix` <-  # nolint
-    function(
-        object,
-        gene2symbol,
-        strict = FALSE
-    ) {
-        assert(hasRownames(object))
-        rn <- convertGenesToSymbols(
-            object = rownames(object),
-            gene2symbol = gene2symbol,
-            strict = strict
-        )
-        assert(identical(rownames(object), names(rn)))
-        rownames(object) <- unname(rn[rownames(object)])
-        object
-    }
-
-
-
-## FIXME Consider not exporting this?
-## Updated 2020-01-30.
-`convertGenesToSymbols,Matrix` <-  # nolint
-    `convertGenesToSymbols,matrix`
-
-
-
-## FIXME Consider not exporting this?
-## Updated 2021-08-10.
-`convertGenesToSymbols,GenomicRanges` <-  # nolint
-    function(
-        object,
-        strict = FALSE
-    ) {
-        validObject(object)
-        assert(hasNames(object))
-        gene2symbol <- Gene2Symbol(
-            object = object,
-            format = "makeUnique",
-            quiet = TRUE
-        )
-        symbols <- as.character(gene2symbol[["geneName"]])
+        g2s <- Gene2Symbol(object, format = "makeUnique", quiet = TRUE)
+        assert(areSetEqual(rownames(object), rownames(g2s)))
+        g2s <- g2s[rownames(object), , drop = FALSE]
+        rn <- unname(as.character(g2s[[rownamesCol]]))
         assert(
-            identical(names(object), rownames(gene2symbol)),
-            isCharacter(symbols),
-            hasNoDuplicates(symbols)
+            isCharacter(rn),
+            hasNoDuplicates(rn),
+            areDisjointSets(rownames(object), rn)
         )
-        names(object) <- unname(symbols)
+        rownames(object) <- rn
         object
     }
 
 
 
-## FIXME Make this the only exported method.
-## Updated 2021-09-13.
+## Updated 2021-10-21.
 `convertGenesToSymbols,SE` <-  # nolint
-    function(object) {
-        validObject(object)
-        assert(hasRownames(object))
-        gene2symbol <- Gene2Symbol(object, format = "makeUnique", quiet = TRUE)
-        assert(areSetEqual(rownames(object), rownames(gene2symbol)))
-        gene2symbol <- gene2symbol[rownames(object), ]
-        symbols <- as.character(gene2symbol[["geneName"]])
-        assert(
-            isCharacter(symbols),
-            hasNoDuplicates(symbols)
-        )
-        rownames(object) <- unname(symbols)
-        object
-    }
-
-
-
-## Updated 2021-09-13.
-`convertSymbolsToGenes,SE` <-  # nolint
-    function(object) {
-        validObject(object)
-        assert(hasRownames(object))
-        gene2symbol <- Gene2Symbol(
+    function(
+        object,
+        strict = FALSE
+    ) {
+        .interconvertGenesAndSymbols(
             object = object,
-            format = "makeUnique",
-            quiet = TRUE
+            strict = strict,
+            rownamesCol = "geneName"
         )
-        assert(areSetEqual(rownames(object), rownames(gene2symbol)))
-        gene2symbol <- gene2symbol[rownames(object), ]
-        assert(hasNoDuplicates(gene2symbol[["geneId"]]))
-        rownames(object) <- as.character(gene2symbol[["geneId"]])
-        object
     }
 
 
 
-#' @rdname convertGenesToSymbols
-#' @export
-setMethod(
-    f = "convertGenesToSymbols",
-    signature = signature(object = "GenomicRanges"),
-    definition = `convertGenesToSymbols,GenomicRanges`
-)
+## Updated 2021-10-21.
+`convertSymbolsToGenes,SE` <-  # nolint
+    function(object, strict = FALSE) {
+        .interconvertGenesAndSymbols(
+            object = object,
+            strict = strict,
+            rownamesCol = "geneId"
+        )
+    }
 
-#' @rdname convertGenesToSymbols
-#' @export
-setMethod(
-    f = "convertGenesToSymbols",
-    signature = signature(object = "Matrix"),
-    definition = `convertGenesToSymbols,Matrix`
-)
+
 
 #' @rdname convertGenesToSymbols
 #' @export
@@ -223,24 +101,6 @@ setMethod(
     signature = signature(object = "SummarizedExperiment"),
     definition = `convertGenesToSymbols,SE`
 )
-
-#' @rdname convertGenesToSymbols
-#' @export
-setMethod(
-    f = "convertGenesToSymbols",
-    signature = signature(object = "character"),
-    definition = `convertGenesToSymbols,character`
-)
-
-#' @rdname convertGenesToSymbols
-#' @export
-setMethod(
-    f = "convertGenesToSymbols",
-    signature = signature(object = "matrix"),
-    definition = `convertGenesToSymbols,matrix`
-)
-
-
 
 #' @rdname convertGenesToSymbols
 #' @export
