@@ -1,4 +1,4 @@
-## FIXME Need to improve handling of NA values here.
+## FIXME Need to improve handling of NA gene symbols here.
 ## FIXME Need to add code coverage for this edge case.
 
 
@@ -52,6 +52,7 @@
 NULL
 
 
+## FIXME Should we require GRanges here instead?
 
 ## Updated 2021-08-10.
 `convertGenesToSymbols,character` <-  # nolint
