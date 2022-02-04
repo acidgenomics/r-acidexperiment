@@ -1,9 +1,16 @@
+#' Size factors
+#'
 #' @name sizeFactors
-#' @inherit AcidGenerics::sizeFactors
-#' @note Updated 2021-02-02.
+#' @note Updated 2021-02-04.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
+#'
+#' @return `numeric`.
+#'   Names correspond to object column names.
+#'
+#' @seealso
+#' - `estimateSizeFactors()`.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")

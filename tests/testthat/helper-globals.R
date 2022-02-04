@@ -21,10 +21,10 @@ sparse <- sparseMatrix
 txse <- SummarizedExperiment_transcripts
 
 ## nolint start
-CharacterList <- AcidGenerics::CharacterList
-GRanges <- pipette::GRanges
-GRangesList <- pipette::GRangesList
-IRanges <- AcidGenerics::IRanges
+CharacterList <- IRanges::CharacterList
+GRanges <- GenomicRanges::GRanges
+GRangesList <- GenomicRanges::GRangesList
+IRanges <- IRanges::IRanges
 `assays<-` <- SummarizedExperiment::`assays<-`
 assay <- SummarizedExperiment::assay
 assayNames <- SummarizedExperiment::assayNames
@@ -35,6 +35,6 @@ hasInternet <- goalie::hasInternet
 methodFormals <- AcidBase::methodFormals
 rowData <- SummarizedExperiment::rowData
 rowRanges <- SummarizedExperiment::rowRanges
-seqnames <- AcidGenerics::seqnames
+seqnames <- GenomeInfoDb::seqnames
 simpleClass <- AcidBase::simpleClass
 ## nolint end

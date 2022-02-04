@@ -30,7 +30,7 @@ Names correspond to object column names.
 Size factors
 }
 \note{
-Updated 2021-02-02.
+Updated 2021-02-04.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
@@ -43,8 +43,6 @@ mean(sizeFactors(object))
 }
 \seealso{
 \itemize{
-\item \code{DESeq2::sizeFactors()}.
-\item \code{DESeq2::estimateSizeFactors()}.
-\item \code{DESeq2::estimateSizeFactorsForMatrix()}.
+\item \code{estimateSizeFactors()}.
 }
 }

@@ -32,7 +32,7 @@ NULL
 
 #' @rdname aggregate
 #' @name aggregate
-#' @importFrom AcidGenerics aggregate
+#' @importFrom S4Vectors aggregate
 #' @usage aggregate(x, ...)
 #' @export
 NULL
@@ -75,7 +75,7 @@ NULL
 
 #' @rdname combine
 #' @name combine
-#' @importFrom AcidGenerics combine
+#' @importFrom BiocGenerics combine
 #' @usage combine(x, y, ...)
 #' @export
 NULL
@@ -117,28 +117,28 @@ NULL
 
 #' @rdname counts
 #' @name counts
-#' @importFrom AcidGenerics counts
+#' @importFrom BiocGenerics counts
 #' @usage counts(object, ...)
 #' @export
 NULL
 
 #' @rdname counts
 #' @name counts<-
-#' @importFrom AcidGenerics counts<-
+#' @importFrom BiocGenerics counts<-
 #' @usage counts(object, ...) <- value
 #' @export
 NULL
 
 #' @rdname decode
 #' @name decode
-#' @importFrom AcidGenerics decode
+#' @importFrom S4Vectors decode
 #' @usage decode(x, ...)
 #' @export
 NULL
 
 #' @rdname droplevels
 #' @name droplevels
-#' @importFrom AcidGenerics droplevels
+#' @importFrom S4Vectors droplevels
 #' @usage droplevels(x, ...)
 #' @export
 NULL
@@ -152,14 +152,14 @@ NULL
 
 #' @rdname estimateSizeFactors
 #' @name estimateSizeFactors
-#' @importFrom AcidGenerics estimateSizeFactors
+#' @importFrom BiocGenerics estimateSizeFactors
 #' @usage estimateSizeFactors(object, ...)
 #' @export
 NULL
 
 #' @rdname export
 #' @name export
-#' @importFrom AcidGenerics export
+#' @importFrom pipette export
 #' @usage export(object, con, format, ...)
 #' @export
 NULL
@@ -265,14 +265,14 @@ NULL
 
 #' @rdname organism
 #' @name organism
-#' @importFrom AcidGenerics organism
+#' @importFrom BiocGenerics organism
 #' @usage organism(object)
 #' @export
 NULL
 
 #' @rdname organism
 #' @name organism<-
-#' @importFrom AcidGenerics organism<-
+#' @importFrom BiocGenerics organism<-
 #' @usage NULL
 #' @export
 NULL
@@ -293,14 +293,14 @@ NULL
 
 #' @rdname sampleNames
 #' @name sampleNames
-#' @importFrom AcidGenerics sampleNames
+#' @importFrom Biobase sampleNames
 #' @usage sampleNames(object)
 #' @export
 NULL
 
 #' @rdname sampleNames
 #' @name sampleNames<-
-#' @importFrom AcidGenerics sampleNames<-
+#' @importFrom Biobase sampleNames<-
 #' @usage sampleNames(object) <- value
 #' @export
 NULL
@@ -314,14 +314,14 @@ NULL
 
 #' @rdname sizeFactors
 #' @name sizeFactors
-#' @importFrom AcidGenerics sizeFactors
+#' @importFrom BiocGenerics sizeFactors
 #' @usage sizeFactors(object, ...)
 #' @export
 NULL
 
 #' @rdname sizeFactors
 #' @name sizeFactors<-
-#' @importFrom AcidGenerics sizeFactors<-
+#' @importFrom BiocGenerics sizeFactors<-
 #' @usage sizeFactors(object, ...) <- value
 #' @export
 NULL

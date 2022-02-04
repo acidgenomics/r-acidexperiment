@@ -15,7 +15,7 @@
 #' - `wd`: Working directory, returned from `getwd`.
 #'
 #' @export
-#' @note Updated 2021-09-02.
+#' @note Updated 2022-02-04.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param denylist `logical(1)`.
@@ -95,10 +95,10 @@
 #' )
 #' print(x)
 makeSummarizedExperiment <- function(
-    assays = SimpleList(),
-    rowRanges = GRanges(),
+    assays = S4Vectors::SimpleList(),
+    rowRanges = GenomicRanges::GRanges(),
     rowData = NULL,
-    colData = DataFrame(),
+    colData = S4Vectors::DataFrame(),
     metadata = list(),
     transgeneNames = NULL,
     ## This is intentionally disabled in cBioPortalAnalysis package.

@@ -1,6 +1,6 @@
 #' @name combine
-#' @inherit AcidGenerics::combine return title
-#' @note Updated 2020-12-21.
+#' @inherit BiocGenerics::combine return title
+#' @note Updated 2022-02-04.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.

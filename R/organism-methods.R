@@ -1,7 +1,13 @@
+#' Organism
+#'
+#' Get or set the organism (i.e. species) of an object.
+#'
 #' @name organism
-#' @inherit AcidGenerics::organism
-#' @note Updated 2021-02-03.
-#' @note Assignment method is defined in AcidGenomes.
+#' @note Updated 2022-02-03.
+#'
+#' @inheritParams AcidRoxygen::params
+#'
+#' @return `character(1)`.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")

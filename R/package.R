@@ -4,10 +4,11 @@
 #'
 #' @keywords internal
 #'
-#' @importClassesFrom AcidGenerics DataFrame SimpleList SplitDataFrameList
-#'   missingOrNULL
+#' @importClassesFrom AcidBase missingOrNULL
 #' @importClassesFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
 #'   Tx2Gene
+#' @importClassesFrom IRanges SplitDataFrameList
+#' @importClassesFrom S4Vectors DataFrame SimpleList
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
 #' @importMethodsFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
@@ -16,15 +17,17 @@
 #' @importMethodsFrom pipette coerce droplevels export
 #'
 #' @importFrom AcidBase geometricMean initDir lanePattern metadataDenylist
-#'   methodFunction packageName packageVersion realpath requireNamespaces
-#'   standardizeCall
+#'   methodFunction realpath requireNamespaces standardizeCall
 #' @importFrom AcidCLI abort alert alertInfo alertWarning toInlineString
-#' @importFrom AcidGenerics DataFrame Rle SimpleList SplitDataFrameList %in%
-#'   aggregate as.data.frame complete.cases coerce colSums cor decode do.call
-#'   head lapply match mcols mcols<- metadata metadata<- na.omit rowSums
-#'   seqnames setdiff split summary t unlist unsplit
 #' @importFrom AcidGenomes detectOrganism emptyRanges
 #' @importFrom AcidPlyr leftJoin mutateAt
+#' @importFrom BiocGenerics %in% as.data.frame colSums do.call lapply match
+#'   rowSums setdiff t unlist unsplit
+#' @importFrom Biobase sampleNames sampleNames<-
+#' @importFrom GenomicRanges GRanges
+#' @importFrom IRanges SplitDataFrameList
+#' @importFrom S4Vectors DataFrame Rle SimpleList aggregate complete.cases cor
+#'   decode head mcols mcols<- metadata metadata<- na.omit split summary
 #' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
 #'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
 #'   rowRanges rowRanges<-
@@ -41,4 +44,5 @@
 #' @importFrom sessioninfo session_info
 #' @importFrom stringr str_length str_match str_pad
 #' @importFrom syntactic camelCase makeNames snakeCase
+#' @importFrom utils packageName packageVersion
 "_PACKAGE"
