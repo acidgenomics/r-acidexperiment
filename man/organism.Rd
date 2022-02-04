@@ -20,9 +20,7 @@ organism(object)
 Get or set the organism (i.e. species) of an object.
 }
 \note{
-Updated 2021-02-03.
-
-Assignment method is defined in AcidGenomes.
+Updated 2022-02-03.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
