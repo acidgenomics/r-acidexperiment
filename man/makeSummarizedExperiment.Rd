@@ -101,7 +101,7 @@ counts <- matrix(
     dimnames = list(genes, samples)
 )
 ## Primary assay must be named "counts".
-assays <- SimpleList(counts = counts)
+assays <- S4Vectors::SimpleList("counts" = counts)
 print(assays)
 
 ## Row data (genomic ranges)
@@ -111,12 +111,12 @@ rowRanges <- emptyRanges(names = head(genes, n = length(genes) - 1L))
 print(rowRanges)
 
 ## Column data
-colData <- DataFrame(
-    age = rep(
+colData <- S4Vectors::DataFrame(
+    "age" = rep(
         x = c(3L, 6L),
         times = length(samples) / 2L
     ),
-    genotype = rep(
+    "genotype" = rep(
         x = c("wildtype", "knockout"),
         times = 1L,
         each = length(samples) / 2L

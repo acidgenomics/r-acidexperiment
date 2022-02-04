@@ -82,14 +82,14 @@
 #' aggregateCols(object, by = samples)
 #'
 #' ## SummarizedExperiment ====
-#' object <- SummarizedExperiment(
-#'     assays = SimpleList(
+#' object <- SummarizedExperiment::SummarizedExperiment(
+#'     assays = S4Vectors::SimpleList(
 #'         "counts" = counts
 #'     ),
-#'     rowData = DataFrame(
+#'     rowData = S4Vectors::DataFrame(
 #'         "aggregate" = genes
 #'     ),
-#'     colData = DataFrame(
+#'     colData = S4Vectors::DataFrame(
 #'         "sampleName" = as.factor(names(samples)),
 #'         "aggregate" = samples
 #'     )
