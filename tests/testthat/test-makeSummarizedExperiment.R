@@ -43,7 +43,7 @@ test_that("RangedSummarizedExperiment", {
         object = lapply(metadata(object), class),
         expected = list(
             date = "Date",
-            sessionInfo = "session_info",
+            sessionInfo = c("session_info", "list"),
             wd = "character"
         )
     )
