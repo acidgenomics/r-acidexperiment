@@ -3,7 +3,7 @@
 \name{combine}
 \alias{combine}
 \alias{combine,SummarizedExperiment,SummarizedExperiment-method}
-\title{Combine multiple objects}
+\title{Combining or merging different Bioconductor data structures}
 \usage{
 combine(x, y, ...)
 
@@ -20,10 +20,10 @@ combine(x, y, ...)
 \code{SummarizedExperiment}.
 }
 \description{
-Combine multiple objects
+Combining or merging different Bioconductor data structures
 }
 \note{
-Updated 2020-12-21.
+Updated 2022-02-04.
 
 We're attempting to make this as strict as possible, requiring:
 \itemize{

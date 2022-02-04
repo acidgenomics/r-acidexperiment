@@ -5,10 +5,10 @@
 \title{Make a SummarizedExperiment object}
 \usage{
 makeSummarizedExperiment(
-  assays = SimpleList(),
-  rowRanges = GRanges(),
+  assays = S4Vectors::SimpleList(),
+  rowRanges = GenomicRanges::GRanges(),
   rowData = NULL,
-  colData = DataFrame(),
+  colData = S4Vectors::DataFrame(),
   metadata = list(),
   transgeneNames = NULL,
   denylist = TRUE,
@@ -66,7 +66,7 @@ automatic subsetting for row and column data, as well as automatic handling
 of transgenes and spike-ins.
 }
 \note{
-Updated 2021-09-02.
+Updated 2022-02-04.
 }
 \section{Session information}{
 

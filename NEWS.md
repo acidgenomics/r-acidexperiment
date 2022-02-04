@@ -1,4 +1,4 @@
-## AcidExperiment 0.2.3 (UNRELEASED)
+## AcidExperiment 0.3.0 (UNRELEASED)
 
 ### Major changes
 
