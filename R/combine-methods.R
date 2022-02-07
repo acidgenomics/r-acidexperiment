@@ -1,6 +1,6 @@
 #' @name combine
 #' @inherit BiocGenerics::combine return title
-#' @note Updated 2022-02-04.
+#' @note Updated 2022-02-07.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -26,28 +26,20 @@
 #' x <- RangedSummarizedExperiment
 #' colnames(x) <- paste0(
 #'     "sample",
-#'     str_pad(
-#'         string = seq_len(ncol(x)),
-#'         width = 2L,
-#'         pad = "0"
-#'     )
+#'     sprintf("%02d", seq_len(ncol(x)))
 #' )
 #'
 #' y <- x
 #' colnames(y) <- paste0(
 #'     "sample",
-#'     str_pad(
-#'         string = seq(from = ncol(y) + 1L, to = ncol(y) * 2L),
-#'         width = 2L,
-#'         pad = "0"
-#'     )
+#'     sprintf("%02d", seq(from = ncol(y) + 1L, to = ncol(y) * 2L))
 #' )
 #'
 #' ## Combine the two objects.
 #' c <- combine(x, y)
 #' sampleData(c)
 #' print(c)
-NULL
+#' NULL
 
 
 

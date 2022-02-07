@@ -2,10 +2,13 @@
 % Please edit documentation in R/AllGenerics.R, R/combine-methods.R
 \name{combine}
 \alias{combine}
+\alias{combine,SE}
 \alias{combine,SummarizedExperiment,SummarizedExperiment-method}
 \title{Combining or merging different Bioconductor data structures}
 \usage{
 combine(x, y, ...)
+
+`combine,SE`(x, y)
 
 \S4method{combine}{SummarizedExperiment,SummarizedExperiment}(x, y)
 }
@@ -23,7 +26,7 @@ combine(x, y, ...)
 Combining or merging different Bioconductor data structures
 }
 \note{
-Updated 2022-02-04.
+Updated 2022-02-07.
 
 We're attempting to make this as strict as possible, requiring:
 \itemize{
@@ -42,27 +45,20 @@ data(RangedSummarizedExperiment, package = "AcidTest")
 x <- RangedSummarizedExperiment
 colnames(x) <- paste0(
     "sample",
-    str_pad(
-        string = seq_len(ncol(x)),
-        width = 2L,
-        pad = "0"
-    )
+    sprintf("\%02d", seq_len(ncol(x)))
 )
 
 y <- x
 colnames(y) <- paste0(
     "sample",
-    str_pad(
-        string = seq(from = ncol(y) + 1L, to = ncol(y) * 2L),
-        width = 2L,
-        pad = "0"
-    )
+    sprintf("\%02d", seq(from = ncol(y) + 1L, to = ncol(y) * 2L))
 )
 
 ## Combine the two objects.
 c <- combine(x, y)
 sampleData(c)
 print(c)
+NULL
 }
 \seealso{
 \itemize{
