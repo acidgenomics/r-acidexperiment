@@ -17,7 +17,10 @@
 #' ## This works on rowData and colData.
 #' object <- RangedSummarizedExperiment
 #' object <- encode(object)
-#' lapply(rowData(object), class)
+#' lapply(
+#'     X = SummarizedExperiment::rowData(object),
+#'     FUN = class
+#' )
 NULL
 
 

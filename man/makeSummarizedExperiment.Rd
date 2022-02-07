@@ -107,7 +107,7 @@ print(assays)
 ## Row data (genomic ranges)
 ## Note that we haven't defined the transgene here.
 ## It will be handled automatically in the function call.
-rowRanges <- emptyRanges(names = head(genes, n = length(genes) - 1L))
+rowRanges <- AcidGenomes::emptyRanges(head(genes, n = length(genes) - 1L))
 print(rowRanges)
 
 ## Column data
