@@ -1,387 +1,288 @@
-#' @rdname Ensembl2Entrez
-#' @name Ensembl2Entrez
-#' @importFrom AcidGenerics Ensembl2Entrez
-#' @importMethodsFrom AcidGenomes Ensembl2Entrez
-#' @usage Ensembl2Entrez(object, ...)
 #' @export
+#' @name Ensembl2Entrez
+#' @usage Ensembl2Entrez(object, ...)
 NULL
 
+#' @export
 #' @rdname Ensembl2Entrez
 #' @name Entrez2Ensembl
-#' @importFrom AcidGenerics Entrez2Ensembl
-#' @importMethodsFrom AcidGenomes Entrez2Ensembl
 #' @usage Entrez2Ensembl(object, ...)
-#' @export
 NULL
 
-#' @rdname Gene2Symbol
+#' @export
 #' @name Gene2Symbol
-#' @importFrom AcidGenerics Gene2Symbol
-#' @importMethodsFrom AcidGenomes Gene2Symbol
 #' @usage Gene2Symbol(object, ...)
-#' @export
 NULL
 
-#' @rdname Tx2Gene
+#' @export
 #' @name Tx2Gene
-#' @importFrom AcidGenerics Tx2Gene
-#' @importMethodsFrom AcidGenomes Tx2Gene
 #' @usage Tx2Gene(object, ...)
-#' @export
 NULL
 
-#' @rdname aggregate
+#' @export
 #' @name aggregate
-#' @importFrom S4Vectors aggregate
 #' @usage aggregate(x, ...)
-#' @export
 NULL
 
+#' @export
 #' @rdname aggregate
 #' @name aggregateCols
-#' @importFrom AcidGenerics aggregateCols
 #' @usage aggregateCols(x, ...)
-#' @export
 NULL
 
+#' @export
 #' @rdname aggregate
 #' @name aggregateRows
-#' @importFrom AcidGenerics aggregateRows
 #' @usage aggregateRows(x, ...)
-#' @export
 NULL
 
-#' @rdname autopadZeros
+#' @export
 #' @name autopadZeros
-#' @importFrom AcidGenerics autopadZeros
-#' @importMethodsFrom syntactic autopadZeros
 #' @usage autopadZeros(object, ...)
-#' @export
 NULL
 
-#' @rdname calculateMetrics
+#' @export
 #' @name calculateMetrics
-#' @importFrom AcidGenerics calculateMetrics
 #' @usage calculateMetrics(object, ...)
-#' @export
 NULL
 
+#' @export
 #' @rdname coerce
 #' @name as.SummarizedExperiment
-#' @importFrom AcidGenerics as.SummarizedExperiment
 #' @usage as.SummarizedExperiment(x, ...)
-#' @export
 NULL
 
-#' @rdname combine
+#' @export
 #' @name combine
-#' @importFrom BiocGenerics combine
 #' @usage combine(x, y, ...)
-#' @export
 NULL
 
-#' @rdname convertGenesToSymbols
+#' @export
 #' @name convertGenesToSymbols
-#' @importFrom AcidGenerics convertGenesToSymbols
 #' @usage convertGenesToSymbols(object, ...)
-#' @export
 NULL
 
+#' @export
 #' @rdname convertGenesToSymbols
 #' @name convertSymbolsToGenes
-#' @importFrom AcidGenerics convertSymbolsToGenes
 #' @usage convertSymbolsToGenes(object, ...)
-#' @export
 NULL
 
-#' @rdname convertSampleIDsToNames
+#' @export
 #' @name convertSampleIDsToNames
-#' @importFrom AcidGenerics convertSampleIDsToNames
 #' @usage convertSampleIDsToNames(object, ...)
-#' @export
 NULL
 
-#' @rdname convertTranscriptsToGenes
+#' @export
 #' @name convertTranscriptsToGenes
-#' @importFrom AcidGenerics convertTranscriptsToGenes
 #' @usage convertTranscriptsToGenes(object, ...)
-#' @export
 NULL
 
-#' @rdname correlation
+#' @export
 #' @name correlation
-#' @importFrom AcidGenerics correlation
 #' @usage correlation(x, y, ...)
-#' @export
 NULL
 
-#' @rdname counts
+#' @export
 #' @name counts
-#' @importFrom BiocGenerics counts
 #' @usage counts(object, ...)
-#' @export
 NULL
 
+#' @export
 #' @rdname counts
 #' @name counts<-
-#' @importFrom BiocGenerics counts<-
 #' @usage counts(object, ...) <- value
-#' @export
 NULL
 
-#' @rdname decode
+#' @export
 #' @name decode
-#' @importFrom S4Vectors decode
 #' @usage decode(x, ...)
-#' @export
 NULL
 
-#' @rdname droplevels
+#' @export
 #' @name droplevels
-#' @importFrom S4Vectors droplevels
 #' @usage droplevels(x, ...)
-#' @export
 NULL
 
-#' @rdname encode
+#' @export
 #' @name encode
-#' @importFrom AcidGenerics encode
 #' @usage encode(x, ...)
-#' @export
 NULL
 
-#' @rdname estimateSizeFactors
+#' @export
 #' @name estimateSizeFactors
-#' @importFrom BiocGenerics estimateSizeFactors
 #' @usage estimateSizeFactors(object, ...)
-#' @export
 NULL
 
-#' @rdname export
+#' @export
 #' @name export
-#' @importFrom pipette export
 #' @usage export(object, con, format, ...)
-#' @export
 NULL
 
-#' @rdname geneNames
+#' @export
 #' @name geneNames
-#' @importFrom AcidGenerics geneNames
 #' @usage geneNames(object, ...)
-#' @export
 NULL
 
-#' @rdname headtail
+#' @export
 #' @name headtail
-#' @importFrom AcidGenerics headtail
-#' @importMethodsFrom AcidBase headtail
 #' @usage headtail(x, ...)
-#' @export
 NULL
 
-#' @rdname humanize
+#' @export
 #' @name humanize
-#' @importFrom AcidGenerics humanize
 #' @usage humanize(object, ...)
-#' @export
 NULL
 
-#' @rdname integerCounts
+#' @export
 #' @name integerCounts
-#' @importFrom AcidGenerics integerCounts
 #' @usage integerCounts(object, ...)
-#' @export
 NULL
 
-#' @rdname interestingGroups
+#' @export
 #' @name interestingGroups
-#' @importFrom AcidGenerics interestingGroups
 #' @usage interestingGroups(object, ...)
-#' @export
 NULL
 
+#' @export
 #' @rdname interestingGroups
 #' @name interestingGroups<-
-#' @importFrom AcidGenerics interestingGroups<-
 #' @usage interestingGroups(object, ...)  <- value
-#' @export
 NULL
 
-#' @rdname makeSampleData
+#' @export
 #' @name makeSampleData
-#' @importFrom AcidGenerics makeSampleData
 #' @usage makeSampleData(object, ...)
-#' @export
 NULL
 
+#' @export
 #' @rdname mapGenes
 #' @name mapGenesToRownames
-#' @importFrom AcidGenerics mapGenesToRownames
 #' @usage mapGenesToRownames(object, ...)
-#' @export
 NULL
 
+#' @export
 #' @rdname mapGenes
 #' @name mapGenesToIDs
-#' @importFrom AcidGenerics mapGenesToIDs
 #' @usage mapGenesToIDs(object, ...)
-#' @export
 NULL
 
+#' @export
 #' @rdname mapGenes
 #' @name mapGenesToSymbols
-#' @importFrom AcidGenerics mapGenesToSymbols
 #' @usage mapGenesToSymbols(object, ...)
-#' @export
 NULL
 
-#' @rdname matchSampleColumn
+#' @export
 #' @name matchSampleColumn
-#' @importFrom AcidGenerics matchSampleColumn
 #' @usage matchSampleColumn(object, ...)
-#' @export
 NULL
 
-#' @rdname melt
+#' @export
 #' @name melt
-#' @importFrom AcidGenerics melt
 #' @usage melt(object, ...)
-#' @export
 NULL
 
-#' @rdname metrics
+#' @export
 #' @name metrics
-#' @importFrom AcidGenerics metrics
 #' @usage metrics(object, ...)
-#' @export
 NULL
 
-#' @rdname nonzeroRowsAndCols
+#' @export
 #' @name nonzeroRowsAndCols
-#' @importFrom AcidGenerics nonzeroRowsAndCols
 #' @usage nonzeroRowsAndCols(object, ...)
-#' @export
 NULL
 
-#' @rdname organism
+#' @export
 #' @name organism
-#' @importFrom BiocGenerics organism
 #' @usage organism(object)
-#' @export
 NULL
 
+#' @export
 #' @rdname organism
 #' @name organism<-
-#' @importFrom BiocGenerics organism<-
-#' @usage NULL
-#' @export
+#' @usage organism(object) <- value
 NULL
 
-#' @rdname sampleData
+#' @export
 #' @name sampleData
-#' @importFrom AcidGenerics sampleData
 #' @usage sampleData(object, ...)
-#' @export
 NULL
 
+#' @export
 #' @rdname sampleData
 #' @name sampleData<-
-#' @importFrom AcidGenerics sampleData<-
 #' @usage sampleData(object, ...) <- value
-#' @export
 NULL
 
-#' @rdname sampleNames
+#' @export
 #' @name sampleNames
-#' @importFrom Biobase sampleNames
 #' @usage sampleNames(object)
-#' @export
 NULL
 
+#' @export
 #' @rdname sampleNames
 #' @name sampleNames<-
-#' @importFrom Biobase sampleNames<-
 #' @usage sampleNames(object) <- value
-#' @export
 NULL
 
-#' @rdname selectSamples
+#' @export
 #' @name selectSamples
-#' @importFrom AcidGenerics selectSamples
 #' @usage selectSamples(object, ...)
-#' @export
 NULL
 
-#' @rdname sizeFactors
+#' @export
 #' @name sizeFactors
-#' @importFrom BiocGenerics sizeFactors
 #' @usage sizeFactors(object, ...)
-#' @export
 NULL
 
+#' @export
 #' @rdname sizeFactors
 #' @name sizeFactors<-
-#' @importFrom BiocGenerics sizeFactors<-
 #' @usage sizeFactors(object, ...) <- value
-#' @export
 NULL
 
-#' @rdname stripGeneVersions
+#' @export
 #' @name stripGeneVersions
-#' @importFrom AcidGenerics stripGeneVersions
 #' @usage stripGeneVersions(object, ...)
-#' @export
 NULL
 
-#' @rdname stripTranscriptVersions
+#' @export
 #' @name stripTranscriptVersions
-#' @importFrom AcidGenerics stripTranscriptVersions
 #' @usage stripTranscriptVersions(object, ...)
-#' @export
 NULL
 
+#' @export
 #' @rdname syntactic
 #' @name camelCase
-#' @importFrom AcidGenerics camelCase
-#' @importMethodsFrom syntactic camelCase
 #' @usage camelCase(object, ...)
-#' @export
 NULL
 
+#' @export
 #' @rdname syntactic
 #' @name dottedCase
-#' @importFrom AcidGenerics dottedCase
-#' @importMethodsFrom syntactic dottedCase
 #' @usage dottedCase(object, ...)
-#' @export
 NULL
 
+#' @export
 #' @rdname syntactic
 #' @name snakeCase
-#' @importFrom AcidGenerics snakeCase
-#' @importMethodsFrom syntactic snakeCase
 #' @usage snakeCase(object, ...)
-#' @export
 NULL
 
+#' @export
 #' @rdname syntactic
 #' @name upperCamelCase
-#' @importFrom AcidGenerics upperCamelCase
-#' @importMethodsFrom syntactic upperCamelCase
 #' @usage upperCamelCase(object, ...)
-#' @export
 NULL
 
+#' @export
 #' @rdname tpm
 #' @name tpm
-#' @importFrom AcidGenerics tpm
 #' @usage tpm(object, ...)
-#' @export
 NULL
 
-#' @rdname uniteInterestingGroups
-#' @name uniteInterestingGroups
-#' @importFrom AcidGenerics uniteInterestingGroups
-#' @usage uniteInterestingGroups(object, ...)
 #' @export
+#' @name uniteInterestingGroups
+#' @usage uniteInterestingGroups(object, ...)
 NULL

@@ -3,46 +3,4 @@
 #' Toolkit to extend the functionality of SummarizedExperiment.
 #'
 #' @keywords internal
-#'
-#' @importClassesFrom AcidBase missingOrNULL
-#' @importClassesFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
-#'   Tx2Gene
-#' @importClassesFrom IRanges SplitDataFrameList
-#' @importClassesFrom S4Vectors DataFrame SimpleList
-#' @importClassesFrom SummarizedExperiment SummarizedExperiment
-#'
-#' @importMethodsFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
-#'   Tx2Gene stripGeneVersions stripTranscriptVersions
-#' @importMethodsFrom SummarizedExperiment coerce
-#' @importMethodsFrom pipette coerce droplevels export
-#'
-#' @importFrom AcidBase geometricMean initDir lanePattern metadataDenylist
-#'   methodFunction realpath requireNamespaces standardizeCall
-#' @importFrom AcidCLI abort alert alertInfo alertWarning toInlineString
-#' @importFrom AcidGenomes detectOrganism emptyRanges
-#' @importFrom AcidPlyr leftJoin mutateAt
-#' @importFrom BiocGenerics %in% as.data.frame colSums do.call lapply match
-#'   rowSums setdiff t unlist unsplit
-#' @importFrom Biobase sampleNames sampleNames<-
-#' @importFrom GenomicRanges GRanges
-#' @importFrom IRanges SplitDataFrameList
-#' @importFrom S4Vectors DataFrame Rle SimpleList aggregate complete.cases cor
-#'   decode head mcols mcols<- metadata metadata<- na.omit split summary
-#' @importFrom SummarizedExperiment SummarizedExperiment assay assay<-
-#'   assayNames assayNames<- assays assays<- colData colData<- rowData rowData<-
-#'   rowRanges rowRanges<-
-#' @importFrom goalie allAreAtomic allAreMatchingRegex areDisjointSets
-#'   areIntersectingSets areSetEqual assert bapply cause false hasColnames
-#'   hasCols hasDimnames hasLength hasNames hasNoDuplicates hasRownames hasRows
-#'   hasValidDimnames hasValidNames isAFile isAURL isAny isCharacter isFlag
-#'   isInRange isInt isNonNegative isNumber isPositive isScalar isString
-#'   isSubset matchesUniqueGeneNames validNames
-#' @importFrom methods as is new setMethod setReplaceMethod signature
-#'   validObject
-#' @importFrom pipette as_tibble atomize factorize import removeNA
-#' @importFrom scales percent
-#' @importFrom sessioninfo session_info
-#' @importFrom stringr str_length str_match str_pad
-#' @importFrom syntactic camelCase makeNames snakeCase
-#' @importFrom utils packageName packageVersion
 "_PACKAGE"
