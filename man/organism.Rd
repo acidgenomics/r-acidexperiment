@@ -8,6 +8,8 @@
 \usage{
 organism(object)
 
+organism(object) <- value
+
 \S4method{organism}{SummarizedExperiment}(object)
 }
 \arguments{
