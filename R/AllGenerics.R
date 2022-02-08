@@ -201,7 +201,7 @@ NULL
 #' @export
 #' @rdname organism
 #' @name organism<-
-#' @usage organism(object) <- value
+#' @usage NULL
 NULL
 
 #' @export
