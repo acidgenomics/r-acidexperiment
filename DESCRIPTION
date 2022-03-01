@@ -2,7 +2,7 @@ Package: AcidExperiment
 Title: Acid Genomics Summarized Experiment
 Description: Toolkit to extend the functionality of SummarizedExperiment.
 Version: 0.3.0.9000
-Date: 2022-02-08
+Date: 2022-02-22
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
