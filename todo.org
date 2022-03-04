@@ -1,6 +1,7 @@
 #+TITLE: AcidExperiment
 #+STARTUP: content
 * Development
+** TODO sampleData assignment needs to factorize automatically.
 ** TODO Consider removing `estimateSizeFactors` code defined here in favor of simpler `normalize()` approach defined in AcidSingleCell.
 ** TODO `convertGenesToSymbols`: Need to add coverage for object containing NA values in gene symbols.
 ** TODO `makeSummarizedExperiment: Error if metadata input contains values we automatically assign (e.g. date, wd, etc).
