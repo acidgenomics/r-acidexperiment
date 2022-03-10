@@ -1,6 +1,6 @@
-## AcidExperiment 0.3.0 (UNRELEASED)
+# AcidExperiment 0.3.0 (UNRELEASED)
 
-### Major changes
+## Major changes
 
 - `export`: Reworked `SummarizedExperiment` to use new BiocIO generic approach.
   This generic now uses `con` instead of `dir` to define the directory path.
@@ -14,7 +14,7 @@
   support for new `strict` mode check, which intentionally does not allow
   propagation of any `NA` values during interconversion steps.
 
-### Minor changes
+## Minor changes
 
 - `selectSamples`: The function now automatically relevels factors defined
   in `colData`.
@@ -28,9 +28,9 @@
 - `selectSamples`: Factors defined in `colData` are now automatically releveled
   via internal `droplevels` call for `SummarizedExperiment` method.
 
-## AcidExperiment 0.2.2 (2021-09-13)
+# AcidExperiment 0.2.2 (2021-09-13)
 
-### Major changes
+## Major changes
 
 - `aggregate`: Added support via `MARGIN` argument to work either row-wise
   (`1`; default) or column-wise (`2`). `SummarizedExperiment` method has been
@@ -40,7 +40,7 @@
 - `convertTranscriptsToGenes`: Now all assays are aggregated, rather than
   simplify returning primary `counts` assay.
 
-### Minor changes
+## Minor changes
 
 - `calculateMetrics`: Updated to support `assay` argument.
 - `convertGenesToSymbols`: Removed unnecessary `strict` argument for
@@ -52,17 +52,17 @@
   `SummarizedExperiment` method. This is defined as `aggregateRows` or
   `aggregateCols` in the object metadata.
 
-## AcidExperiment 0.2.1 (2021-09-08)
+# AcidExperiment 0.2.1 (2021-09-08)
 
-### Minor changes
+## Minor changes
 
 - Now importing `bapply` from goalie instead of AcidBase.
 - Updated internal gene mapping code to better handle mismatched Gene2Symbol
   input, which can happen in pointillism package.
 
-## AcidExperiment 0.2.0 (2021-09-03)
+# AcidExperiment 0.2.0 (2021-09-03)
 
-### Major changes
+## Major changes
 
 - Reworked and improved unit tests to achieve 100% code coverage.
 - `calculateMetrics`: Simplifed internal assert checks. The `matrix` and
@@ -79,7 +79,7 @@
   help resolve the cryptic CLI error message seen in
   [bcbioRNASeq issue #170](https://github.com/hbc/bcbioRNASeq/issues/170).
 
-### Minor changes
+## Minor changes
 
 - Made unused `matchesGene2Symbol` and `matchesInterestingGroups` functions
   defunct. These are still reexported in basejump and DESeqAnalysis, which will
@@ -95,9 +95,9 @@
   zero `libSizes`. Also improved code coverage to check for specific values
   returned by `type` argument.
 
-## AcidExperiment 0.1.14 (2021-08-11)
+# AcidExperiment 0.1.14 (2021-08-11)
 
-### Major changes
+## Major changes
 
 - `convertGenesToSymbols`: Added `strict` and `quiet` arguments. Improved and
   hardened internal code, improving the verbosity of calls to `Gene2Symbol`
@@ -106,22 +106,22 @@
 - `Ensembl2Entrez`, `Gene2Symbol`: Updated formals to passthrough to other
   primary methods defined in AcidGenomes package.
 
-### Minor changes
+## Minor changes
 
 - Hardened and expanded code coverage for expected gene-to-symbol mapping
   behavior in main `Gene2Symbol` generator, focusing on the `format` argument.
 
-## AcidExperiment 0.1.13 (2021-08-09)
+# AcidExperiment 0.1.13 (2021-08-09)
 
-### Minor changes
+## Minor changes
 
 - Updated package dependency version cutoffs.
 - `Gene2Symbol`: Tightened up internal `match.arg` handling for `format`
   argument, in defined `SummarizedExperiment` method.
 
-## AcidExperiment 0.1.12 (2021-06-10)
+# AcidExperiment 0.1.12 (2021-06-10)
 
-### Minor changes
+## Minor changes
 
 - `mapGenesToRownames`, `mapGenesToIDs`, `mapGenesToSymbols`: Improved the
   flexibility of gene identifier matching for `SummarizedExperiment` method.
@@ -133,90 +133,90 @@
   method for `mapGenesToRownames` internally. We simplified this check using
   the internal `.mapGenes` function to locate index position instead.
 
-## AcidExperiment 0.1.11 (2021-06-04)
+# AcidExperiment 0.1.11 (2021-06-04)
 
-### Minor changes
+## Minor changes
 
 - Updated the documentation to provide compatibility with R 4.1 and Bioconductor
   3.13 release.
 - Updated dependency versions.
 
-## AcidExperiment 0.1.10 (2021-03-10)
+# AcidExperiment 0.1.10 (2021-03-10)
 
-### Minor changes
+## Minor changes
 
 - `makeSummarizedExperiment`: Relaxed the validity check on syntactically
   valid names in rownames and colnames of the object. Now the function
   informs the user with a CLI message instead of erroring.
 
-## AcidExperiment 0.1.9 (2021-02-25)
+# AcidExperiment 0.1.9 (2021-02-25)
 
-### Minor changes
+## Minor changes
 
 - Renamed all internal instances of "blacklist" to "denylist".
 - Added `denylist` override option to `makeSummarizedExperiment`
   (recommended to be left enabled by default), which will be used in
   cBioPortalAnalysis package update.
 
-## AcidExperiment 0.1.8 (2021-02-22)
+# AcidExperiment 0.1.8 (2021-02-22)
 
-### Minor changes
+## Minor changes
 
 - Now enforcing lower camel case for `sampleData` return.
 - Simplified generic handling for Matrix methods.
 
-## AcidExperiment 0.1.7 (2021-02-13)
+# AcidExperiment 0.1.7 (2021-02-13)
 
-### Minor changes
+## Minor changes
 
 - More internal NAMESPACE reworks. IRanges classes now defined in AcidGenerics.
 
-## AcidExperiment 0.1.6 (2021-02-11)
+# AcidExperiment 0.1.6 (2021-02-11)
 
-### Minor changes
+## Minor changes
 
 - Internal NAMESPACE rework, using pipette and AcidGenerics.
 
-## AcidExperiment 0.1.5 (2021-02-09)
+# AcidExperiment 0.1.5 (2021-02-09)
 
-### Minor changes
+## Minor changes
 
 - Reworked the list of reexported functions. Now reexporting only from
   SummarizedExperiment and sessioninfo.
 
-## AcidExperiment 0.1.4 (2021-02-08)
+# AcidExperiment 0.1.4 (2021-02-08)
 
-### Minor changes
+## Minor changes
 
 - Now reexporting some commonly used functions from SummarizedExperiment.
 
-## AcidExperiment 0.1.3 (2021-02-08)
+# AcidExperiment 0.1.3 (2021-02-08)
 
-### Minor changes
+## Minor changes
 
 - `sampleData`: Bug fix for unwanted early return on minimal colData defined
   in SummarizedExperiment. This handling is required for downstream automatic
   plotting functions defined in AcidPlots, that make use of "sampleName"
   metadata column.
 
-## AcidExperiment 0.1.2 (2021-02-06)
+# AcidExperiment 0.1.2 (2021-02-06)
 
-### Minor changes
+## Minor changes
 
 - Added `ignoreVersion` option to gene mapping functions.
 
-## AcidExperiment 0.1.1 (2021-02-06)
+# AcidExperiment 0.1.1 (2021-02-06)
 
-### Major changes
+## Major changes
 
 - Ensuring we're enforcing lower camel case naming conventions for metadata
   describing the columns slotted in `colData`.
 
-### Minor changes
+## Minor changes
 
 - Imported coercion methods from `SummarizedExperiment`.
 - Added `package.R`, describing package info.
 
-## AcidExperiment 0.1.0 (2021-02-05)
+# AcidExperiment 0.1.0 (2021-02-05)
 
 Initial release, with code migrated from basejump package.

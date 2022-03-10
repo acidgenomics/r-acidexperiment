@@ -1,6 +1,6 @@
 #' @name stripGeneVersions
 #' @inherit AcidGenomes::stripGeneVersions
-#' @note Updated 2021-08-09.
+#' @note Updated 2022-03-09.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
