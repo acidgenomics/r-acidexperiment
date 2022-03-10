@@ -52,7 +52,7 @@ apply to the \code{character} method defined in syntactic.
 Updated 2021-09-02.
 }
 \examples{
-data( RangedSummarizedExperiment, package = "AcidTest")
+data(RangedSummarizedExperiment, package = "AcidTest")
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment

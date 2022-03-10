@@ -4,9 +4,7 @@ Toolkit to extend the functionality of [SummarizedExperiment][].
 
 ## Installation
 
-Requirements: [R][] >= 4.0, [Bioconductor][] >= 3.13.
-
-### [R][] method
+This is an [R][] package.
 
 ```r
 if (!requireNamespace("BiocManager", quietly = TRUE)) {
