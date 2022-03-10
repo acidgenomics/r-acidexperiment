@@ -26,7 +26,7 @@ Intentionally does not strip transcript versions, if defined in the object.
 To perform that action in parallel, use \code{stripVersions} instead.
 }
 \note{
-Updated 2021-08-09.
+Updated 2022-03-09.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")

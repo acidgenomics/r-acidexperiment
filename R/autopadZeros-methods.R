@@ -17,7 +17,7 @@
 #' @return `character`.
 #'
 #' @examples
-#' data( RangedSummarizedExperiment, package = "AcidTest")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
