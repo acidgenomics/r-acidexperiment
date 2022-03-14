@@ -8,16 +8,17 @@
 #' counts here.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @param prefilter `logical(1)`.
-#'   Drop very low quality samples/cells from the object.
-#'   This can resize the number of columns but the rows (i.e. features) do not
-#'   change with this operation.
 #' @param ... Additional arguments.
+#'
+#' @param prefilter `logical(1)`.
+#' Drop very low quality samples/cells from the object.
+#' This can resize the number of columns but the rows (i.e. features) do not
+#' change with this operation.
 #'
 #' @return
 #' - `matrix` / `Matrix`: `DataFrame` containing metrics.
 #' - `SummarizedExperiment`: Modified object, with metrics in
-#'   `colData()`.
+#' `colData()`.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")
@@ -32,12 +33,10 @@ NULL
 
 
 ## Updated 2021-09-02.
-`calculateMetrics,matrix` <-  # nolint
-    function(
-        object,
-        rowData = NULL,
-        prefilter = FALSE
-    ) {
+`calculateMetrics,matrix` <- # nolint
+    function(object,
+             rowData = NULL,
+             prefilter = FALSE) {
         assert(
             hasValidDimnames(object),
             hasRows(object),
@@ -148,12 +147,12 @@ NULL
             ## Novelty score.
             keep <-
                 !is.na(data[["log10FeaturesPerCount"]]) &
-                data[["log10FeaturesPerCount"]] < 1L
+                    data[["log10FeaturesPerCount"]] < 1L
             data <- data[keep, , drop = FALSE]
             ## Mito ratio.
             keep <-
                 is.na(data[["mitoRatio"]]) |
-                data[["mitoRatio"]] < 1L
+                    data[["mitoRatio"]] < 1L
             data <- data[keep, , drop = FALSE]
             ## Minimum number of read counts per sample.
             keep <- data[["nCount"]] > 0L
@@ -182,18 +181,16 @@ NULL
 
 
 ## Updated 2021-02-22.
-`calculateMetrics,Matrix` <-  # nolint
+`calculateMetrics,Matrix` <- # nolint
     `calculateMetrics,matrix`
 
 
 
 ## Updated 2021-09-11.
-`calculateMetrics,SE` <-  # nolint
-    function(
-        object,
-        assay = 1L,
-        prefilter = FALSE
-    ) {
+`calculateMetrics,SE` <- # nolint
+    function(object,
+             assay = 1L,
+             prefilter = FALSE) {
         validObject(object)
         assert(
             isScalar(assay),
@@ -220,7 +217,7 @@ NULL
             ,
             setdiff(colnames(colData), colnames(metrics)),
             drop = FALSE
-            ]
+        ]
         assert(identical(rownames(colData), rownames(metrics)))
         colData <- cbind(colData, metrics)
         colData(object) <- colData

@@ -20,7 +20,7 @@ NULL
 
 
 ## Updated 2019-07-22.
-`interestingGroups,Annotated` <-  # nolint
+`interestingGroups,Annotated` <- # nolint
     function(object) {
         metadata(object)[["interestingGroups"]]
     }
@@ -28,7 +28,7 @@ NULL
 
 
 ## Updated 2019-07-22.
-`interestingGroups<-,Annotated,character` <-  # nolint
+`interestingGroups<-,Annotated,character` <- # nolint
     function(object, value) {
         assert(areDisjointSets(value, "interestingGroups"))
         metadata(object)[["interestingGroups"]] <- value
@@ -41,7 +41,7 @@ NULL
 ## column isn't defined in `colData()`.
 ##
 ## Updated 2019-08-11.
-`interestingGroups<-,SE,character` <-  # nolint
+`interestingGroups<-,SE,character` <- # nolint
     function(object, value) {
         assert(areDisjointSets(value, "interestingGroups"))
         setdiff <- setdiff(value, colnames(sampleData(object)))
@@ -59,7 +59,7 @@ NULL
 
 
 ## Updated 2019-07-22.
-`interestingGroups<-,Annotated,NULL` <-  # nolint
+`interestingGroups<-,Annotated,NULL` <- # nolint
     function(object, value) {
         metadata(object)[["interestingGroups"]] <- NULL
         object

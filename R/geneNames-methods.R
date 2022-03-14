@@ -16,7 +16,7 @@ NULL
 
 
 ## Updated 2019-07-22.
-`geneNames,Vector` <-  # nolint
+`geneNames,Vector` <- # nolint
     function(object) {
         Gene2Symbol(object, format = "makeUnique")[["geneName"]]
     }
@@ -24,13 +24,13 @@ NULL
 
 
 ## Updated 2019-07-22.
-`geneNames,GenomicRanges` <-  # nolint
+`geneNames,GenomicRanges` <- # nolint
     `geneNames,Vector`
 
 
 
 ## Updated 2019-07-22.
-`geneNames,SE` <-  # nolint
+`geneNames,SE` <- # nolint
     `geneNames,Vector`
 
 

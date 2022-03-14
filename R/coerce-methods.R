@@ -6,19 +6,6 @@
 #' `RangedSummarizedExperiment` to a standard `SummarizedExperiment`, that
 #' doesn't drop `rowData()`.
 #'
-#' Related S4 coercion method of interest:
-#'
-#' ```
-#' getMethod(
-#'     f = "coerce",
-#'     signature = signature(
-#'         from = "RangedSummarizedExperiment",
-#'         to = "SummarizedExperiment"
-#'     ),
-#'     where = asNamespace("SummarizedExperiment")
-#' )
-#' ```
-#'
 #' @name coerce
 #' @note Updated 2021-02-05.
 #'
@@ -44,7 +31,7 @@ NULL
 
 
 ## Updated 2019-08-23.
-`as.SummarizedExperiment,SE` <-  # nolint
+`as.SummarizedExperiment,SE` <- # nolint
     function(x) {
         rowMeta <- metadata(rowData(x))
         x <- as(x, "SummarizedExperiment")
@@ -55,7 +42,7 @@ NULL
 
 
 ## Updated 2019-08-23.
-`as.SummarizedExperiment,RSE` <-  # nolint
+`as.SummarizedExperiment,RSE` <- # nolint
     function(x) {
         rowMeta <- metadata(rowRanges(x))
         x <- as(x, "RangedSummarizedExperiment")

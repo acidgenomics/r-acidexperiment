@@ -159,12 +159,10 @@ test_that("'mean' count mode", {
                 10.5, 12.0
             )
         ),
-        FUN = function(
-            object,
-            class,
-            rowExpectedData,
-            colExpectedData
-        ) {
+        FUN = function(object,
+                       class,
+                       rowExpectedData,
+                       colExpectedData) {
             ## Aggregate down the rows.
             aggObject <- aggregate(
                 x = object,

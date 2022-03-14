@@ -26,7 +26,7 @@ NULL
 
 
 ## Updated 2019-07-20.
-`decode,SE` <-  # nolint
+`decode,SE` <- # nolint
     function(x) {
         validObject(x)
         if (!is.null(rowData(x))) {

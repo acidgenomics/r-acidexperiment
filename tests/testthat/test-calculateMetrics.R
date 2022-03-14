@@ -22,9 +22,9 @@ test_that("SE", {
         expected = list(
             "log10FeaturesPerCount" = 0.619,
             "mitoRatio" = NA_integer_,
-            "nCount" = 19671,  # nolint
-            "nFeature" = 457,  # nolint
-            "nCoding" = 19617,  # nolint
+            "nCount" = 19671, # nolint
+            "nFeature" = 457, # nolint
+            "nCoding" = 19617, # nolint
             "nMito" = NA_integer_
         )
     )

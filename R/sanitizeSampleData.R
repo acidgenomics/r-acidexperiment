@@ -11,7 +11,7 @@
 #' @export
 #'
 #' @param object `DataFrame` (recommended) or `data.frame` (legacy).
-#'   Note that legacy `data.frame` support will be removed in a future update.
+#' Note that legacy `data.frame` support will be removed in a future update.
 #'
 #' @return `DataFrame`.
 #' Sanitized data frame containing only non-denylist columns and all

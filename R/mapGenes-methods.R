@@ -16,11 +16,12 @@
 #' @note Updated 2021-10-08.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @param strict `logical(1)`.
-#'   Require all genes to match. Recommended by default.
-#'   If set `FALSE`, instead will return a warning to the user, and subset the
-#'   genes vector to only include matches.
 #' @param ... Additional arguments.
+#'
+#' @param strict `logical(1)`.
+#' Require all genes to match. Recommended by default.
+#' If set `FALSE`, instead will return a warning to the user, and subset the
+#' genes vector to only include matches.
 #'
 #' @return `character`.
 #'
@@ -87,11 +88,9 @@ NULL
 
 
 ## Updated 2021-09-02.
-.mapGenes <- function(
-    object,
-    genes,
-    strict = TRUE
-) {
+.mapGenes <- function(object,
+                      genes,
+                      strict = TRUE) {
     validObject(object)
     assert(
         is(object, "DataFrame"),
@@ -171,12 +170,10 @@ NULL
 
 
 ## Updated 2021-06-09.
-`mapGenesToIDs,SE` <-  # nolint
-    function(
-        object,
-        genes,
-        strict = TRUE
-    ) {
+`mapGenesToIDs,SE` <- # nolint
+    function(object,
+             genes,
+             strict = TRUE) {
         validObject(object)
         col <- "geneId"
         map <- .makeGeneMap(object)
@@ -191,12 +188,10 @@ NULL
 
 
 ## Updated 2021-08-09.
-`mapGenesToRownames,SE` <-  # nolint
-    function(
-        object,
-        genes,
-        strict = TRUE
-    ) {
+`mapGenesToRownames,SE` <- # nolint
+    function(object,
+             genes,
+             strict = TRUE) {
         validObject(object)
         assert(
             hasRownames(object),
@@ -239,12 +234,10 @@ NULL
 
 
 ## Updated 2021-06-09.
-`mapGenesToSymbols,SE` <-  # nolint
-    function(
-        object,
-        genes,
-        strict = TRUE
-    ) {
+`mapGenesToSymbols,SE` <- # nolint
+    function(object,
+             genes,
+             strict = TRUE) {
         validObject(object)
         col <- "geneName"
         map <- .makeGeneMap(object)

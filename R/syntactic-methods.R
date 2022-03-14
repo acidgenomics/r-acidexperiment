@@ -5,21 +5,27 @@
 #'
 #' @inheritParams AcidRoxygen::params
 #' @inheritParams syntactic::camelCase
-#' @param assayNames `logical(1)`.
-#'   Sanitize assay names.
-#' @param colData `logical(1)`.
-#'   Sanitize column names of column data.
-#' @param mcols `logical(1)`.
-#'   Sanitize names of metadata columns.
-#' @param metadata `logical(1)`.
-#'   Sanitize metadata names.
-#' @param rowData `logical(1)`.
-#'   Sanitize the row data names.
-#' @param rownames `logical(1)`.
-#'   Apply sanitization on row names. This is not generally recommended by
-#'   default, since rownames commonly contain gene identifiers that should not
-#'   be modified.
 #' @param ... Additional arguments.
+#'
+#' @param assayNames `logical(1)`.
+#' Sanitize assay names.
+#'
+#' @param colData `logical(1)`.
+#' Sanitize column names of column data.
+#'
+#' @param mcols `logical(1)`.
+#' Sanitize names of metadata columns.
+#'
+#' @param metadata `logical(1)`.
+#' Sanitize metadata names.
+#'
+#' @param rowData `logical(1)`.
+#' Sanitize the row data names.
+#'
+#' @param rownames `logical(1)`.
+#' Apply sanitization on row names. This is not generally recommended by
+#' default, since rownames commonly contain gene identifiers that should not
+#' be modified.
 #'
 #' @examples
 #' data(syntactic, package = "AcidTest")
@@ -28,7 +34,7 @@ NULL
 
 
 
-`camelCase,atomic` <-  # nolint
+`camelCase,atomic` <- # nolint
     function(object, names = TRUE, strict = TRUE) {
         assert(
             isFlag(names),
@@ -42,7 +48,7 @@ NULL
 
 
 
-`camelCase,factor` <-  # nolint
+`camelCase,factor` <- # nolint
     function(object, names = TRUE, strict = TRUE) {
         assert(
             isFlag(names),
@@ -62,17 +68,15 @@ NULL
 
 
 
-`camelCase,list` <- `camelCase,atomic`  # nolint
+`camelCase,list` <- `camelCase,atomic` # nolint
 
 
 
-`camelCase,matrix` <-  # nolint
-    function(
-        object,
-        rownames = FALSE,
-        colnames = TRUE,
-        strict = TRUE
-    ) {
+`camelCase,matrix` <- # nolint
+    function(object,
+             rownames = FALSE,
+             colnames = TRUE,
+             strict = TRUE) {
         assert(
             hasDimnames(object),
             isFlag(rownames),
@@ -90,18 +94,16 @@ NULL
 
 
 
-`camelCase,data.frame` <- `camelCase,matrix`  # nolint
+`camelCase,data.frame` <- `camelCase,matrix` # nolint
 
 
 
-`camelCase,Vector` <-  # nolint
-    function(
-        object,
-        names = TRUE,
-        mcols = TRUE,
-        metadata = TRUE,
-        strict = TRUE
-    ) {
+`camelCase,Vector` <- # nolint
+    function(object,
+             names = TRUE,
+             mcols = TRUE,
+             metadata = TRUE,
+             strict = TRUE) {
         assert(
             isFlag(names),
             isFlag(mcols),
@@ -125,15 +127,13 @@ NULL
 
 
 
-`camelCase,DataFrame` <-  # nolint
-    function(
-        object,
-        rownames = FALSE,
-        colnames = TRUE,
-        mcols = TRUE,
-        metadata = TRUE,
-        strict = TRUE
-    ) {
+`camelCase,DataFrame` <- # nolint
+    function(object,
+             rownames = FALSE,
+             colnames = TRUE,
+             mcols = TRUE,
+             metadata = TRUE,
+             strict = TRUE) {
         assert(
             hasDimnames(object),
             isFlag(rownames),
@@ -157,31 +157,28 @@ NULL
                 camelCase(names(metadata(object)), strict = strict)
         }
         object
-
     }
 
 
 
-`camelCase,Ranges` <- `camelCase,Vector`  # nolint
+`camelCase,Ranges` <- `camelCase,Vector` # nolint
 formals(`camelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`camelCase,Matrix` <- `camelCase,matrix`  # nolint
+`camelCase,Matrix` <- `camelCase,matrix` # nolint
 
 
 
-`camelCase,SE` <-  # nolint
-    function(
-        object,
-        rownames = FALSE,
-        colnames = TRUE,
-        assayNames = TRUE,
-        rowData = TRUE,
-        colData = TRUE,
-        metadata = TRUE,
-        strict = TRUE
-    ) {
+`camelCase,SE` <- # nolint
+    function(object,
+             rownames = FALSE,
+             colnames = TRUE,
+             assayNames = TRUE,
+             rowData = TRUE,
+             colData = TRUE,
+             metadata = TRUE,
+             strict = TRUE) {
         assert(
             isFlag(rownames),
             isFlag(colnames),
@@ -219,7 +216,7 @@ formals(`camelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`dottedCase,atomic` <-  # nolint
+`dottedCase,atomic` <- # nolint
     function(object, names = TRUE) {
         assert(isFlag(names))
         if (isTRUE(names) && hasNames(object)) {
@@ -230,7 +227,7 @@ formals(`camelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`dottedCase,factor` <-  # nolint
+`dottedCase,factor` <- # nolint
     function(object, names = TRUE) {
         assert(isFlag(names))
         if (isTRUE(names) && hasNames(object)) {
@@ -247,16 +244,14 @@ formals(`camelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`dottedCase,list` <- `dottedCase,atomic`  # nolint
+`dottedCase,list` <- `dottedCase,atomic` # nolint
 
 
 
-`dottedCase,matrix` <-  # nolint
-    function(
-        object,
-        rownames = FALSE,
-        colnames = TRUE
-    ) {
+`dottedCase,matrix` <- # nolint
+    function(object,
+             rownames = FALSE,
+             colnames = TRUE) {
         assert(
             hasDimnames(object),
             isFlag(rownames),
@@ -273,17 +268,15 @@ formals(`camelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`dottedCase,data.frame` <- `dottedCase,matrix`  # nolint
+`dottedCase,data.frame` <- `dottedCase,matrix` # nolint
 
 
 
-`dottedCase,Vector` <-  # nolint
-    function(
-        object,
-        names = TRUE,
-        mcols = TRUE,
-        metadata = TRUE
-    ) {
+`dottedCase,Vector` <- # nolint
+    function(object,
+             names = TRUE,
+             mcols = TRUE,
+             metadata = TRUE) {
         assert(
             isFlag(names),
             isFlag(mcols),
@@ -303,14 +296,12 @@ formals(`camelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`dottedCase,DataFrame` <-  # nolint
-    function(
-        object,
-        rownames = FALSE,
-        colnames = TRUE,
-        mcols = TRUE,
-        metadata = TRUE
-    ) {
+`dottedCase,DataFrame` <- # nolint
+    function(object,
+             rownames = FALSE,
+             colnames = TRUE,
+             mcols = TRUE,
+             metadata = TRUE) {
         assert(
             hasDimnames(object),
             isFlag(rownames),
@@ -331,30 +322,27 @@ formals(`camelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
             names(metadata(object)) <- dottedCase(names(metadata(object)))
         }
         object
-
     }
 
 
 
-`dottedCase,Ranges` <- `dottedCase,Vector`  # nolint
+`dottedCase,Ranges` <- `dottedCase,Vector` # nolint
 formals(`dottedCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`dottedCase,Matrix` <- `dottedCase,matrix`  # nolint
+`dottedCase,Matrix` <- `dottedCase,matrix` # nolint
 
 
 
-`dottedCase,SE` <-  # nolint
-    function(
-        object,
-        rownames = FALSE,
-        colnames = TRUE,
-        assayNames = TRUE,
-        rowData = TRUE,
-        colData = TRUE,
-        metadata = TRUE
-    ) {
+`dottedCase,SE` <- # nolint
+    function(object,
+             rownames = FALSE,
+             colnames = TRUE,
+             assayNames = TRUE,
+             rowData = TRUE,
+             colData = TRUE,
+             metadata = TRUE) {
         assert(
             isFlag(rownames),
             isFlag(colnames),
@@ -387,7 +375,7 @@ formals(`dottedCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`snakeCase,atomic` <-  # nolint
+`snakeCase,atomic` <- # nolint
     function(object, names = TRUE) {
         assert(isFlag(names))
         if (isTRUE(names) && hasNames(object)) {
@@ -398,7 +386,7 @@ formals(`dottedCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`snakeCase,factor` <-  # nolint
+`snakeCase,factor` <- # nolint
     function(object, names = TRUE) {
         assert(isFlag(names))
         if (isTRUE(names) && hasNames(object)) {
@@ -415,16 +403,14 @@ formals(`dottedCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`snakeCase,list` <- `snakeCase,atomic`  # nolint
+`snakeCase,list` <- `snakeCase,atomic` # nolint
 
 
 
-`snakeCase,matrix` <-  # nolint
-    function(
-        object,
-        rownames = FALSE,
-        colnames = TRUE
-    ) {
+`snakeCase,matrix` <- # nolint
+    function(object,
+             rownames = FALSE,
+             colnames = TRUE) {
         assert(
             hasDimnames(object),
             isFlag(rownames),
@@ -441,17 +427,15 @@ formals(`dottedCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`snakeCase,data.frame` <- `snakeCase,matrix`  # nolint
+`snakeCase,data.frame` <- `snakeCase,matrix` # nolint
 
 
 
-`snakeCase,Vector` <-  # nolint
-    function(
-        object,
-        names = TRUE,
-        mcols = TRUE,
-        metadata = TRUE
-    ) {
+`snakeCase,Vector` <- # nolint
+    function(object,
+             names = TRUE,
+             mcols = TRUE,
+             metadata = TRUE) {
         assert(
             isFlag(names),
             isFlag(mcols),
@@ -471,14 +455,12 @@ formals(`dottedCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`snakeCase,DataFrame` <-  # nolint
-    function(
-        object,
-        rownames = FALSE,
-        colnames = TRUE,
-        mcols = TRUE,
-        metadata = TRUE
-    ) {
+`snakeCase,DataFrame` <- # nolint
+    function(object,
+             rownames = FALSE,
+             colnames = TRUE,
+             mcols = TRUE,
+             metadata = TRUE) {
         assert(
             hasDimnames(object),
             isFlag(rownames),
@@ -499,30 +481,27 @@ formals(`dottedCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
             names(metadata(object)) <- snakeCase(names(metadata(object)))
         }
         object
-
     }
 
 
 
-`snakeCase,Ranges` <- `snakeCase,Vector`  # nolint
+`snakeCase,Ranges` <- `snakeCase,Vector` # nolint
 formals(`snakeCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`snakeCase,Matrix` <- `snakeCase,matrix`  # nolint
+`snakeCase,Matrix` <- `snakeCase,matrix` # nolint
 
 
 
-`snakeCase,SE` <-  # nolint
-    function(
-        object,
-        rownames = FALSE,
-        colnames = TRUE,
-        assayNames = TRUE,
-        rowData = TRUE,
-        colData = TRUE,
-        metadata = TRUE
-    ) {
+`snakeCase,SE` <- # nolint
+    function(object,
+             rownames = FALSE,
+             colnames = TRUE,
+             assayNames = TRUE,
+             rowData = TRUE,
+             colData = TRUE,
+             metadata = TRUE) {
         assert(
             isFlag(rownames),
             isFlag(colnames),
@@ -555,7 +534,7 @@ formals(`snakeCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`upperCamelCase,atomic` <-  # nolint
+`upperCamelCase,atomic` <- # nolint
     function(object, names = TRUE, strict = TRUE) {
         assert(
             isFlag(names),
@@ -569,7 +548,7 @@ formals(`snakeCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`upperCamelCase,factor` <-  # nolint
+`upperCamelCase,factor` <- # nolint
     function(object, names = TRUE, strict = TRUE) {
         assert(
             isFlag(names),
@@ -589,17 +568,15 @@ formals(`snakeCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`upperCamelCase,list` <- `upperCamelCase,atomic`  # nolint
+`upperCamelCase,list` <- `upperCamelCase,atomic` # nolint
 
 
 
-`upperCamelCase,matrix` <-  # nolint
-    function(
-        object,
-        rownames = FALSE,
-        colnames = TRUE,
-        strict = TRUE
-    ) {
+`upperCamelCase,matrix` <- # nolint
+    function(object,
+             rownames = FALSE,
+             colnames = TRUE,
+             strict = TRUE) {
         assert(
             hasDimnames(object),
             isFlag(rownames),
@@ -619,18 +596,16 @@ formals(`snakeCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`upperCamelCase,data.frame` <- `upperCamelCase,matrix`  # nolint
+`upperCamelCase,data.frame` <- `upperCamelCase,matrix` # nolint
 
 
 
-`upperCamelCase,Vector` <-  # nolint
-    function(
-        object,
-        names = TRUE,
-        mcols = TRUE,
-        metadata = TRUE,
-        strict = TRUE
-    ) {
+`upperCamelCase,Vector` <- # nolint
+    function(object,
+             names = TRUE,
+             mcols = TRUE,
+             metadata = TRUE,
+             strict = TRUE) {
         assert(
             isFlag(names),
             isFlag(mcols),
@@ -654,15 +629,13 @@ formals(`snakeCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`upperCamelCase,DataFrame` <-  # nolint
-    function(
-        object,
-        rownames = FALSE,
-        colnames = TRUE,
-        mcols = TRUE,
-        metadata = TRUE,
-        strict = TRUE
-    ) {
+`upperCamelCase,DataFrame` <- # nolint
+    function(object,
+             rownames = FALSE,
+             colnames = TRUE,
+             mcols = TRUE,
+             metadata = TRUE,
+             strict = TRUE) {
         assert(
             hasDimnames(object),
             isFlag(rownames),
@@ -688,31 +661,28 @@ formals(`snakeCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
                 upperCamelCase(names(metadata(object)), strict = strict)
         }
         object
-
     }
 
 
 
-`upperCamelCase,Ranges` <- `upperCamelCase,Vector`  # nolint
+`upperCamelCase,Ranges` <- `upperCamelCase,Vector` # nolint
 formals(`upperCamelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`upperCamelCase,Matrix` <- `upperCamelCase,matrix`  # nolint
+`upperCamelCase,Matrix` <- `upperCamelCase,matrix` # nolint
 
 
 
-`upperCamelCase,SE` <-  # nolint
-    function(
-        object,
-        rownames = FALSE,
-        colnames = TRUE,
-        assayNames = TRUE,
-        rowData = TRUE,
-        colData = TRUE,
-        metadata = TRUE,
-        strict = TRUE
-    ) {
+`upperCamelCase,SE` <- # nolint
+    function(object,
+             rownames = FALSE,
+             colnames = TRUE,
+             assayNames = TRUE,
+             rowData = TRUE,
+             colData = TRUE,
+             metadata = TRUE,
+             strict = TRUE) {
         assert(
             isFlag(rownames),
             isFlag(colnames),

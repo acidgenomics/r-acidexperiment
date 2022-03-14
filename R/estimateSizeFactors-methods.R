@@ -17,27 +17,36 @@
 #' @note Updated 2021-10-19.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @param type `character(1)`.
-#'   Method for estimation:
-#'   ```
-#'   libSize <- colSums(counts(object))
-#'   ```
-#'   - `mean-ratio`:
-#'     ```
-#'     libSize / mean(libSize)
-#'     ```
-#'   - `geometric-mean-ratio`:
-#'     ```
-#'     libSize / geometricMean(libSize)
-#'     ```
-#'   - `mean-geometric-mean-log-total`:
-#'     ```
-#'     log(libSize) / geometricMean(log(libSize))
-#'     ```
-#' @param center `numeric(1)`.
-#'   If non-zero, scales all size factors so that the average size factor across
-#'   cells is equal to the value defined. Set to `0` to disable centering.
 #' @param ... Additional arguments.
+#'
+#' @param type `character(1)`.
+#' Type of method for estimation.
+#'
+#' ```
+#' libSize <- colSums(counts(object))
+#' ```
+#'
+#' `"mean-ratio"`:
+#'
+#' ```
+#' libSize / mean(libSize)
+#' ```
+#'
+#' `"geometric-mean-ratio"`:
+#'
+#' ```
+#' libSize / geometricMean(libSize)
+#' ```
+#'
+#' `"mean-geometric-mean-log-total"`:
+#'
+#' ```
+#' log(libSize) / geometricMean(log(libSize))
+#' ```
+#'
+#' @param center `numeric(1)`.
+#' If non-zero, scales all size factors so that the average size factor across
+#' cells is equal to the value defined. Set to `0` to disable centering.
 #'
 #' @seealso
 #' DESeq2:
@@ -53,7 +62,7 @@
 #' - `monocle3:::estimate_sf_sparse()`.
 #'
 #' @return Modified object.
-#'   Use `sizeFactors()` to access the computed size factor numeric.
+#' Use `sizeFactors()` to access the computed size factor numeric.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")
@@ -67,15 +76,13 @@ NULL
 
 
 ## Updated 2021-09-02.
-.librarySizeFactors <-  # nolint
-    function(
-        counts,
-        type = c(
-            "mean-ratio",
-            "geometric-mean-ratio",
-            "log-geometric-mean-ratio"
-        )
-    ) {
+.librarySizeFactors <- # nolint
+    function(counts,
+             type = c(
+                 "mean-ratio",
+                 "geometric-mean-ratio",
+                 "log-geometric-mean-ratio"
+             )) {
         assert(
             isAny(counts, c("matrix", "Matrix")),
             !anyNA(counts)
@@ -132,13 +139,11 @@ NULL
 
 
 ## Updated 2021-09-11.
-`estimateSizeFactors,SE` <-  # nolint
-    function(
-        object,
-        assay = 1L,
-        type,
-        center
-    ) {
+`estimateSizeFactors,SE` <- # nolint
+    function(object,
+             assay = 1L,
+             type,
+             center) {
         validObject(object)
         assert(
             isScalar(assay),

@@ -18,7 +18,7 @@ NULL
 
 
 ## Updated 2021-10-12.
-`selectSamples,SE` <-  # nolint
+`selectSamples,SE` <- # nolint
     function(object, ...) {
         validObject(object)
         args <- list(...)

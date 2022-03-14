@@ -26,7 +26,7 @@ test_that("trans", {
     mapply(
         trans = eval(formals(`melt,SE`)[["trans"]]),
         expected = list(
-            "identity" = c(58, 14, 49),  # nolint
+            "identity" = c(58, 14, 49), # nolint
             "log2" = c(5.88, 3.91, 5.64),
             "log10" = c(1.77, 1.18, 1.70)
         ),

@@ -21,7 +21,7 @@ NULL
 
 
 ## Updated 2021-10-13.
-`uniteInterestingGroups,DataFrame` <-  # nolint
+`uniteInterestingGroups,DataFrame` <- # nolint
     function(object, interestingGroups) {
         assert(
             isCharacter(interestingGroups),

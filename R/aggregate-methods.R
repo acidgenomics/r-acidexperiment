@@ -7,25 +7,29 @@
 #' @section Methods (by class):
 #'
 #' - `matrix`, `Matrix`:
-#'   Aggregate using a grouping `factor`.
+#' Aggregate using a grouping `factor`.
 #' - `SummarizedExperiment`:
-#'   Aggregate data slotted in `assays()` using an automatically generated
-#'   grouping `factor`, which is obtained from a user-defined column
-#'   (`col` argument) in either the `rowData()` or `colData()` of the object.
-#'   Slot an `aggregate` column into `rowData()` for `aggregateRows()`, or into
-#'   `colData()` for `aggregateCols()`. This method will define the `groupings`
-#'   automatically, and perform the aggregation.
+#' Aggregate data slotted in `assays()` using an automatically generated
+#' grouping `factor`, which is obtained from a user-defined column
+#' (`col` argument) in either the `rowData()` or `colData()` of the object.
+#' Slot an `aggregate` column into `rowData()` for `aggregateRows()`, or into
+#' `colData()` for `aggregateCols()`. This method will define the `groupings`
+#' automatically, and perform the aggregation.
 #'
 #' @inheritParams AcidRoxygen::params
+#'
 #' @param by `factor`.
-#'   Aggregation groupings. The new aggregate names are defined as the `factor`
-#'   `levels`, and the original, unaggregated names are defined as the `names`.
+#' Aggregation groupings. The new aggregate names are defined as the `factor`
+#' `levels`, and the original, unaggregated names are defined as the `names`.
+#'
 #' @param col `character(1)`.
-#'   Name of column in either `rowData()` or `colData()` that defines the
-#'   desired aggregation groupings.
+#' Name of column in either `rowData()` or `colData()` that defines the
+#' desired aggregation groupings.
+#'
 #' @param fun `character(1)`.
-#'   Name of the aggregation function to apply.
-#'   Uses `match.arg()` internally.
+#' Name of the aggregation function to apply.
+#' Uses `match.arg()` internally.
+#'
 #' @param ... Additional arguments.
 #'
 #' @seealso
@@ -106,12 +110,11 @@ NULL
 ## aggregate ===================================================================
 ## Using the `stats::aggregate.data.frame()` S3 method internally here.
 ## Updated 2021-09-10.
-`aggregate,matrix` <-  # nolint
-    function(
-        x,
-        by,
-        fun = c("sum", "mean", "median", "geometricMean", "n"),
-        MARGIN = 1L  # nolint
+`aggregate,matrix` <- # nolint
+    function(x,
+             by,
+             fun = c("sum", "mean", "median", "geometricMean", "n"),
+             MARGIN = 1L # nolint
     ) {
         assert(
             hasDimnames(x),
@@ -148,12 +151,11 @@ NULL
 ## Matrix multiplication using sparse model (design matrix).
 ## Note that this works row-wise, like stats data.frame method.
 ## Updated 2021-09-10.
-`aggregate,Matrix` <-  # nolint
-    function(
-        x,
-        by,
-        fun = c("sum", "mean", "n"),
-        MARGIN = 1L  # nolint
+`aggregate,Matrix` <- # nolint
+    function(x,
+             by,
+             fun = c("sum", "mean", "n"),
+             MARGIN = 1L # nolint
     ) {
         requireNamespaces("Matrix")
         assert(
@@ -188,12 +190,11 @@ NULL
 
 
 ## Updated 2021-09-13.
-`aggregate,SE` <-  # nolint
-    function(
-        x,
-        col = "aggregate",
-        fun = "sum",
-        MARGIN = 1L  # nolint
+`aggregate,SE` <- # nolint
+    function(x,
+             col = "aggregate",
+             fun = "sum",
+             MARGIN = 1L # nolint
     ) {
         validObject(x)
         assert(
@@ -248,7 +249,7 @@ NULL
             },
             "2" = {
                 if (is(x, "RangedSummarizedExperiment")) {
-                    args[["rowRanges"]] <- rowRanges(x)  # nocov
+                    args[["rowRanges"]] <- rowRanges(x) # nocov
                 } else {
                     args[["rowData"]] <- rowData(x)
                 }
@@ -274,41 +275,41 @@ NULL
 
 ## Legacy methods ==============================================================
 ## Updated 2021-09-10.
-`aggregateCols,matrix` <-  # nolint
+`aggregateCols,matrix` <- # nolint
     function(x, ...) {
-        aggregate(x = x, MARGIN = 2L, ...)  # nocov
+        aggregate(x = x, MARGIN = 2L, ...) # nocov
     }
 
 
 
 ## Updated 2021-09-10.
-`aggregateCols,Matrix` <-  # nolint
+`aggregateCols,Matrix` <- # nolint
     `aggregateCols,matrix`
 
 
 
 ## Updated 2021-09-10.
-`aggregateCols,SE` <-  # nolint
+`aggregateCols,SE` <- # nolint
     `aggregateCols,matrix`
 
 
 
 ## Updated 2021-09-10.
-`aggregateRows,matrix` <-  # nolint
+`aggregateRows,matrix` <- # nolint
     function(x, ...) {
-        aggregate(x = x, MARGIN = 1L, ...)  # nocov
+        aggregate(x = x, MARGIN = 1L, ...) # nocov
     }
 
 
 
 ## Updated 2021-09-10.
-`aggregateRows,Matrix` <-  # nolint
+`aggregateRows,Matrix` <- # nolint
     `aggregateRows,matrix`
 
 
 
 ## Updated 2021-09-10.
-`aggregateRows,SE` <-  # nolint
+`aggregateRows,SE` <- # nolint
     `aggregateRows,matrix`
 
 

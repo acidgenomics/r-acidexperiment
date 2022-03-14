@@ -3,11 +3,12 @@
 #' @note Updated 2021-10-21.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @param strict `logical(1)`.
-#'   Require that all identifiers contain gene name (symbol) metadata stored
-#'   in the object. Disabled by default, to support objects containing
-#'   custom gene identifiers, such as FASTA spike-ins.
 #' @param ... Additional arguments.
+#'
+#' @param strict `logical(1)`.
+#' Require that all identifiers contain gene name (symbol) metadata stored
+#' in the object. Disabled by default, to support objects containing
+#' custom gene identifiers, such as FASTA spike-ins.
 #'
 #' @return Modified object of same class.
 #'
@@ -65,7 +66,7 @@ NULL
 
 
 ## Updated 2021-10-21.
-`convertGenesToSymbols,SE` <-  # nolint
+`convertGenesToSymbols,SE` <- # nolint
     function(object, strict = FALSE) {
         .interconvertGenesAndSymbols(
             object = object,
@@ -78,7 +79,7 @@ NULL
 
 
 ## Updated 2021-10-21.
-`convertSymbolsToGenes,SE` <-  # nolint
+`convertSymbolsToGenes,SE` <- # nolint
     function(object, strict = FALSE) {
         .interconvertGenesAndSymbols(
             object = object,

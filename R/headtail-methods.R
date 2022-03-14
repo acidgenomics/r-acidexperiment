@@ -3,9 +3,10 @@
 #' @note Updated 2020-10-07.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @param n `integer(1)`.
-#'   Positive integer denoting the number of first and last items to include.
 #' @param ... Additional arguments.
+#'
+#' @param n `integer(1)`.
+#' Positive integer denoting the number of first and last items to include.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")
@@ -18,7 +19,7 @@ NULL
 
 
 ## Updated 2021-10-13.
-`headtail,DataFrame` <-  # nolint
+`headtail,DataFrame` <- # nolint
     methodFunction(
         f = "headtail",
         signature = "data.frame",
@@ -28,7 +29,7 @@ NULL
 
 
 ## Updated 2021-10-13.
-`headtail,GenomicRanges` <-  # nolint
+`headtail,GenomicRanges` <- # nolint
     function() {
         headtail(x = as(x, "data.frame"), n = n)
     }
@@ -38,7 +39,7 @@ formals(`headtail,GenomicRanges`) <- formals(`headtail,DataFrame`)
 
 
 ## Updated 2020-10-07.
-`headtail,Matrix` <-  # nolint
+`headtail,Matrix` <- # nolint
     methodFunction(
         f = "headtail",
         signature = "matrix",
@@ -48,7 +49,7 @@ formals(`headtail,GenomicRanges`) <- formals(`headtail,DataFrame`)
 
 
 ## Updated 2020-05-11.
-`headtail,SE` <-  # nolint
+`headtail,SE` <- # nolint
     function() {
         headtail(x = assay(x), n = n)
     }

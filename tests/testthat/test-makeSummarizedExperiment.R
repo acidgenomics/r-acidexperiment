@@ -254,7 +254,7 @@ test_that("GenomicRangesList support", {
     expect_error(
         object = makeSummarizedExperiment(
             assays = assays,
-            rowRanges = rowRanges[1L]  # nolint
+            rowRanges = rowRanges[1L] # nolint
         ),
         regexp = "mismatched"
     )

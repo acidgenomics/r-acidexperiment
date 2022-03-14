@@ -3,7 +3,7 @@
 #' Count matrix.
 #'
 #' @note For a `SummarizedExperiment` object, `"counts"` must be explicitly
-#'   defined in `assayNames`.
+#' defined in `assayNames`.
 #'
 #' @name counts
 #' @aliases counts<-
@@ -27,7 +27,7 @@ NULL
 
 
 ## Updated 2019-08-06.
-`counts,SE` <-  # nolint
+`counts,SE` <- # nolint
     function(object) {
         validObject(object)
         assay(object, i = "counts")
@@ -36,7 +36,7 @@ NULL
 
 
 ## Updated 2019-08-06.
-`counts<-,SE,matrix` <-  # nolint
+`counts<-,SE,matrix` <- # nolint
     function(object, value) {
         assert(
             all(!is.na(value)),
@@ -51,7 +51,7 @@ NULL
 
 
 ## Updated 2019-08-06.
-`counts<-,SE,Matrix` <-  # nolint
+`counts<-,SE,Matrix` <- # nolint
     `counts<-,SE,matrix`
 
 

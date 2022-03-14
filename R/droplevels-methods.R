@@ -19,7 +19,7 @@ NULL
 
 
 ## Updated 2021-02-03.
-`droplevels,SE` <-  # nolint
+`droplevels,SE` <- # nolint
     function(x) {
         if (hasCols(rowData(x))) {
             rowData(x) <- droplevels(rowData(x))

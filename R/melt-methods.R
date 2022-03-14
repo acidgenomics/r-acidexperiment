@@ -20,7 +20,7 @@ NULL
 
 
 ## Updated 2020-10-07.
-`melt,matrix` <-  # nolint
+`melt,matrix` <- # nolint
     methodFunction(
         f = "melt",
         signature = "matrix",
@@ -30,20 +30,18 @@ NULL
 
 
 ## Updated 2021-02-22.
-`melt,Matrix` <-  # nolint
+`melt,Matrix` <- # nolint
     `melt,matrix`
 
 
 
 ## Updated 2019-08-24.
-`melt,SE` <-  # nolint
-    function(
-        object,
-        assay = 1L,
-        min,
-        minMethod,
-        trans
-    ) {
+`melt,SE` <- # nolint
+    function(object,
+             assay = 1L,
+             min,
+             minMethod,
+             trans) {
         validObject(object)
         assert(isScalar(assay))
         minMethod <- match.arg(minMethod)

@@ -2,22 +2,23 @@
 #' @inherit AcidGenerics::convertTranscriptsToGenes
 #'
 #' @note For objects containing a count matrix, the object rows will be
-#'   collapsed to gene level using `aggregate()`. This applies to our
-#'   `SummarizedExperiment` method.
+#' collapsed to gene level using `aggregate()`. This applies to our
+#' `SummarizedExperiment` method.
 #' @note Updated 2021-09-13.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @param aggregate `logical(1)`.
-#'   For objects supporting `dim()`, aggregate counts to gene level and
-#'   collapse the matrix.
 #' @param ... Additional arguments.
+#'
+#' @param aggregate `logical(1)`.
+#' For objects supporting `dim()`, aggregate counts to gene level and
+#' collapse the matrix.
 #'
 #' @return
 #' - `character`: `factor`.
-#'     Genes in the values, transcripts in the names.
+#' Genes in the values, transcripts in the names.
 #' - `matrix`, `Matrix`, `SummarizedExperiment`:
-#'     Object containing counts collapsed to gene level by default
-#'     (see `aggregate` argument).
+#' Object containing counts collapsed to gene level by default
+#' (see `aggregate` argument).
 #'
 #' @seealso
 #' - `aggregate()`.
@@ -59,7 +60,7 @@ NULL
 
 
 ## Updated 2021-09-01.
-`convertTranscriptsToGenes,character` <-  # nolint
+`convertTranscriptsToGenes,character` <- # nolint
     function(object, tx2gene) {
         assert(
             isCharacter(object),
@@ -80,8 +81,7 @@ NULL
             ))
         }
         tx2gene <- tx2gene[
-            match(x = object, table = tx2gene[["txId"]]),
-            ,
+            match(x = object, table = tx2gene[["txId"]]), ,
             drop = FALSE
         ]
         out <- as.factor(tx2gene[["geneId"]])
@@ -93,7 +93,7 @@ NULL
 
 ## Consider aggregating the matrix to gene level instead.
 ## Updated 2020-01-30.
-`convertTranscriptsToGenes,matrix` <-  # nolint
+`convertTranscriptsToGenes,matrix` <- # nolint
     function(object, tx2gene, aggregate = TRUE) {
         assert(isFlag(aggregate))
         t2g <- do.call(
@@ -119,13 +119,13 @@ NULL
 
 
 ## Updated 2020-01-30.
-`convertTranscriptsToGenes,Matrix` <-  # nolint
+`convertTranscriptsToGenes,Matrix` <- # nolint
     `convertTranscriptsToGenes,matrix`
 
 
 
 ## Updated 2021-09-13.
-`convertTranscriptsToGenes,SE` <-  # nolint
+`convertTranscriptsToGenes,SE` <- # nolint
     function(object) {
         se <- SummarizedExperiment(
             assays = lapply(

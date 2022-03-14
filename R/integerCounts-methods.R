@@ -3,7 +3,7 @@
 #' @note Updated 2021-09-11.
 #'
 #' @note For a `SummarizedExperiment` object, `"counts"` must be explicitly
-#'   defined in `assayNames`.
+#' defined in `assayNames`.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -26,7 +26,7 @@ NULL
 
 ## This is inspired by approach used internally by DESeq2.
 ## Updated 2019-12-04.
-`integerCounts,matrix` <-  # nolint
+`integerCounts,matrix` <- # nolint
     function(object) {
         object <- round(x = object, digits = 0L)
         mode(object) <- "integer"
@@ -36,7 +36,7 @@ NULL
 
 
 ## Updated 2019-12-04.
-`integerCounts,Matrix` <-  # nolint
+`integerCounts,Matrix` <- # nolint
     function(object) {
         object <- round(x = object, digits = 0L)
         object
@@ -45,11 +45,9 @@ NULL
 
 
 ## Updated 2021-09-13.
-`integerCounts,SE` <-  # nolint
-    function(
-        object,
-        assay = "counts"
-    ) {
+`integerCounts,SE` <- # nolint
+    function(object,
+             assay = "counts") {
         validObject(object)
         assert(isScalar(assay))
         assay <- assay(object, i = assay)

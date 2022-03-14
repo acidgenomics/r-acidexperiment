@@ -4,9 +4,10 @@
 #' @export
 #'
 #' @param path `character`.
-#'   Sequencing file paths, e.g. FASTQs.
+#' Sequencing file paths, e.g. FASTQs.
+#'
 #' @param pattern `character(1)`.
-#'   Lane grep pattern. Defaults to [lanePattern] global variable.
+#' Lane grep pattern. Defaults to [lanePattern] global variable.
 #'
 #' @return `integer`.
 #' Lane numbers.
