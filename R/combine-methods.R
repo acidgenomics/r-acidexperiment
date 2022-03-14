@@ -9,8 +9,8 @@
 #'
 #' - Rows (genes) across objects must be identical.
 #' - [rowRanges][SummarizedExperiment::rowRanges] and/or
-#'   [rowData][SummarizedExperiment::rowData]
-#'   [metadata][S4Vectors::metadata] must be identical.
+#' [rowData][SummarizedExperiment::rowData]
+#' [metadata][S4Vectors::metadata] must be identical.
 #' - [colData][SummarizedExperiment::colData] must contain the same columns.
 #' - Specific metadata must be identical (see `metadata` argument).
 #'
@@ -39,12 +39,12 @@
 #' c <- combine(x, y)
 #' sampleData(c)
 #' print(c)
-#' NULL
+NULL
 
 
 
-## Updated 2020-01-20.
-`combine,SE` <-  # nolint
+#' # Updated 2020-01-20.
+`combine,SE` <- # nolint
     function(x, y) {
         validObject(x)
         validObject(y)
@@ -61,9 +61,9 @@
         ## Coerce the objects to SummarizedExperiment.
         ## Keep as RSE if the data is ranged.
         if (is(x, "RangedSummarizedExperiment")) {
-            Class <- "RangedSummarizedExperiment"  # nolint
+            Class <- "RangedSummarizedExperiment" # nolint
         } else {
-            Class <- "SummarizedExperiment"  # nolint
+            Class <- "SummarizedExperiment" # nolint
         }
         alert(sprintf("Combining objects into {.var %s}.", Class))
         x <- as(object = x, Class = Class)

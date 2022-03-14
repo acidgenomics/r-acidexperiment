@@ -7,7 +7,7 @@
 #' @param ... Additional arguments.
 #'
 #' @return `numeric`.
-#'   Names correspond to object column names.
+#' Names correspond to object column names.
 #'
 #' @seealso
 #' - `estimateSizeFactors()`.
@@ -34,7 +34,7 @@ NULL
 
 
 ## Updated 2019-08-06.
-`sizeFactors,SE` <-  # nolint
+`sizeFactors,SE` <- # nolint
     function(object) {
         if (!"sizeFactor" %in% names(colData(object))) {
             return(NULL)
@@ -47,7 +47,7 @@ NULL
 
 
 ## Updated 2019-08-06.
-`sizeFactors<-,SE,ANY` <-  # nolint
+`sizeFactors<-,SE,ANY` <- # nolint
     function(object, value) {
         if (!is.null(value)) {
             assert(

@@ -17,7 +17,7 @@ NULL
 
 
 ## Updated 2021-01-29.
-`Tx2Gene,SE` <-  # nolint
+`Tx2Gene,SE` <- # nolint
     function(object) {
         object <- rowData(object, use.names = TRUE)
         Tx2Gene(object)

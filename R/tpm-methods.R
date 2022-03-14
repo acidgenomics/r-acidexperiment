@@ -30,7 +30,7 @@ NULL
 
 
 ## Updated 2019-08-06.
-`tpm,SE` <-  # nolint
+`tpm,SE` <- # nolint
     function(object) {
         assay(object, i = "tpm")
     }

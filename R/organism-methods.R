@@ -22,7 +22,7 @@ NULL
 
 
 ## Updated 2021-02-03.
-`organism,SE` <-  # nolint
+`organism,SE` <- # nolint
     function(object) {
         ## Attempt to use metadata stash, if defined.
         fun <- methodFunction(

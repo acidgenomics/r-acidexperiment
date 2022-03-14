@@ -16,7 +16,7 @@ NULL
 
 
 ## Updated 2021-08-10.
-`Ensembl2Entrez,RSE` <-  # nolint
+`Ensembl2Entrez,RSE` <- # nolint
     function(object, ...) {
         Ensembl2Entrez(rowRanges(object), ...)
     }

@@ -25,7 +25,7 @@ matchInterestingGroups <- function(object, interestingGroups = NULL) {
     ## `interestingGroups` parameter through.
     if (
         missing(interestingGroups) ||
-        !is.character(interestingGroups)
+            !is.character(interestingGroups)
     ) {
         interestingGroups <- NULL
     }

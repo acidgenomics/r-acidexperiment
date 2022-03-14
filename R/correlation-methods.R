@@ -5,15 +5,18 @@
 #' @note Updated 2021-06-04.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @param i `integer(1)` or `character(1)`.
-#'   For `SummarizedExperiment`, primary assay.
-#' @param j `integer(1)`, `character(1)`, or `NULL`.
-#'   For `SummarizedExperiment`, optional secondary assay.
-#'   If `NULL`, calculates correlation matrix only on the primary assay.
-#' @param method `character(1)`.
-#'   Which correlation coefficient (or covariance) is to be computed.
-#'   See `stats::cor` documentation for details.
 #' @param ... Additional arguments.
+#'
+#' @param i `integer(1)` or `character(1)`.
+#' For `SummarizedExperiment`, primary assay.
+#'
+#' @param j `integer(1)`, `character(1)`, or `NULL`.
+#' For `SummarizedExperiment`, optional secondary assay.
+#' If `NULL`, calculates correlation matrix only on the primary assay.
+#'
+#' @param method `character(1)`.
+#' Which correlation coefficient (or covariance) is to be computed.
+#' See `stats::cor` documentation for details.
 #'
 #' @examples
 #' data(correlation, package = "AcidTest")
@@ -52,12 +55,12 @@ NULL
 
 
 
-method <- formals(stats::cor)[["method"]]
+.method <- formals(stats::cor)[["method"]]
 
 
 
 ## Updated 2021-02-03.
-`correlation,numeric,numeric` <-  # nolint
+`correlation,numeric,numeric` <- # nolint
     function(x, y, method) {
         assert(
             hasLength(x),
@@ -79,12 +82,12 @@ method <- formals(stats::cor)[["method"]]
         cor(x = x, y = y, method = method)
     }
 
-formals(`correlation,numeric,numeric`)[["method"]] <- method
+formals(`correlation,numeric,numeric`)[["method"]] <- .method
 
 
 
 ## Updated 2021-02-03.
-`correlation,matrix,missing` <-  # nolint
+`correlation,matrix,missing` <- # nolint
     function(x, y = NULL, method) {
         assert(!anyNA(x))
         method <- match.arg(method)
@@ -94,38 +97,36 @@ formals(`correlation,numeric,numeric`)[["method"]] <- method
         cor(x = x, y = NULL, method = method)
     }
 
-formals(`correlation,matrix,missing`)[["method"]] <- method
+formals(`correlation,matrix,missing`)[["method"]] <- .method
 
 
 
 ## Updated 2019-11-08.
-`correlation,matrix,matrix` <-  # nolint
+`correlation,matrix,matrix` <- # nolint
     function(x, y, method) {
         method <- match.arg(method)
         correlation(x = c(x), y = c(y), method = method)
     }
 
-formals(`correlation,matrix,matrix`)[["method"]] <- method
+formals(`correlation,matrix,matrix`)[["method"]] <- .method
 
 
 
-`correlation,Matrix,missing` <-  # nolint
+`correlation,Matrix,missing` <- # nolint
     `correlation,matrix,missing`
 
 
 
-`correlation,Matrix,Matrix` <-  # nolint
+`correlation,Matrix,Matrix` <- # nolint
     `correlation,matrix,matrix`
 
 
 
 ## Updated 2019-11-08.
-`correlation,SE,missing` <-  # nolint
-    function(
-        x, y = NULL,
-        i = 1L, j = NULL,
-        method
-    ) {
+`correlation,SE,missing` <- # nolint
+    function(x, y = NULL,
+             i = 1L, j = NULL,
+             method) {
         assert(!identical(i, j))
         method <- match.arg(method)
         if (is.null(j)) {
@@ -142,12 +143,12 @@ formals(`correlation,matrix,matrix`)[["method"]] <- method
         }
     }
 
-formals(`correlation,SE,missing`)[["method"]] <- method
+formals(`correlation,SE,missing`)[["method"]] <- .method
 
 
 
 ## Updated 2019-11-08.
-`correlation,SE,SE` <-  # nolint
+`correlation,SE,SE` <- # nolint
     function(x, y, i = 1L, method) {
         method <- match.arg(method)
         correlation(
@@ -157,9 +158,9 @@ formals(`correlation,SE,missing`)[["method"]] <- method
         )
     }
 
-formals(`correlation,SE,SE`)[["method"]] <- method
+formals(`correlation,SE,SE`)[["method"]] <- .method
 
-rm(method)
+rm(.method)
 
 
 

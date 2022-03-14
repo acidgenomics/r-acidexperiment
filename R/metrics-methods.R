@@ -32,7 +32,7 @@ NULL
 
 
 ## Updated 2021-10-13.
-`metrics,SE` <-  # nolint
+`metrics,SE` <- # nolint
     function(object, return = c("tbl_df", "DataFrame")) {
         validObject(object)
         return <- match.arg(return)

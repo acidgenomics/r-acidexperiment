@@ -8,11 +8,12 @@
 #' apply to the `character` method defined in syntactic.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @param sampleNames `logical(1)`.
-#'   *Applies to `SummarizedExperiment` method.* #' If `sampleName` column is
-#'   defined in `colData()`, these values will also get padded, if necessary.
-#'   This improves downstream handling in functions that rely on this feature.
 #' @param ... Additional arguments.
+#'
+#' @param sampleNames `logical(1)`.
+#' *Applies to `SummarizedExperiment` method.* #' If `sampleName` column is
+#' defined in `colData()`, these values will also get padded, if necessary.
+#' This improves downstream handling in functions that rely on this feature.
 #'
 #' @return `character`.
 #'
@@ -27,13 +28,11 @@ NULL
 
 
 ## Updated 2019-07-22.
-`autopadZeros,matrix` <-  # nolint
-    function(
-        object,
-        rownames = FALSE,
-        colnames = TRUE,
-        sort = TRUE
-    ) {
+`autopadZeros,matrix` <- # nolint
+    function(object,
+             rownames = FALSE,
+             colnames = TRUE,
+             sort = TRUE) {
         assert(
             hasValidDimnames(object),
             isFlag(rownames),
@@ -58,14 +57,12 @@ NULL
 
 
 ## Updated 2021-09-02.
-`autopadZeros,SE` <-  # nolint
-    function(
-        object,
-        rownames = FALSE,
-        colnames = TRUE,
-        sampleNames = TRUE,
-        sort = TRUE
-    ) {
+`autopadZeros,SE` <- # nolint
+    function(object,
+             rownames = FALSE,
+             colnames = TRUE,
+             sampleNames = TRUE,
+             sort = TRUE) {
         assert(isFlag(sampleNames))
         what <- `autopadZeros,matrix`
         args <- list(
@@ -77,7 +74,7 @@ NULL
         object <- do.call(what = what, args = args)
         if (
             isTRUE(sampleNames) &&
-            "sampleName" %in% colnames(colData(object))
+                "sampleName" %in% colnames(colData(object))
         ) {
             sampleNames(object) <- autopadZeros(sampleNames(object))
         }

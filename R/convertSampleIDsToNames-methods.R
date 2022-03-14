@@ -16,7 +16,7 @@ NULL
 
 
 ## Updated 2021-02-02.
-`convertSampleIDsToNames,SE` <-  # nolint
+`convertSampleIDsToNames,SE` <- # nolint
     function(object) {
         validObject(object)
         sampleNames <- sampleNames(object)
@@ -25,10 +25,10 @@ NULL
                 x = as.character(sampleNames),
                 y = colnames(object)
             ) ||
-            !identical(
-                x = names(sampleNames),
-                y = colnames(object)
-            )
+                !identical(
+                    x = names(sampleNames),
+                    y = colnames(object)
+                )
         ) {
             alertWarning("Returning object with sample names unmodified.")
             return(object)

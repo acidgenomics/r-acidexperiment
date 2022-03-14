@@ -32,7 +32,7 @@ NULL
 
 
 ## Updated 2019-07-22.
-`sampleNames,SE` <-  # nolint
+`sampleNames,SE` <- # nolint
     function(object) {
         data <- sampleData(object)
         assert(isSubset("sampleName", colnames(data)))
@@ -44,7 +44,7 @@ NULL
 
 
 ## Updated 2019-07-22.
-`sampleNames<-,SE,character` <-  # nolint
+`sampleNames<-,SE,character` <- # nolint
     function(object, value) {
         if (!is.factor(value)) {
             value <- as.factor(value)

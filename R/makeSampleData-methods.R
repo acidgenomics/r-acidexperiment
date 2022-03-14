@@ -7,23 +7,23 @@
 #' This function adheres to the following conventions:
 #'
 #' - Row names are required. Either define manually (recommended) or pass in as
-#'   a rownames column (data.table / tibble style).
-#'   Supported colnames: "sampleId", "rowname", "rn".
+#' a rownames column (data.table / tibble style).
+#' Supported colnames: "sampleId", "rowname", "rn".
 #' - All column names will be converted to lower camel case
-#'   (see `camelCase()` for details).
+#' (see `camelCase()` for details).
 #' - `sampleName` column is always placed first.
 #'
 #' Required columns:
-#'   - `sampleName`: Human readable sample names. Note that this column is
-#'     useful for plots and doesn't have to match the column names of a
-#'     `SummarizedExperiment` object, which should use valid names.
+#' - `sampleName`: Human readable sample names. Note that this column is
+#' useful for plots and doesn't have to match the column names of a
+#' `SummarizedExperiment` object, which should use valid names.
 #'
 #' Denylist columns:
-#'   - `filename` (use `fileName`).
-#'   - `id`.
-#'   - `interestingGroups`. Defined automatically downstream.
-#'   - `sample`. Too vague. Does this represent an ID or human readable name?
-#'   - `samplename` (use `sampleName`).
+#' - `filename` (use `fileName`).
+#' - `id`.
+#' - `interestingGroups`. Defined automatically downstream.
+#' - `sample`. Too vague. Does this represent an ID or human readable name?
+#' - `samplename` (use `sampleName`).
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -44,7 +44,7 @@ NULL
 
 
 ## Updated 2021-10-13.
-`makeSampleData,DataFrame` <-  # nolint
+`makeSampleData,DataFrame` <- # nolint
     function(object) {
         ## Check for complex S4 columns, which are discouraged.
         assert(
@@ -110,7 +110,7 @@ NULL
 
 
 ## Updated 2021-10-14.
-`makeSampleData,data.frame` <-  # nolint
+`makeSampleData,data.frame` <- # nolint
     function(object) {
         makeSampleData(as(object, "DataFrame"))
     }

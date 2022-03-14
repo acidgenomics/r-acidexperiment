@@ -18,7 +18,7 @@ NULL
 
 
 ## Updated 2021-02-03.
-`nonzeroRowsAndCols,matrix` <-  # nolint
+`nonzeroRowsAndCols,matrix` <- # nolint
     function(object) {
         originalDim <- dim(object)
         nzrows <- rowSums(object) > 0L
@@ -59,13 +59,13 @@ NULL
 
 
 ## Updated 2021-02-22.
-`nonzeroRowsAndCols,Matrix` <-  # nolint
+`nonzeroRowsAndCols,Matrix` <- # nolint
     `nonzeroRowsAndCols,matrix`
 
 
 
 ## Updated 2019-09-16.
-`nonzeroRowsAndCols,SE` <-  # nolint
+`nonzeroRowsAndCols,SE` <- # nolint
     function(object, assay = 1L) {
         assay <- assay(object, i = assay)
         assay <- nonzeroRowsAndCols(assay)

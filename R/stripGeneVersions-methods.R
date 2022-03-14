@@ -22,7 +22,7 @@ NULL
 
 
 ## Updated 2021-02-02.
-`stripGeneVersions,SE` <-  # nolint
+`stripGeneVersions,SE` <- # nolint
     methodFunction(
         f = "stripGeneVersions",
         signature = "matrix",

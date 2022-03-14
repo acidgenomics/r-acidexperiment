@@ -3,11 +3,13 @@
 #' @note Updated 2021-10-12.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @param compress `logical(1)`.
-#'   Apply gzip compression to all files.
-#' @param name `character(1)`.
-#'   Name to use on disk. If `NULL`, will use the name of the object instead.
 #' @param ... Additional arguments.
+#'
+#' @param compress `logical(1)`.
+#' Apply gzip compression to all files.
+#'
+#' @param name `character(1)`.
+#' Name to use on disk. If `NULL`, will use the name of the object instead.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")
@@ -27,13 +29,11 @@ NULL
 #' @note Updated 2021-10-12.
 #' @noRd
 .exportAssays <-
-    function(
-        object,
-        dir,
-        compress,
-        overwrite,
-        quiet
-    ) {
+    function(object,
+             dir,
+             compress,
+             overwrite,
+             quiet) {
         validObject(object)
         assert(
             is(object, "SummarizedExperiment"),
@@ -83,13 +83,11 @@ NULL
 #' @note Updated 2021-10-12.
 #' @noRd
 .exportColData <-
-    function(
-        object,
-        ext,
-        dir,
-        overwrite,
-        quiet
-    ) {
+    function(object,
+             ext,
+             dir,
+             overwrite,
+             quiet) {
         validObject(object)
         assert(
             is(object, "SummarizedExperiment"),
@@ -119,13 +117,11 @@ NULL
 #' The standard `rowData()` output is okay but doesn't include genomic ranges
 #' coordinates. That's why we're coercing from `rowRanges()` for RSE.
 .exportRowData <-
-    function(
-        object,
-        ext,
-        dir,
-        overwrite,
-        quiet
-    ) {
+    function(object,
+             ext,
+             dir,
+             overwrite,
+             quiet) {
         validObject(object)
         assert(
             is(object, "SummarizedExperiment"),
@@ -159,24 +155,22 @@ NULL
 #' to contain named assays (e.g. DESeqTransform). In the event that an SE object
 #' contains a single, unnamed assay, we make sure to rename it internally to
 #' "assay" before exporting.
-`export,SE` <-  # nolint
-    function(
-        object,
-        con,
-        format,  # NULL
-        compress = getOption(
-            x = "acid.export.compress",
-            default = FALSE
-        ),
-        overwrite = getOption(
-            x = "acid.overwrite",
-            default = TRUE
-        ),
-        quiet = getOption(
-            x = "acid.quiet",
-            default = FALSE
-        )
-    ) {
+`export,SE` <- # nolint
+    function(object,
+             con,
+             format, # NULL
+             compress = getOption(
+                 x = "acid.export.compress",
+                 default = FALSE
+             ),
+             overwrite = getOption(
+                 x = "acid.overwrite",
+                 default = TRUE
+             ),
+             quiet = getOption(
+                 x = "acid.quiet",
+                 default = FALSE
+             )) {
         validObject(object)
         if (missing(format)) {
             format <- NULL
@@ -237,15 +231,13 @@ NULL
 
 
 ## Updated 2021-10-12.
-`export,SE,deprecated` <-  # nolint
-    function(
-        object,
-        con,  # NULL,
-        format,  # NULL,
-        name = NULL,
-        dir,
-        ...
-    ) {
+`export,SE,deprecated` <- # nolint
+    function(object,
+             con, # NULL,
+             format, # NULL,
+             name = NULL,
+             dir,
+             ...) {
         validObject(object)
         ## > .Deprecated(msg = sprintf(
         ## >     "Use '%s' instead of '%s'.",

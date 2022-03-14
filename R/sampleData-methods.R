@@ -11,17 +11,17 @@
 #' Illegal `colData`:
 #'
 #' - `interestingGroups`: Generated automatically, based on the criteria
-#'   slotted into the object using `interestingGroups()`. The function will
-#'   error intentionally if this column is manually defined in `colData()`.
+#' slotted into the object using `interestingGroups()`. The function will
+#' error intentionally if this column is manually defined in `colData()`.
 #'
 #' Recommended `colData`:
 #'
 #' - `sampleName`: Human readable sample names used by basejump plotting
-#'   functions in favor of object column names, which should be syntactically
-#'   valid (but not always very readable). See
-#'   `make.names()` for more information on syntactically valid names. Note that
-#'   if this column is not defined in the object, it will be returned
-#'   automatically by `sampleData()`.
+#' functions in favor of object column names, which should be syntactically
+#' valid (but not always very readable). See
+#' `make.names()` for more information on syntactically valid names. Note that
+#' if this column is not defined in the object, it will be returned
+#' automatically by `sampleData()`.
 #'
 #' @section SummarizedExperiment:
 #'
@@ -34,17 +34,19 @@
 #' - `sampleId`: Redundant; already defined in the object column names.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @param clean `logical(1)`.
-#'   Only return `factor` columns. Useful when working with objects that contain
-#'   quality control metrics in `colData()`. For example, `bcbioRNASeq` and
-#'   `DESeqDataSet` objects often contain additional columns that aren't
-#'   informative sample metadata.
-#' @param ignoreCols `character` or `NULL`.
-#'   Only applies when `clean = TRUE`. Additional factor columns defined in
-#'   `colData` to be ignored as sample-level metadata.
-#'   Particularly useful for `SingleCellExperiment` objects, where
-#'   cell-to-sample mappings are defined using the `sampleId` column.
 #' @param ... Additional arguments.
+#'
+#' @param clean `logical(1)`.
+#' Only return `factor` columns. Useful when working with objects that contain
+#' quality control metrics in `colData()`. For example, `bcbioRNASeq` and
+#' `DESeqDataSet` objects often contain additional columns that aren't
+#' informative sample metadata.
+#'
+#' @param ignoreCols `character` or `NULL`.
+#' Only applies when `clean = TRUE`. Additional factor columns defined in
+#' `colData` to be ignored as sample-level metadata.
+#' Particularly useful for `SingleCellExperiment` objects, where
+#' cell-to-sample mappings are defined using the `sampleId` column.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")
@@ -63,17 +65,15 @@ NULL
 
 ## Don't run validity checks here.
 ## Updated 2021-02-08.
-`sampleData,SE` <-  # nolint
-    function(
-        object,
-        clean = TRUE,
-        ignoreCols = c(
-            "^description$",
-            "^genomeBuild$",
-            "^qualityFormat$",
-            "^samRef$"
-        )
-    ) {
+`sampleData,SE` <- # nolint
+    function(object,
+             clean = TRUE,
+             ignoreCols = c(
+                 "^description$",
+                 "^genomeBuild$",
+                 "^qualityFormat$",
+                 "^samRef$"
+             )) {
         data <- colData(object)
         if (!hasRows(data)) {
             return(data)
@@ -82,7 +82,6 @@ NULL
             hasRownames(data),
             isFlag(clean),
             isCharacter(ignoreCols, nullOK = TRUE)
-
         )
         ## This provides backward compatibility for legacy objects, such as
         ## bcbioRNASeq.
@@ -139,7 +138,7 @@ NULL
 
 
 ## Updated 2021-10-13.
-`sampleData<-,SE,DataFrame` <-  # nolint
+`sampleData<-,SE,DataFrame` <- # nolint
     function(object, value) {
         assert(hasRownames(value))
         denylist <- c("interestingGroups", "rowname", "sampleId")

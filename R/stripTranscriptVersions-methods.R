@@ -22,7 +22,7 @@ NULL
 
 
 ## Updated 2021-02-02.
-`stripTranscriptVersions,SE` <-  # nolint
+`stripTranscriptVersions,SE` <- # nolint
     methodFunction(
         f = "stripTranscriptVersions",
         signature = "matrix",

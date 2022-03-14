@@ -18,7 +18,7 @@ NULL
 
 
 ## Updated 2021-10-21.
-`humanize,SE` <-  # nolint
+`humanize,SE` <- # nolint
     function(object) {
         to <- object
         to <- convertSampleIDsToNames(to)

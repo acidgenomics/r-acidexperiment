@@ -17,7 +17,7 @@ NULL
 
 
 ## Updated 2021-10-13.
-`matchSampleColumn,DataFrame` <-  # nolint
+`matchSampleColumn,DataFrame` <- # nolint
     function(object) {
         x <- colnames(object)
         table <- c("sampleId", "sampleID", "sampleid", "sample")
@@ -32,10 +32,10 @@ NULL
 
 
 ## Updated 2021-01-16.
-`matchSampleColumn,SE` <-  # nolint
+`matchSampleColumn,SE` <- # nolint
     function(object) {
         matchSampleColumn(colData(object))
-}
+    }
 
 
 

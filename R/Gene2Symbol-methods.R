@@ -16,7 +16,7 @@ NULL
 
 
 ## Updated 2021-08-10.
-`Gene2Symbol,SE` <-  # nolint
+`Gene2Symbol,SE` <- # nolint
     function(object, ...) {
         object <- as.SummarizedExperiment(object)
         df <- rowData(object)

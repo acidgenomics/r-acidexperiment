@@ -11,24 +11,27 @@
 #'
 #' - `date`: Today's date, returned from `Sys.Date`.
 #' - `sessionInfo`: `sessioninfo::session_info()` return.
-#'   This behavior can be disabled by setting `sessionInfo = FALSE`.
+#' This behavior can be disabled by setting `sessionInfo = FALSE`.
 #' - `wd`: Working directory, returned from `getwd`.
 #'
 #' @export
 #' @note Updated 2022-02-04.
 #'
 #' @inheritParams AcidRoxygen::params
+#'
 #' @param denylist `logical(1)`.
-#'   Apply a denylist check on illegal column names defined in `colData`. This
-#'   is useful for catching names that are not considered best practice, and
-#'   other values that may conflict with Acid Genomics packages. Refer to
-#'   `metadataDenylist` for the current list of offending values.
+#' Apply a denylist check on illegal column names defined in `colData`. This
+#' is useful for catching names that are not considered best practice, and
+#' other values that may conflict with Acid Genomics packages. Refer to
+#' `metadataDenylist` for the current list of offending values.
+#'
 #' @param sort `logical(1)`.
-#'   Ensure all row and column names are sorted alphabetically. This includes
-#'   columns inside `rowData` and `colData`, and `metadata` slot names. Assay
-#'   names are required to contain `counts` as the first assay.
+#' Ensure all row and column names are sorted alphabetically. This includes
+#' columns inside `rowData` and `colData`, and `metadata` slot names. Assay
+#' names are required to contain `counts` as the first assay.
+#'
 #' @param sessionInfo `logical(1)`.
-#'   Slot session information into `metadata`.
+#' Slot session information into `metadata`.
 #'
 #' @return
 #' - Providing `rowRanges`: `RangedSummarizedExperiment`.
@@ -43,7 +46,7 @@
 #' ## Rows (genes)
 #' genes <- c(
 #'     sprintf("gene%02d", seq_len(3L)),
-#'     "EGFP"  # transgene
+#'     "EGFP" # transgene
 #' )
 #' print(genes)
 #'
@@ -94,241 +97,241 @@
 #'     transgeneNames = "EGFP"
 #' )
 #' print(x)
-makeSummarizedExperiment <- function(
-    assays = S4Vectors::SimpleList(),
-    rowRanges = GenomicRanges::GRanges(),
-    rowData = NULL,
-    colData = S4Vectors::DataFrame(),
-    metadata = list(),
-    transgeneNames = NULL,
-    ## This is intentionally disabled in cBioPortalAnalysis package.
-    denylist = TRUE,
-    sort = TRUE,
-    sessionInfo = TRUE
-) {
-    assert(
-        isAny(assays, c("SimpleList", "list")),
-        isAny(rowRanges, c("GenomicRanges", "GenomicRangesList", "NULL")),
-        isAny(rowData, c("DataFrame", "NULL")),
-        isAny(colData, c("DataFrame", "NULL")),
-        isAny(metadata, c("list", "NULL")),
-        isAny(transgeneNames, c("character", "NULL")),
-        isFlag(denylist),
-        isFlag(sort),
-        isFlag(sessionInfo)
-    )
-    if (hasLength(rowRanges)) {
-        assert(!hasLength(rowData))
-    }
-    if (!is(assays, "List")) {
-        assays <- SimpleList(assays)
-    }
-    ## Assays ------------------------------------------------------------------
-    ## Currently only allowing matrix or Matrix classes here.
-    assays <- Filter(f = Negate(is.null), x = assays)
-    if (hasLength(assays)) {
-        ## Name the primary assay "counts" by default.
-        if (!hasNames(assays)) {
-            if (hasLength(assays, n = 1L)) {
-                names(assays) <- "counts"
-            } else {
-                abort("Multiple assays defined without names.")
-            }
-        }
+makeSummarizedExperiment <-
+    function(assays = S4Vectors::SimpleList(),
+             rowRanges = GenomicRanges::GRanges(),
+             rowData = NULL,
+             colData = S4Vectors::DataFrame(),
+             metadata = list(),
+             transgeneNames = NULL,
+             denylist = TRUE,
+             sort = TRUE,
+             sessionInfo = TRUE) {
         assert(
-            hasNames(assays),
-            hasValidNames(assays)
+            isAny(assays, c("SimpleList", "list")),
+            isAny(rowRanges, c("GenomicRanges", "GenomicRangesList", "NULL")),
+            isAny(rowData, c("DataFrame", "NULL")),
+            isAny(colData, c("DataFrame", "NULL")),
+            isAny(metadata, c("list", "NULL")),
+            isAny(transgeneNames, c("character", "NULL")),
+            isFlag(denylist),
+            isFlag(sort),
+            isFlag(sessionInfo)
         )
-        assay <- assays[[1L]]
-        ## Currently allowing pass-in of empty primary assay, but that may
-        ## change to make this function more restrictive in the future.
-        if (hasLength(assay)) {
+        if (hasLength(rowRanges)) {
+            assert(!hasLength(rowData))
+        }
+        if (!is(assays, "List")) {
+            assays <- SimpleList(assays)
+        }
+        ## Assays --------------------------------------------------------------
+        ## Currently only allowing matrix or Matrix classes here.
+        assays <- Filter(f = Negate(is.null), x = assays)
+        if (hasLength(assays)) {
+            ## Name the primary assay "counts" by default.
+            if (!hasNames(assays)) {
+                if (hasLength(assays, n = 1L)) {
+                    names(assays) <- "counts"
+                } else {
+                    abort("Multiple assays defined without names.")
+                }
+            }
             assert(
-                hasRownames(assay),
-                hasColnames(assay),
-                hasNoDuplicates(rownames(assay)),
-                hasNoDuplicates(colnames(assay))
+                hasNames(assays),
+                hasValidNames(assays)
             )
-            ## Inform rather than erroring when row and/or column names are
-            ## invalid. Previously, we used this stricter approach:
-            ## > assert(hasValidDimnames(assay))
-            ok <- validNames(rownames(assay))
-            if (!isTRUE(ok)) {
-                alertWarning(cause(ok))
-            }
-            ok <- validNames(colnames(assay))
-            if (!isTRUE(ok)) {
-                alertWarning(cause(ok))
+            assay <- assays[[1L]]
+            ## Currently allowing pass-in of empty primary assay, but that may
+            ## change to make this function more restrictive in the future.
+            if (hasLength(assay)) {
+                assert(
+                    hasRownames(assay),
+                    hasColnames(assay),
+                    hasNoDuplicates(rownames(assay)),
+                    hasNoDuplicates(colnames(assay))
+                )
+                ## Inform rather than erroring when row and/or column names are
+                ## invalid. Previously, we used this stricter approach:
+                ## > assert(hasValidDimnames(assay))
+                ok <- validNames(rownames(assay))
+                if (!isTRUE(ok)) {
+                    alertWarning(cause(ok))
+                }
+                ok <- validNames(colnames(assay))
+                if (!isTRUE(ok)) {
+                    alertWarning(cause(ok))
+                }
             }
         }
-    }
-    ## Row data ----------------------------------------------------------------
-    ## Dynamically allow input of rowRanges (recommended) or rowData (fallback):
-    ## - Detect rows that don't contain annotations.
-    ## - Transgenes should contain `transgene` seqname.
-    ## - Non-Ensembl features (e.g. IgG1) will be given `unknown` seqname.
-    ## - Error on missing features; indicates a genome build mismatch.
-    if (hasLength(rowRanges)) {
-        rowData <- NULL
-        assert(
-            isAny(rowRanges, c("GenomicRanges", "GenomicRangesList")),
-            areIntersectingSets(rownames(assay), names(rowRanges))
-        )
-        ## Ensure we unclass any special classes returned from AcidGenomes.
-        if (is(rowRanges, "GenomicRangesList")) {
-            rowRanges <- as(rowRanges, "GenomicRangesList")
-            if (hasCols(mcols(rowRanges[[1L]]))) {
-                assert(
-                    identical(
-                        x = colnames(mcols(rowRanges[[1L]])),
-                        y = camelCase(
-                            object = colnames(mcols(rowRanges[[1L]])),
-                            strict = TRUE
+        ## Row data ------------------------------------------------------------
+        ## Allow input of rowRanges (recommended) or rowData (fallback):
+        ## - Detect rows that don't contain annotations.
+        ## - Transgenes should contain `transgene` seqname.
+        ## - Non-Ensembl features (e.g. IgG1) will be given `unknown` seqname.
+        ## - Error on missing features; indicates a genome build mismatch.
+        if (hasLength(rowRanges)) {
+            rowData <- NULL
+            assert(
+                isAny(rowRanges, c("GenomicRanges", "GenomicRangesList")),
+                areIntersectingSets(rownames(assay), names(rowRanges))
+            )
+            ## Ensure we unclass any special classes returned from AcidGenomes.
+            if (is(rowRanges, "GenomicRangesList")) {
+                rowRanges <- as(rowRanges, "GenomicRangesList")
+                if (hasCols(mcols(rowRanges[[1L]]))) {
+                    assert(
+                        identical(
+                            x = colnames(mcols(rowRanges[[1L]])),
+                            y = camelCase(
+                                object = colnames(mcols(rowRanges[[1L]])),
+                                strict = TRUE
+                            )
                         )
                     )
-                )
+                }
+            } else {
+                rowRanges <- as(rowRanges, "GenomicRanges")
+                if (hasCols(mcols(rowRanges))) {
+                    colnames(mcols(rowRanges)) <-
+                        camelCase(colnames(mcols(rowRanges)), strict = TRUE)
+                }
             }
-        } else {
-            rowRanges <- as(rowRanges, "GenomicRanges")
-            if (hasCols(mcols(rowRanges))) {
-                colnames(mcols(rowRanges)) <-
-                    camelCase(colnames(mcols(rowRanges)), strict = TRUE)
-            }
-        }
-        setdiff <- setdiff(rownames(assay), names(rowRanges))
-        if (hasLength(setdiff) && !is(rowRanges, "GenomicRanges")) {
-            abort(sprintf(
-                fmt = paste(
-                    "Automatic mismatched feature handling only",
-                    "curently supported for {.val %s} (not {.val %s})."
-                ),
-                "GenomicRanges", "GenomicRangesList"
-            ))
-        }
-        ## Transgenes.
-        if (hasLength(transgeneNames)) {
-            assert(
-                hasLength(setdiff),
-                isSubset(transgeneNames, setdiff)
-            )
-            transgeneRanges <- emptyRanges(
-                names = transgeneNames,
-                seqname = "transgene",
-                mcolnames = names(mcols(rowRanges))
-            )
-            suppressWarnings({
-                rowRanges <- c(transgeneRanges, rowRanges)
-            })
             setdiff <- setdiff(rownames(assay), names(rowRanges))
-        }
-        ## Additional non-Ensembl gene symbols. Automatically handle extra gene
-        ## symbols in 10X Cell Ranger output. For example: CD11b, CD127, HLA-Dr,
-        ## IgG1, PD-1, etc.
-        pattern <- "^(EN[ST].+[0-9.]+)(_PAR_Y)?$"
-        if (
-            hasLength(setdiff) &&
-            any(grepl(pattern = pattern, x = names(rowRanges)))
-        ) {
-            alertWarning(sprintf(
-                fmt = paste(
-                    "%d unknown %s detected: %s.",
-                    "Check that {.arg %s} or {.arg %s} are correct.",
-                    "Define transgenes using {.arg %s}."
-                ),
-                length(setdiff),
-                ngettext(
-                    n = length(setdiff),
-                    msg1 = "feature",
-                    msg2 = "features"
-                ),
-                toInlineString(setdiff, n = 5L, class = "val"),
-                "ensemblRelease", "gffFile",
-                "transgeneNames"
-            ))
-            unknownRanges <- emptyRanges(
-                names = setdiff,
-                mcolnames = names(mcols(rowRanges))
-            )
-            suppressWarnings({
-                rowRanges <- c(unknownRanges, rowRanges)
-            })
-        }
-        ## Error on unannotated Ensembl features. This often indicates an
-        ## accidental genome build release version mismatch.
-        assert(isSubset(rownames(assay), names(rowRanges)))
-        rowRanges <- rowRanges[rownames(assay)]
-        ## This step isn't currently supported for GenomicRangesList.
-        ## Consider adding class support in future pipette package update.
-        if (is(rowRanges, "GenomicRanges")) {
-            rowRanges <- encode(rowRanges)
-        }
-    } else if (hasRows(rowData)) {
-        assert(
-            isSubset(rownames(assay), rownames(rowData)),
-            hasColnames(rowData)
-        )
-        colnames(rowData) <- camelCase(colnames(rowData), strict = TRUE)
-        rowData <- rowData[rownames(assay), , drop = FALSE]
-        rowData <- encode(rowData)
-    }
-    ## Column data -------------------------------------------------------------
-    ## Allowing some single-cell RNA-seq automatic columns to pass through.
-    if (hasLength(colData)) {
-        assert(
-            hasColnames(colData),
-            hasRows(colData)
-        )
-        colnames(colData) <- camelCase(colnames(colData), strict = TRUE)
-        assert(isSubset(colnames(assay), rownames(colData)))
-        if (isTRUE(denylist)) {
-            denylist <- setdiff(metadataDenylist, c("revcomp", "sampleId"))
-            assert(areDisjointSets(colnames(colData), denylist))
-        }
-        colData <- colData[colnames(assay), , drop = FALSE]
-    }
-    ## Metadata ----------------------------------------------------------------
-    if (is.null(metadata)) {
-        metadata <- list()
-    }
-    if (isTRUE(sessionInfo)) {
-        metadata[["date"]] <- Sys.Date()
-        metadata[["sessionInfo"]] <- session_info(include_base = TRUE)
-        metadata[["wd"]] <- realpath(".")
-    }
-    metadata <- Filter(f = Negate(is.null), x = metadata)
-    if (hasLength(metadata)) {
-        assert(hasValidNames(metadata))
-    }
-    ## Return ------------------------------------------------------------------
-    ## Ensure we're not passing any `NULL` or empty arguments to
-    ## `SummarizedExperiment` generator function. This step will dynamically
-    ## handle `rowRanges` and/or `rowData`.
-    args <- list(
-        "assays" = assays,
-        "rowRanges" = rowRanges,
-        "rowData" = rowData,
-        "colData" = colData,
-        "metadata" = metadata
-    )
-    args <- Filter(f = Negate(is.null), x = args)
-    args <- Filter(f = hasLength, x = args)
-    se <- do.call(what = SummarizedExperiment, args = args)
-        if (isTRUE(sort)) {
-        assayNames <- assayNames(se)
-        if (hasLength(assayNames)) {
-            assayNames <- sort(assayNames)
-            ## Always keep (raw) counts first, when defined.
-            if (isSubset("counts", assayNames)) {
-                assayNames <- unique(c("counts", assayNames))
+            if (hasLength(setdiff) && !is(rowRanges, "GenomicRanges")) {
+                abort(sprintf(
+                    fmt = paste(
+                        "Automatic mismatched feature handling only",
+                        "curently supported for {.val %s} (not {.val %s})."
+                    ),
+                    "GenomicRanges", "GenomicRangesList"
+                ))
             }
-            assays(se) <- assays(se)[assayNames]
+            ## Transgenes.
+            if (hasLength(transgeneNames)) {
+                assert(
+                    hasLength(setdiff),
+                    isSubset(transgeneNames, setdiff)
+                )
+                transgeneRanges <- emptyRanges(
+                    names = transgeneNames,
+                    seqname = "transgene",
+                    mcolnames = names(mcols(rowRanges))
+                )
+                suppressWarnings({
+                    rowRanges <- c(transgeneRanges, rowRanges)
+                })
+                setdiff <- setdiff(rownames(assay), names(rowRanges))
+            }
+            ## Additional non-Ensembl gene symbols. Automatically handle extra
+            ## gene symbols in 10X Cell Ranger output. For example: CD11b,
+            ## CD127, HLA-Dr, IgG1, PD-1, etc.
+            pattern <- "^(EN[ST].+[0-9.]+)(_PAR_Y)?$"
+            if (
+                hasLength(setdiff) &&
+                    any(grepl(pattern = pattern, x = names(rowRanges)))
+            ) {
+                alertWarning(sprintf(
+                    fmt = paste(
+                        "%d unknown %s detected: %s.",
+                        "Check that {.arg %s} or {.arg %s} are correct.",
+                        "Define transgenes using {.arg %s}."
+                    ),
+                    length(setdiff),
+                    ngettext(
+                        n = length(setdiff),
+                        msg1 = "feature",
+                        msg2 = "features"
+                    ),
+                    toInlineString(setdiff, n = 5L, class = "val"),
+                    "ensemblRelease", "gffFile",
+                    "transgeneNames"
+                ))
+                unknownRanges <- emptyRanges(
+                    names = setdiff,
+                    mcolnames = names(mcols(rowRanges))
+                )
+                suppressWarnings({
+                    rowRanges <- c(unknownRanges, rowRanges)
+                })
+            }
+            ## Error on unannotated Ensembl features. This often indicates an
+            ## accidental genome build release version mismatch.
+            assert(isSubset(rownames(assay), names(rowRanges)))
+            rowRanges <- rowRanges[rownames(assay)]
+            ## This step isn't currently supported for GenomicRangesList.
+            ## Consider adding class support in future pipette package update.
+            if (is(rowRanges, "GenomicRanges")) {
+                rowRanges <- encode(rowRanges)
+            }
+        } else if (hasRows(rowData)) {
+            assert(
+                isSubset(rownames(assay), rownames(rowData)),
+                hasColnames(rowData)
+            )
+            colnames(rowData) <- camelCase(colnames(rowData), strict = TRUE)
+            rowData <- rowData[rownames(assay), , drop = FALSE]
+            rowData <- encode(rowData)
         }
-        se <- se[sort(rownames(se)), sort(colnames(se))]
-        rowData(se) <- rowData(se)[, sort(colnames(rowData(se))), drop = FALSE]
-        colData(se) <- colData(se)[, sort(colnames(colData(se))), drop = FALSE]
-        metadata(se) <- metadata(se)[sort(names(metadata(se)))]
+        ## Column data ---------------------------------------------------------
+        ## Allowing some single-cell RNA-seq automatic columns to pass through.
+        if (hasLength(colData)) {
+            assert(
+                hasColnames(colData),
+                hasRows(colData)
+            )
+            colnames(colData) <- camelCase(colnames(colData), strict = TRUE)
+            assert(isSubset(colnames(assay), rownames(colData)))
+            if (isTRUE(denylist)) {
+                denylist <- setdiff(metadataDenylist, c("revcomp", "sampleId"))
+                assert(areDisjointSets(colnames(colData), denylist))
+            }
+            colData <- colData[colnames(assay), , drop = FALSE]
+        }
+        ## Metadata ------------------------------------------------------------
+        if (is.null(metadata)) {
+            metadata <- list()
+        }
+        if (isTRUE(sessionInfo)) {
+            metadata[["date"]] <- Sys.Date()
+            metadata[["sessionInfo"]] <- session_info(include_base = TRUE)
+            metadata[["wd"]] <- realpath(".")
+        }
+        metadata <- Filter(f = Negate(is.null), x = metadata)
+        if (hasLength(metadata)) {
+            assert(hasValidNames(metadata))
+        }
+        ## Return --------------------------------------------------------------
+        ## Ensure we're not passing any `NULL` or empty arguments to
+        ## `SummarizedExperiment` generator function. This step will dynamically
+        ## handle `rowRanges` and/or `rowData`.
+        args <- list(
+            "assays" = assays,
+            "rowRanges" = rowRanges,
+            "rowData" = rowData,
+            "colData" = colData,
+            "metadata" = metadata
+        )
+        args <- Filter(f = Negate(is.null), x = args)
+        args <- Filter(f = hasLength, x = args)
+        se <- do.call(what = SummarizedExperiment, args = args)
+        if (isTRUE(sort)) {
+            assayNames <- assayNames(se)
+            if (hasLength(assayNames)) {
+                assayNames <- sort(assayNames)
+                ## Always keep (raw) counts first, when defined.
+                if (isSubset("counts", assayNames)) {
+                    assayNames <- unique(c("counts", assayNames))
+                }
+                assays(se) <- assays(se)[assayNames]
+            }
+            se <- se[sort(rownames(se)), sort(colnames(se))]
+            rowData(se) <-
+                rowData(se)[, sort(colnames(rowData(se))), drop = FALSE]
+            colData(se) <-
+                colData(se)[, sort(colnames(colData(se))), drop = FALSE]
+            metadata(se) <- metadata(se)[sort(names(metadata(se)))]
+        }
+        se <- droplevels(se)
+        validObject(se)
+        se
     }
-    se <- droplevels(se)
-    validObject(se)
-    se
-}
