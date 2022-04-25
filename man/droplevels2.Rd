@@ -28,5 +28,5 @@ data(RangedSummarizedExperiment, package = "AcidTest")
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
-droplevels2(object)
+object <- droplevels2(object)
 }

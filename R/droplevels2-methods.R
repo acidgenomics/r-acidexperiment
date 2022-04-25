@@ -13,19 +13,19 @@
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' droplevels2(object)
+#' object <- droplevels2(object)
 NULL
 
 
 
-## Updated 2021-02-03.
-`droplevels,SE` <- # nolint
+## Updated 2022-04-25.
+`droplevels2,SE` <- # nolint
     function(x) {
         if (hasCols(rowData(x))) {
-            rowData(x) <- droplevels(rowData(x))
+            rowData(x) <- droplevels2(rowData(x))
         }
         if (hasCols(colData(x))) {
-            colData(x) <- droplevels(colData(x))
+            colData(x) <- droplevels2(colData(x))
         }
         x
     }
@@ -36,5 +36,5 @@ NULL
 setMethod(
     f = "droplevels2",
     signature = signature(x = "SummarizedExperiment"),
-    definition = `droplevels,SE`
+    definition = `droplevels2,SE`
 )
