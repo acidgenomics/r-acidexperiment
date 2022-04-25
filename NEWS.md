@@ -1,3 +1,10 @@
+# AcidExperiment 0.3.1 (UNRELEASED)
+
+## Minor changes
+
+- Reworking factor level support as `droplevels2` instead of `droplevels`,
+  to avoid method collisions with Bioconductor 3.15.
+
 # AcidExperiment 0.3.0 (2022-03-11)
 
 ## Major changes
