@@ -20,7 +20,7 @@ calculateMetrics(object, ...)
 
 \item{rowData}{\code{DataFrame}.
 Metadata describing the assay rows, if genomic ranges are not available.
-\emph{Use rowRanges (GRanges) instead, if possible}.}
+\emph{Use \code{rowRanges} (\code{GenomicRanges}) instead, if possible}.}
 
 \item{prefilter}{\code{logical(1)}.
 Drop very low quality samples/cells from the object.

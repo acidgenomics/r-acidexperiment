@@ -28,16 +28,6 @@ Coerce to \code{SummarizedExperiment}.
 Improved S4 methods for reliably coercing objects that extend
 \code{RangedSummarizedExperiment} to a standard \code{SummarizedExperiment}, that
 doesn't drop \code{rowData()}.
-
-Related S4 coercion method of interest:\preformatted{getMethod(
-    f = "coerce",
-    signature = signature(
-        from = "RangedSummarizedExperiment",
-        to = "SummarizedExperiment"
-    ),
-    where = asNamespace("SummarizedExperiment")
-)
-}
 }
 \note{
 Updated 2021-02-05.

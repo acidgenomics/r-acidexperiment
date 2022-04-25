@@ -1,6 +1,6 @@
 #' Drop unused levels from factors
 #'
-#' @name droplevels
+#' @name droplevels2
 #' @note Updated 2021-06-04.
 #'
 #' @inheritParams AcidRoxygen::params
@@ -32,9 +32,9 @@ NULL
 
 
 
-#' @rdname droplevels
+#' @rdname droplevels2
 setMethod(
-    f = "droplevels",
+    f = "droplevels2",
     signature = signature(x = "SummarizedExperiment"),
     definition = `droplevels,SE`
 )

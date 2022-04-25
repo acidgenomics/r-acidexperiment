@@ -21,13 +21,13 @@ makeSummarizedExperiment(
 Count matrices, which must have matching dimensions. Counts can be passed
 in as either a dense matrix (\code{matrix}) or sparse matrix (\code{sparseMatrix}).}
 
-\item{rowRanges}{\code{GRanges} or \code{GRangesList}.
+\item{rowRanges}{\code{GenomicRanges} or \code{GenomicRangesList}.
 Genomic ranges (e.g. genome annotations). Metadata describing the assay
 rows.}
 
 \item{rowData}{\code{DataFrame}.
 Metadata describing the assay rows, if genomic ranges are not available.
-\emph{Use rowRanges (GRanges) instead, if possible}.}
+\emph{Use \code{rowRanges} (\code{GenomicRanges}) instead, if possible}.}
 
 \item{colData}{\code{DataFrame}.
 Metadata describing the assay columns. For bulk RNA-seq, this data
@@ -85,7 +85,7 @@ This behavior can be disabled by setting \code{sessionInfo = FALSE}.
 ## Rows (genes)
 genes <- c(
     sprintf("gene\%02d", seq_len(3L)),
-    "EGFP"  # transgene
+    "EGFP" # transgene
 )
 print(genes)
 

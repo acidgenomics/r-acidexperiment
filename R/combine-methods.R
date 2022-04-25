@@ -1,11 +1,13 @@
+#' Combine multiple objects
+#'
 #' @name combine
-#' @inherit BiocGenerics::combine return title
 #' @note Updated 2022-02-07.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
-#' @note We're attempting to make this as strict as possible, requiring:
+#' @details
+#' We're attempting to make this as strict as possible, requiring:
 #'
 #' - Rows (genes) across objects must be identical.
 #' - [rowRanges][SummarizedExperiment::rowRanges] and/or
@@ -17,7 +19,7 @@
 #' @seealso
 #' - `help("merge.Matrix", "Matrix.utils")`.
 #'
-#' @return `SummarizedExperiment`.
+#' @return A single value of the same class as the input values.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")
@@ -43,7 +45,7 @@ NULL
 
 
 
-#' # Updated 2020-01-20.
+# Updated 2020-01-20.
 `combine,SE` <- # nolint
     function(x, y) {
         validObject(x)

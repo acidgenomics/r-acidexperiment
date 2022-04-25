@@ -2,13 +2,10 @@
 % Please edit documentation in R/AllGenerics.R, R/combine-methods.R
 \name{combine}
 \alias{combine}
-\alias{combine,SE}
 \alias{combine,SummarizedExperiment,SummarizedExperiment-method}
-\title{Combining or merging different Bioconductor data structures}
+\title{Combine multiple objects}
 \usage{
 combine(x, y, ...)
-
-`combine,SE`(x, y)
 
 \S4method{combine}{SummarizedExperiment,SummarizedExperiment}(x, y)
 }
@@ -20,14 +17,12 @@ combine(x, y, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-\code{SummarizedExperiment}.
+A single value of the same class as the input values.
 }
 \description{
-Combining or merging different Bioconductor data structures
+Combine multiple objects
 }
-\note{
-Updated 2022-02-07.
-
+\details{
 We're attempting to make this as strict as possible, requiring:
 \itemize{
 \item Rows (genes) across objects must be identical.
@@ -37,6 +32,9 @@ We're attempting to make this as strict as possible, requiring:
 \item \link[SummarizedExperiment:SummarizedExperiment-class]{colData} must contain the same columns.
 \item Specific metadata must be identical (see \code{metadata} argument).
 }
+}
+\note{
+Updated 2022-02-07.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
@@ -58,7 +56,6 @@ colnames(y) <- paste0(
 c <- combine(x, y)
 sampleData(c)
 print(c)
-NULL
 }
 \seealso{
 \itemize{
