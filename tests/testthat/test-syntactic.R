@@ -136,27 +136,6 @@ test_that("matrix", {
 
 
 
-context("syntactic : Vector")
-
-object <- as(df, "Vector")
-names(object) <- toupper(names(object))
-mcols(object) <- DataFrame(TEST = seq_len(length(object)))
-metadata(object) <- list(TEST = "XXX")
-
-test_that("SimpleList", {
-    for (f in funs) {
-        x <- f(
-            object = object,
-            names = TRUE,
-            mcols = TRUE,
-            metadata = TRUE
-        )
-        expect_s4_class(x, "SimpleList")
-    }
-})
-
-
-
 context("syntactic : DataFrame")
 
 mcols(df) <- DataFrame(TEST = seq_len(ncol(df)))
