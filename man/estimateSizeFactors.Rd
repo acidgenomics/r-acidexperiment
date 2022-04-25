@@ -21,15 +21,16 @@ estimateSizeFactors(object, ...)
 Assay name or index position.}
 
 \item{type}{\code{character(1)}.
-Method for estimation:\preformatted{libSize <- colSums(counts(object))
+Type of method for estimation.\preformatted{libSize <- colSums(counts(object))
 }
-\itemize{
-\item \code{mean-ratio}:\preformatted{libSize / mean(libSize)
+
+\code{"mean-ratio"}:\preformatted{libSize / mean(libSize)
 }
-\item \code{geometric-mean-ratio}:\preformatted{libSize / geometricMean(libSize)
+
+\code{"geometric-mean-ratio"}:\preformatted{libSize / geometricMean(libSize)
 }
-\item \code{mean-geometric-mean-log-total}:\preformatted{log(libSize) / geometricMean(log(libSize))
-}
+
+\code{"mean-geometric-mean-log-total"}:\preformatted{log(libSize) / geometricMean(log(libSize))
 }}
 
 \item{center}{\code{numeric(1)}.

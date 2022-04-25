@@ -100,8 +100,8 @@ NULL
 NULL
 
 #' @export
-#' @name droplevels
-#' @usage droplevels(x, ...)
+#' @name droplevels2
+#' @usage droplevels2(x, ...)
 NULL
 
 #' @export
