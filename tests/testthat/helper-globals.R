@@ -22,6 +22,7 @@ txse <- SummarizedExperiment_transcripts
 
 ## nolint start
 CharacterList <- IRanges::CharacterList
+DataFrame <- S4Vectors::DataFrame
 GRanges <- GenomicRanges::GRanges
 GRangesList <- GenomicRanges::GRangesList
 IRanges <- IRanges::IRanges
