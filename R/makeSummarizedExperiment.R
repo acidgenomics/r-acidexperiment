@@ -331,7 +331,7 @@ makeSummarizedExperiment <-
                 colData(se)[, sort(colnames(colData(se))), drop = FALSE]
             metadata(se) <- metadata(se)[sort(names(metadata(se)))]
         }
-        se <- droplevels(se)
+        se <- droplevels2(se)
         validObject(se)
         se
     }
