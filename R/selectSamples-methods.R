@@ -1,6 +1,6 @@
 #' @name selectSamples
 #' @inherit AcidGenerics::selectSamples
-#' @note Updated 2021-10-12.
+#' @note Updated 2022-04-25.
 #'
 #' @inheritParams AcidRoxygen::params
 #'
@@ -17,7 +17,7 @@ NULL
 
 
 
-## Updated 2021-10-12.
+## Updated 2022-04-25.
 `selectSamples,SE` <- # nolint
     function(object, ...) {
         validObject(object)
@@ -48,7 +48,7 @@ NULL
         assert(hasLength(samples))
         ## Return.
         out <- object[, samples, drop = FALSE]
-        out <- droplevels(out)
+        out <- droplevels2(out)
         out
     }
 
