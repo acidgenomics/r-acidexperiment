@@ -1,7 +1,7 @@
 #' Drop unused levels from factors
 #'
 #' @name droplevels2
-#' @note Updated 2021-06-04.
+#' @note Updated 2022-04-25.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -13,7 +13,7 @@
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' droplevels(object)
+#' droplevels2(object)
 NULL
 
 
