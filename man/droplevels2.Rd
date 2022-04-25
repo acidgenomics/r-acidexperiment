@@ -21,12 +21,12 @@ Modified object.
 Drop unused levels from factors
 }
 \note{
-Updated 2021-06-04.
+Updated 2022-04-25.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
-droplevels(object)
+droplevels2(object)
 }
