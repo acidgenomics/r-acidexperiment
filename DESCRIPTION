@@ -2,7 +2,7 @@ Package: AcidExperiment
 Title: Acid Genomics Summarized Experiment
 Description: Toolkit to extend the functionality of SummarizedExperiment.
 Version: 0.3.1.9000
-Date: 2022-04-25
+Date: 2022-04-28
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -26,29 +26,29 @@ URL:
 BugReports: https://github.com/acidgenomics/r-acidexperiment/issues/
 License: AGPL-3
 Encoding: UTF-8
-Depends: R (>= 4.1)
+Depends: R (>= 4.2)
 Imports:
-    AcidBase (>= 0.5.0),
-    AcidCLI (>= 0.2.0),
-    AcidGenerics (>= 0.6.1),
-    AcidGenomes (>= 0.3.1),
-    AcidPlyr (>= 0.2.0),
-    BiocGenerics,
+    AcidBase,
+    AcidCLI,
+    AcidGenerics,
+    AcidGenomes,
+    AcidPlyr,
     Biobase,
+    BiocGenerics,
     GenomicRanges,
     IRanges,
     S4Vectors,
     SummarizedExperiment,
-    goalie (>= 0.6.0),
+    goalie,
     methods,
-    pipette (>= 0.8.1),
+    pipette,
     scales,
     sessioninfo,
     stringr,
-    syntactic (>= 0.5.1),
+    syntactic,
     utils
 Suggests:
-    AcidTest (>= 0.5.0),
+    AcidTest,
     Biostrings,
     GenomeInfoDb,
     Matrix,
