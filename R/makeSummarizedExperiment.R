@@ -15,7 +15,7 @@
 #' - `wd`: Working directory, returned from `getwd`.
 #'
 #' @export
-#' @note Updated 2022-02-04.
+#' @note Updated 2022-05-04.
 #'
 #' @inheritParams AcidRoxygen::params
 #'
@@ -293,8 +293,14 @@ makeSummarizedExperiment <-
         }
         if (isTRUE(sessionInfo)) {
             metadata[["date"]] <- Sys.Date()
-            metadata[["sessionInfo"]] <- session_info(include_base = TRUE)
-            metadata[["wd"]] <- realpath(".")
+            if (requireNamespace("sessioninfo", quietly = TRUE)) {
+                si <- sessioninfo::session_info(include_base = TRUE)
+            } else {
+                assert(requireNamespaces("utils"))
+                si <- utils::sessionInfo()
+            }
+            metadata[["sessionInfo"]] <- si
+            metadata[["wd"]] <- realpath(getwd())
         }
         metadata <- Filter(f = Negate(is.null), x = metadata)
         if (hasLength(metadata)) {

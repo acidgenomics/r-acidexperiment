@@ -43,7 +43,6 @@ Imports:
     methods,
     pipette,
     scales,
-    sessioninfo,
     stringr,
     syntactic,
     utils
@@ -52,6 +51,7 @@ Suggests:
     Biostrings,
     GenomeInfoDb,
     Matrix,
+    sessioninfo,
     testthat
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2

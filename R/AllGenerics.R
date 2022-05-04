@@ -37,6 +37,12 @@ NULL
 NULL
 
 #' @export
+#' @rdname as.SummarizedExperiment
+#' @name as.SummarizedExperiment
+#' @usage as.SummarizedExperiment(x, ...)
+NULL
+
+#' @export
 #' @name autopadZeros
 #' @usage autopadZeros(object, ...)
 NULL
@@ -44,12 +50,6 @@ NULL
 #' @export
 #' @name calculateMetrics
 #' @usage calculateMetrics(object, ...)
-NULL
-
-#' @export
-#' @rdname coerce
-#' @name as.SummarizedExperiment
-#' @usage as.SummarizedExperiment(x, ...)
 NULL
 
 #' @export
