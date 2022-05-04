@@ -13,15 +13,15 @@ NULL
 ## S4 generics and methods =====================================================
 
 #' @importFrom AcidGenerics Ensembl2Entrez Entrez2Ensembl Gene2Symbol Tx2Gene
-#'   aggregateCols aggregateRows as.SummarizedExperiment atomize autopadZeros
-#'   calculateMetrics camelCase convertGenesToSymbols convertSampleIDsToNames
-#'   convertSymbolsToGenes convertTranscriptsToGenes correlation dottedCase
-#'   droplevels2 encode factorize geneNames headtail humanize integerCounts
-#'   interestingGroups interestingGroups<- leftJoin makeNames makeSampleData
-#'   mapGenesToIDs mapGenesToRownames mapGenesToSymbols matchSampleColumn melt
-#'   metrics mutateAt nonzeroRowsAndCols removeNA sampleData sampleData<-
-#'   selectSamples snakeCase stripGeneVersions stripTranscriptVersions tpm
-#'   uniteInterestingGroups upperCamelCase
+#' aggregateCols aggregateRows as.SummarizedExperiment atomize autopadZeros
+#' calculateMetrics camelCase convertGenesToSymbols convertSampleIDsToNames
+#' convertSymbolsToGenes convertTranscriptsToGenes correlation dottedCase
+#' droplevels2 encode factorize geneNames headtail humanize integerCounts
+#' interestingGroups interestingGroups<- leftJoin makeNames makeSampleData
+#' mapGenesToIDs mapGenesToRownames mapGenesToSymbols matchSampleColumn melt
+#' metrics mutateAt nonzeroRowsAndCols removeNA sampleData sampleData<-
+#' selectSamples snakeCase stripGeneVersions stripTranscriptVersions tpm
+#' uniteInterestingGroups upperCamelCase
 #' @importFrom BiocGenerics %in% as.data.frame colSums combine counts counts<-
 #' do.call estimateSizeFactors lapply match organism organism<- rowSums
 #' setdiff sizeFactors sizeFactors<- t unlist unsplit

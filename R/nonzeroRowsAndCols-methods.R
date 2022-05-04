@@ -17,41 +17,68 @@ NULL
 
 
 
-## Updated 2021-02-03.
+## Updated 2022-05-04.
 `nonzeroRowsAndCols,matrix` <- # nolint
-    function(object) {
+    function(object, quiet = FALSE) {
+        assert(isFlag(quiet))
         originalDim <- dim(object)
         nzrows <- rowSums(object) > 0L
         nzcols <- colSums(object) > 0L
         object <- object[nzrows, nzcols, drop = FALSE]
         dim <- dim(object)
-        if (!identical(dim, originalDim)) {
-            alertInfo(sprintf(
-                fmt = paste(
-                    "Filtered zero count rows and columns:",
-                    "  - %d / %d %s (%s)",
-                    "  - %d / %d %s (%s)",
-                    sep = "\n"
-                ),
-                ## Rows.
-                dim[[1L]],
-                originalDim[[1L]],
-                ngettext(
-                    n = dim[[1L]],
-                    msg1 = "row",
-                    msg2 = "rows"
-                ),
-                percent(dim[[1L]] / originalDim[[1L]]),
-                ## Columns.
-                dim[[2L]],
-                originalDim[[2L]],
-                ngettext(
-                    n = dim[[2L]],
-                    msg1 = "column",
-                    msg2 = "columns"
-                ),
-                percent(dim[[2L]] / originalDim[[2L]])
-            ))
+        if (
+            !identical(dim, originalDim) &&
+                isFALSE(quiet)
+        ) {
+            msg <- "Filtered zero count rows and columns:\n"
+            ## Rows.
+            msg <- paste0(
+                msg,
+                sprintf(
+                    fmt = "  - %d / %d %s",
+                    dim[[1L]],
+                    originalDim[[1L]],
+                    ngettext(
+                        n = dim[[1L]],
+                        msg1 = "row",
+                        msg2 = "rows"
+                    )
+                )
+            )
+            if (requireNamespace("scales", quietly = TRUE)) {
+                msg <- paste0(
+                    msg,
+                    sprintf(
+                        fmt = " (%s)",
+                        scales::percent(dim[[1L]] / originalDim[[1L]])
+                    )
+                )
+            }
+            msg <- paste0(msg, "\n")
+            ## Columns.
+            msg <- paste0(
+                msg,
+                sprintf(
+                    fmt = "  - %d / %d %s",
+                    dim[[2L]],
+                    originalDim[[2L]],
+                    ngettext(
+                        n = dim[[2L]],
+                        msg1 = "column",
+                        msg2 = "columns"
+                    )
+                )
+            )
+            if (requireNamespace("scales", quietly = TRUE)) {
+                msg <- paste0(
+                    msg,
+                    sprintf(
+                        fmt = " (%s)",
+                        scales::percent(dim[[2L]] / originalDim[[2L]])
+                    )
+                )
+            }
+            alertInfo(msg)
         }
         object
     }
@@ -64,11 +91,11 @@ NULL
 
 
 
-## Updated 2019-09-16.
+## Updated 2022-05-04.
 `nonzeroRowsAndCols,SE` <- # nolint
-    function(object, assay = 1L) {
+    function(object, assay = 1L, quiet = FALSE) {
         assay <- assay(object, i = assay)
-        assay <- nonzeroRowsAndCols(assay)
+        assay <- nonzeroRowsAndCols(object = assay, quiet = quiet)
         object <- object[rownames(assay), colnames(assay)]
         object
     }
