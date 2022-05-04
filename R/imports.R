@@ -30,24 +30,17 @@ NULL
 #' mcols mcols<- metadata metadata<- na.omit split summary
 #' @importFrom SummarizedExperiment assay assay<- assayNames assayNames<- assays
 #' assays<- colData colData<- rowData rowData<- rowRanges rowRanges<-
-#' @importFrom pipette as_tibble export import
+#' @importFrom pipette export import
 #'
 #' @importMethodsFrom AcidBase headtail
 #' @importMethodsFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
 #' Tx2Gene stripGeneVersions stripTranscriptVersions
 #' @importMethodsFrom AcidPlyr leftJoin mutateAt
 #' @importMethodsFrom SummarizedExperiment coerce
-#' @importMethodsFrom pipette atomize coerce droplevels2 export factorize import
+#' @importMethodsFrom pipette atomize droplevels2 export factorize import
 #' removeNA
 #' @importMethodsFrom syntactic camelCase dottedCase makeNames snakeCase
 #' upperCamelCase
-NULL
-
-
-
-## S3 generics =================================================================
-
-#' @importFrom pipette as_tibble
 NULL
 
 

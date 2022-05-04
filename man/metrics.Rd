@@ -7,28 +7,24 @@
 \usage{
 metrics(object, ...)
 
-\S4method{metrics}{SummarizedExperiment}(object, return = c("tbl_df", "DataFrame"))
+\S4method{metrics}{SummarizedExperiment}(object)
 }
 \arguments{
 \item{object}{Object.}
 
-\item{return}{\code{character(1)}.
-Return type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults
-to the first argument in the \code{character} vector.}
-
 \item{...}{Additional arguments.}
 }
 \value{
-Object of class determined by \code{return} argument.
+\code{DataFrame}.
 }
 \description{
 Quality control metrics
 }
 \details{
 \code{metrics()} takes data stored in \code{colData()} and consistently returns a
-\code{tbl_df} or \code{DataFrame} with \code{sampleName} and \code{interestingGroups} columns,
-even when these columns are not defined in \code{colData()}. This is designed to
-integrate with plotting functions that use ggplot2 internally.
+\code{DataFrame} with \code{sampleName} and \code{interestingGroups} columns, even when
+these columns are not defined in \code{colData()}. This is designed to integrate
+with plotting functions that use ggplot2 internally.
 
 Column names are always returned formatted in strict lower camel case.
 
@@ -41,7 +37,7 @@ in \code{colData()}.
 }}
 
 \note{
-Updated 2021-02-05.
+Updated 2022-05-04.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")

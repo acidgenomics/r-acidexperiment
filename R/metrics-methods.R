@@ -1,23 +1,23 @@
 #' @name metrics
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::metrics
-#' @note Updated 2021-02-05.
+#' @note Updated 2022-05-04.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @details
 #' `metrics()` takes data stored in `colData()` and consistently returns a
-#' `tbl_df` or `DataFrame` with `sampleName` and `interestingGroups` columns,
-#' even when these columns are not defined in `colData()`. This is designed to
-#' integrate with plotting functions that use ggplot2 internally.
+#' `DataFrame` with `sampleName` and `interestingGroups` columns, even when
+#' these columns are not defined in `colData()`. This is designed to integrate
+#' with plotting functions that use ggplot2 internally.
 #'
 #' Column names are always returned formatted in strict lower camel case.
 #'
 #' This function will error intentionally if no numeric columns are defined
 #' in `colData()`.
 #'
-#' @return Object of class determined by `return` argument.
+#' @return `DataFrame`.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")
@@ -31,25 +31,19 @@ NULL
 
 
 
-## Updated 2021-10-13.
+## Updated 2022-05-04.
 `metrics,SE` <- # nolint
-    function(object, return = c("tbl_df", "DataFrame")) {
+    function(object) {
         validObject(object)
-        return <- match.arg(return)
-        data <- sampleData(object, clean = FALSE)
+        df <- sampleData(object, clean = FALSE)
         assert(identical(
-            x = colnames(data),
-            y = camelCase(colnames(data), strict = TRUE)
+            x = colnames(df),
+            y = camelCase(colnames(df), strict = TRUE)
         ))
         sampleCol <- "sampleId"
-        assert(areDisjointSets(sampleCol, colnames(data)))
-        ## Decode columns that contain Rle, if necessary.
-        data <- decode(data)
-        switch(
-            EXPR = return,
-            "DataFrame" = data,
-            "tbl_df" = as_tibble(data, rownames = sampleCol)
-        )
+        assert(areDisjointSets(sampleCol, colnames(df)))
+        df <- decode(df)
+        df
     }
 
 
