@@ -162,17 +162,24 @@ NULL
             data <- data[keep, , drop = FALSE]
             n1 <- nrow(data)
             n2 <- originalDim[[2L]]
-            if (n1 < n2) {
-                alertInfo(sprintf(
-                    fmt = "Prefilter: %d / %d %s (%s).",
+            if (isTRUE(n1 < n2)) {
+                msg <- sprintf(
+                    fmt = "Prefilter: %d / %d %s",
                     n1, n2,
                     ngettext(
                         n = n1,
                         msg1 = "sample",
                         msg2 = "samples"
-                    ),
-                    percent(n1 / n2)
-                ))
+                    )
+                )
+                if (requireNamespace("scales", quietly = TRUE)) {
+                    msg <- paste0(
+                        msg,
+                        sprintf(" (%s)", scales::percent(n1 / n2))
+                    )
+                }
+                msg <- paste0(msg, ".")
+                alertInfo(msg)
             }
         }
         data

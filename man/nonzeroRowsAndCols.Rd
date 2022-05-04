@@ -9,14 +9,17 @@
 \usage{
 nonzeroRowsAndCols(object, ...)
 
-\S4method{nonzeroRowsAndCols}{Matrix}(object)
+\S4method{nonzeroRowsAndCols}{Matrix}(object, quiet = FALSE)
 
-\S4method{nonzeroRowsAndCols}{SummarizedExperiment}(object, assay = 1L)
+\S4method{nonzeroRowsAndCols}{SummarizedExperiment}(object, assay = 1L, quiet = FALSE)
 
-\S4method{nonzeroRowsAndCols}{matrix}(object)
+\S4method{nonzeroRowsAndCols}{matrix}(object, quiet = FALSE)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{quiet}{\code{logical(1)}.
+Perform command quietly, suppressing messages.}
 
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
