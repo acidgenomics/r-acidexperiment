@@ -1,9 +1,19 @@
-# AcidExperiment 0.3.1 (UNRELEASED)
+# AcidExperiment 0.4.0 (2022-05-04)
+
+## Major changes
+
+- Now requiring R 4.2 / Bioconductor 3.15.
+- Lightened package by eliminating strong dependencies on scales, sessioninfo,
+  and stringr package. Also removed dependency on tibble package via pipette.
+- `makeSummarizedExperiment` will conditionally slot `session_info` from
+  sessioninfo package if installed, otherwise will fall back to `sessionInfo`
+  from utils package.
 
 ## Minor changes
 
 - Reworking factor level support as `droplevels2` instead of `droplevels`,
   to avoid method collisions with Bioconductor 3.15.
+- Reformatted package code using styler conventions.
 
 # AcidExperiment 0.3.0 (2022-03-11)
 
