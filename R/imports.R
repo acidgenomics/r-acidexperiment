@@ -63,8 +63,9 @@ NULL
 #' isSubset matchesUniqueGeneNames validNames
 #' @importFrom methods as is new setMethod setReplaceMethod signature
 #' validObject
-#' @importFrom scales percent
-#' @importFrom sessioninfo session_info
-#' @importFrom stringr str_length str_match str_pad
 #' @importFrom utils packageName packageVersion
+NULL
+
+## FIXME Need to lighten this:
+## #' @importFrom stringr str_length str_match str_pad
 NULL

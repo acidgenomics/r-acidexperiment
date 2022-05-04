@@ -1,6 +1,6 @@
 #' Detect sequencing lanes
 #'
-#' @note Updated 2019-08-07.
+#' @note Updated 2022-05-04.
 #' @export
 #'
 #' @param path `character`.
@@ -28,10 +28,16 @@ detectLanes <- function(path, pattern) {
     )
     basename <- basename(path)
     if (any(grepl(pattern = pattern, x = basename))) {
-        as.integer(str_match(string = basename, pattern = pattern)[, 2L])
+        assert(requireNamespaces("stringi"))
+        out <- stringi::stri_match_first_regex(
+            str = basename,
+            pattern = pattern
+        )[, 2L]
+        out <- as.integer(out)
     } else {
-        integer()
+        out <- integer()
     }
+    out
 }
 
 formals(detectLanes)[["pattern"]] <- lanePattern
