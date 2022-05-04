@@ -1,13 +1,11 @@
-#' Coercion methods
-#'
 #' Coerce to `SummarizedExperiment`.
 #'
 #' Improved S4 methods for reliably coercing objects that extend
 #' `RangedSummarizedExperiment` to a standard `SummarizedExperiment`, that
 #' doesn't drop `rowData()`.
 #'
-#' @name coerce
-#' @note Updated 2021-02-05.
+#' @name as.SummarizedExperiment
+#' @note Updated 2022-05-04.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -53,7 +51,7 @@ NULL
 
 
 
-#' @rdname coerce
+#' @rdname as.SummarizedExperiment
 #' @export
 setMethod(
     f = "as.SummarizedExperiment",
@@ -61,7 +59,7 @@ setMethod(
     definition = `as.SummarizedExperiment,RSE`
 )
 
-#' @rdname coerce
+#' @rdname as.SummarizedExperiment
 #' @export
 setMethod(
     f = "as.SummarizedExperiment",
