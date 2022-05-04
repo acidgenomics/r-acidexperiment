@@ -36,7 +36,7 @@
 #' @note Works with local or remote files.
 #'
 #' @author Michael Steinbaugh
-#' @note Updated 2021-10-08.
+#' @note Updated 2022-05-04.
 #' @export
 #'
 #' @inheritParams AcidRoxygen::params
@@ -235,7 +235,7 @@ importSampleData <-
                     x[["lane"]] <- paste0(
                         "L",
                         stringi::stri_pad_left(
-                            string = lanes,
+                            str = lanes,
                             width = 3L,
                             pad = "0"
                         )

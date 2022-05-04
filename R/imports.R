@@ -36,7 +36,6 @@ NULL
 #' @importMethodsFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
 #' Tx2Gene stripGeneVersions stripTranscriptVersions
 #' @importMethodsFrom AcidPlyr leftJoin mutateAt
-#' @importMethodsFrom SummarizedExperiment coerce
 #' @importMethodsFrom pipette atomize droplevels2 export factorize import
 #' removeNA
 #' @importMethodsFrom syntactic camelCase dottedCase makeNames snakeCase
