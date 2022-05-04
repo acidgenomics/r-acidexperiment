@@ -1,10 +1,12 @@
 context("combine")
 
+skip_if_not_installed("stringi")
+
 x <- rse
 colnames(x) <- paste0(
     "sample",
-    str_pad(
-        string = seq_len(ncol(x)),
+    stringi::stri_pad_left(
+        str = seq_len(ncol(x)),
         width = 2L,
         pad = "0"
     )
@@ -12,8 +14,8 @@ colnames(x) <- paste0(
 y <- x
 colnames(y) <- paste0(
     "sample",
-    str_pad(
-        string = seq(from = ncol(y) + 1L, to = ncol(y) * 2L),
+    stringi::stri_pad_left(
+        str = seq(from = ncol(y) + 1L, to = ncol(y) * 2L),
         width = 2L,
         pad = "0"
     )
@@ -25,10 +27,9 @@ test_that("RangedSummarizedExperiment", {
     expect_s4_class(c, "RangedSummarizedExperiment")
     samples <- paste0(
         "sample",
-        str_pad(
-            string = seq_len(24L),
+        stringi::stri_pad_left(
+            str = seq_len(24L),
             width = 2L,
-            side = "left",
             pad = "0"
         )
     )
