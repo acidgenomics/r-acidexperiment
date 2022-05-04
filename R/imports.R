@@ -65,7 +65,3 @@ NULL
 #' validObject
 #' @importFrom utils packageName packageVersion
 NULL
-
-## FIXME Need to lighten this:
-## #' @importFrom stringr str_length str_match str_pad
-NULL

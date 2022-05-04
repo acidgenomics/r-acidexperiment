@@ -226,6 +226,7 @@ importSampleData <-
         ## rows into the number of desired replicates (e.g. "L001").
         ## `lapply()` approach here inspired by `mefa::rep.data.frame()`.
         if (isTRUE(length(lanes) > 1L)) {
+            assert(requireNamespaces("stringi"))
             split <- split(data, f = data[[idCol]])
             split <- SplitDataFrameList(lapply(
                 X = split,
@@ -233,7 +234,11 @@ importSampleData <-
                     x <- rep(x, times = length(lanes))
                     x[["lane"]] <- paste0(
                         "L",
-                        str_pad(string = lanes, width = 3L, pad = "0")
+                        stringi::stri_pad_left(
+                            string = lanes,
+                            width = 3L,
+                            pad = "0"
+                        )
                     )
                     x
                 }
@@ -253,8 +258,9 @@ importSampleData <-
             ## case, but we're still providing support here.
             ## Example: `indrops1_AGAGGATA_L001` to `indrops1_L001_AGAGGATA`.
             if (identical(pipeline, "bcbio") && isTRUE(multiplexed)) {
-                match <- str_match(
-                    string = data[["description"]],
+                assert(requireNamespaces("stringi"))
+                match <- stringi::stri_match_first_regex(
+                    str = data[["description"]],
                     pattern = paste0(
                         "^",
                         "(.+)",

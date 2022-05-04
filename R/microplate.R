@@ -5,7 +5,7 @@
 #'
 #' These plate formats are frequently used for high-throughput screening assays.
 #'
-#' @note Updated 2019-08-18.
+#' @note Updated 2022-05-04.
 #' @export
 #'
 #' @param plates `integer(1)`.
@@ -44,6 +44,7 @@ microplate <-
         wells <- as.integer(wells)
         controls <- as.integer(controls)
         assert(
+            requireNamespaces("stringi"),
             isInt(plates),
             isPositive(plates),
             isInt(wells),
@@ -53,26 +54,38 @@ microplate <-
             isInRange(x = controls, lower = 0L, upper = 12L),
             isString(prefix, nullOK = TRUE)
         )
-        if (wells == 96L) {
-            row <- 8L
-            col <- 12L
-        } else if (wells == 384L) {
-            row <- 16L
-            col <- 24L
-        }
+        switch(
+            EXPR = as.character(wells),
+            "96" = {
+                row <- 8L
+                col <- 12L
+            },
+            "384" = {
+                row <- 16L
+                col <- 24L
+            }
+        )
         row <- LETTERS[seq_len(row)]
         col <- seq_len(col)
-        col <- str_pad(col, width = max(str_length(col)), pad = "0")
+        col <- stringi::stri_pad_left(
+            str = col,
+            width = max(stringi::stri_length(col)),
+            pad = "0"
+        )
         plates <- seq_len(plates)
-        plates <- str_pad(plates, width = max(str_length(plates)), pad = "0")
+        plates <- stringi::stri_pad_left(
+            str = plates,
+            width = max(stringi::stri_length(plates)),
+            pad = "0"
+        )
         df <- expand.grid(plates, row, col)
         vector <- sort(paste0(df[["Var1"]], "-", df[["Var2"]], df[["Var3"]]))
         ## Prepare control wells.
-        if (controls > 0L) {
+        if (isTRUE(controls > 0L)) {
             ## Create a grep string matching the control wells.
-            grep <- str_pad(
-                seq_len(controls),
-                width = max(str_length(col)),
+            grep <- stringi::stri_pad_left(
+                str = seq_len(controls),
+                width = max(stringi::stri_length(col)),
                 pad = "0"
             )
             grep <- paste(grep, collapse = "|")

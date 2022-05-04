@@ -31,7 +31,7 @@ plates.
 These plate formats are frequently used for high-throughput screening assays.
 }
 \note{
-Updated 2019-08-18.
+Updated 2022-05-04.
 }
 \examples{
 ## Single 96-well plate.
