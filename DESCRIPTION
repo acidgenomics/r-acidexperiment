@@ -1,7 +1,7 @@
 Package: AcidExperiment
 Title: Acid Genomics Summarized Experiment
 Description: Toolkit to extend the functionality of SummarizedExperiment.
-Version: 0.4.1.9000
+Version: 0.4.1
 Date: 2022-05-07
 Authors@R: c(
     person(
@@ -50,7 +50,6 @@ Suggests:
     GenomeInfoDb,
     Matrix,
     scales,
-    sessioninfo,
     stringi,
     testthat
 Roxygen: list(markdown = TRUE)
