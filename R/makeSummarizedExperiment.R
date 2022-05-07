@@ -293,13 +293,7 @@ makeSummarizedExperiment <-
         }
         if (isTRUE(sessionInfo)) {
             metadata[["date"]] <- Sys.Date()
-            if (requireNamespace("sessioninfo", quietly = TRUE)) {
-                si <- sessioninfo::session_info(include_base = TRUE)
-            } else {
-                assert(requireNamespaces("utils"))
-                si <- utils::sessionInfo()
-            }
-            metadata[["sessionInfo"]] <- si
+            metadata[["sessionInfo"]] <- sessionInfo()
             metadata[["wd"]] <- realpath(getwd())
         }
         metadata <- Filter(f = Negate(is.null), x = metadata)

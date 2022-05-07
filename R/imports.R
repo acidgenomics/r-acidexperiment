@@ -62,5 +62,5 @@ NULL
 #' isSubset matchesUniqueGeneNames validNames
 #' @importFrom methods as is new setMethod setReplaceMethod signature
 #' validObject
-#' @importFrom utils packageName packageVersion
+#' @importFrom utils packageName packageVersion sessionInfo
 NULL
