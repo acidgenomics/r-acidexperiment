@@ -40,10 +40,10 @@ test_that("RangedSummarizedExperiment", {
     expect_identical(dim(object), c(4L, 4L))
     expect_identical(names(object), genes)
     expect_identical(
-        object = lapply(metadata(object), class),
+        object = lapply(metadata(object), simpleClass),
         expected = list(
             date = "Date",
-            sessionInfo = c("session_info", "list"),
+            sessionInfo = "session_info",
             wd = "character"
         )
     )
