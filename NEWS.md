@@ -1,3 +1,9 @@
+# AcidExperiment 0.4.1 (2022-05-23)
+
+## Minor changes
+
+- Updated lintr checks and testthat unit tests.
+
 # AcidExperiment 0.4.0 (2022-05-04)
 
 ## Major changes
