@@ -1,5 +1,3 @@
-context("importSampleData : Simple input")
-
 test_that("Direct 'sampleId' column, requiring snake case sanitization", {
     tmpfile <- tempfile(fileext = ".csv")
     unlink(tmpfile, recursive = FALSE)
@@ -17,8 +15,6 @@ test_that("Direct 'sampleId' column, requiring snake case sanitization", {
 })
 
 
-
-context("importSampleData : Demultiplexed samples")
 
 test_that("DataFrame return", {
     file <- file.path("cache", "bcbio-metadata-demultiplexed.csv")
@@ -98,8 +94,6 @@ test_that("'sampleId' column defined by user", {
 })
 
 
-
-context("importSampleData : Multiplexed samples")
 
 test_that("DataFrame return", {
     file <- file.path("cache", "bcbio-metadata-multiplexed-indrops.csv")
@@ -244,8 +238,6 @@ test_that("Duplicate rows in 'sampleName' column", {
 })
 
 
-
-context("importSampleData : Malformed input")
 
 test_that("Missing file", {
     expect_error(

@@ -1,5 +1,3 @@
-context("minimalSampleData")
-
 test_that("minimalSampleData", {
     expect_identical(
         object = minimalSampleData(c("sample 1", "sample 2")),

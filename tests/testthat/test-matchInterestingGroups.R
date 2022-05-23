@@ -1,5 +1,3 @@
-context("matchInterestingGroups")
-
 test_that("matchInterestingGroups", {
     object <- rse
     expect_identical(

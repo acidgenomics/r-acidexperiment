@@ -1,8 +1,6 @@
-context("counts")
-
 test_that("SummarizedExperiment", {
     object <- counts(rse)
-    expect_is(object, "matrix")
+    expect_type(object, "integer")
 })
 
 test_that("SE assignment", {

@@ -1,5 +1,3 @@
-context("makeSampleData")
-
 test_that("data.frame with row names", {
     expect_identical(
         object = makeSampleData(

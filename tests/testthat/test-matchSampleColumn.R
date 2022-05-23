@@ -1,5 +1,3 @@
-context("matchSampleColumn")
-
 test_that("matchSampleColumn", {
     expect_identical(
         object = matchSampleColumn(

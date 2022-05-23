@@ -1,5 +1,3 @@
-context("combine")
-
 skip_if_not_installed("stringi")
 
 x <- rse

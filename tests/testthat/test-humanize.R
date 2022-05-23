@@ -1,5 +1,3 @@
-context("humanize")
-
 test_that("SummarizedExperiment", {
     samples <- letters[seq_along(colnames(rse))]
     names(samples) <- colnames(rse)

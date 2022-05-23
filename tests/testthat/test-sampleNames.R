@@ -1,5 +1,3 @@
-context("sampleNames")
-
 test_that("SummarizedExperiment", {
     object <- sampleNames(rse)
     expected <- as.character(sampleData(rse)[["sampleName"]])

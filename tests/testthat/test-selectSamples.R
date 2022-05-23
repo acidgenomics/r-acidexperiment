@@ -1,5 +1,3 @@
-context("selectSamples")
-
 test_that("SummarizedExperiment", {
     object <- selectSamples(rse, condition = "A")
     expect_s4_class(object, class = "SummarizedExperiment")

@@ -1,5 +1,3 @@
-context("organism")
-
 test_that("SE", {
     object <- rse
     expect_identical(

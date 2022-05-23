@@ -1,5 +1,3 @@
-context("melt")
-
 test_that("Default", {
     for (object in list(
         "DataFrame" = df,

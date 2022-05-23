@@ -1,5 +1,3 @@
-context("metrics")
-
 object <- calculateMetrics(rse)
 
 test_that("SummarizedExperiment", {

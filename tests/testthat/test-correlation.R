@@ -1,5 +1,3 @@
-context("correlation")
-
 data(
     correlation,
     package = "AcidTest",

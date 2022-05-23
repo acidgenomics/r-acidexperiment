@@ -1,8 +1,6 @@
-context("microplate")
-
 test_that("96-well plate format", {
     plate <- microplate(plates = 1L, wells = 96L)
-    expect_is(plate, "character")
+    expect_type(plate, "character")
     expect_identical(length(plate), 96L)
     expect_identical(
         head(plate),
@@ -16,7 +14,7 @@ test_that("96-well plate format", {
 
 test_that("384-well plate format", {
     plate <- microplate(plates = 1L, wells = 384L)
-    expect_is(plate, "character")
+    expect_type(plate, "character")
     expect_identical(
         tail(plate),
         c("1-P19", "1-P20", "1-P21", "1-P22", "1-P23", "1-P24")
