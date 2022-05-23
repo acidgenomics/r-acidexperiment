@@ -21,14 +21,14 @@ test_that("Per row filtering", {
 
 ## NOTE These values can change when we update AcidTest.
 test_that("trans", {
-    mapply(
+    Map(
         trans = eval(formals(`melt,SE`)[["trans"]]),
         expected = list(
             "identity" = c(58, 14, 49), # nolint
             "log2" = c(5.88, 3.91, 5.64),
             "log10" = c(1.77, 1.18, 1.70)
         ),
-        FUN = function(trans, expected) {
+        f = function(trans, expected) {
             object <- rse
             object <- melt(
                 object = object,
@@ -40,7 +40,6 @@ test_that("trans", {
             object <-
                 decode(round(head(object[["value"]], n = 3L), digits = 2L))
             expect_identical(object, expected)
-        },
-        SIMPLIFY = FALSE
+        }
     )
 })

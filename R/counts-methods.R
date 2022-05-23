@@ -7,7 +7,7 @@
 #'
 #' @name counts
 #' @aliases counts<-
-#' @note Updated 2019-12-04.
+#' @note Updated 2022-05-23.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -35,11 +35,11 @@ NULL
 
 
 
-## Updated 2019-08-06.
+## Updated 2022-05-23.
 `counts<-,SE,matrix` <- # nolint
     function(object, value) {
         assert(
-            all(!is.na(value)),
+            !anyNA(value),
             all(is.finite(value)),
             all(value >= 0L)
         )

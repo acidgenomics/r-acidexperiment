@@ -147,7 +147,7 @@ importSampleData <-
         ## Determine whether the samples are multiplexed.
         if (
             isSubset(c("index", "sequence"), colnames(data)) &&
-                (any(duplicated(data[[idCol]])) || identical(nrow(data), 1L))
+                (anyDuplicated(data[[idCol]]) > 0L || identical(nrow(data), 1L))
         ) {
             multiplexed <- TRUE
             alertInfo("Multiplexed samples detected.")

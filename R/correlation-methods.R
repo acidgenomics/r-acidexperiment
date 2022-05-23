@@ -82,7 +82,8 @@ NULL
         cor(x = x, y = y, method = method)
     }
 
-formals(`correlation,numeric,numeric`)[["method"]] <- .method
+formals(`correlation,numeric,numeric`)[["method"]] <- # nolint
+    .method
 
 
 
@@ -97,7 +98,8 @@ formals(`correlation,numeric,numeric`)[["method"]] <- .method
         cor(x = x, y = NULL, method = method)
     }
 
-formals(`correlation,matrix,missing`)[["method"]] <- .method
+formals(`correlation,matrix,missing`)[["method"]] <- # nolint
+    .method
 
 
 
@@ -108,7 +110,8 @@ formals(`correlation,matrix,missing`)[["method"]] <- .method
         correlation(x = c(x), y = c(y), method = method)
     }
 
-formals(`correlation,matrix,matrix`)[["method"]] <- .method
+formals(`correlation,matrix,matrix`)[["method"]] <- # nolint
+    .method
 
 
 
@@ -143,7 +146,8 @@ formals(`correlation,matrix,matrix`)[["method"]] <- .method
         }
     }
 
-formals(`correlation,SE,missing`)[["method"]] <- .method
+formals(`correlation,SE,missing`)[["method"]] <- # nolint
+    .method
 
 
 

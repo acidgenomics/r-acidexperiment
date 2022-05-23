@@ -161,12 +161,15 @@ NULL
 
 
 
-`camelCase,Ranges` <- `camelCase,Vector` # nolint
-formals(`camelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
+`camelCase,Ranges` <- # nolint
+    `camelCase,Vector`
+formals(`camelCase,Ranges`)[c("mcols", "names")] <- # nolint
+    c(TRUE, FALSE)
 
 
 
-`camelCase,Matrix` <- `camelCase,matrix` # nolint
+`camelCase,Matrix` <- # nolint
+    `camelCase,matrix`
 
 
 
@@ -244,7 +247,8 @@ formals(`camelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`dottedCase,list` <- `dottedCase,atomic` # nolint
+`dottedCase,list` <- # nolint
+    `dottedCase,atomic`
 
 
 
@@ -268,7 +272,8 @@ formals(`camelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`dottedCase,data.frame` <- `dottedCase,matrix` # nolint
+`dottedCase,data.frame` <- # nolint
+    `dottedCase,matrix`
 
 
 
@@ -326,12 +331,15 @@ formals(`camelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`dottedCase,Ranges` <- `dottedCase,Vector` # nolint
-formals(`dottedCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
+`dottedCase,Ranges` <- # nolint
+    `dottedCase,Vector`
+formals(`dottedCase,Ranges`)[c("mcols", "names")] <- # nolint
+    c(TRUE, FALSE)
 
 
 
-`dottedCase,Matrix` <- `dottedCase,matrix` # nolint
+`dottedCase,Matrix` <- # nolint
+    `dottedCase,matrix`
 
 
 
@@ -403,7 +411,8 @@ formals(`dottedCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`snakeCase,list` <- `snakeCase,atomic` # nolint
+`snakeCase,list` <- # nolint
+    `snakeCase,atomic`
 
 
 
@@ -427,7 +436,8 @@ formals(`dottedCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`snakeCase,data.frame` <- `snakeCase,matrix` # nolint
+`snakeCase,data.frame` <- # nolint
+    `snakeCase,matrix`
 
 
 
@@ -485,12 +495,15 @@ formals(`dottedCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`snakeCase,Ranges` <- `snakeCase,Vector` # nolint
-formals(`snakeCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
+`snakeCase,Ranges` <- # nolint
+    `snakeCase,Vector`
+formals(`snakeCase,Ranges`)[c("mcols", "names")] <- # nolint
+    c(TRUE, FALSE)
 
 
 
-`snakeCase,Matrix` <- `snakeCase,matrix` # nolint
+`snakeCase,Matrix` <- # nolint
+    `snakeCase,matrix`
 
 
 
@@ -568,7 +581,8 @@ formals(`snakeCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`upperCamelCase,list` <- `upperCamelCase,atomic` # nolint
+`upperCamelCase,list` <- # nolint
+    `upperCamelCase,atomic`
 
 
 
@@ -596,7 +610,8 @@ formals(`snakeCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`upperCamelCase,data.frame` <- `upperCamelCase,matrix` # nolint
+`upperCamelCase,data.frame` <- # nolint
+    `upperCamelCase,matrix`
 
 
 
@@ -665,12 +680,15 @@ formals(`snakeCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
 
 
 
-`upperCamelCase,Ranges` <- `upperCamelCase,Vector` # nolint
-formals(`upperCamelCase,Ranges`)[c("mcols", "names")] <- c(TRUE, FALSE)
+`upperCamelCase,Ranges` <- # nolint
+    `upperCamelCase,Vector`
+formals(`upperCamelCase,Ranges`)[c("mcols", "names")] <- # nolint
+    c(TRUE, FALSE)
 
 
 
-`upperCamelCase,Matrix` <- `upperCamelCase,matrix` # nolint
+`upperCamelCase,Matrix` <- # nolint
+    `upperCamelCase,matrix`
 
 
 
@@ -802,8 +820,6 @@ setMethod(
     definition = `camelCase,matrix`
 )
 
-
-
 #' @rdname syntactic
 #' @export
 setMethod(
@@ -884,8 +900,6 @@ setMethod(
     definition = `dottedCase,matrix`
 )
 
-
-
 #' @rdname syntactic
 #' @export
 setMethod(
@@ -965,8 +979,6 @@ setMethod(
     signature = signature(object = "Vector"),
     definition = `snakeCase,Vector`
 )
-
-
 
 #' @rdname syntactic
 #' @export

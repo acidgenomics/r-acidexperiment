@@ -161,7 +161,7 @@ NULL
         object
     }
 
-formals(`estimateSizeFactors,SE`)[
+formals(`estimateSizeFactors,SE`)[ # nolint
     c("type", "center")
 ] <- list(
     type = formals(.librarySizeFactors)[["type"]],

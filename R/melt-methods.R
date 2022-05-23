@@ -62,7 +62,8 @@ NULL
     }
 
 args <- c("min", "minMethod", "trans")
-formals(`melt,SE`)[args] <- formals(`melt,matrix`)[args]
+formals(`melt,SE`)[args] <- # nolint
+    formals(`melt,matrix`)[args]
 rm(args)
 
 

@@ -30,11 +30,12 @@ NULL
 
 ## Updated 2021-10-13.
 `headtail,GenomicRanges` <- # nolint
-    function() {
+    function(x, n) {
         headtail(x = as(x, "data.frame"), n = n)
     }
 
-formals(`headtail,GenomicRanges`) <- formals(`headtail,DataFrame`)
+formals(`headtail,GenomicRanges`) <- # nolint
+    formals(`headtail,DataFrame`)
 
 
 
@@ -48,13 +49,14 @@ formals(`headtail,GenomicRanges`) <- formals(`headtail,DataFrame`)
 
 
 
-## Updated 2020-05-11.
+## Updated 2022-05-20.
 `headtail,SE` <- # nolint
-    function() {
+    function(x, n) {
         headtail(x = assay(x), n = n)
     }
 
-formals(`headtail,SE`) <- formals(`headtail,DataFrame`)
+formals(`headtail,SE`) <- # nolint
+    formals(`headtail,DataFrame`)
 
 
 
