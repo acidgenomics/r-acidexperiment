@@ -6,8 +6,6 @@ geneNames <- g2s[["geneName"]]
 
 
 
-context("mapGenesToRownames")
-
 test_that("SummarizedExperiment", {
     expect_identical(
         object = mapGenesToRownames(rse, genes = rownames),
@@ -195,8 +193,6 @@ test_that("Direct matching against rownames, for a minimal object", {
 
 
 
-context("mapGenesToIDs")
-
 test_that("SummarizedExperiment", {
     expect_identical(
         object = mapGenesToIDs(rse, genes = rownames),
@@ -222,8 +218,6 @@ test_that("SummarizedExperiment", {
 })
 
 
-
-context("mapGenesToSymbols")
 
 test_that("SummarizedExperiment", {
     expect_identical(

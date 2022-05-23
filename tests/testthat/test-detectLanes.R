@@ -1,5 +1,3 @@
-context("detectLanes")
-
 test_that("FASTQ files", {
     files <- paste0(
         "sample1",

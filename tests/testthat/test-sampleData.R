@@ -1,5 +1,3 @@
-context("sampleData")
-
 test_that("Return", {
     object <- rse
     ## Check that `sampleName` and `interestingGroups` auto-populate.
@@ -37,5 +35,5 @@ test_that("Empty return", {
 test_that("Assignment", {
     object <- rse
     sampleData(object)[["test"]] <- as.factor(seq_len(ncol(object)))
-    expect_is(sampleData(object)[["test"]], "factor")
+    expect_s3_class(sampleData(object)[["test"]], "factor")
 })

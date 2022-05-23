@@ -1,8 +1,8 @@
 Package: AcidExperiment
 Title: Acid Genomics Summarized Experiment
 Description: Toolkit to extend the functionality of SummarizedExperiment.
-Version: 0.4.1.9000
-Date: 2022-05-07
+Version: 0.4.1
+Date: 2022-05-23
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -51,7 +51,8 @@ Suggests:
     Matrix,
     scales,
     stringi,
-    testthat
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+    testthat (>= 3.0.0)
 Additional_repositories: https://r.acidgenomics.com
+Config/testthat/edition: 3
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.0

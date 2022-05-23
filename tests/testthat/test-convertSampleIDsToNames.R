@@ -1,5 +1,3 @@
-context("convertSampleIDsToNames")
-
 test_that("SE", {
     object <- rse
     newNames <- letters[seq_len(ncol(object))]

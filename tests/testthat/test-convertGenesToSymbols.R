@@ -1,5 +1,3 @@
-context("convertGenesToSymbols")
-
 test_that("SummarizedExperiment", {
     object <- rse
     object <- convertGenesToSymbols(object)
@@ -14,8 +12,6 @@ test_that("SummarizedExperiment", {
 })
 
 
-
-context("convertSymbolsToGenes")
 
 test_that("SummarizedExperiment", {
     object <- rse

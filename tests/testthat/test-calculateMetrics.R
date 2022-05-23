@@ -1,5 +1,3 @@
-context("calculateMetrics")
-
 test_that("SE", {
     object <- rse
     cols <- c(

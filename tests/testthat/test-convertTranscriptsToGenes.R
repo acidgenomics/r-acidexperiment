@@ -1,5 +1,3 @@
-context("convertTranscriptsToGenes")
-
 skip_if_not(hasInternet())
 
 ## NOTE Consider using a presaved object, to speed up tests.

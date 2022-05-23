@@ -1,5 +1,3 @@
-context("tpm")
-
 test_that("SummarizedExperiment", {
     se <- SummarizedExperiment(
         assays = list(
@@ -12,5 +10,5 @@ test_that("SummarizedExperiment", {
         )
     )
     x <- tpm(se)
-    expect_is(x, "matrix")
+    expect_type(x, "integer")
 })

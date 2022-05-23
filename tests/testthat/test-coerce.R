@@ -1,5 +1,3 @@
-context("coerce")
-
 ## Easy way to test an S4 class that extends SE without importing?
 test_that("S3 coercion that preserves row data", {
     for (object in list(

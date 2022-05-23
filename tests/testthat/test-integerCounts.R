@@ -1,5 +1,3 @@
-context("integerCounts")
-
 ## This is primarily intended for use with DESeq2.
 test_that("SE", {
     object <- SummarizedExperiment(

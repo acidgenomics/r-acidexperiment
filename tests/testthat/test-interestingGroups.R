@@ -1,5 +1,3 @@
-context("interestingGroups")
-
 test_that("Annotated", {
     object <- SimpleList()
     intgroups <- c("XXX", "YYY")

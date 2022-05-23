@@ -21,17 +21,25 @@ estimateSizeFactors(object, ...)
 Assay name or index position.}
 
 \item{type}{\code{character(1)}.
-Type of method for estimation.\preformatted{libSize <- colSums(counts(object))
-}
+Type of method for estimation.
 
-\code{"mean-ratio"}:\preformatted{libSize / mean(libSize)
-}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{libSize <- colSums(counts(object))
+}\if{html}{\out{</div>}}
 
-\code{"geometric-mean-ratio"}:\preformatted{libSize / geometricMean(libSize)
-}
+\code{"mean-ratio"}:
 
-\code{"mean-geometric-mean-log-total"}:\preformatted{log(libSize) / geometricMean(log(libSize))
-}}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{libSize / mean(libSize)
+}\if{html}{\out{</div>}}
+
+\code{"geometric-mean-ratio"}:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{libSize / geometricMean(libSize)
+}\if{html}{\out{</div>}}
+
+\code{"mean-geometric-mean-log-total"}:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{log(libSize) / geometricMean(log(libSize))
+}\if{html}{\out{</div>}}}
 
 \item{center}{\code{numeric(1)}.
 If non-zero, scales all size factors so that the average size factor across

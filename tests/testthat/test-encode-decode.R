@@ -1,5 +1,3 @@
-context("encode/decode")
-
 test_that("SummarizedExperiment", {
     object <- rse
     x <- encode(object)

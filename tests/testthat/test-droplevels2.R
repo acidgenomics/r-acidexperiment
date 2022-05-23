@@ -1,5 +1,3 @@
-context("droplevels2")
-
 test_that("SummarizedExperiment", {
     object <- rse
     x <- droplevels2(object)

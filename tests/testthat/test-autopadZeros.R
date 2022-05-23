@@ -1,5 +1,3 @@
-context("autopadZeros")
-
 test_that("SummarizedExperiment", {
     object <- rse
     colnames(object) <- gsub(

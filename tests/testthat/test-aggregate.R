@@ -37,8 +37,6 @@ se <- SummarizedExperiment(
 
 
 
-context("aggregate")
-
 test_that("'sum' count mode", {
     invisible(mapply(
         object = list(
@@ -57,7 +55,6 @@ test_that("'sum' count mode", {
                 fun = "sum",
                 MARGIN = 1L
             )
-            expect_is(aggObject, class)
             aggObject <- as.matrix(aggObject)
             mode(aggObject) <- "integer"
             expect_identical(
@@ -91,7 +88,6 @@ test_that("'sum' count mode", {
                 fun = "sum",
                 MARGIN = 2L
             )
-            expect_is(aggObject, class)
             aggObject <- as.matrix(aggObject)
             mode(aggObject) <- "integer"
             expect_identical(
@@ -170,7 +166,6 @@ test_that("'mean' count mode", {
                 fun = "mean",
                 MARGIN = 1L
             )
-            expect_is(aggObject, class)
             aggObject <- as.matrix(aggObject)
             expect_identical(
                 object = aggObject,
@@ -200,7 +195,6 @@ test_that("'mean' count mode", {
                 fun = "mean",
                 MARGIN = 2L
             )
-            expect_is(aggObject, class)
             aggObject <- as.matrix(aggObject)
             expect_identical(
                 object = aggObject,

@@ -1,5 +1,3 @@
-context("makeSummarizedExperiment")
-
 genes <- paste0("gene", seq_len(4L))
 samples <- paste0("sample", seq_len(4L))
 
@@ -42,9 +40,9 @@ test_that("RangedSummarizedExperiment", {
     expect_identical(
         object = lapply(metadata(object), simpleClass),
         expected = list(
-            date = "Date",
-            sessionInfo = "session_info",
-            wd = "character"
+            "date" = "Date",
+            "sessionInfo" = "sessionInfo",
+            "wd" = "character"
         )
     )
 })

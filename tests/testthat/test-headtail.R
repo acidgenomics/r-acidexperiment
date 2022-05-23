@@ -1,5 +1,3 @@
-context("headtail")
-
 test_that("GenomicRanges", {
     expect_output(
         object = headtail(gr),

@@ -8,8 +8,6 @@ funs <- list(
 
 
 
-context("syntactic : atomic")
-
 test_that("Unnamed", {
     for (f in funs) {
         object <- 1L
@@ -35,8 +33,6 @@ test_that("Named", {
 })
 
 
-
-context("syntactic : factor")
 
 test_that("factor", {
     mapply(
@@ -76,8 +72,6 @@ test_that("factor", {
 
 
 
-context("syntactic : list")
-
 test_that("list", {
     mapply(
         f = funs,
@@ -99,8 +93,6 @@ test_that("list", {
 })
 
 
-
-context("syntactic : matrix")
 
 test_that("matrix", {
     mapply(
@@ -136,8 +128,6 @@ test_that("matrix", {
 
 
 
-context("syntactic : DataFrame")
-
 mcols(df) <- DataFrame(TEST = seq_len(ncol(df)))
 metadata(df) <- list(TEST = "XXX")
 
@@ -155,8 +145,6 @@ test_that("DataFrame", {
 })
 
 
-
-context("syntactic : GenomicRanges")
 
 test_that("GenomicRanges", {
     mapply(
@@ -184,8 +172,6 @@ test_that("GenomicRanges", {
 })
 
 
-
-context("syntactic : SummarizedExperiment")
 
 test_that("SummarizedExperiment", {
     for (f in funs) {
