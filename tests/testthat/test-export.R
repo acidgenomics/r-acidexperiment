@@ -68,7 +68,7 @@ test_that("Unnamed primary assay", {
     names(assays(object)) <- NULL
     expect_null(assayNames(object))
     x <- export(object = object, con = testdir)
-    expect_identical(names(x[["assays"]]), "assay")
+    expect_named(x[["assays"]], "assay")
     unlink(testdir, recursive = TRUE)
 })
 

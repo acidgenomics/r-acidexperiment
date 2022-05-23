@@ -162,7 +162,8 @@ formals(`correlation,SE,missing`)[["method"]] <- # nolint
         )
     }
 
-formals(`correlation,SE,SE`)[["method"]] <- .method
+formals(`correlation,SE,SE`)[["method"]] <- # nolint
+    .method
 
 rm(.method)
 

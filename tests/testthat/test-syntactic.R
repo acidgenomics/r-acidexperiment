@@ -24,7 +24,7 @@ test_that("Named", {
         ),
         f = function(fun, expected) {
             object <- c("hello.world" = 1L)
-            expect_identical(names(fun(object)), expected)
+            expect_named(fun(object), expected)
         }
     )
 })
@@ -51,13 +51,13 @@ test_that("factor", {
                 object = levels(x),
                 expected = levels
             )
-            expect_identical(
-                object = names(x),
+            expect_named(
+                object = x,
                 expected = names
             )
             x <- fun(object, names = FALSE)
-            expect_identical(
-                object = names(x),
+            expect_named(
+                object = x,
                 expected = names(object)
             )
         }
@@ -75,8 +75,8 @@ test_that("list", {
         ),
         f = function(fun, expected) {
             object <- syntactic[["list"]]
-            expect_identical(
-                object = names(fun(object)),
+            expect_named(
+                object = fun(object),
                 expected = expected
             )
         }
