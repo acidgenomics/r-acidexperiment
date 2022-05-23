@@ -38,7 +38,7 @@ se <- SummarizedExperiment(
 
 
 test_that("'sum' count mode", {
-    invisible(mapply(
+    invisible(Map(
         object = list(
             "matrix" = counts,
             "Matrix" = sparse
@@ -47,7 +47,7 @@ test_that("'sum' count mode", {
             "matrix",
             "Matrix"
         ),
-        FUN = function(object, class) {
+        f = function(object, class) {
             ## Aggregate down the rows.
             aggObject <- aggregate(
                 x = object,
@@ -116,13 +116,12 @@ test_that("'sum' count mode", {
                     )
                 )
             )
-        },
-        SIMPLIFY = FALSE
+        }
     ))
 })
 
 test_that("'mean' count mode", {
-    invisible(mapply(
+    invisible(Map(
         object = list(
             "matrix" = counts,
             "Matrix" = sparse
@@ -155,10 +154,10 @@ test_that("'mean' count mode", {
                 10.5, 12.0
             )
         ),
-        FUN = function(object,
-                       class,
-                       rowExpectedData,
-                       colExpectedData) {
+        f = function(object,
+                     class,
+                     rowExpectedData,
+                     colExpectedData) {
             ## Aggregate down the rows.
             aggObject <- aggregate(
                 x = object,
@@ -217,8 +216,7 @@ test_that("'mean' count mode", {
                     )
                 )
             )
-        },
-        SIMPLIFY = FALSE
+        }
     ))
 })
 

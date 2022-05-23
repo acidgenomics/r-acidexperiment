@@ -1,7 +1,7 @@
 #' Combine multiple objects
 #'
 #' @name combine
-#' @note Updated 2022-02-07.
+#' @note Updated 2022-05-23.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -76,13 +76,7 @@ NULL
             "assays",
             toInlineString(assayNames(x), n = 5L)
         ))
-        assays <- mapply(
-            x = assays(x),
-            y = assays(y),
-            FUN = cbind,
-            SIMPLIFY = FALSE,
-            USE.NAMES = TRUE
-        )
+        assays <- Map(x = assays(x), y = assays(y), f = cbind)
         assert(is.list(assays))
         assays <- as(assays, "SimpleList")
         ## Row data ------------------------------------------------------------
@@ -169,13 +163,8 @@ NULL
         mx <- mx[keep]
         my <- my[keep]
         ## Keep only metadata that is identical across both objects.
-        keep <- mapply(
-            x = mx,
-            y = my,
-            FUN = identical,
-            SIMPLIFY = TRUE,
-            USE.NAMES = TRUE
-        )
+        keep <- as.logical(Map(x = mx, y = my, f = identical))
+        names(keep) <- names(mx)
         drop <- names(keep)[!keep]
         if (hasLength(drop)) {
             alertWarning(sprintf(

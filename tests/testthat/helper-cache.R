@@ -16,8 +16,8 @@ files <- c(
     "bcbio-metadata-multiplexed-invalid-duplicated.csv",
     "bcbio-metadata-multiplexed-invalid-missing-columns.csv"
 )
-mapply(
-    FUN = function(remoteDir, file, envir) {
+Map(
+    f = function(remoteDir, file, envir) {
         destfile <- file.path("cache", file)
         if (!file.exists(destfile)) {
             utils::download.file(
@@ -28,8 +28,8 @@ mapply(
     },
     file = files,
     MoreArgs = list(
-        remoteDir = AcidExperimentTestsURL,
-        envir = environment()
+        "remoteDir" = AcidExperimentTestsURL,
+        "envir" = environment()
     )
 )
 rm(files)

@@ -6,37 +6,32 @@ funs <- list(
     "upperCamelCase" = upperCamelCase
 )
 
-
-
 test_that("Unnamed", {
-    for (f in funs) {
+    for (fun in funs) {
         object <- 1L
-        expect_identical(f(object), object)
+        expect_identical(fun(object), object)
     }
 })
 
 test_that("Named", {
-    mapply(
-        f = funs,
+    Map(
+        fun = funs,
         expected = c(
             "helloWorld",
             "hello.world",
             "hello_world",
             "HelloWorld"
         ),
-        FUN = function(f, expected) {
+        f = function(fun, expected) {
             object <- c("hello.world" = 1L)
-            expect_identical(names(f(object)), expected)
-        },
-        SIMPLIFY = FALSE
+            expect_identical(names(fun(object)), expected)
+        }
     )
 })
 
-
-
 test_that("factor", {
-    mapply(
-        f = funs,
+    Map(
+        fun = funs,
         levels = list(
             "camelCase" = c("group1", "group2"),
             "dottedCase" = c("group.1", "group.2"),
@@ -49,9 +44,9 @@ test_that("factor", {
             "snakeCase" = c("sample_1", "sample_2", "sample_3", "sample_4"),
             "upperCamelCase" = c("Sample1", "Sample2", "Sample3", "Sample4")
         ),
-        FUN = function(f, levels, names) {
+        f = function(fun, levels, names) {
             object <- syntactic[["factor"]]
-            x <- f(object, names = TRUE)
+            x <- fun(object, names = TRUE)
             expect_identical(
                 object = levels(x),
                 expected = levels
@@ -60,43 +55,37 @@ test_that("factor", {
                 object = names(x),
                 expected = names
             )
-            x <- f(object, names = FALSE)
+            x <- fun(object, names = FALSE)
             expect_identical(
                 object = names(x),
                 expected = names(object)
             )
-        },
-        SIMPLIFY = FALSE
+        }
     )
 })
 
-
-
 test_that("list", {
-    mapply(
-        f = funs,
+    Map(
+        fun = funs,
         expected = list(
             "camelCase" = c("itemA", "itemB"),
             "dottedCase" = c("item.a", "item.b"),
             "snakeCase" = c("item_a", "item_b"),
             "upperCamelCase" = c("ItemA", "ItemB")
         ),
-        FUN = function(f, expected) {
+        f = function(fun, expected) {
             object <- syntactic[["list"]]
             expect_identical(
-                object = names(f(object)),
+                object = names(fun(object)),
                 expected = expected
             )
-        },
-        SIMPLIFY = FALSE
+        }
     )
 })
 
-
-
 test_that("matrix", {
-    mapply(
-        f = funs,
+    Map(
+        fun = funs,
         expected = list(
             "camelCase" = list(
                 c("alabama", "alaska", "arizona"),
@@ -115,25 +104,26 @@ test_that("matrix", {
                 c("Murder", "Assault", "UrbanPop")
             )
         ),
-        FUN = function(f, expected) {
+        f = function(fun, expected) {
             object <- syntactic[["matrix"]][seq_len(3L), seq_len(3L)]
             expect_identical(
-                object = dimnames(f(object, rownames = TRUE, colnames = TRUE)),
+                object = dimnames(fun(
+                    object = object,
+                    rownames = TRUE,
+                    colnames = TRUE
+                )),
                 expected = expected
             )
-        },
-        SIMPLIFY = FALSE
+        }
     )
 })
-
-
 
 mcols(df) <- DataFrame(TEST = seq_len(ncol(df)))
 metadata(df) <- list(TEST = "XXX")
 
 test_that("DataFrame", {
-    for (f in funs) {
-        x <- f(
+    for (fun in funs) {
+        x <- fun(
             object = df,
             rownames = TRUE,
             colnames = TRUE,
@@ -144,19 +134,17 @@ test_that("DataFrame", {
     }
 })
 
-
-
 test_that("GenomicRanges", {
-    mapply(
-        f = funs,
+    Map(
+        fun = funs,
         expected = list(
             "camelCase" = c("geneId", "geneName"),
             "dottedCase" = c("gene.id", "gene.name"),
             "snakeCase" = c("gene_id", "gene_name"),
             "upperCamelCase" = c("GeneId", "GeneName")
         ),
-        FUN = function(f, expected) {
-            x <- f(
+        f = function(fun, expected) {
+            x <- fun(
                 object = gr,
                 names = TRUE,
                 mcols = TRUE
@@ -166,16 +154,13 @@ test_that("GenomicRanges", {
                 object = colnames(mcols(x)),
                 expected = expected
             )
-        },
-        SIMPLIFY = FALSE
+        }
     )
 })
 
-
-
 test_that("SummarizedExperiment", {
-    for (f in funs) {
-        x <- f(
+    for (fun in funs) {
+        x <- fun(
             object = rse,
             rownames = TRUE,
             colnames = TRUE,

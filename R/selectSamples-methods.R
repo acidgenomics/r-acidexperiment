@@ -34,15 +34,13 @@ NULL
         sampleData <- sampleData(object)
         assert(isSubset(names(args), colnames(sampleData)))
         ## Obtain the sample identifiers.
-        list <- mapply(
+        list <- Map(
             col = names(args),
             arg = args,
-            MoreArgs = list(data = sampleData),
-            FUN = function(col, arg, data) {
+            MoreArgs = list("data" = sampleData),
+            f = function(col, arg, data) {
                 rownames(data[data[[col]] %in% arg, , drop = FALSE])
-            },
-            SIMPLIFY = FALSE,
-            USE.NAMES = TRUE
+            }
         )
         samples <- sort(as.character(Reduce(f = intersect, x = list)))
         assert(hasLength(samples))

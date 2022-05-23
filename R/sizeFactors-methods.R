@@ -46,12 +46,12 @@ NULL
 
 
 
-## Updated 2019-08-06.
+## Updated 2022-05-23.
 `sizeFactors<-,SE,ANY` <- # nolint
     function(object, value) {
         if (!is.null(value)) {
             assert(
-                all(!is.na(value)),
+                !anyNA(value),
                 all(is.finite(value)),
                 all(value > 0L)
             )
