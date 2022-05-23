@@ -18,7 +18,7 @@ test_that("SE", {
 test_that("SE : object with no metadata", {
     object <- rse
     metadata(object) <- list()
-    expect_identical(interestingGroups(object), NULL)
+    expect_null(interestingGroups(object))
 })
 
 test_that("SE : assignment method", {
