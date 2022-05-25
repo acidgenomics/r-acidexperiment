@@ -34,7 +34,7 @@ We're attempting to make this as strict as possible, requiring:
 }
 }
 \note{
-Updated 2022-02-07.
+Updated 2022-05-23.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")

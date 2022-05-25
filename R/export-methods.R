@@ -1,33 +1,6 @@
-## FIXME Need to harden against export of minimal object with empty assays,
-## colData, and rowData. See related bcbioRNASeq edge case issue:
-##
-## Quitting from lines 223-228 (qc.Rmd)
-## Error:
-##     ! Assert failure.
-## [1] hasLength(keep) is not TRUE.
-## Cause: `keep` has length 0.
-## Backtrace:
-## ▆
-## 1. ├─BiocIO::export(...)
-## 2. └─AcidExperiment::export(...)
-## 3.   └─AcidExperiment .local(object, con, format, ...)
-## 4.     └─AcidExperiment:::.exportRowData(...)
-## 5.       ├─AcidGenerics::atomize(data)
-## 6.       └─pipette::atomize(data)
-## 7.         └─pipette .local(object, ...)
-## 8.           ├─AcidGenerics::atomize(object)
-## 9.           └─pipette::atomize(object)
-## 10.             └─pipette .local(object, ...)
-## 11.               └─goalie::assert(hasLength(keep))
-## 12.                 └─AcidCLI stop(...)
-## 13.                   └─cli::cli_abort(x, call = NULL)
-## 14.                     └─rlang::abort(message, ..., call = call, use_cli_format = TRUE)
-
-
-
 #' @name export
 #' @inherit pipette::export
-#' @note Updated 2021-10-12.
+#' @note Updated 2022-05-25.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -53,7 +26,7 @@ NULL
 
 #' Export assays
 #'
-#' @note Updated 2021-10-12.
+#' @note Updated 2022-05-25.
 #' @noRd
 .exportAssays <-
     function(object,
@@ -61,14 +34,23 @@ NULL
              compress,
              overwrite,
              quiet) {
-        validObject(object)
         assert(
+            validObject(object),
             is(object, "SummarizedExperiment"),
             isString(dir),
             isFlag(compress),
             isFlag(overwrite),
             isFlag(quiet)
         )
+        if (!hasLength(assays(object))) {
+            return(NULL)
+        }
+        if (
+            is.null(assayNames(object)) &&
+            hasLength(assays(object), n = 1L)
+        ) {
+            assayNames(object) <- "assay"
+        }
         assayNames <- assayNames(object)
         assert(isCharacter(assayNames))
         dir <- initDir(dir)
@@ -107,7 +89,7 @@ NULL
 
 #' Export column data (in SummarizedExperiment)
 #'
-#' @note Updated 2021-10-12.
+#' @note Updated 2022-05-25.
 #' @noRd
 .exportColData <-
     function(object,
@@ -123,7 +105,14 @@ NULL
             isFlag(overwrite),
             isFlag(quiet)
         )
-        data <- atomize(colData(object))
+        data <- colData(object)
+        if (!hasCols(data)) {
+            return(NULL)
+        }
+        data <- atomize(data)
+        if (!hasCols(data)) {
+            return(NULL)
+        }
         assert(identical(rownames(data), colnames(object)))
         export(
             object = data,
@@ -137,7 +126,7 @@ NULL
 
 #' Export row data (in SummarizedExperiment)
 #'
-#' @note Updated 2021-10-12.
+#' @note Updated 2022-05-25.
 #' @noRd
 #'
 #' @details
@@ -149,8 +138,8 @@ NULL
              dir,
              overwrite,
              quiet) {
-        validObject(object)
         assert(
+            validObject(object),
             is(object, "SummarizedExperiment"),
             isString(ext),
             isString(dir),
@@ -158,9 +147,15 @@ NULL
             isFlag(quiet)
         )
         data <- rowData(object, use.names = TRUE)
-        data <- atomize(data)
+        if (!hasCols(data)) {
+            return(NULL)
+        }
         ## This step is necessary to keep track of genomic coordinates.
         data <- as.data.frame(data)
+        data <- atomize(data)
+        if (!hasCols(data)) {
+            return(NULL)
+        }
         assert(identical(rownames(data), rownames(object)))
         export(
             object = data,
@@ -172,9 +167,9 @@ NULL
 
 
 
-#' export SummarizedExperiment method
+#' Export SummarizedExperiment
 #'
-#' @note Updated 2021-10-12.
+#' @note Updated 2022-05-25.
 #' @noRd
 #'
 #' @details
@@ -198,11 +193,11 @@ NULL
                  x = "acid.quiet",
                  default = FALSE
              )) {
-        validObject(object)
         if (missing(format)) {
             format <- NULL
         }
         assert(
+            validObject(object),
             isString(con),
             is.null(format),
             isFlag(compress),
@@ -223,9 +218,6 @@ NULL
             ext <- paste0(ext, ".gz")
         }
         ext <- paste0(".", ext)
-        if (is.null(assayNames(object))) {
-            assayNames(object) <- "assay"
-        }
         files[["assays"]] <-
             .exportAssays(
                 object = object,
@@ -251,13 +243,12 @@ NULL
                 quiet = quiet
             )
         files <- Filter(Negate(is.null), files)
-        assert(hasNames(files))
         invisible(files)
     }
 
 
 
-## Updated 2021-10-12.
+## Updated 2022-05-25.
 `export,SE,deprecated` <- # nolint
     function(object,
              con, # NULL,
@@ -265,7 +256,6 @@ NULL
              name = NULL,
              dir,
              ...) {
-        validObject(object)
         ## > .Deprecated(msg = sprintf(
         ## >     "Use '%s' instead of '%s'.",
         ## >     "con", "dir"
@@ -277,6 +267,7 @@ NULL
             format <- NULL
         }
         assert(
+            validObject(object),
             is.null(con),
             is.null(format),
             isString(dir)

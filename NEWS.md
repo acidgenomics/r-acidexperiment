@@ -1,3 +1,10 @@
+# AcidExperiment 0.4.2 (2022-05-25)
+
+## Minor changes
+
+- `export`: Hardened `SummarizedExperiment` against edge cases where no
+  `assays`, `colData`, or `rowData` are defined.
+
 # AcidExperiment 0.4.1 (2022-05-23)
 
 ## Minor changes

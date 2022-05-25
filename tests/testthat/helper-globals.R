@@ -26,6 +26,7 @@ DataFrame <- S4Vectors::DataFrame
 GRanges <- GenomicRanges::GRanges
 GRangesList <- GenomicRanges::GRangesList
 IRanges <- IRanges::IRanges
+SummarizedExperiment <- SummarizedExperiment::SummarizedExperiment
 `assays<-` <- SummarizedExperiment::`assays<-`
 assay <- SummarizedExperiment::assay
 assayNames <- SummarizedExperiment::assayNames
