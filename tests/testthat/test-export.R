@@ -118,3 +118,11 @@ test_that("Deprecated : both 'name' and 'dir' declared", {
     )
     unlink(testdir, recursive = TRUE)
 })
+
+test_that("Empty SummarizedExperiment", {
+    unlink(testdir, recursive = TRUE)
+    object <- SummarizedExperiment()
+    out <- export(object = object, con = testdir)
+    expect_identical(out, list())
+    unlink(testdir, recursive = TRUE)
+})
