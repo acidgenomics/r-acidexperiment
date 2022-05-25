@@ -47,7 +47,7 @@ NULL
         }
         if (
             is.null(assayNames(object)) &&
-            hasLength(assays(object), n = 1L)
+                hasLength(assays(object), n = 1L)
         ) {
             assayNames(object) <- "assay"
         }
