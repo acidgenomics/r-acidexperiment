@@ -1,3 +1,30 @@
+## FIXME Need to harden against export of minimal object with empty assays,
+## colData, and rowData. See related bcbioRNASeq edge case issue:
+##
+## Quitting from lines 223-228 (qc.Rmd)
+## Error:
+##     ! Assert failure.
+## [1] hasLength(keep) is not TRUE.
+## Cause: `keep` has length 0.
+## Backtrace:
+## ▆
+## 1. ├─BiocIO::export(...)
+## 2. └─AcidExperiment::export(...)
+## 3.   └─AcidExperiment .local(object, con, format, ...)
+## 4.     └─AcidExperiment:::.exportRowData(...)
+## 5.       ├─AcidGenerics::atomize(data)
+## 6.       └─pipette::atomize(data)
+## 7.         └─pipette .local(object, ...)
+## 8.           ├─AcidGenerics::atomize(object)
+## 9.           └─pipette::atomize(object)
+## 10.             └─pipette .local(object, ...)
+## 11.               └─goalie::assert(hasLength(keep))
+## 12.                 └─AcidCLI stop(...)
+## 13.                   └─cli::cli_abort(x, call = NULL)
+## 14.                     └─rlang::abort(message, ..., call = call, use_cli_format = TRUE)
+
+
+
 #' @name export
 #' @inherit pipette::export
 #' @note Updated 2021-10-12.
