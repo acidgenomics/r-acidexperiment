@@ -1,7 +1,5 @@
-testdir <- file.path(tempdir(), "example")
-
 test_that("New 'con' BiocIO approach, instead of deprecated 'dir'", {
-    unlink(testdir, recursive = TRUE)
+    testdir <- tempdir2()
     object <- rse
     out <- export(
         object = object,
@@ -19,11 +17,11 @@ test_that("New 'con' BiocIO approach, instead of deprecated 'dir'", {
             "rowData" = file.path(prefix, "rowData.csv.gz")
         )
     )
-    unlink(testdir, recursive = TRUE)
+    unlink2(testdir)
 })
 
 test_that("Compressed sparse matrix support", {
-    unlink(testdir, recursive = TRUE)
+    testdir <- tempdir2()
     object <- rse
     counts(object) <- as(counts(object), "sparseMatrix")
     out <- export(
@@ -58,24 +56,24 @@ test_that("Compressed sparse matrix support", {
             "rowData" = file.path(prefix, "rowData.csv.gz")
         )
     )
-    unlink(testdir, recursive = TRUE)
+    unlink2(testdir)
 })
 
 test_that("Unnamed primary assay", {
-    unlink(testdir, recursive = TRUE)
+    testdir <- tempdir2()
     object <- as(rse, "SummarizedExperiment")
     ## Note that `assayNames()` assignment doesn't work here.
     names(assays(object)) <- NULL
     expect_null(assayNames(object))
     x <- export(object = object, con = testdir)
     expect_named(x[["assays"]], "assay")
-    unlink(testdir, recursive = TRUE)
+    unlink2(testdir)
 })
 
 ## NOTE This assigns object name nested into directory substructure.
 ## This method likely will be removed in a future release.
 test_that("Deprecated : 'dir' argument, no 'name'", {
-    unlink(testdir, recursive = TRUE)
+    testdir <- tempdir2()
     object <- rse
     out <- export(
         object = object,
@@ -93,11 +91,11 @@ test_that("Deprecated : 'dir' argument, no 'name'", {
             "rowData" = file.path(prefix, "rowData.csv.gz")
         )
     )
-    unlink(testdir, recursive = TRUE)
+    unlink2(testdir)
 })
 
 test_that("Deprecated : both 'name' and 'dir' declared", {
-    unlink(testdir, recursive = TRUE)
+    testdir <- tempdir2()
     object <- rse
     out <- export(
         object = object,
@@ -116,13 +114,13 @@ test_that("Deprecated : both 'name' and 'dir' declared", {
             "rowData" = file.path(prefix, "rowData.csv")
         )
     )
-    unlink(testdir, recursive = TRUE)
+    unlink2(testdir)
 })
 
 test_that("Empty SummarizedExperiment", {
-    unlink(testdir, recursive = TRUE)
+    testdir <- tempdir2()
     object <- SummarizedExperiment()
     out <- export(object = object, con = testdir)
     expect_identical(out, list())
-    unlink(testdir, recursive = TRUE)
+    unlink2(testdir)
 })

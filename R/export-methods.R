@@ -16,7 +16,7 @@
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' con <- file.path(tempdir(), "example")
+#' con <- file.path(AcidBase::tempdir2(), "example")
 #' x <- export(object = object, con = con)
 #' print(x)
 #' unlink(con, recursive = TRUE)
