@@ -1,3 +1,10 @@
+# AcidExperiment 0.4.3 (2022-06-02)
+
+## Minor changes
+
+- Hardened `tempdir` and `unlink` calls in unit tests and working examples,
+  to improve compatibility in Windows testing environment.
+
 # AcidExperiment 0.4.2 (2022-05-25)
 
 ## Minor changes
