@@ -16,10 +16,10 @@
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' con <- file.path(AcidBase::tempdir2(), "example")
+#' con <- AcidBase::tempdir2()
 #' x <- export(object = object, con = con)
 #' print(x)
-#' unlink(con, recursive = TRUE)
+#' AcidBase::unlink2(con)
 NULL
 
 

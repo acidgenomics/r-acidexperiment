@@ -1,6 +1,5 @@
 test_that("Direct 'sampleId' column, requiring snake case sanitization", {
     tmpfile <- tempfile(fileext = ".csv")
-    unlink(tmpfile, recursive = FALSE)
     df <- data.frame("sampleId" = c("10001-A", "10002-B"))
     export(df, file = tmpfile)
     expect_identical(
@@ -11,7 +10,7 @@ test_that("Direct 'sampleId' column, requiring snake case sanitization", {
             row.names = c("x10001_a", "x10002_b")
         )
     )
-    unlink(tmpfile, recursive = FALSE)
+    unlink2(tmpfile)
 })
 
 
