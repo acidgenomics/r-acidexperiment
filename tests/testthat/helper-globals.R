@@ -40,4 +40,5 @@ rowRanges <- SummarizedExperiment::rowRanges
 seqnames <- GenomeInfoDb::seqnames
 simpleClass <- AcidBase::simpleClass
 tempdir2 <- AcidBase::tempdir2
+unlink2 <- AcidBase::unlink2
 ## nolint end
