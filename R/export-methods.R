@@ -180,7 +180,7 @@ NULL
 `export,SE` <- # nolint
     function(object,
              con,
-             format, # NULL
+             format, # missing
              compress = getOption(
                  x = "acid.export.compress",
                  default = FALSE
