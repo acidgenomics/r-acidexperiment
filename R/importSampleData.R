@@ -36,7 +36,7 @@
 #' @note Works with local or remote files.
 #'
 #' @author Michael Steinbaugh
-#' @note Updated 2022-05-04.
+#' @note Updated 2022-08-26.
 #' @export
 #'
 #' @inheritParams AcidRoxygen::params
@@ -108,7 +108,7 @@ importSampleData <-
             lanes <- seq_len(lanes)
         }
         ## Import --------------------------------------------------------------
-        data <- import(file, ...)
+        data <- import(con = file, ...)
         data <- as(data, "DataFrame")
         colnames(data) <- camelCase(colnames(data), strict = TRUE)
         data <- removeNA(data)
