@@ -33,9 +33,9 @@ in \code{colData()}.
 }
 \section{Functions}{
 \itemize{
-\item \code{metrics,SummarizedExperiment-method}: Sample-level metrics.
-}}
+\item \code{metrics(SummarizedExperiment)}: Sample-level metrics.
 
+}}
 \note{
 Updated 2022-05-04.
 }

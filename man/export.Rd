@@ -2,13 +2,12 @@
 % Please edit documentation in R/AllGenerics.R, R/export-methods.R
 \name{export}
 \alias{export}
-\alias{export,SummarizedExperiment,character,missingOrNULL-method}
-\alias{export,SummarizedExperiment,missingOrNULL,missingOrNULL-method}
+\alias{export,SummarizedExperiment,character,missing-method}
 \title{Export}
 \usage{
 export(object, con, format, ...)
 
-\S4method{export}{SummarizedExperiment,character,missingOrNULL}(
+\S4method{export}{SummarizedExperiment,character,missing}(
   object,
   con,
   format,
@@ -16,8 +15,6 @@ export(object, con, format, ...)
   overwrite = getOption(x = "acid.overwrite", default = TRUE),
   quiet = getOption(x = "acid.quiet", default = FALSE)
 )
-
-\S4method{export}{SummarizedExperiment,missingOrNULL,missingOrNULL}(object, con, format, name = NULL, dir, ...)
 }
 \arguments{
 \item{object}{Object.
@@ -29,7 +26,7 @@ File path.
 Alternatively, can leave unset and use \code{ext} and \code{dir} arguments instead.}
 
 \item{format}{\code{character(1)}, \code{missing}, or \code{NULL}.
-Output file format extension.}
+\emph{Currently not supported.}}
 
 \item{compress}{\code{logical(1)}.
 Apply gzip compression to all files.}
@@ -40,13 +37,10 @@ Overwrite existing file on disk.}
 \item{quiet}{\code{logical(1)}.
 Perform command quietly, suppressing messages.}
 
+\item{...}{Additional arguments.}
+
 \item{name}{\code{character(1)}.
 Name to use on disk. If \code{NULL}, will use the name of the object instead.}
-
-\item{dir}{\code{character(1)}.
-Directory path.}
-
-\item{...}{Additional arguments.}
 }
 \value{
 Invisible \code{character}.

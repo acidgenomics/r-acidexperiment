@@ -248,46 +248,6 @@ NULL
 
 
 
-## Updated 2022-05-25.
-`export,SE,deprecated` <- # nolint
-    function(object,
-             con, # NULL,
-             format, # NULL,
-             name = NULL,
-             dir,
-             ...) {
-        ## > .Deprecated(msg = sprintf(
-        ## >     "Use '%s' instead of '%s'.",
-        ## >     "con", "dir"
-        ## > ))
-        if (missing(con)) {
-            con <- NULL
-        }
-        if (missing(format)) {
-            format <- NULL
-        }
-        assert(
-            validObject(object),
-            is.null(con),
-            is.null(format),
-            isString(dir)
-        )
-        if (is.null(name)) {
-            call <- standardizeCall()
-            sym <- call[["object"]]
-            assert(is.symbol(sym))
-            name <- as.character(sym)
-        }
-        export(
-            object = object,
-            con = file.path(dir, name),
-            format = format,
-            ...
-        )
-    }
-
-
-
 #' @rdname export
 #' @export
 setMethod(
@@ -295,19 +255,7 @@ setMethod(
     signature = signature(
         object = "SummarizedExperiment",
         con = "character",
-        format = "missingOrNULL"
+        format = "missing"
     ),
     definition = `export,SE`
-)
-
-#' @rdname export
-#' @export
-setMethod(
-    f = "export",
-    signature = signature(
-        object = "SummarizedExperiment",
-        con = "missingOrNULL",
-        format = "missingOrNULL"
-    ),
-    definition = `export,SE,deprecated`
 )

@@ -1,7 +1,7 @@
 test_that("Direct 'sampleId' column, requiring snake case sanitization", {
     tmpfile <- tempfile(fileext = ".csv")
     df <- data.frame("sampleId" = c("10001-A", "10002-B"))
-    export(df, file = tmpfile)
+    export(df, con = tmpfile)
     expect_identical(
         object = importSampleData(tmpfile),
         expected = DataFrame(

@@ -39,15 +39,15 @@ objects.
 }
 \section{Functions}{
 \itemize{
-\item \code{headtail,DataFrame-method}: Same method as \code{data.frame}.
+\item \code{headtail(DataFrame)}: Same method as \code{data.frame}.
 
-\item \code{headtail,GenomicRanges-method}: Summarize the ranges.
+\item \code{headtail(GenomicRanges)}: Summarize the ranges.
 
-\item \code{headtail,Matrix-method}: Same method as \code{matrix}.
+\item \code{headtail(Matrix)}: Same method as \code{matrix}.
 
-\item \code{headtail,SummarizedExperiment-method}: Summarize the primary \code{assay}.
+\item \code{headtail(SummarizedExperiment)}: Summarize the primary \code{assay}.
+
 }}
-
 \note{
 Updated 2020-10-07.
 }
