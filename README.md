@@ -26,7 +26,7 @@ Configure [Conda][] to use the [Bioconda][] channels.
 
 ```sh
 # Don't install recipe into base environment.
-name="r-acidexperiment"
+name='r-acidexperiment'
 conda create --name="$name" "$name"
 conda activate "$name"
 R
@@ -35,8 +35,8 @@ R
 ### [Docker][] method
 
 ```sh
-image="acidgenomics/r-acidexperiment"
-workdir="/mnt/work"
+image='acidgenomics/r-packages:acidexperiment'
+workdir='/mnt/work'
 docker pull "$image"
 docker run -it \
     --volume="${PWD}:${workdir}" \
@@ -46,7 +46,6 @@ docker run -it \
 ```
 
 [bioconda]: https://bioconda.github.io/
-[bioconductor]: https://bioconductor.org/
 [conda]: https://conda.io/
 [docker]: https://www.docker.com/
 [r]: https://www.r-project.org/
