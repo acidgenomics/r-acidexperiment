@@ -1,3 +1,11 @@
+## FIXME Consider not warning about syntactically invalid rownames if they
+## contain integerish values (e.g. Entrez gene identifiers).
+
+## FIXME Ensure we unclass rowRanges (e.g. EnsemblGenomes), colData,
+## rowData (e.g. EntrezGeneInfo), etc...
+
+
+
 #' Make a SummarizedExperiment object
 #'
 #' This function is a utility wrapper for `SummarizedExperiment` that provides
