@@ -26,6 +26,7 @@ NULL
 #' do.call estimateSizeFactors lapply match organism organism<- rowSums
 #' setdiff sizeFactors sizeFactors<- t unlist unsplit
 #' @importFrom Biobase sampleNames sampleNames<-
+#' @importFrom MultiAssayExperiment experiments sampleMap
 #' @importFrom S4Vectors aggregate complete.cases cor decode droplevels head
 #' mcols mcols<- metadata metadata<- na.omit split summary
 #' @importFrom SummarizedExperiment assay assay<- assayNames assayNames<- assays
