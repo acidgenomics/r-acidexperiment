@@ -39,8 +39,8 @@ NULL
 #' @importMethodsFrom AcidPlyr leftJoin mutateAt
 #' @importMethodsFrom pipette atomize droplevels2 export factorize import
 #' removeNA
-#' @importMethodsFrom syntactic camelCase dottedCase makeNames snakeCase
-#' upperCamelCase
+#' @importMethodsFrom syntactic camelCase dottedCase makeDimnames makeNames
+#' snakeCase upperCamelCase
 NULL
 
 
