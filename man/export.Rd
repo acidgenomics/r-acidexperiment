@@ -2,10 +2,20 @@
 % Please edit documentation in R/AllGenerics.R, R/export-methods.R
 \name{export}
 \alias{export}
+\alias{export,MultiAssayExperiment,character,missing-method}
 \alias{export,SummarizedExperiment,character,missing-method}
 \title{Export}
 \usage{
 export(object, con, format, ...)
+
+\S4method{export}{MultiAssayExperiment,character,missing}(
+  object,
+  con,
+  format,
+  compress = getOption(x = "acid.export.compress", default = FALSE),
+  overwrite = getOption(x = "acid.overwrite", default = TRUE),
+  quiet = getOption(x = "acid.quiet", default = FALSE)
+)
 
 \S4method{export}{SummarizedExperiment,character,missing}(
   object,
@@ -50,7 +60,7 @@ File path(s).
 Export
 }
 \note{
-Updated 2022-05-25.
+Updated 2022-09-20.
 }
 \section{Output file format extension}{
 

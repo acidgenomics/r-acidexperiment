@@ -1,6 +1,6 @@
 #' @name export
 #' @inherit pipette::export
-#' @note Updated 2022-05-25.
+#' @note Updated 2022-09-20.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -26,7 +26,7 @@ NULL
 
 #' Export assays
 #'
-#' @note Updated 2022-05-25.
+#' @note Updated 2022-09-20.
 #' @noRd
 .exportAssays <-
     function(object,
@@ -35,7 +35,6 @@ NULL
              overwrite,
              quiet) {
         assert(
-            validObject(object),
             is(object, "SummarizedExperiment"),
             isString(dir),
             isFlag(compress),
@@ -52,7 +51,10 @@ NULL
             assayNames(object) <- "assay"
         }
         assayNames <- assayNames(object)
-        assert(isCharacter(assayNames))
+        assert(
+            isCharacter(assayNames),
+            hasNoDuplicates(assayNames)
+        )
         dir <- initDir(dir)
         alert(sprintf(
             fmt = "Exporting assays %s to {.path %s}.",
@@ -87,9 +89,9 @@ NULL
 
 
 
-#' Export column data (in SummarizedExperiment)
+#' Export column data
 #'
-#' @note Updated 2022-05-25.
+#' @note Updated 2022-09-20.
 #' @noRd
 .exportColData <-
     function(object,
@@ -97,9 +99,8 @@ NULL
              dir,
              overwrite,
              quiet) {
-        validObject(object)
         assert(
-            is(object, "SummarizedExperiment"),
+            hasNoDuplicates(colnames(object)),
             isString(ext),
             isString(dir),
             isFlag(overwrite),
@@ -113,7 +114,9 @@ NULL
         if (!hasCols(data)) {
             return(NULL)
         }
-        assert(identical(rownames(data), colnames(object)))
+        if (is(object, "SummarizedExperiment")) {
+            assert(identical(rownames(data), colnames(object)))
+        }
         export(
             object = data,
             con = file.path(dir, paste0("colData", ext)),
@@ -124,9 +127,50 @@ NULL
 
 
 
-#' Export row data (in SummarizedExperiment)
+#' Export MultiAssayExperiment experiments
 #'
-#' @note Updated 2022-05-25.
+#' @note Updated 2022-09-20.
+#' @noRd
+.exportExperiments <-
+    function(object,
+             ext,
+             dir,
+             overwrite,
+             quiet) {
+        assert(
+            is(object, "MultiAssayExperiment"),
+            isString(ext),
+            isString(dir),
+            isFlag(overwrite),
+            isFlag(quiet)
+        )
+        experiments <- experiments(object)
+        ## Drop complex objects, such as RaggedExperiment.
+        keep <- bapply(
+            X = experiments,
+            FUN = is,
+            class2 = "SummarizedExperiment"
+        )
+        experiments <- experiments[keep]
+        if (!hasLength(experiments)) {
+            return(NULL)
+        }
+        ## FIXME Work on sanitizing the rowNames here...
+        Map(
+            f = export,
+            object = experiments,
+            con = file.path(dir, "experiments", names(experiments)),
+            compress = compress,
+            overwrite = overwrite,
+            quiet = quiet
+        )
+    }
+
+
+
+#' Export row data
+#'
+#' @note Updated 2022-09-20.
 #' @noRd
 #'
 #' @details
@@ -139,8 +183,8 @@ NULL
              overwrite,
              quiet) {
         assert(
-            validObject(object),
             is(object, "SummarizedExperiment"),
+            hasNoDuplicates(rownames(object)),
             isString(ext),
             isString(dir),
             isFlag(overwrite),
@@ -150,19 +194,110 @@ NULL
         if (!hasCols(data)) {
             return(NULL)
         }
-        ## This step is necessary to keep track of genomic coordinates.
+        if (hasRownames(object)) {
+            assert(identical(rownames(data), rownames(object)))
+        }
         data <- as.data.frame(data)
+        if (hasRownames(object)) {
+            assert(identical(rownames(data), rownames(object)))
+        }
         data <- atomize(data)
         if (!hasCols(data)) {
             return(NULL)
         }
-        assert(identical(rownames(data), rownames(object)))
+        if (hasRownames(object)) {
+            assert(identical(rownames(data), rownames(object)))
+        }
         export(
             object = data,
             con = file.path(dir, paste0("rowData", ext)),
             overwrite = overwrite,
             quiet = quiet
         )
+    }
+
+
+
+#' Export MultiAssayExperiment
+#'
+#' @note Updated 2022-09-20.
+#' @noRd
+`export,MAE` <- # nolint
+    function(object,
+             con,
+             format, # missing
+             compress = getOption(
+                 x = "acid.export.compress",
+                 default = FALSE
+             ),
+             overwrite = getOption(
+                 x = "acid.overwrite",
+                 default = TRUE
+             ),
+             quiet = getOption(
+                 x = "acid.quiet",
+                 default = FALSE
+             )) {
+        if (missing(format)) {
+            format <- NULL
+        }
+        assert(
+            validObject(object),
+            isString(con),
+            is.null(format),
+            isFlag(compress),
+            isFlag(overwrite),
+            isFlag(quiet)
+        )
+        dir <- initDir(con)
+        if (!isTRUE(quiet)) {
+            alert(sprintf(
+                fmt = "Exporting {.cls %s} to {.path %s}.",
+                "MultiAssayExperiment", dir
+            ))
+        }
+        files <- list()
+        ## This extension only applies to colData and rowData below.
+        ext <- "csv"
+        if (isTRUE(compress)) {
+            ext <- paste0(ext, ".gz")
+        }
+        ext <- paste0(".", ext)
+        colData <- colData(object)
+        sampleMap <- sampleMap(object)
+        assert(
+            is(colData, "DataFrame"),
+            hasNoDuplicates(rownames(colData)),
+            hasNoDuplicates(colnames(colData)),
+            is(sampleMap, "DataFrame"),
+            hasNoDuplicates(rownames(sampleMap)),
+            hasNoDuplicates(colnames(sampleMap))
+        )
+        files[["experiments"]] <-
+            .exportExperiments(
+                object = object,
+                ext = ext,
+                dir = dir,
+                overwrite = overwrite,
+                quiet = quiet
+            )
+        files[["colData"]] <-
+            .exportColData(
+                object = object,
+                ext = ext,
+                dir = dir,
+                overwrite = overwrite,
+                quiet = quiet
+            )
+        files[["sampleMap"]] <-
+            export(
+                object = sampleMap,
+                con = file.path(dir, paste0("sampleMap", ext)),
+                overwrite = overwrite,
+                quiet = quiet
+            )
+        files <- Filter(Negate(is.null), files)
+        invisible(files)
     }
 
 
@@ -198,6 +333,8 @@ NULL
         }
         assert(
             validObject(object),
+            hasNoDuplicates(rownames(object)),
+            hasNoDuplicates(colnames(object)),
             isString(con),
             is.null(format),
             isFlag(compress),
@@ -247,6 +384,18 @@ NULL
     }
 
 
+
+#' @rdname export
+#' @export
+setMethod(
+    f = "export",
+    signature = signature(
+        object = "MultiAssayExperiment",
+        con = "character",
+        format = "missing"
+    ),
+    definition = `export,MAE`
+)
 
 #' @rdname export
 #' @export
