@@ -1,11 +1,3 @@
-## FIXME Consider not warning about syntactically invalid rownames if they
-## contain integerish values (e.g. Entrez gene identifiers).
-
-## FIXME Ensure we unclass rowRanges (e.g. EnsemblGenomes), colData,
-## rowData (e.g. EntrezGeneInfo), etc...
-
-
-
 #' Make a SummarizedExperiment object
 #'
 #' This function is a utility wrapper for `SummarizedExperiment` that provides
@@ -23,7 +15,7 @@
 #' - `wd`: Working directory, returned from `getwd`.
 #'
 #' @export
-#' @note Updated 2022-05-04.
+#' @note Updated 2022-09-20.
 #'
 #' @inheritParams AcidRoxygen::params
 #'
@@ -158,17 +150,17 @@ makeSummarizedExperiment <-
                     hasNoDuplicates(rownames(assay)),
                     hasNoDuplicates(colnames(assay))
                 )
-                ## Inform rather than erroring when row and/or column names are
-                ## invalid. Previously, we used this stricter approach:
-                ## > assert(hasValidDimnames(assay))
-                ok <- validNames(rownames(assay))
-                if (!isTRUE(ok)) {
-                    alertWarning(cause(ok))
-                }
-                ok <- validNames(colnames(assay))
-                if (!isTRUE(ok)) {
-                    alertWarning(cause(ok))
-                }
+                ## Inform when row and/or column names are invalid. Disabling
+                ## at the moment because Entrez gene identifiers (integers)
+                ## can be useful to define in the rownames.
+                ## > ok <- validNames(rownames(assay))
+                ## > if (!isTRUE(ok)) {
+                ## >     alertWarning(cause(ok))
+                ## > }
+                ## > ok <- validNames(colnames(assay))
+                ## > if (!isTRUE(ok)) {
+                ## >     alertWarning(cause(ok))
+                ## > }
             }
         }
         ## Row data ------------------------------------------------------------
@@ -276,6 +268,7 @@ makeSummarizedExperiment <-
                 isSubset(rownames(assay), rownames(rowData)),
                 hasColnames(rowData)
             )
+            rowData <- as(rowData, "DataFrame")
             colnames(rowData) <- camelCase(colnames(rowData), strict = TRUE)
             rowData <- rowData[rownames(assay), , drop = FALSE]
             rowData <- encode(rowData)
@@ -287,6 +280,7 @@ makeSummarizedExperiment <-
                 hasColnames(colData),
                 hasRows(colData)
             )
+            colData <- as(colData, "DataFrame")
             colnames(colData) <- camelCase(colnames(colData), strict = TRUE)
             assert(isSubset(colnames(assay), rownames(colData)))
             if (isTRUE(denylist)) {
