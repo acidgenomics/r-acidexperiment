@@ -157,9 +157,20 @@ NULL
             return(NULL)
         }
         assert(hasNoDuplicates(names(exp)))
-        ## Ensure nested objects contain unique dimanmes, which is not always
-        ## the case currently for cBioPortalData objects.
-        exp <- lapply(X = exp, FUN = makeDimnames)
+        ## Ensure nested objects do not contain duplicated dimnames. This has
+        ## been observed with cBioPortalData MAE objects.
+        exp <- lapply(
+            X = exp,
+            FUN = function(object) {
+                assert(hasNoDuplicates(colnames(object)))
+                ## FIXME Can we rework using goalie::hasDuplicates instead?
+                if (anyDuplicated(rownames(object)) > 0L) {
+                    alertWarning("Duplicate rownames detected.")
+                    rownames(object) <- NULL
+                }
+                object
+            }
+        )
         Map(
             f = export,
             object = exp,
