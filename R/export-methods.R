@@ -100,6 +100,7 @@ NULL
              overwrite,
              quiet) {
         assert(
+            is(object, "SummarizedExperiment"),
             hasNoDuplicates(colnames(object)),
             isString(ext),
             isString(dir),
@@ -114,7 +115,7 @@ NULL
         if (!hasCols(data)) {
             return(NULL)
         }
-        if (is(object, "SummarizedExperiment")) {
+        if (hasColnames(object)) {
             assert(identical(rownames(data), colnames(object)))
         }
         export(
@@ -144,22 +145,25 @@ NULL
             isFlag(overwrite),
             isFlag(quiet)
         )
-        experiments <- experiments(object)
-        ## Drop complex objects, such as RaggedExperiment.
-        keep <- bapply(
-            X = experiments,
-            FUN = is,
-            class2 = "SummarizedExperiment"
+        exp <- experiments(object)
+        assert(
+            is(exp, "ExperimentList"),
+            hasNames(exp)
         )
-        experiments <- experiments[keep]
-        if (!hasLength(experiments)) {
+        ## Drop complex objects, such as RaggedExperiment.
+        keep <- bapply(X = exp, FUN = is, class2 = "SummarizedExperiment")
+        exp <- exp[keep]
+        if (!hasLength(exp)) {
             return(NULL)
         }
-        ## FIXME Work on sanitizing the rowNames here...
+        assert(hasNoDuplicates(names(exp)))
+        ## Ensure nested objects contain unique dimanmes, which is not always
+        ## the case currently for cBioPortalData objects.
+        exp <- lapply(X = exp, FUN = makeDimnames)
         Map(
             f = export,
-            object = experiments,
-            con = file.path(dir, "experiments", names(experiments)),
+            object = exp,
+            con = file.path(dir, "experiments", names(exp)),
             compress = compress,
             overwrite = overwrite,
             quiet = quiet
@@ -194,13 +198,7 @@ NULL
         if (!hasCols(data)) {
             return(NULL)
         }
-        if (hasRownames(object)) {
-            assert(identical(rownames(data), rownames(object)))
-        }
         data <- as.data.frame(data)
-        if (hasRownames(object)) {
-            assert(identical(rownames(data), rownames(object)))
-        }
         data <- atomize(data)
         if (!hasCols(data)) {
             return(NULL)
@@ -264,35 +262,38 @@ NULL
         }
         ext <- paste0(".", ext)
         colData <- colData(object)
+        if (anyDuplicated(rownames(colData)) > 0L) {
+            alertWarning(sprintf(
+                "Duplicate column identifiers detected in {.var %s}.",
+                "colData"
+            ))
+            rownames(colData) <- NULL
+        }
+        files[["colData"]] <-
+            export(
+                object = colData,
+                con = file.path(dir, paste0("colData", ext)),
+                overwrite = overwrite,
+                quiet = quiet
+            )
         sampleMap <- sampleMap(object)
         assert(
-            is(colData, "DataFrame"),
-            hasNoDuplicates(rownames(colData)),
-            hasNoDuplicates(colnames(colData)),
             is(sampleMap, "DataFrame"),
             hasNoDuplicates(rownames(sampleMap)),
             hasNoDuplicates(colnames(sampleMap))
         )
+        files[["sampleMap"]] <-
+            export(
+                object = sampleMap,
+                con = file.path(dir, paste0("sampleMap", ext)),
+                overwrite = overwrite,
+                quiet = quiet
+            )
         files[["experiments"]] <-
             .exportExperiments(
                 object = object,
                 ext = ext,
                 dir = dir,
-                overwrite = overwrite,
-                quiet = quiet
-            )
-        files[["colData"]] <-
-            .exportColData(
-                object = object,
-                ext = ext,
-                dir = dir,
-                overwrite = overwrite,
-                quiet = quiet
-            )
-        files[["sampleMap"]] <-
-            export(
-                object = sampleMap,
-                con = file.path(dir, paste0("sampleMap", ext)),
                 overwrite = overwrite,
                 quiet = quiet
             )
