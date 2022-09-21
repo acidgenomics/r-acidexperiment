@@ -128,6 +128,9 @@ NULL
 
 
 
+## FIXME Consider slotting the colData in per nested SE, to make the flat
+## file exports easier to parse programatically.
+
 #' Export MultiAssayExperiment experiments
 #'
 #' @note Updated 2022-09-21.
