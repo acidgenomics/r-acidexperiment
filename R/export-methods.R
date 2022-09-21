@@ -128,8 +128,6 @@ NULL
 
 
 
-## FIXME Need to rework handling of `compress` argument here.
-
 #' Export MultiAssayExperiment experiments
 #'
 #' @note Updated 2022-09-21.
