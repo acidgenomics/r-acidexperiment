@@ -22,8 +22,8 @@ NULL
 #' metrics mutateAt nonzeroRowsAndCols removeNA sampleData sampleData<-
 #' selectSamples snakeCase stripGeneVersions stripTranscriptVersions tpm
 #' uniteInterestingGroups upperCamelCase
-#' @importFrom BiocGenerics %in% as.data.frame colSums combine counts counts<-
-#' do.call estimateSizeFactors lapply match organism organism<- rowSums
+#' @importFrom BiocGenerics Map %in% as.data.frame colSums combine counts
+#' counts<- do.call estimateSizeFactors lapply match organism organism<- rowSums
 #' setdiff sizeFactors sizeFactors<- t unlist unsplit
 #' @importFrom Biobase sampleNames sampleNames<-
 #' @importFrom MultiAssayExperiment experiments sampleMap
