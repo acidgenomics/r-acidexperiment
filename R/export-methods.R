@@ -128,20 +128,22 @@ NULL
 
 
 
+## FIXME Need to rework handling of `compress` argument here.
+
 #' Export MultiAssayExperiment experiments
 #'
-#' @note Updated 2022-09-20.
+#' @note Updated 2022-09-21.
 #' @noRd
 .exportExperiments <-
     function(object,
-             ext,
              dir,
+             compress,
              overwrite,
              quiet) {
         assert(
             is(object, "MultiAssayExperiment"),
-            isString(ext),
             isString(dir),
+            isFlag(compress),
             isFlag(overwrite),
             isFlag(quiet)
         )
@@ -303,8 +305,8 @@ NULL
         files[["experiments"]] <-
             .exportExperiments(
                 object = object,
-                ext = ext,
                 dir = dir,
+                compress = compress,
                 overwrite = overwrite,
                 quiet = quiet
             )
