@@ -33,6 +33,7 @@ NULL
 ## MAE objects, to include the gene identifiers and symbols).
 ## FIXME Ensure all calls set rowData appropriately.
 ## FIXME Consider renaming "dir" to "con" internally.
+## FIXME Rework this, as we've already defined assays as the target.
 
 #' Export assays
 #'
@@ -47,7 +48,9 @@ NULL
              quiet) {
         assert(
             is(object, "SummarizedExperiment"),
-            isString(con),
+            hasNoDuplicates(rownames(object)),
+            hasNoDuplicates(colnames(object)),
+            isADir(con),
             isFlag(bindRowData),
             isFlag(compress),
             isFlag(overwrite),
@@ -67,16 +70,20 @@ NULL
             isCharacter(assayNames),
             hasNoDuplicates(assayNames)
         )
-        con <- initDir(file.path(con, "assays"))
         alert(sprintf(
             fmt = "Exporting assays %s to {.path %s}.",
             toInlineString(assayNames, n = 5L, class = "val"), con
         ))
-        ## FIXME Need to handle automatic slotting of rowData here.
+        if (isTRUE(bindRowData)) {
+            rowData <- rowData(object)
+        } else {
+            rowData <- NULL
+        }
         out <- lapply(
             X = assayNames,
             con = con,
-            FUN = function(name, con) {
+            rowData = rowData,
+            FUN = function(name, con, rowData) {
                 con <- file.path(con, name)
                 assay <- assay(x = object, i = name)
                 if (is(assay, "Matrix")) {
@@ -88,6 +95,10 @@ NULL
                     ext <- paste0(ext, ".gz")
                 }
                 con <- paste0(con, ".", ext)
+                if (is(rowData, "DataFrame")) {
+                    assay <- as(assay, "DataFrame")
+                    assay <- cbind(rowData, assay)
+                }
                 export(
                     object = assay,
                     con = con,
@@ -102,8 +113,7 @@ NULL
 
 
 
-## FIXME Simplify this to just use con and then handle atomization automatically.
-## FIXME Then we can use this in our MAE method...
+## FIXME Generalize this between colData and rowData...same code.
 
 #' Export column data
 #'
@@ -111,24 +121,21 @@ NULL
 #' @noRd
 .exportColData <-
     function(object,
-             ext,
-             dir,
+             con,
              overwrite,
              quiet) {
         assert(
-            is(object, "SummarizedExperiment"),
-            hasNoDuplicates(colnames(object)),
-            isString(ext),
-            isString(dir),
+            is(object, "DataFrame"),
+            isString(con),
             isFlag(overwrite),
             isFlag(quiet)
         )
-        data <- colData(object)
-        if (!hasCols(data)) {
+        if (!hasCols(object)) {
             return(NULL)
         }
-        data <- atomize(data)
-        if (!hasCols(data)) {
+        ## FIXME What about as.data.frame coercion here?
+        object <- atomize(object)
+        if (!hasCols(object)) {
             return(NULL)
         }
         if (hasColnames(object)) {
@@ -150,7 +157,6 @@ NULL
 ## FIXME If rowData contains "Hugo_Symbol","Entrez_Gene_Id", consider assigning
 ## rownames from the `Entrez_GeneId`, but only if there are no duplicates.
 ## This is cBioPortalData specific, so maybe don't do this here...
-
 ## FIXME Consider exporting with rowData bound to assay automatically.
 
 #' Export MultiAssayExperiment experiments
@@ -210,7 +216,7 @@ NULL
 
 #' Export row data
 #'
-#' @note Updated 2022-09-20.
+#' @note Updated 2022-09-22.
 #' @noRd
 #'
 #' @details
@@ -218,33 +224,30 @@ NULL
 #' coordinates. That's why we're coercing from `rowRanges()` for RSE.
 .exportRowData <-
     function(object,
-             ext,
-             dir,
+             con,
              overwrite,
              quiet) {
         assert(
-            is(object, "SummarizedExperiment"),
-            hasNoDuplicates(rownames(object)),
-            isString(ext),
-            isString(dir),
+            is(object, "DataFrame"),
+            isString(con),
             isFlag(overwrite),
             isFlag(quiet)
         )
-        data <- rowData(object, use.names = TRUE)
-        if (!hasCols(data)) {
+        if (!hasCols(object)) {
             return(NULL)
         }
-        data <- as.data.frame(data)
-        data <- atomize(data)
-        if (!hasCols(data)) {
+        rn <- rownames(object)
+        object <- as.data.frame(object)
+        object <- atomize(object)
+        if (!hasCols(object)) {
             return(NULL)
         }
         if (hasRownames(object)) {
-            assert(identical(rownames(data), rownames(object)))
+            assert(identical(rownames(object), rn))
         }
         export(
-            object = data,
-            con = file.path(dir, paste0("rowData", ext)),
+            object = object,
+            con = con,
             overwrite = overwrite,
             quiet = quiet
         )
@@ -257,12 +260,13 @@ NULL
 
 #' Export MultiAssayExperiment
 #'
-#' @note Updated 2022-09-20.
+#' @note Updated 2022-09-22.
 #' @noRd
 `export,MAE` <- # nolint
     function(object,
              con,
              format, # missing
+             bindRowData = FALSE,
              compress = getOption(
                  x = "acid.export.compress",
                  default = FALSE
@@ -282,6 +286,7 @@ NULL
             validObject(object),
             isString(con),
             is.null(format),
+            isFlag(bindRowData),
             isFlag(compress),
             isFlag(overwrite),
             isFlag(quiet)
@@ -308,6 +313,8 @@ NULL
             ))
             rownames(colData) <- NULL
         }
+        ## FIXME Switch to `.exportColData` call here.
+        ## FIXME Do it on the colData directly here?
         files[["colData"]] <-
             export(
                 object = colData,
@@ -346,7 +353,7 @@ NULL
 
 #' Export SummarizedExperiment
 #'
-#' @note Updated 2022-05-25.
+#' @note Updated 2022-09-22.
 #' @noRd
 #'
 #' @details
@@ -358,6 +365,7 @@ NULL
     function(object,
              con,
              format, # missing
+             bindRowData = FALSE,
              compress = getOption(
                  x = "acid.export.compress",
                  default = FALSE
@@ -379,15 +387,16 @@ NULL
             hasNoDuplicates(colnames(object)),
             isString(con),
             is.null(format),
+            isFlag(bindRowData),
             isFlag(compress),
             isFlag(overwrite),
             isFlag(quiet)
         )
-        dir <- initDir(con)
+        con <- initDir(con)
         if (!isTRUE(quiet)) {
             alert(sprintf(
                 fmt = "Exporting {.cls %s} to {.path %s}.",
-                "SummarizedExperiment", dir
+                "SummarizedExperiment", con
             ))
         }
         files <- list()
@@ -400,24 +409,25 @@ NULL
         files[["assays"]] <-
             .exportAssays(
                 object = object,
-                dir = dir,
+                con = initDir(file.path(con, "assays")),
+                bindRowData = bindRowData,
                 compress = compress,
                 overwrite = overwrite,
                 quiet = quiet
             )
+        ## FIXME Do it on the colData directly instead here.
         files[["colData"]] <-
             .exportColData(
                 object = object,
-                ext = ext,
-                dir = dir,
+                con = file.path(con, paste0("colData.", ext)),
                 overwrite = overwrite,
                 quiet = quiet
             )
+        ## FIXME Do it directly on the rowData instead here.
         files[["rowData"]] <-
             .exportRowData(
-                object = object,
-                ext = ext,
-                dir = dir,
+                object = rowData(object, use.names = TRUE),
+                con = file.path(con, paste0("rowData.", ext)),
                 overwrite = overwrite,
                 quiet = quiet
             )
