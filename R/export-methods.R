@@ -1,6 +1,10 @@
+## FIXME Rework internal usage of "dir" here, switching to "con" instead.
+
+
+
 #' @name export
 #' @inherit pipette::export
-#' @note Updated 2022-09-20.
+#' @note Updated 2022-09-22.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -24,19 +28,27 @@ NULL
 
 
 
+## FIXME Add an option to include rowData here.
+## FIXME Consider binding this before the assay (useful in particular for
+## MAE objects, to include the gene identifiers and symbols).
+## FIXME Ensure all calls set rowData appropriately.
+## FIXME Consider renaming "dir" to "con" internally.
+
 #' Export assays
 #'
-#' @note Updated 2022-09-20.
+#' @note Updated 2022-09-22.
 #' @noRd
 .exportAssays <-
     function(object,
-             dir,
+             con,
+             bindRowData,
              compress,
              overwrite,
              quiet) {
         assert(
             is(object, "SummarizedExperiment"),
-            isString(dir),
+            isString(con),
+            isFlag(bindRowData),
             isFlag(compress),
             isFlag(overwrite),
             isFlag(quiet)
@@ -55,16 +67,17 @@ NULL
             isCharacter(assayNames),
             hasNoDuplicates(assayNames)
         )
-        dir <- initDir(dir)
+        con <- initDir(file.path(con, "assays"))
         alert(sprintf(
             fmt = "Exporting assays %s to {.path %s}.",
-            toInlineString(assayNames, n = 5L, class = "val"), dir
+            toInlineString(assayNames, n = 5L, class = "val"), con
         ))
+        ## FIXME Need to handle automatic slotting of rowData here.
         out <- lapply(
             X = assayNames,
-            dir = initDir(file.path(dir, "assays")),
-            FUN = function(name, dir) {
-                file <- file.path(dir, name)
+            con = con,
+            FUN = function(name, con) {
+                con <- file.path(con, name)
                 assay <- assay(x = object, i = name)
                 if (is(assay, "Matrix")) {
                     ext <- "mtx"
@@ -74,10 +87,10 @@ NULL
                 if (isTRUE(compress)) {
                     ext <- paste0(ext, ".gz")
                 }
-                file <- paste0(file, ".", ext)
+                con <- paste0(con, ".", ext)
                 export(
                     object = assay,
-                    con = file,
+                    con = con,
                     overwrite = overwrite,
                     quiet = quiet
                 )
@@ -89,9 +102,12 @@ NULL
 
 
 
+## FIXME Simplify this to just use con and then handle atomization automatically.
+## FIXME Then we can use this in our MAE method...
+
 #' Export column data
 #'
-#' @note Updated 2022-09-20.
+#' @note Updated 2022-09-22.
 #' @noRd
 .exportColData <-
     function(object,
@@ -134,6 +150,8 @@ NULL
 ## FIXME If rowData contains "Hugo_Symbol","Entrez_Gene_Id", consider assigning
 ## rownames from the `Entrez_GeneId`, but only if there are no duplicates.
 ## This is cBioPortalData specific, so maybe don't do this here...
+
+## FIXME Consider exporting with rowData bound to assay automatically.
 
 #' Export MultiAssayExperiment experiments
 #'
@@ -234,6 +252,9 @@ NULL
 
 
 
+## FIXME Add option for `bindRowData` here. Set as FALSE by default.
+## FIXME Rework usage of "dir" here, switching to "con".
+
 #' Export MultiAssayExperiment
 #'
 #' @note Updated 2022-09-20.
@@ -320,6 +341,8 @@ NULL
     }
 
 
+
+## FIXME Need to add support for `bindRowData` here. Set as FALSE by default.
 
 #' Export SummarizedExperiment
 #'
