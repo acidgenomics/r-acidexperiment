@@ -1,7 +1,3 @@
-## FIXME Rework internal usage of "dir" here, switching to "con" instead.
-
-
-
 #' @name export
 #' @inherit pipette::export
 #' @note Updated 2022-09-22.
@@ -27,13 +23,6 @@
 NULL
 
 
-
-## FIXME Add an option to include rowData here.
-## FIXME Consider binding this before the assay (useful in particular for
-## MAE objects, to include the gene identifiers and symbols).
-## FIXME Ensure all calls set rowData appropriately.
-## FIXME Consider renaming "dir" to "con" internally.
-## FIXME Rework this, as we've already defined assays as the target.
 
 #' Export assays
 #'
@@ -113,13 +102,11 @@ NULL
 
 
 
-## FIXME Generalize this between colData and rowData...same code.
-
-#' Export column data
+#' Export DataFrame
 #'
 #' @note Updated 2022-09-22.
 #' @noRd
-.exportColData <-
+.exportDF <-
     function(object,
              con,
              overwrite,
@@ -133,17 +120,18 @@ NULL
         if (!hasCols(object)) {
             return(NULL)
         }
-        ## FIXME What about as.data.frame coercion here?
+        rn <- rownames(object)
+        object <- as.data.frame(object)
         object <- atomize(object)
         if (!hasCols(object)) {
             return(NULL)
         }
-        if (hasColnames(object)) {
-            assert(identical(rownames(data), colnames(object)))
+        if (hasRownames(object)) {
+            assert(identical(rownames(object), rn))
         }
         export(
-            object = data,
-            con = file.path(dir, paste0("colData", ext)),
+            object = object,
+            con = con,
             overwrite = overwrite,
             quiet = quiet
         )
@@ -165,13 +153,14 @@ NULL
 #' @noRd
 .exportExperiments <-
     function(object,
-             dir,
+             con,
+             bindRowData,
              compress,
              overwrite,
              quiet) {
         assert(
             is(object, "MultiAssayExperiment"),
-            isString(dir),
+            isADir(con),
             isFlag(compress),
             isFlag(overwrite),
             isFlag(quiet)
@@ -205,7 +194,7 @@ NULL
         Map(
             f = export,
             object = exp,
-            con = file.path(dir, "experiments", names(exp)),
+            con = file.path(con, names(exp)),
             compress = compress,
             overwrite = overwrite,
             quiet = quiet
@@ -213,50 +202,6 @@ NULL
     }
 
 
-
-#' Export row data
-#'
-#' @note Updated 2022-09-22.
-#' @noRd
-#'
-#' @details
-#' The standard `rowData()` output is okay but doesn't include genomic ranges
-#' coordinates. That's why we're coercing from `rowRanges()` for RSE.
-.exportRowData <-
-    function(object,
-             con,
-             overwrite,
-             quiet) {
-        assert(
-            is(object, "DataFrame"),
-            isString(con),
-            isFlag(overwrite),
-            isFlag(quiet)
-        )
-        if (!hasCols(object)) {
-            return(NULL)
-        }
-        rn <- rownames(object)
-        object <- as.data.frame(object)
-        object <- atomize(object)
-        if (!hasCols(object)) {
-            return(NULL)
-        }
-        if (hasRownames(object)) {
-            assert(identical(rownames(object), rn))
-        }
-        export(
-            object = object,
-            con = con,
-            overwrite = overwrite,
-            quiet = quiet
-        )
-    }
-
-
-
-## FIXME Add option for `bindRowData` here. Set as FALSE by default.
-## FIXME Rework usage of "dir" here, switching to "con".
 
 #' Export MultiAssayExperiment
 #'
@@ -284,6 +229,9 @@ NULL
         }
         assert(
             validObject(object),
+            ## Some cBioPortalData objects currently fail these checks.
+            ## > hasNoDuplicates(rownames(object)),
+            ## > hasNoDuplicates(colnames(object)),
             isString(con),
             is.null(format),
             isFlag(bindRowData),
@@ -291,21 +239,31 @@ NULL
             isFlag(overwrite),
             isFlag(quiet)
         )
-        dir <- initDir(con)
+        con <- initDir(con)
         if (!isTRUE(quiet)) {
             alert(sprintf(
                 fmt = "Exporting {.cls %s} to {.path %s}.",
-                "MultiAssayExperiment", dir
+                "MultiAssayExperiment", con
             ))
         }
         files <- list()
-        ## This extension only applies to colData and rowData below.
+        files[["experiments"]] <-
+            .exportExperiments(
+                object = object,
+                con = initDir(file.path(con, "experiments")),
+                bindRowData = bindRowData,
+                compress = compress,
+                overwrite = overwrite,
+                quiet = quiet
+            )
         ext <- "csv"
         if (isTRUE(compress)) {
             ext <- paste0(ext, ".gz")
         }
         ext <- paste0(".", ext)
         colData <- colData(object)
+        ## FIXME Switch this to `hasDuplicates`, and update goalie if necessary.
+        ## FIXME Replace all instances of `anyDuplicated` across our packages.
         if (anyDuplicated(rownames(colData)) > 0L) {
             alertWarning(sprintf(
                 "Duplicate column identifiers detected in {.var %s}.",
@@ -313,12 +271,10 @@ NULL
             ))
             rownames(colData) <- NULL
         }
-        ## FIXME Switch to `.exportColData` call here.
-        ## FIXME Do it on the colData directly here?
         files[["colData"]] <-
-            export(
+            .exportDF(
                 object = colData,
-                con = file.path(dir, paste0("colData", ext)),
+                con = file.path(con, paste0("colData", ext)),
                 overwrite = overwrite,
                 quiet = quiet
             )
@@ -329,17 +285,9 @@ NULL
             hasNoDuplicates(colnames(sampleMap))
         )
         files[["sampleMap"]] <-
-            export(
+            .exportDF(
                 object = sampleMap,
-                con = file.path(dir, paste0("sampleMap", ext)),
-                overwrite = overwrite,
-                quiet = quiet
-            )
-        files[["experiments"]] <-
-            .exportExperiments(
-                object = object,
-                dir = dir,
-                compress = compress,
+                con = file.path(con, paste0("sampleMap", ext)),
                 overwrite = overwrite,
                 quiet = quiet
             )
@@ -348,8 +296,6 @@ NULL
     }
 
 
-
-## FIXME Need to add support for `bindRowData` here. Set as FALSE by default.
 
 #' Export SummarizedExperiment
 #'
@@ -400,12 +346,6 @@ NULL
             ))
         }
         files <- list()
-        ## This extension only applies to colData and rowData below.
-        ext <- "csv"
-        if (isTRUE(compress)) {
-            ext <- paste0(ext, ".gz")
-        }
-        ext <- paste0(".", ext)
         files[["assays"]] <-
             .exportAssays(
                 object = object,
@@ -415,19 +355,26 @@ NULL
                 overwrite = overwrite,
                 quiet = quiet
             )
-        ## FIXME Do it on the colData directly instead here.
-        files[["colData"]] <-
-            .exportColData(
-                object = object,
-                con = file.path(con, paste0("colData.", ext)),
+        ext <- "csv"
+        if (isTRUE(compress)) {
+            ext <- paste0(ext, ".gz")
+        }
+        ext <- paste0(".", ext)
+        ## Can coerce `rowRanges` to `DataFrame` to include more genomic
+        ## coordinate information, rather than calling `rowData` directly.
+        rowData <- rowData(object, use.names = TRUE)
+        files[["rowData"]] <-
+            .exportDF(
+                object = rowData,
+                con = file.path(con, paste0("rowData", ext)),
                 overwrite = overwrite,
                 quiet = quiet
             )
-        ## FIXME Do it directly on the rowData instead here.
-        files[["rowData"]] <-
-            .exportRowData(
-                object = rowData(object, use.names = TRUE),
-                con = file.path(con, paste0("rowData.", ext)),
+        colData <- colData(object)
+        files[["colData"]] <-
+            .exportDF(
+                object = colData,
+                con = file.path(con, paste0("colData", ext)),
                 overwrite = overwrite,
                 quiet = quiet
             )
