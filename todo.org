@@ -1,8 +1,22 @@
 #+TITLE: AcidExperiment
 #+STARTUP: content
 * Development
-** TODO Consider importing MultiAssayExperiment and adding `export` method support.
-    Use cBioPortalData MAE objects as test cases for this.
+** TODO selectSamples improvement ideas.
+    - Rework using `colData` instead of `sampleData` internally? Can just match on factor columns, which likely is simpler and faster.
+    - Consider hardening for scalars instead of just atomic values.
+    - Unit test input of multiple values.
+    - Error if user passes in a value that's not defined.
+    - Need to tighten our assert check about acceptable input.
+    - Also need to harden to not let the user select based on sampleName or interestingGroups...these are dynamic. Alternatively, just extract colData and pick the factor columns. We can generalize this to selectColData instead, which is a bit simpler.
+    - For sample identifier matching, can improve the logic here a bit.
+        - Work on improving the variable names here, a bit confusing.
+        - Need to handle case where input doesn't match anything.
+        - What about if user passes in 2 values...both MUST match!
+** TODO MultiAssayExperiment export method improvements.
+    For use with cBioPortalAnalysis package.
+    - Consider slotting the colData in per nested SE, to make the flat file exports easier to parse programatically.
+    - If rowData contains "Hugo_Symbol","Entrez_Gene_Id", consider assigning rownames from the `Entrez_GeneId`, but only if there are no duplicates.
+    - Consider exporting with rowData bound to assay automatically.
 ** TODO sampleData assignment needs to factorize automatically.
 ** TODO Consider removing `estimateSizeFactors` code defined here in favor of simpler `normalize()` approach defined in AcidSingleCell.
 ** TODO `convertGenesToSymbols`: Need to add coverage for object containing NA values in gene symbols.
