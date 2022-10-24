@@ -58,8 +58,8 @@ NULL
 #' @importFrom goalie allAreAtomic allAreMatchingRegex areDisjointSets
 #' areIntersectingSets areSetEqual assert bapply cause false hasColnames
 #' hasCols hasDimnames hasLength hasNames hasNoDuplicates hasRownames hasRows
-#' hasValidDimnames hasValidNames isAFile isAURL isAny isCharacter isFlag
-#' isInRange isInt isNonNegative isNumber isPositive isScalar isString
+#' hasValidDimnames hasValidNames isADirectory isAFile isAURL isAny isCharacter
+#' isFlag isInRange isInt isNonNegative isNumber isPositive isScalar isString
 #' isSubset matchesUniqueGeneNames validNames
 #' @importFrom methods as is new setMethod setReplaceMethod signature
 #' validObject

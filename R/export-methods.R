@@ -1,6 +1,6 @@
 #' @name export
 #' @inherit pipette::export
-#' @note Updated 2022-09-22.
+#' @note Updated 2022-10-24.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -26,7 +26,7 @@ NULL
 
 #' Export assays
 #'
-#' @note Updated 2022-09-22.
+#' @note Updated 2022-10-24.
 #' @noRd
 .exportAssays <-
     function(object,
@@ -39,7 +39,7 @@ NULL
             is(object, "SummarizedExperiment"),
             hasNoDuplicates(rownames(object)),
             hasNoDuplicates(colnames(object)),
-            isADir(con),
+            isADirectory(con),
             isFlag(bindRowData),
             isFlag(compress),
             isFlag(overwrite),
@@ -149,7 +149,7 @@ NULL
 
 #' Export MultiAssayExperiment experiments
 #'
-#' @note Updated 2022-09-21.
+#' @note Updated 2022-10-24.
 #' @noRd
 .exportExperiments <-
     function(object,
@@ -160,7 +160,7 @@ NULL
              quiet) {
         assert(
             is(object, "MultiAssayExperiment"),
-            isADir(con),
+            isADirectory(con),
             isFlag(compress),
             isFlag(overwrite),
             isFlag(quiet)
@@ -183,8 +183,7 @@ NULL
             X = exp,
             FUN = function(object) {
                 assert(hasNoDuplicates(colnames(object)))
-                ## FIXME Can we rework using goalie::hasDuplicates instead?
-                if (anyDuplicated(rownames(object)) > 0L) {
+                if (hasDuplicates(rownames(object))) {
                     alertWarning("Duplicate rownames detected.")
                     rownames(object) <- NULL
                 }
@@ -262,9 +261,7 @@ NULL
         }
         ext <- paste0(".", ext)
         colData <- colData(object)
-        ## FIXME Switch this to `hasDuplicates`, and update goalie if necessary.
-        ## FIXME Replace all instances of `anyDuplicated` across our packages.
-        if (anyDuplicated(rownames(colData)) > 0L) {
+        if (hasDuplicates(rownames(colData))) {
             alertWarning(sprintf(
                 "Duplicate column identifiers detected in {.var %s}.",
                 "colData"

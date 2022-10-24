@@ -12,6 +12,7 @@ export(object, con, format, ...)
   object,
   con,
   format,
+  bindRowData = FALSE,
   compress = getOption(x = "acid.export.compress", default = FALSE),
   overwrite = getOption(x = "acid.overwrite", default = TRUE),
   quiet = getOption(x = "acid.quiet", default = FALSE)
@@ -21,6 +22,7 @@ export(object, con, format, ...)
   object,
   con,
   format,
+  bindRowData = FALSE,
   compress = getOption(x = "acid.export.compress", default = FALSE),
   overwrite = getOption(x = "acid.overwrite", default = TRUE),
   quiet = getOption(x = "acid.quiet", default = FALSE)
@@ -60,7 +62,7 @@ File path(s).
 Export
 }
 \note{
-Updated 2022-09-20.
+Updated 2022-10-24.
 }
 \section{Output file format extension}{
 
