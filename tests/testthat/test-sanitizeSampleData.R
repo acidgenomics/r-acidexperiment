@@ -20,14 +20,20 @@ test_that("`sampleName` column can't contain duplicates", {
     )
 })
 
-## FIXME This test is now failing. Need to rethink?
-test_that("All columns should return factor", {
+test_that("Character without duplicates", {
     object[["sampleName"]] <- paste("sample", seq_len(nrow(object)))
-    data <- sanitizeSampleData(object)
-    expect_s4_class(data, "DataFrame")
-    expect_true(all(vapply(
-        X = data,
-        FUN = is.factor,
-        FUN.VALUE = logical(1L)
-    )))
+    object <- sanitizeSampleData(object)
+    expect_s4_class(object, "DataFrame")
+    expect_identical(
+        object = vapply(
+            X = object,
+            FUN = simpleClass,
+            FUN.VALUE = character(1L)
+        ),
+        expected = c(
+            "genotype" = "factor",
+            "batch" = "factor",
+            "sampleName" = "character"
+        )
+    )
 })
