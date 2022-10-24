@@ -20,6 +20,7 @@ test_that("`sampleName` column can't contain duplicates", {
     )
 })
 
+## FIXME This test is now failing. Need to rethink?
 test_that("All columns should return factor", {
     object[["sampleName"]] <- paste("sample", seq_len(nrow(object)))
     data <- sanitizeSampleData(object)

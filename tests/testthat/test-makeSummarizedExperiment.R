@@ -81,16 +81,17 @@ test_that("Error on multiple unnamed assays", {
     )
 })
 
-test_that("Inform instead of error on invalid row and/or column names", {
-    rownames(counts) <- paste0(rownames(counts), "-XXX")
-    colnames(counts) <- paste0(colnames(counts), "-XXX")
-    expect_message(
-        object = makeSummarizedExperiment(
-            assays = SimpleList("counts" = counts)
-        ),
-        regexp = "make.names"
-    )
-})
+## This is too noisy when working with data from cBioPortal, so disabling.
+## > test_that("Inform instead of error on invalid row and/or column names", {
+## >     rownames(counts) <- paste0(rownames(counts), "-XXX")
+## >     colnames(counts) <- paste0(colnames(counts), "-XXX")
+## >     expect_message(
+## >         object = makeSummarizedExperiment(
+## >             assays = SimpleList("counts" = counts)
+## >         ),
+## >         regexp = "make.names"
+## >     )
+## > })
 
 test_that("Duplicate names", {
     countsDupeRows <- counts
