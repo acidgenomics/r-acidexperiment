@@ -139,14 +139,6 @@ NULL
 
 
 
-## FIXME Consider slotting the colData in per nested SE, to make the flat
-## file exports easier to parse programatically.
-##
-## FIXME If rowData contains "Hugo_Symbol","Entrez_Gene_Id", consider assigning
-## rownames from the `Entrez_GeneId`, but only if there are no duplicates.
-## This is cBioPortalData specific, so maybe don't do this here...
-## FIXME Consider exporting with rowData bound to assay automatically.
-
 #' Export MultiAssayExperiment experiments
 #'
 #' @note Updated 2022-10-24.
