@@ -12,14 +12,13 @@ Note that legacy \code{data.frame} support will be removed in a future update.}
 }
 \value{
 \code{DataFrame}.
-Sanitized data frame containing only non-denylist columns and all
-\code{character} columns coerced to \code{factor} (i.e. \code{stringsAsFactors}).
 }
 \description{
-Sanitize sample data
+Drop any columns defined in denylist, and ensure \code{character} columns
+containing any duplicate values are automatically coerced to \code{factor}.
 }
 \note{
-Updated 2021-02-25.
+Updated 2022-10-24.
 }
 \section{Denylist}{
 

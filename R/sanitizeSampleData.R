@@ -1,5 +1,8 @@
 #' Sanitize sample data
 #'
+#' Drop any columns defined in denylist, and ensure `character` columns
+#' containing any duplicate values are automatically coerced to `factor`.
+#'
 #' @section Denylist:
 #'
 #' Here's the current column denylist:
@@ -7,15 +10,13 @@
 #' - `interestingGroups`.
 #' - `sampleId`.
 #'
-#' @note Updated 2021-02-25.
+#' @note Updated 2022-10-24.
 #' @export
 #'
 #' @param object `DataFrame` (recommended) or `data.frame` (legacy).
 #' Note that legacy `data.frame` support will be removed in a future update.
 #'
 #' @return `DataFrame`.
-#' Sanitized data frame containing only non-denylist columns and all
-#' `character` columns coerced to `factor` (i.e. `stringsAsFactors`).
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")
