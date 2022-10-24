@@ -57,10 +57,10 @@ NULL
 #' @importFrom SummarizedExperiment SummarizedExperiment
 #' @importFrom goalie allAreAtomic allAreMatchingRegex areDisjointSets
 #' areIntersectingSets areSetEqual assert bapply cause false hasColnames
-#' hasCols hasDimnames hasLength hasNames hasNoDuplicates hasRownames hasRows
-#' hasValidDimnames hasValidNames isADirectory isAFile isAURL isAny isCharacter
-#' isFlag isInRange isInt isNonNegative isNumber isPositive isScalar isString
-#' isSubset matchesUniqueGeneNames validNames
+#' hasCols hasDimnames hasDuplicates hasLength hasNames hasNoDuplicates
+#' hasRownames hasRows hasValidDimnames hasValidNames isADirectory isAFile
+#' isAURL isAny isCharacter isFlag isInRange isInt isNonNegative isNumber
+#' isPositive isScalar isString isSubset matchesUniqueGeneNames validNames
 #' @importFrom methods as is new setMethod setReplaceMethod signature
 #' validObject
 #' @importFrom utils packageName packageVersion sessionInfo
