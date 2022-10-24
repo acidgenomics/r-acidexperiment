@@ -1,5 +1,14 @@
 # Release notes
 
+## AcidExperiment 0.4.4 (UNRELEASED)
+
+Minor changes:
+
+- `export`: Hardened method to only use `con`, dropping support for legacy
+  `dir` approach. These methods have been restricted based on the pending
+  pipette v0.10 release series.
+- Hardened dependencies to match Bioconductor 3.15 release series more clearly.
+
 ## AcidExperiment 0.4.3 (2022-06-02)
 
 Minor changes:
