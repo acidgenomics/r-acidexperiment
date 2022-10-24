@@ -5,11 +5,12 @@
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
+#' @param bindRowData `logical(1)`.
+#' Whether to column bind row data (e.g. gene annotations), slotted in
+#' `rowData`, to each exported assay matrix, defined in `assays`.
+#'
 #' @param compress `logical(1)`.
 #' Apply gzip compression to all files.
-#'
-#' @param name `character(1)`.
-#' Name to use on disk. If `NULL`, will use the name of the object instead.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")

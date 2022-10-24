@@ -40,6 +40,10 @@ Alternatively, can leave unset and use \code{ext} and \code{dir} arguments inste
 \item{format}{\code{character(1)}, \code{missing}, or \code{NULL}.
 \emph{Currently not supported.}}
 
+\item{bindRowData}{\code{logical(1)}.
+Whether to column bind row data (e.g. gene annotations), slotted in
+\code{rowData}, to each exported assay matrix, defined in \code{assays}.}
+
 \item{compress}{\code{logical(1)}.
 Apply gzip compression to all files.}
 
@@ -50,9 +54,6 @@ Overwrite existing file on disk.}
 Perform command quietly, suppressing messages.}
 
 \item{...}{Additional arguments.}
-
-\item{name}{\code{character(1)}.
-Name to use on disk. If \code{NULL}, will use the name of the object instead.}
 }
 \value{
 Invisible \code{character}.
