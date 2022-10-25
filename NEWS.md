@@ -1,6 +1,10 @@
 # Release notes
 
-## AcidExperiment 0.4.4 (UNRELEASED)
+## AcidExperiment 0.4.4 (2022-10-25)
+
+Major changes:
+
+- `export`: Added initial method support for `MultiAssayExperiment`.
 
 Minor changes:
 
