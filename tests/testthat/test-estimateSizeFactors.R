@@ -1,6 +1,3 @@
-
-
-
 test_that("SummarizedExperiment", {
     for (
         type in eval(methodFormals(
