@@ -32,7 +32,8 @@ NULL
 #' @importFrom SummarizedExperiment assay assay<- assayNames assayNames<- assays
 #' assays<- colData colData<- rowData rowData<- rowRanges rowRanges<-
 #' @importFrom pipette export import
-#'
+NULL
+
 #' @importMethodsFrom AcidBase headtail
 #' @importMethodsFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
 #' Tx2Gene stripGeneVersions stripTranscriptVersions
@@ -48,7 +49,7 @@ NULL
 # Standard functions ===========================================================
 
 #' @importFrom AcidBase geometricMean initDir lanePattern metadataDenylist
-#' methodFunction realpath requireNamespaces standardizeCall
+#' methodFunction realpath standardizeCall
 #' @importFrom AcidCLI abort alert alertInfo alertWarning toInlineString
 #' @importFrom AcidGenomes detectOrganism emptyRanges
 #' @importFrom GenomicRanges GRanges
@@ -60,7 +61,8 @@ NULL
 #' hasCols hasDimnames hasDuplicates hasLength hasNames hasNoDuplicates
 #' hasRownames hasRows hasValidDimnames hasValidNames isADirectory isAFile
 #' isAURL isAny isCharacter isFlag isInRange isInt isNonNegative isNumber
-#' isPositive isScalar isString isSubset matchesUniqueGeneNames validNames
+#' isPositive isScalar isString isSubset matchesUniqueGeneNames
+#' requireNamespaces validNames
 #' @importFrom methods as is new setMethod setReplaceMethod signature
 #' validObject
 #' @importFrom utils packageName packageVersion sessionInfo
