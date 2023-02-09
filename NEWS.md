@@ -1,5 +1,12 @@
 # Release notes
 
+## AcidExperiment 0.4.5 (2023-02-09)
+
+Minor changes:
+
+- Updated dependencies to Bioconductor 3.16.
+- Migrated `requireNamespaces` import from AcidBase to goalie.
+
 ## AcidExperiment 0.4.4 (2022-10-25)
 
 Major changes:
