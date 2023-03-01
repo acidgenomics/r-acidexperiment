@@ -1,4 +1,4 @@
-## NOTE These values can change if we update example RSE object.
+## NOTE These values can change when we update AcidTest.
 
 test_that("SummarizedExperiment", {
     for (

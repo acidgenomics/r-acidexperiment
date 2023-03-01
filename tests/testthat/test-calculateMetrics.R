@@ -1,3 +1,5 @@
+## NOTE These values can change when we update AcidTest.
+
 test_that("SE", {
     object <- rse
     cols <- c(
@@ -14,7 +16,6 @@ test_that("SE", {
     expect_s4_class(object, "SummarizedExperiment")
     x <- decode(colData(object))[1L, cols, drop = TRUE]
     x <- lapply(X = x, FUN = round, digits = 3L)
-    ## NOTE These values can change if we update example RSE object.
     expect_equal(
         object = x,
         expected = list(
