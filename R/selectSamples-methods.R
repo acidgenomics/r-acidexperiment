@@ -46,7 +46,6 @@ NULL
         assert(hasLength(samples))
         ## Return.
         out <- object[, samples, drop = FALSE]
-        ## FIXME This step is now causing our samples to mess up...need to rework.
         out <- droplevels2(out)
         out
     }
