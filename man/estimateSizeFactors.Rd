@@ -36,7 +36,7 @@ Type of method for estimation.
 \if{html}{\out{<div class="sourceCode">}}\preformatted{libSize / geometricMean(libSize)
 }\if{html}{\out{</div>}}
 
-\code{"mean-geometric-mean-log-total"}:
+\code{"log-geometric-mean-ratio"}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{log(libSize) / geometricMean(log(libSize))
 }\if{html}{\out{</div>}}}

@@ -28,9 +28,10 @@ Updated 2023-03-01.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
-rse <- RangedSummarizedExperiment
 
 ## SummarizedExperiment ====
-x <- Ensembl2Ncbi(rse)
+object <- RangedSummarizedExperiment
+rowRanges(object) <- as(rowRanges(object), "EnsemblGenes")
+x <- Ensembl2Ncbi(object)
 print(x)
 }
