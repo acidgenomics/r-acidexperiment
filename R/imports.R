@@ -1,8 +1,7 @@
 ## Classes =====================================================================
 
 #' @importClassesFrom AcidBase missingOrNULL
-#' @importClassesFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
-#' Tx2Gene
+#' @importClassesFrom AcidGenomes Ensembl2Ncbi Gene2Symbol Ncbi2Ensembl Tx2Gene
 #' @importClassesFrom IRanges SplitDataFrameList
 #' @importClassesFrom S4Vectors DataFrame SimpleList
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
@@ -12,7 +11,7 @@ NULL
 
 ## S4 generics and methods =====================================================
 
-#' @importFrom AcidGenerics Ensembl2Entrez Entrez2Ensembl Gene2Symbol Tx2Gene
+#' @importFrom AcidGenerics Ensembl2Ncbi Gene2Symbol Ncbi2Ensembl Tx2Gene
 #' aggregateCols aggregateRows as.SummarizedExperiment atomize autopadZeros
 #' calculateMetrics camelCase convertGenesToSymbols convertSampleIDsToNames
 #' convertSymbolsToGenes convertTranscriptsToGenes correlation dottedCase
@@ -35,8 +34,8 @@ NULL
 NULL
 
 #' @importMethodsFrom AcidBase headtail
-#' @importMethodsFrom AcidGenomes Ensembl2Entrez Entrez2Ensembl Gene2Symbol
-#' Tx2Gene stripGeneVersions stripTranscriptVersions
+#' @importMethodsFrom AcidGenomes Ensembl2Ncbi Gene2Symbol Ncbi2Ensembl Tx2Gene
+#' stripGeneVersions stripTranscriptVersions
 #' @importMethodsFrom AcidPlyr leftJoin mutateAt
 #' @importMethodsFrom pipette atomize droplevels2 export factorize import
 #' removeNA

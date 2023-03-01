@@ -151,7 +151,7 @@ makeSummarizedExperiment <-
                     hasNoDuplicates(colnames(assay))
                 )
                 ## Inform when row and/or column names are invalid. Disabling
-                ## at the moment because Entrez gene identifiers (integers)
+                ## at the moment because NCBI gene identifiers (integers)
                 ## can be useful to define in the rownames.
                 ## > ok <- validNames(rownames(assay))
                 ## > if (!isTRUE(ok)) {
