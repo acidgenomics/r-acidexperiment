@@ -1,3 +1,6 @@
+## NOTE These values can change if we update example RSE object.
+## FIXME Our example object is now failing with "log-geometric-mean-ratio"...hmmm
+
 test_that("SummarizedExperiment", {
     for (
         type in eval(methodFormals(
@@ -16,33 +19,34 @@ test_that("SummarizedExperiment", {
         expected <- switch(
             EXPR = type,
             "mean-ratio" = c(
-                "sample01" = 0.888456,
-                "sample02" = 0.887597,
-                "sample03" = 0.883668,
-                "sample04" = 0.903451,
-                "sample05" = 0.904851,
-                "sample06" = 0.908509,
-                "sample07" = 1.120880,
-                "sample08" = 1.095180,
-                "sample09" = 1.082490,
-                "sample10" = 1.125350,
-                "sample11" = 1.087320,
-                "sample12" = 1.112250
+                "sample01" = 0.912314,
+                "sample02" = 0.890313,
+                "sample03" = 0.880676,
+                "sample04" = 0.905678,
+                "sample05" = 0.896723,
+                "sample06" = 0.914905,
+                "sample07" = 1.12351,
+                "sample08" = 1.10232,
+                "sample09" = 1.08996,
+                "sample10" = 1.11951,
+                "sample11" = 1.09414,
+                "sample12" = 1.06996
             ),
             "geometric-mean-ratio" = c(
-                "sample01" = 0.888456,
-                "sample02" = 0.887597,
-                "sample03" = 0.883668,
-                "sample04" = 0.903451,
-                "sample05" = 0.904851,
-                "sample06" = 0.908509,
-                "sample07" = 1.120880,
-                "sample08" = 1.095180,
-                "sample09" = 1.082490,
-                "sample10" = 1.125350,
-                "sample11" = 1.087320,
-                "sample12" = 1.112250
+                "sample01" = 0.912314,
+                "sample02" = 0.890313,
+                "sample03" = 0.880676,
+                "sample04" = 0.905678,
+                "sample05" = 0.896723,
+                "sample06" = 0.914905,
+                "sample07" = 1.12351,
+                "sample08" = 1.10232,
+                "sample09" = 1.08996,
+                "sample10" = 1.11951,
+                "sample11" = 1.09414,
+                "sample12" = 1.06996
             ),
+            ## FIXME This is now failing to center with our example dataset.
             "log-geometric-mean-ratio" = c(
                 "sample01" = 0.988724,
                 "sample02" = 0.988627,

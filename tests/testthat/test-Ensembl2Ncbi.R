@@ -1,7 +1,8 @@
 test_that("RangedSummarizedExperiment", {
+    rowRanges(rse) <- as(rowRanges(rse), "EnsemblGenes")
     formats <- eval(methodFormals(
         f = "Ensembl2Ncbi",
-        signature = "GenomicRanges",
+        signature = "EnsemblGenes",
         package = "AcidGenomes"
     )[["format"]])
     for (format in formats) {
