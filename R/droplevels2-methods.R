@@ -1,8 +1,3 @@
-## FIXME Need to check this to ensure we're not dropping row names...weirdness.
-## FIXME This is dropping row name on DataFrame method .... need to rework.
-
-
-
 #' Drop unused levels from factors
 #'
 #' @name droplevels2
