@@ -1,4 +1,3 @@
-#' Estimate size factors
 #'
 #' Define size factors from the library sizes, and then apply centering at
 #' unity. This ensures that the library size adjustment yields values comparable
@@ -38,7 +37,7 @@
 #' libSize / geometricMean(libSize)
 #' ```
 #'
-#' `"mean-geometric-mean-log-total"`:
+#' `"log-geometric-mean-ratio"`:
 #'
 #' ```
 #' log(libSize) / geometricMean(log(libSize))
@@ -122,7 +121,9 @@ NULL
 
 
 
-## Updated 2021-02-03.
+
+
+## Updated 2023-03-01.
 .centerSizeFactors <- function(sf, center = 1L) {
     assert(
         is.numeric(sf),
@@ -132,13 +133,13 @@ NULL
     )
     alert(sprintf("Centering size factors at %d.", center))
     sf <- sf / mean(sf) * center
-    assert(mean(sf) == center)
+    assert(isTRUE(all.equal(mean(sf), center)))
     sf
 }
 
 
 
-## Updated 2021-09-11.
+## Updated 2023-03-01.
 `estimateSizeFactors,SE` <- # nolint
     function(object,
              assay = 1L,
