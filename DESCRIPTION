@@ -46,7 +46,7 @@ Imports:
     methods,
     utils
 Suggests:
-    AcidTest (>= 0.7.0),
+    AcidTest (>= 0.7.1),
     Biostrings (>= 2.66.0),
     GenomeInfoDb (>= 1.34.0),
     Matrix (>= 1.5.1),
