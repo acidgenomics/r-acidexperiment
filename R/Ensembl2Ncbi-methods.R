@@ -1,6 +1,6 @@
-#' @inherit AcidGenomes::Ensembl2Entrez
-#' @name Ensembl2Entrez
-#' @note Updated 2021-08-10.
+#' @inherit AcidGenomes::Ensembl2Ncbi
+#' @name Ensembl2Ncbi
+#' @note Updated 2023-03-01.
 #'
 #' @param ... Additional arguments.
 #'
@@ -9,24 +9,24 @@
 #' rse <- RangedSummarizedExperiment
 #'
 #' ## SummarizedExperiment ====
-#' x <- Ensembl2Entrez(rse)
+#' x <- Ensembl2Ncbi(rse)
 #' print(x)
 NULL
 
 
 
-## Updated 2021-08-10.
-`Ensembl2Entrez,RSE` <- # nolint
+## Updated 2023-03-01.
+`Ensembl2Ncbi,RSE` <- # nolint
     function(object, ...) {
-        Ensembl2Entrez(rowRanges(object), ...)
+        Ensembl2Ncbi(rowRanges(object), ...)
     }
 
 
 
-#' @rdname Ensembl2Entrez
+#' @rdname Ensembl2Ncbi
 #' @export
 setMethod(
-    f = "Ensembl2Entrez",
+    f = "Ensembl2Ncbi",
     signature = signature(object = "RangedSummarizedExperiment"),
-    definition = `Ensembl2Entrez,RSE`
+    definition = `Ensembl2Ncbi,RSE`
 )

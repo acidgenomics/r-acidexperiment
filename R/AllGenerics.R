@@ -1,17 +1,17 @@
 #' @export
-#' @name Ensembl2Entrez
-#' @usage Ensembl2Entrez(object, ...)
-NULL
-
-#' @export
-#' @rdname Ensembl2Entrez
-#' @name Entrez2Ensembl
-#' @usage Entrez2Ensembl(object, ...)
+#' @name Ensembl2Ncbi
+#' @usage Ensembl2Ncbi(object, ...)
 NULL
 
 #' @export
 #' @name Gene2Symbol
 #' @usage Gene2Symbol(object, ...)
+NULL
+
+#' @export
+#' @rdname Ensembl2Ncbi
+#' @name Ncbi2Ensembl
+#' @usage Ncbi2Ensembl(object, ...)
 NULL
 
 #' @export
