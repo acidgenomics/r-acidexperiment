@@ -3,7 +3,9 @@
 \name{estimateSizeFactors}
 \alias{estimateSizeFactors}
 \alias{estimateSizeFactors,SummarizedExperiment-method}
-\title{Estimate size factors}
+\title{Define size factors from the library sizes, and then apply centering at
+unity. This ensures that the library size adjustment yields values comparable
+to those generated after normalization with other sets of size factors.}
 \usage{
 estimateSizeFactors(object, ...)
 
@@ -52,16 +54,12 @@ Modified object.
 Use \code{sizeFactors()} to access the computed size factor numeric.
 }
 \description{
-Define size factors from the library sizes, and then apply centering at
-unity. This ensures that the library size adjustment yields values comparable
-to those generated after normalization with other sets of size factors.
-}
-\details{
 Centering of size factors at unity ensures that division by size factors
 yields values on the same scale as the raw counts. This is important for the
 interpretation of the normalized values, as well as comaprisons between
 features normalized with different size factors (e.g., spike-ins).
-
+}
+\details{
 The estimated size factors computed by this function can be accessed using
 the accessor function \code{sizeFactors()}. Alternative library size estimators
 can also be supplied using the assignment function \verb{sizeFactors<-()}.

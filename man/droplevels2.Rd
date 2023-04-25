@@ -21,7 +21,7 @@ Modified object.
 Drop unused levels from factors
 }
 \note{
-Updated 2022-04-25.
+Updated 2023-03-01.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")

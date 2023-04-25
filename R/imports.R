@@ -3,6 +3,7 @@
 #' @importClassesFrom AcidBase missingOrNULL
 #' @importClassesFrom AcidGenomes Ensembl2Ncbi Gene2Symbol Ncbi2Ensembl Tx2Gene
 #' @importClassesFrom IRanges SplitDataFrameList
+#' @importClassesFrom Matrix Matrix
 #' @importClassesFrom S4Vectors DataFrame SimpleList
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 NULL
@@ -21,10 +22,11 @@ NULL
 #' metrics mutateAt nonzeroRowsAndCols removeNA sampleData sampleData<-
 #' selectSamples snakeCase stripGeneVersions stripTranscriptVersions tpm
 #' uniteInterestingGroups upperCamelCase
-#' @importFrom BiocGenerics Map %in% as.data.frame cbind colSums combine counts
-#' counts<- do.call estimateSizeFactors lapply match organism organism<- rowSums
-#' setdiff sizeFactors sizeFactors<- t unlist unsplit
+#' @importFrom BiocGenerics Map %in% as.data.frame cbind combine counts counts<-
+#' do.call estimateSizeFactors lapply match organism organism<- setdiff
+#' sizeFactors sizeFactors<- t unlist unsplit
 #' @importFrom Biobase sampleNames sampleNames<-
+#' @importFrom Matrix colSums rowSums
 #' @importFrom MultiAssayExperiment experiments sampleMap
 #' @importFrom S4Vectors aggregate complete.cases cor decode droplevels head
 #' mcols mcols<- metadata metadata<- na.omit split summary
