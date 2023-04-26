@@ -38,7 +38,6 @@ Imports:
     GenomicRanges (>= 1.50.0),
     IRanges (>= 2.32.0),
     Matrix (>= 1.5.1),
-    MatrixGenerics (>= 1.10.0),
     MultiAssayExperiment (>= 1.24.0),
     S4Vectors (>= 0.36.0),
     SummarizedExperiment (>= 1.28.0),
