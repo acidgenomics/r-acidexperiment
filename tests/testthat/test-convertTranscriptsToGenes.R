@@ -1,3 +1,5 @@
+# > skip_if_not_installed("AnnotationHub")
+# > skip_if_not_installed("ensembldb")
 skip_if_not(hasInternet())
 
 ## NOTE Consider using a presaved object, to speed up tests.

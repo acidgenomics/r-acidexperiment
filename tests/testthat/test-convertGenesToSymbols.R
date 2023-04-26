@@ -1,3 +1,6 @@
+# > skip_if_not_installed("AnnotationHub")
+# > skip_if_not_installed("ensembldb")
+
 test_that("SummarizedExperiment", {
     object <- rse
     object <- convertGenesToSymbols(object)
@@ -10,8 +13,6 @@ test_that("SummarizedExperiment", {
         expected = as.character(mcols(rowRanges(object))[["geneName"]])
     )
 })
-
-
 
 test_that("SummarizedExperiment", {
     object <- rse
