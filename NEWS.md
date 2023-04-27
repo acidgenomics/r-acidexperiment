@@ -1,5 +1,16 @@
 # Release notes
 
+## AcidExperiment 0.4.6 (2023-04-27)
+
+Minor changes:
+
+- Now consistently using `DFrame` instead of `DataFrame`; `GRanges` instead of
+  `GenomicRanges` in S4 coercion and method definitions.
+- Updated package to use new `Ensembl2Ncbi` and `Ncbi2Ensembl` generics now
+  defined in AcidGenomes, instead of previous `Ensembl2Entrez` and
+  `Entrez2Ensembl`. We are now using "NCBI" consistently across packages instead
+  of the legacy "Entrez" name.
+
 ## AcidExperiment 0.4.5 (2023-02-09)
 
 Minor changes:
