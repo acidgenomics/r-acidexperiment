@@ -34,7 +34,7 @@ Assay name or index position.}
 }
 \value{
 \itemize{
-\item \code{matrix} / \code{Matrix}: \code{DataFrame} containing metrics.
+\item \code{matrix} / \code{Matrix}: \code{DFrame} containing metrics.
 \item \code{SummarizedExperiment}: Modified object, with metrics in
 \code{colData()}.
 }

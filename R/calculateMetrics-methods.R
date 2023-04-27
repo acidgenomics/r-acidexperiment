@@ -16,7 +16,7 @@
 #' change with this operation.
 #'
 #' @return
-#' - `matrix` / `Matrix`: `DataFrame` containing metrics.
+#' - `matrix` / `Matrix`: `DFrame` containing metrics.
 #' - `SummarizedExperiment`: Modified object, with metrics in
 #' `colData()`.
 #'
@@ -40,7 +40,7 @@ NULL
         assert(
             hasValidDimnames(object),
             hasRows(object),
-            isAny(rowData, c("DataFrame", "NULL")),
+            isAny(rowData, c("DFrame", "NULL")),
             isFlag(prefilter)
         )
         if (isTRUE(prefilter)) {
@@ -76,7 +76,7 @@ NULL
             missingBiotype()
         } else {
             assert(
-                is(rowData, "DataFrame"),
+                is(rowData, "DFrame"),
                 hasRownames(rowData),
                 isSubset(rownames(object), rownames(rowData))
             )

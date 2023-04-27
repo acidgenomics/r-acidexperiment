@@ -217,7 +217,7 @@ NULL
         assert(is.function(annoDataFun))
         annoData <- annoDataFun(x)
         assert(
-            is(annoData, "DataFrame"),
+            is(annoData, "DFrame"),
             isSubset(col, colnames(annoData))
         )
         by <- decode(annoData[[col]])

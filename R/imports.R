@@ -2,9 +2,9 @@
 
 #' @importClassesFrom AcidBase missingOrNULL
 #' @importClassesFrom AcidGenomes Ensembl2Ncbi Gene2Symbol Ncbi2Ensembl Tx2Gene
-#' @importClassesFrom IRanges SplitDataFrameList
+#' @importClassesFrom IRanges SplitDFrameList
 #' @importClassesFrom Matrix Matrix
-#' @importClassesFrom S4Vectors DataFrame SimpleList
+#' @importClassesFrom S4Vectors DFrame SimpleList
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 NULL
 

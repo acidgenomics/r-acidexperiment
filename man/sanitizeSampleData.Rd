@@ -7,18 +7,18 @@
 sanitizeSampleData(object)
 }
 \arguments{
-\item{object}{\code{DataFrame} (recommended) or \code{data.frame} (legacy).
+\item{object}{\code{DFrame} (recommended) or \code{data.frame} (legacy).
 Note that legacy \code{data.frame} support will be removed in a future update.}
 }
 \value{
-\code{DataFrame}.
+\code{DFrame}.
 }
 \description{
 Drop any columns defined in denylist, and ensure \code{character} columns
 containing any duplicate values are automatically coerced to \code{factor}.
 }
 \note{
-Updated 2022-10-24.
+Updated 2023-04-27.
 }
 \section{Denylist}{
 

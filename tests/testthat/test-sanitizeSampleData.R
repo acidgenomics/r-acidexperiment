@@ -23,7 +23,7 @@ test_that("`sampleName` column can't contain duplicates", {
 test_that("Character without duplicates", {
     object[["sampleName"]] <- paste("sample", seq_len(nrow(object)))
     object <- sanitizeSampleData(object)
-    expect_s4_class(object, "DataFrame")
+    expect_s4_class(object, "DFrame")
     expect_identical(
         object = vapply(
             X = object,

@@ -3,12 +3,12 @@
 %   R/uniteInterestingGroups-methods.R
 \name{uniteInterestingGroups}
 \alias{uniteInterestingGroups}
-\alias{uniteInterestingGroups,DataFrame-method}
+\alias{uniteInterestingGroups,DFrame-method}
 \title{Unite interesting groups into a single column}
 \usage{
 uniteInterestingGroups(object, ...)
 
-\S4method{uniteInterestingGroups}{DataFrame}(object, interestingGroups)
+\S4method{uniteInterestingGroups}{DFrame}(object, interestingGroups)
 }
 \arguments{
 \item{object}{Object.}
@@ -35,7 +35,7 @@ Updated 2021-02-03.
 data(RangedSummarizedExperiment, package = "AcidTest")
 rse <- RangedSummarizedExperiment
 
-## DataFrame ====
+## DFrame ====
 object <- rse
 x <- uniteInterestingGroups(
     object = sampleData(object),

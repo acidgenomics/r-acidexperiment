@@ -10,13 +10,13 @@
 #' - `interestingGroups`.
 #' - `sampleId`.
 #'
-#' @note Updated 2022-10-24.
+#' @note Updated 2023-04-27.
 #' @export
 #'
-#' @param object `DataFrame` (recommended) or `data.frame` (legacy).
+#' @param object `DFrame` (recommended) or `data.frame` (legacy).
 #' Note that legacy `data.frame` support will be removed in a future update.
 #'
-#' @return `DataFrame`.
+#' @return `DFrame`.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")
@@ -30,7 +30,7 @@
 #' print(to)
 sanitizeSampleData <- function(object) {
     assert(
-        is(object, "DataFrame"),
+        is(object, "DFrame"),
         hasRownames(object),
         hasColnames(object),
         identical(
@@ -45,7 +45,7 @@ sanitizeSampleData <- function(object) {
     object <- atomize(object)
     object <- factorize(object)
     assert(
-        is(object, "DataFrame"),
+        is(object, "DFrame"),
         hasRownames(object)
     )
     object

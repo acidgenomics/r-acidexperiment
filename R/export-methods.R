@@ -85,8 +85,8 @@ NULL
                     ext <- paste0(ext, ".gz")
                 }
                 con <- paste0(con, ".", ext)
-                if (is(rowData, "DataFrame")) {
-                    assay <- as(assay, "DataFrame")
+                if (is(rowData, "DFrame")) {
+                    assay <- as(assay, "DFrame")
                     assay <- cbind(rowData, assay)
                 }
                 export(
@@ -103,9 +103,9 @@ NULL
 
 
 
-#' Export DataFrame
+#' Export DFrame
 #'
-#' @note Updated 2022-09-22.
+#' @note Updated 2023-04-27.
 #' @noRd
 .exportDF <-
     function(object,
@@ -113,7 +113,7 @@ NULL
              overwrite,
              quiet) {
         assert(
-            is(object, "DataFrame"),
+            is(object, "DFrame"),
             isString(con),
             isFlag(overwrite),
             isFlag(quiet)
@@ -270,7 +270,7 @@ NULL
             )
         sampleMap <- sampleMap(object)
         assert(
-            is(sampleMap, "DataFrame"),
+            is(sampleMap, "DFrame"),
             hasNoDuplicates(rownames(sampleMap)),
             hasNoDuplicates(colnames(sampleMap))
         )
@@ -350,7 +350,7 @@ NULL
             ext <- paste0(ext, ".gz")
         }
         ext <- paste0(".", ext)
-        ## Can coerce `rowRanges` to `DataFrame` to include more genomic
+        ## Can coerce `rowRanges` to `DFrame` to include more genomic
         ## coordinate information, rather than calling `rowData` directly.
         rowData <- rowData(object, use.names = TRUE)
         files[["rowData"]] <-

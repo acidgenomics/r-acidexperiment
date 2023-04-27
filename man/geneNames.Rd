@@ -2,13 +2,13 @@
 % Please edit documentation in R/AllGenerics.R, R/geneNames-methods.R
 \name{geneNames}
 \alias{geneNames}
-\alias{geneNames,GenomicRanges-method}
+\alias{geneNames,GRanges-method}
 \alias{geneNames,SummarizedExperiment-method}
 \title{Gene names}
 \usage{
 geneNames(object, ...)
 
-\S4method{geneNames}{GenomicRanges}(object)
+\S4method{geneNames}{GRanges}(object)
 
 \S4method{geneNames}{SummarizedExperiment}(object)
 }
