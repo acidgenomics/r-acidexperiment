@@ -1,10 +1,11 @@
 #' @inherit AcidGenomes::Ensembl2Ncbi
 #' @name Ensembl2Ncbi
-#' @note Updated 2023-03-01.
+#' @note Updated 2023-04-27.
 #'
 #' @param ... Additional arguments.
 #'
 #' @examples
+#' suppressPackageStartupMessages(library(SummarizedExperiment))
 #' data(RangedSummarizedExperiment, package = "AcidTest")
 #'
 #' ## SummarizedExperiment ====
