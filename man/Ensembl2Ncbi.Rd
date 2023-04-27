@@ -24,9 +24,10 @@ Ncbi2Ensembl(object, ...)
 Ensembl-to-NCBI gene identifier mappings
 }
 \note{
-Updated 2023-03-01.
+Updated 2023-04-27.
 }
 \examples{
+suppressPackageStartupMessages(library(SummarizedExperiment))
 data(RangedSummarizedExperiment, package = "AcidTest")
 
 ## SummarizedExperiment ====
