@@ -9,7 +9,7 @@
 #' data(RangedSummarizedExperiment, package = "AcidTest")
 #' rse <- RangedSummarizedExperiment
 #'
-#' ## DataFrame ====
+#' ## DFrame ====
 #' object <- rse
 #' x <- uniteInterestingGroups(
 #'     object = sampleData(object),
@@ -20,8 +20,8 @@ NULL
 
 
 
-## Updated 2021-10-13.
-`uniteInterestingGroups,DataFrame` <- # nolint
+## Updated 2023-04-27.
+`uniteInterestingGroups,DFrame` <- # nolint
     function(object, interestingGroups) {
         assert(
             isCharacter(interestingGroups),
@@ -33,7 +33,7 @@ NULL
         } else {
             ## Subset to get only the columns of interest.
             data <- object[, interestingGroups, drop = FALSE]
-            ## This approach will return numerics for `DataFrame` class, so
+            ## This approach will return numerics for `DFrame` class, so
             ## coercing columns to data.frame.
             value <- apply(
                 X = as.data.frame(data),
@@ -54,6 +54,6 @@ NULL
 #' @export
 setMethod(
     f = "uniteInterestingGroups",
-    signature = signature(object = "DataFrame"),
-    definition = `uniteInterestingGroups,DataFrame`
+    signature = signature(object = "DFrame"),
+    definition = `uniteInterestingGroups,DFrame`
 )

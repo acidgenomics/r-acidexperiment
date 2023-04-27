@@ -1,6 +1,6 @@
 genes <- c("TSPAN6", "TNMD", "DPM1", "SCYL3", "C1orf112")
 
-test_that("GenomicRanges", {
+test_that("GRanges", {
     expect_identical(
         object = geneNames(gr),
         expected = genes

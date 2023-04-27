@@ -1,4 +1,4 @@
-test_that("GenomicRanges", {
+test_that("GRanges", {
     expect_output(
         object = headtail(gr),
         regexp = "ENSG00000000003"

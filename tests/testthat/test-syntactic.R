@@ -118,10 +118,10 @@ test_that("matrix", {
     )
 })
 
-mcols(df) <- DataFrame(TEST = seq_len(ncol(df)))
-metadata(df) <- list(TEST = "XXX")
+mcols(df) <- DataFrame("TEST" = seq_len(ncol(df)))
+metadata(df) <- list("TEST" = "XXX")
 
-test_that("DataFrame", {
+test_that("DFrame", {
     for (fun in funs) {
         x <- fun(
             object = df,
@@ -130,11 +130,11 @@ test_that("DataFrame", {
             mcols = TRUE,
             metadata = TRUE
         )
-        expect_s4_class(x, "DataFrame")
+        expect_s4_class(x, "DFrame")
     }
 })
 
-test_that("GenomicRanges", {
+test_that("GRanges", {
     Map(
         fun = funs,
         expected = list(
@@ -149,7 +149,7 @@ test_that("GenomicRanges", {
                 names = TRUE,
                 mcols = TRUE
             )
-            expect_s4_class(x, "GenomicRanges")
+            expect_s4_class(x, "GRanges")
             expect_identical(
                 object = colnames(mcols(x)),
                 expected = expected

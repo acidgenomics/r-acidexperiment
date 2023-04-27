@@ -1,4 +1,4 @@
-object <- as(datasets::mtcars, "DataFrame")
+object <- as(datasets::mtcars, "DFrame")
 
 test_that("Check that 'interestingGroups' column gets defined as factor.", {
     x <- uniteInterestingGroups(

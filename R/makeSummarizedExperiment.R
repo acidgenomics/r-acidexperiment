@@ -109,9 +109,9 @@ makeSummarizedExperiment <-
              sessionInfo = TRUE) {
         assert(
             isAny(assays, c("SimpleList", "list")),
-            isAny(rowRanges, c("GenomicRanges", "GenomicRangesList", "NULL")),
-            isAny(rowData, c("DataFrame", "NULL")),
-            isAny(colData, c("DataFrame", "NULL")),
+            isAny(rowRanges, c("GRanges", "GRangesList", "NULL")),
+            isAny(rowData, c("DFrame", "NULL")),
+            isAny(colData, c("DFrame", "NULL")),
             isAny(metadata, c("list", "NULL")),
             isAny(transgeneNames, c("character", "NULL")),
             isFlag(denylist),
@@ -172,12 +172,12 @@ makeSummarizedExperiment <-
         if (hasLength(rowRanges)) {
             rowData <- NULL
             assert(
-                isAny(rowRanges, c("GenomicRanges", "GenomicRangesList")),
+                isAny(rowRanges, c("GRanges", "GRangesList")),
                 areIntersectingSets(rownames(assay), names(rowRanges))
             )
             ## Ensure we unclass any special classes returned from AcidGenomes.
-            if (is(rowRanges, "GenomicRangesList")) {
-                rowRanges <- as(rowRanges, "GenomicRangesList")
+            if (is(rowRanges, "GRangesList")) {
+                rowRanges <- as(rowRanges, "GRangesList")
                 if (hasCols(mcols(rowRanges[[1L]]))) {
                     assert(
                         identical(
@@ -190,20 +190,20 @@ makeSummarizedExperiment <-
                     )
                 }
             } else {
-                rowRanges <- as(rowRanges, "GenomicRanges")
+                rowRanges <- as(rowRanges, "GRanges")
                 if (hasCols(mcols(rowRanges))) {
                     colnames(mcols(rowRanges)) <-
                         camelCase(colnames(mcols(rowRanges)), strict = TRUE)
                 }
             }
             setdiff <- setdiff(rownames(assay), names(rowRanges))
-            if (hasLength(setdiff) && !is(rowRanges, "GenomicRanges")) {
+            if (hasLength(setdiff) && !is(rowRanges, "GRanges")) {
                 abort(sprintf(
                     fmt = paste(
                         "Automatic mismatched feature handling only",
                         "curently supported for {.val %s} (not {.val %s})."
                     ),
-                    "GenomicRanges", "GenomicRangesList"
+                    "GRanges", "GRangesList"
                 ))
             }
             ## Transgenes.
@@ -258,9 +258,9 @@ makeSummarizedExperiment <-
             ## accidental genome build release version mismatch.
             assert(isSubset(rownames(assay), names(rowRanges)))
             rowRanges <- rowRanges[rownames(assay)]
-            ## This step isn't currently supported for GenomicRangesList.
-            ## Consider adding class support in future pipette package update.
-            if (is(rowRanges, "GenomicRanges")) {
+            ## This step isn't currently supported for GRangesList. Consider
+            ## adding class support in future pipette package update.
+            if (is(rowRanges, "GRanges")) {
                 rowRanges <- encode(rowRanges)
             }
         } else if (hasRows(rowData)) {
@@ -268,7 +268,7 @@ makeSummarizedExperiment <-
                 isSubset(rownames(assay), rownames(rowData)),
                 hasColnames(rowData)
             )
-            rowData <- as(rowData, "DataFrame")
+            rowData <- as(rowData, "DFrame")
             colnames(rowData) <- camelCase(colnames(rowData), strict = TRUE)
             rowData <- rowData[rownames(assay), , drop = FALSE]
             rowData <- encode(rowData)
@@ -280,7 +280,7 @@ makeSummarizedExperiment <-
                 hasColnames(colData),
                 hasRows(colData)
             )
-            colData <- as(colData, "DataFrame")
+            colData <- as(colData, "DFrame")
             colnames(colData) <- camelCase(colnames(colData), strict = TRUE)
             assert(isSubset(colnames(assay), rownames(colData)))
             if (isTRUE(denylist)) {

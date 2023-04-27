@@ -39,7 +39,7 @@ For example: \code{sample_1}, \code{sample_2}, ... \code{sample_10} becomes
 For example, supports \code{sheet} argument for Microsoft Excel files.}
 }
 \value{
-\code{DataFrame}.
+\code{DFrame}.
 }
 \description{
 This function imports user-defined sample metadata saved in a spreadsheet.

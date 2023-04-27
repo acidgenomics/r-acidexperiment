@@ -1,12 +1,12 @@
 #' Minimal sample data
 #'
-#' @note Updated 2019-07-28.
+#' @note Updated 2023-04-27.
 #' @export
 #'
 #' @param sample `character`.
 #' Sample names (e.g. per-sample directory names).
 #'
-#' @return `DataFrame`.
+#' @return `DFrame`.
 #'
 #' @examples
 #' x <- minimalSampleData(sample = c("sample 1", "sample 2"))

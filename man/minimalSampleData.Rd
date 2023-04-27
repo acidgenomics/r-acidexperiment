@@ -11,13 +11,13 @@ minimalSampleData(sample)
 Sample names (e.g. per-sample directory names).}
 }
 \value{
-\code{DataFrame}.
+\code{DFrame}.
 }
 \description{
 Minimal sample data
 }
 \note{
-Updated 2019-07-28.
+Updated 2023-04-27.
 }
 \examples{
 x <- minimalSampleData(sample = c("sample 1", "sample 2"))

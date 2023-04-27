@@ -2,7 +2,7 @@ object <- calculateMetrics(rse)
 
 test_that("SummarizedExperiment", {
     x <- metrics(object)
-    expect_s4_class(x, "DataFrame")
+    expect_s4_class(x, "DFrame")
     expect_identical(
         object = colnames(x),
         expected = c(

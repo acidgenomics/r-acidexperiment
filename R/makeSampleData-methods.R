@@ -31,7 +31,7 @@
 #' @seealso `makeNames`.
 #'
 #' @examples
-#' ## DataFrame ====
+#' ## DFrame ====
 #' object <- S4Vectors::DataFrame(
 #'     "genotype" = rep(c("control", "wildtype"), times = 2L),
 #'     "treatment" = rep(c("vector", "RNAi"), each = 2L),
@@ -43,8 +43,8 @@ NULL
 
 
 
-## Updated 2021-10-13.
-`makeSampleData,DataFrame` <- # nolint
+## Updated 2023-04-26.
+`makeSampleData,DFrame` <- # nolint
     function(object) {
         ## Check for complex S4 columns, which are discouraged.
         assert(
@@ -112,7 +112,7 @@ NULL
 ## Updated 2021-10-14.
 `makeSampleData,data.frame` <- # nolint
     function(object) {
-        makeSampleData(as(object, "DataFrame"))
+        makeSampleData(as(object, "DFrame"))
     }
 
 
@@ -121,8 +121,8 @@ NULL
 #' @export
 setMethod(
     f = "makeSampleData",
-    signature = signature(object = "DataFrame"),
-    definition = `makeSampleData,DataFrame`
+    signature = signature(object = "DFrame"),
+    definition = `makeSampleData,DFrame`
 )
 
 #' @rdname makeSampleData

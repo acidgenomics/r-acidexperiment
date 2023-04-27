@@ -16,8 +16,8 @@ NULL
 
 
 
-## Updated 2021-10-13.
-`matchSampleColumn,DataFrame` <- # nolint
+## Updated 2023-04-26.
+`matchSampleColumn,DFrame` <- # nolint
     function(object) {
         x <- colnames(object)
         table <- c("sampleId", "sampleID", "sampleid", "sample")
@@ -43,8 +43,8 @@ NULL
 #' @export
 setMethod(
     f = "matchSampleColumn",
-    signature = signature(object = "DataFrame"),
-    definition = `matchSampleColumn,DataFrame`
+    signature = signature(object = "DFrame"),
+    definition = `matchSampleColumn,DFrame`
 )
 
 #' @rdname matchSampleColumn

@@ -15,7 +15,7 @@ test_that("Direct 'sampleId' column, requiring snake case sanitization", {
 
 
 
-test_that("DataFrame return", {
+test_that("DFrame return", {
     file <- file.path("cache", "bcbio-metadata-demultiplexed.csv")
     expect_identical(
         object = importSampleData(file, pipeline = "bcbio"),
@@ -88,13 +88,13 @@ test_that("'sampleId' column defined by user", {
     )
     expect_s4_class(
         object = importSampleData(file, pipeline = "none"),
-        class = "DataFrame"
+        class = "DFrame"
     )
 })
 
 
 
-test_that("DataFrame return", {
+test_that("DFrame return", {
     file <- file.path("cache", "bcbio-metadata-multiplexed-indrops.csv")
     object <- importSampleData(file, pipeline = "bcbio")
     expected <- DataFrame(

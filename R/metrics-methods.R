@@ -8,16 +8,16 @@
 #'
 #' @details
 #' `metrics()` takes data stored in `colData()` and consistently returns a
-#' `DataFrame` with `sampleName` and `interestingGroups` columns, even when
-#' these columns are not defined in `colData()`. This is designed to integrate
-#' with plotting functions that use ggplot2 internally.
+#' `DFrame` with `sampleName` and `interestingGroups` columns, even when these
+#' columns are not defined in `colData()`. This is designed to integrate with
+#' plotting functions that use ggplot2 internally.
 #'
 #' Column names are always returned formatted in strict lower camel case.
 #'
 #' This function will error intentionally if no numeric columns are defined
 #' in `colData()`.
 #'
-#' @return `DataFrame`.
+#' @return `DFrame`.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")

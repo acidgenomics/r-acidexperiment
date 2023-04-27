@@ -1,6 +1,6 @@
 data(
-    DataFrame,
-    GenomicRanges,
+    DFrame,
+    GRanges,
     RangedSummarizedExperiment,
     SummarizedExperiment_transcripts,
     matrix,
@@ -13,8 +13,8 @@ stopifnot(
     is(RangedSummarizedExperiment, "RangedSummarizedExperiment")
 )
 
-df <- DataFrame
-gr <- GenomicRanges
+df <- DFrame
+gr <- GRanges
 mat <- matrix
 rse <- RangedSummarizedExperiment
 sparse <- sparseMatrix

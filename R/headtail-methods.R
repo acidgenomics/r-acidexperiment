@@ -18,8 +18,8 @@ NULL
 
 
 
-## Updated 2021-10-13.
-`headtail,DataFrame` <- # nolint
+## Updated 2023-04-27.
+`headtail,DFrame` <- # nolint
     methodFunction(
         f = "headtail",
         signature = "data.frame",
@@ -28,14 +28,14 @@ NULL
 
 
 
-## Updated 2021-10-13.
-`headtail,GenomicRanges` <- # nolint
+## Updated 2023-04-27.
+`headtail,GRanges` <- # nolint
     function(x, n) {
         headtail(x = as(x, "data.frame"), n = n)
     }
 
-formals(`headtail,GenomicRanges`) <- # nolint
-    formals(`headtail,DataFrame`)
+formals(`headtail,GRanges`) <- # nolint
+    formals(`headtail,DFrame`)
 
 
 
@@ -56,7 +56,7 @@ formals(`headtail,GenomicRanges`) <- # nolint
     }
 
 formals(`headtail,SE`) <- # nolint
-    formals(`headtail,DataFrame`)
+    formals(`headtail,DFrame`)
 
 
 
@@ -64,16 +64,16 @@ formals(`headtail,SE`) <- # nolint
 #' @export
 setMethod(
     f = "headtail",
-    signature = signature(x = "DataFrame"),
-    definition = `headtail,DataFrame`
+    signature = signature(x = "DFrame"),
+    definition = `headtail,DFrame`
 )
 
 #' @describeIn headtail Summarize the ranges.
 #' @export
 setMethod(
     f = "headtail",
-    signature = signature(x = "GenomicRanges"),
-    definition = `headtail,GenomicRanges`
+    signature = signature(x = "GRanges"),
+    definition = `headtail,GRanges`
 )
 
 #' @describeIn headtail Same method as `matrix`.

@@ -5,7 +5,7 @@
 \alias{sampleData}
 \alias{sampleData<-}
 \alias{sampleData,SummarizedExperiment-method}
-\alias{sampleData<-,SummarizedExperiment,DataFrame-method}
+\alias{sampleData<-,SummarizedExperiment,DFrame-method}
 \alias{sampleNames,SummarizedExperiment-method}
 \title{Sample data}
 \usage{
@@ -19,7 +19,7 @@ sampleData(object, ...) <- value
   ignoreCols = c("^description$", "^genomeBuild$", "^qualityFormat$", "^samRef$")
 )
 
-\S4method{sampleData}{SummarizedExperiment,DataFrame}(object) <- value
+\S4method{sampleData}{SummarizedExperiment,DFrame}(object) <- value
 
 \S4method{sampleNames}{SummarizedExperiment}(object)
 }

@@ -1,7 +1,7 @@
 #' Syntactic naming functions
 #'
 #' @name syntactic
-#' @note Updated 2021-08-09.
+#' @note Updated 2023-04-27.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @inheritParams syntactic::camelCase
@@ -127,7 +127,7 @@ NULL
 
 
 
-`camelCase,DataFrame` <- # nolint
+`camelCase,DFrame` <- # nolint
     function(object,
              rownames = FALSE,
              colnames = TRUE,
@@ -301,7 +301,7 @@ formals(`camelCase,Ranges`)[c("mcols", "names")] <- # nolint
 
 
 
-`dottedCase,DataFrame` <- # nolint
+`dottedCase,DFrame` <- # nolint
     function(object,
              rownames = FALSE,
              colnames = TRUE,
@@ -465,7 +465,7 @@ formals(`dottedCase,Ranges`)[c("mcols", "names")] <- # nolint
 
 
 
-`snakeCase,DataFrame` <- # nolint
+`snakeCase,DFrame` <- # nolint
     function(object,
              rownames = FALSE,
              colnames = TRUE,
@@ -644,7 +644,7 @@ formals(`snakeCase,Ranges`)[c("mcols", "names")] <- # nolint
 
 
 
-`upperCamelCase,DataFrame` <- # nolint
+`upperCamelCase,DFrame` <- # nolint
     function(object,
              rownames = FALSE,
              colnames = TRUE,
@@ -744,8 +744,8 @@ formals(`upperCamelCase,Ranges`)[c("mcols", "names")] <- # nolint
 #' @export
 setMethod(
     f = "camelCase",
-    signature = signature(object = "DataFrame"),
-    definition = `camelCase,DataFrame`
+    signature = signature(object = "DFrame"),
+    definition = `camelCase,DFrame`
 )
 
 #' @rdname syntactic
@@ -824,8 +824,8 @@ setMethod(
 #' @export
 setMethod(
     f = "dottedCase",
-    signature = signature(object = "DataFrame"),
-    definition = `dottedCase,DataFrame`
+    signature = signature(object = "DFrame"),
+    definition = `dottedCase,DFrame`
 )
 
 #' @rdname syntactic
@@ -944,8 +944,8 @@ setMethod(
 #' @export
 setMethod(
     f = "snakeCase",
-    signature = signature(object = "DataFrame"),
-    definition = `snakeCase,DataFrame`
+    signature = signature(object = "DFrame"),
+    definition = `snakeCase,DFrame`
 )
 
 #' @rdname syntactic
@@ -984,8 +984,8 @@ setMethod(
 #' @export
 setMethod(
     f = "upperCamelCase",
-    signature = signature(object = "DataFrame"),
-    definition = `upperCamelCase,DataFrame`
+    signature = signature(object = "DFrame"),
+    definition = `upperCamelCase,DFrame`
 )
 
 #' @rdname syntactic

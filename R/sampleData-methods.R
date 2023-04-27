@@ -90,7 +90,6 @@ NULL
         }
         ## Require `sampleName` column.
         if (!isSubset("sampleName", colnames(data))) {
-            ## Bioconductor 3.10 is converting to "DataFrame" class here.
             data[["sampleName"]] <- as.factor(rownames(data))
         } else if (!is.factor(data[["sampleName"]])) {
             abort(sprintf(
@@ -129,16 +128,16 @@ NULL
 
 ## nolint start
 ##
-## Note that attempting to use `NULL` to remove columns on a DataFrame
-## will result in `S4Vectors::V_recycle()` errors, prior to BioC 3.8.
+## Note that attempting to use `NULL` to remove columns on a DFrame will result
+## in `S4Vectors::V_recycle()` errors, prior to BioC 3.8.
 ## https://stat.ethz.ch/pipermail/bioc-devel/2017-November/012343.html
 ##
 ## nolint end
 
 
 
-## Updated 2021-10-13.
-`sampleData<-,SE,DataFrame` <- # nolint
+## Updated 2023-04-27.
+`sampleData<-,SE,DFrame` <- # nolint
     function(object, value) {
         assert(hasRownames(value))
         denylist <- c("interestingGroups", "rowname", "sampleId")
@@ -168,7 +167,7 @@ setReplaceMethod(
     f = "sampleData",
     signature = signature(
         object = "SummarizedExperiment",
-        value = "DataFrame"
+        value = "DFrame"
     ),
-    definition = `sampleData<-,SE,DataFrame`
+    definition = `sampleData<-,SE,DFrame`
 )
