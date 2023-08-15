@@ -1,7 +1,6 @@
 # AcidExperiment
 
-![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-green.svg)
-[![Install with Bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/r-acidexperiment/README.html)
+[![Install with Bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg)](http://bioconda.github.io/recipes/r-acidexperiment/README.html) ![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)
 
 Toolkit to extend the functionality of [SummarizedExperiment][].
 
