@@ -2,43 +2,35 @@
 % Please edit documentation in R/AllGenerics.R, R/export-methods.R
 \name{export}
 \alias{export}
-\alias{export,MultiAssayExperiment,character,missing-method}
-\alias{export,SummarizedExperiment,character,missing-method}
-\title{Export}
+\alias{export,MultiAssayExperiment,character-method}
+\alias{export,SummarizedExperiment,character-method}
+\title{Export data from R}
 \usage{
-export(object, con, format, ...)
+export(object, con, ...)
 
-\S4method{export}{MultiAssayExperiment,character,missing}(
+\S4method{export}{MultiAssayExperiment,character}(
   object,
   con,
-  format,
   bindRowData = FALSE,
-  compress = getOption(x = "acid.export.compress", default = FALSE),
-  overwrite = getOption(x = "acid.overwrite", default = TRUE),
-  quiet = getOption(x = "acid.quiet", default = FALSE)
+  compress = FALSE,
+  overwrite = TRUE,
+  quiet = FALSE
 )
 
-\S4method{export}{SummarizedExperiment,character,missing}(
+\S4method{export}{SummarizedExperiment,character}(
   object,
   con,
-  format,
   bindRowData = FALSE,
-  compress = getOption(x = "acid.export.compress", default = FALSE),
-  overwrite = getOption(x = "acid.overwrite", default = TRUE),
-  quiet = getOption(x = "acid.quiet", default = FALSE)
+  compress = FALSE,
+  overwrite = TRUE,
+  quiet = FALSE
 )
 }
 \arguments{
-\item{object}{Object.
-An object supporting \code{dim()}, or a supported class capable of being coerced
-to \code{data.frame}, to be written to disk.}
+\item{object}{Object.}
 
-\item{con}{\code{character(1)}, \code{missing}, or \code{NULL}.
-File path.
-Alternatively, can leave unset and use \code{ext} and \code{dir} arguments instead.}
-
-\item{format}{\code{character(1)}, \code{missing}, or \code{NULL}.
-\emph{Currently not supported.}}
+\item{con}{\code{character(1)} or \code{connection}.
+Data connection. Use \code{character(1)} to represent a file path.}
 
 \item{bindRowData}{\code{logical(1)}.
 Whether to column bind row data (e.g. gene annotations), slotted in
@@ -56,14 +48,13 @@ Perform command quietly, suppressing messages.}
 \item{...}{Additional arguments.}
 }
 \value{
-Invisible \code{character}.
-File path(s).
+Invisible \code{character} or \code{list} of file paths.
 }
 \description{
-Export
+Export data from R
 }
 \note{
-Updated 2022-10-24.
+Updated 2023-09-20.
 }
 \section{Output file format extension}{
 

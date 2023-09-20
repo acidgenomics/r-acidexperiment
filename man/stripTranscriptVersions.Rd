@@ -44,6 +44,6 @@ head(rownames(object))
 }
 \seealso{
 \itemize{
-\item http://www.ensembl.org/info/genome/stable_ids/index.html
+\item https://www.ensembl.org/info/genome/stable_ids/index.html
 }
 }

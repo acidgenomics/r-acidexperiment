@@ -1,6 +1,8 @@
 #+TITLE: AcidExperiment
 #+STARTUP: content
 * Development
+** TODO Need to address export conflict with BiocIO.
+    Warning: multiple methods tables found for ‘export’
 ** TODO selectSamples improvement ideas.
     - Rework using `colData` instead of `sampleData` internally? Can just match on factor columns, which likely is simpler and faster.
     - Consider hardening for scalars instead of just atomic values.
