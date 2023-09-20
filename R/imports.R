@@ -16,12 +16,12 @@ NULL
 #' aggregateCols aggregateRows as.SummarizedExperiment atomize autopadZeros
 #' calculateMetrics camelCase convertGenesToSymbols convertSampleIDsToNames
 #' convertSymbolsToGenes convertTranscriptsToGenes correlation dottedCase
-#' droplevels2 encode factorize geneNames headtail humanize integerCounts
-#' interestingGroups interestingGroups<- leftJoin makeNames makeSampleData
-#' mapGenesToIDs mapGenesToRownames mapGenesToSymbols matchSampleColumn melt
-#' metrics mutateAt nonzeroRowsAndCols removeNA sampleData sampleData<-
-#' selectSamples snakeCase stripGeneVersions stripTranscriptVersions tpm
-#' uniteInterestingGroups upperCamelCase
+#' droplevels2 encode export factorize geneNames headtail humanize import
+#' integerCounts interestingGroups interestingGroups<- leftJoin makeNames
+#' makeSampleData mapGenesToIDs mapGenesToRownames mapGenesToSymbols
+#' matchSampleColumn melt metrics mutateAt nonzeroRowsAndCols removeNA
+#' sampleData sampleData<- selectSamples snakeCase stripGeneVersions
+#' stripTranscriptVersions tpm uniteInterestingGroups upperCamelCase
 #' @importFrom BiocGenerics Map %in% as.data.frame cbind combine counts counts<-
 #' do.call estimateSizeFactors lapply match organism organism<- setdiff
 #' sizeFactors sizeFactors<- t unlist unsplit
@@ -32,7 +32,6 @@ NULL
 #' mcols mcols<- metadata metadata<- na.omit split summary
 #' @importFrom SummarizedExperiment assay assay<- assayNames assayNames<- assays
 #' assays<- colData colData<- rowData rowData<- rowRanges rowRanges<-
-#' @importFrom pipette export import
 NULL
 
 #' @importMethodsFrom AcidBase headtail
