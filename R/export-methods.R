@@ -1,6 +1,6 @@
 #' @name export
 #' @inherit pipette::export
-#' @note Updated 2022-10-24.
+#' @note Updated 2023-09-20.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -202,30 +202,16 @@ NULL
 `export,MAE` <- # nolint
     function(object,
              con,
-             format, # missing
              bindRowData = FALSE,
-             compress = getOption(
-                 x = "acid.export.compress",
-                 default = FALSE
-             ),
-             overwrite = getOption(
-                 x = "acid.overwrite",
-                 default = TRUE
-             ),
-             quiet = getOption(
-                 x = "acid.quiet",
-                 default = FALSE
-             )) {
-        if (missing(format)) {
-            format <- NULL
-        }
+             compress = FALSE,
+             overwrite = TRUE,
+             quiet = FALSE) {
         assert(
             validObject(object),
             ## Some cBioPortalData objects currently fail these checks.
             ## > hasNoDuplicates(rownames(object)),
             ## > hasNoDuplicates(colnames(object)),
             isString(con),
-            is.null(format),
             isFlag(bindRowData),
             isFlag(compress),
             isFlag(overwrite),
@@ -300,29 +286,15 @@ NULL
 `export,SE` <- # nolint
     function(object,
              con,
-             format, # missing
              bindRowData = FALSE,
-             compress = getOption(
-                 x = "acid.export.compress",
-                 default = FALSE
-             ),
-             overwrite = getOption(
-                 x = "acid.overwrite",
-                 default = TRUE
-             ),
-             quiet = getOption(
-                 x = "acid.quiet",
-                 default = FALSE
-             )) {
-        if (missing(format)) {
-            format <- NULL
-        }
+             compress = FALSE,
+             overwrite = TRUE,
+             quiet = FALSE) {
         assert(
             validObject(object),
             hasNoDuplicates(rownames(object)),
             hasNoDuplicates(colnames(object)),
             isString(con),
-            is.null(format),
             isFlag(bindRowData),
             isFlag(compress),
             isFlag(overwrite),
@@ -380,8 +352,7 @@ setMethod(
     f = "export",
     signature = signature(
         object = "MultiAssayExperiment",
-        con = "character",
-        format = "missing"
+        con = "character"
     ),
     definition = `export,MAE`
 )
@@ -392,8 +363,7 @@ setMethod(
     f = "export",
     signature = signature(
         object = "SummarizedExperiment",
-        con = "character",
-        format = "missing"
+        con = "character"
     ),
     definition = `export,SE`
 )
