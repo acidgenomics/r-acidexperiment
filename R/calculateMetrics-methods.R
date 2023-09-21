@@ -172,7 +172,7 @@ NULL
                         msg2 = "samples"
                     )
                 )
-                if (requireNamespace("scales", quietly = TRUE)) {
+                if (isInstalled("scales")) {
                     msg <- paste0(
                         msg,
                         sprintf(" (%s)", scales::percent(n1 / n2))
