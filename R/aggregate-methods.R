@@ -109,13 +109,12 @@ NULL
 
 ## aggregate ===================================================================
 ## Using the `stats::aggregate.data.frame()` S3 method internally here.
-## Updated 2021-09-10.
+## Updated 2023-09-21.
 `aggregate,matrix` <- # nolint
     function(x,
              by,
              fun = c("sum", "mean", "median", "geometricMean", "n"),
-             MARGIN = 1L # nolint
-    ) {
+             MARGIN = 1L) { # nolint
         assert(
             hasDimnames(x),
             is.factor(by),
@@ -155,8 +154,7 @@ NULL
     function(x,
              by,
              fun = c("sum", "mean", "n"),
-             MARGIN = 1L # nolint
-    ) {
+             MARGIN = 1L) { # nolint
         requireNamespaces("Matrix")
         assert(
             hasDimnames(x),
@@ -194,8 +192,7 @@ NULL
     function(x,
              col = "aggregate",
              fun = "sum",
-             MARGIN = 1L # nolint
-    ) {
+             MARGIN = 1L) { # nolint
         validObject(x)
         assert(
             hasDimnames(x),
