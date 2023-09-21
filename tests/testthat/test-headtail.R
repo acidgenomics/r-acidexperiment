@@ -1,3 +1,5 @@
+## FIXME Rework these to not print to the console.
+
 test_that("GRanges", {
     expect_output(
         object = headtail(gr),

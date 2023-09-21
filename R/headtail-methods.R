@@ -1,6 +1,6 @@
 #' @name headtail
 #' @inherit AcidGenerics::headtail
-#' @note Updated 2020-10-07.
+#' @note Updated 2023-09-20.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
