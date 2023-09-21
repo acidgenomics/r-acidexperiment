@@ -1,6 +1,7 @@
 #+TITLE: AcidExperiment
 #+STARTUP: content
 * Development
+** TODO Need to resave test data in AcidTest to reflect change in column names.
 ** TODO Need to address export conflict with BiocIO.
     Warning: multiple methods tables found for ‘export’
 ** TODO selectSamples improvement ideas.
