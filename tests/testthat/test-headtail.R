@@ -1,15 +1,13 @@
-## FIXME Rework these to not print to the console.
-
 test_that("GRanges", {
-    expect_output(
-        object = headtail(gr),
+    expect_match(
+        object = headtail(gr)[[2L]],
         regexp = "ENSG00000000003"
     )
 })
 
 test_that("SummarizedExperiment", {
     expect_identical(
-        capture.output(headtail(rse)),
-        capture.output(headtail(assay(rse)))
+        headtail(rse),
+        headtail(assay(rse))
     )
 })
