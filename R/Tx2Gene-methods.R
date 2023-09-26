@@ -1,5 +1,5 @@
-#' @name Tx2Gene
-#' @inherit AcidGenomes::Tx2Gene
+#' @name TxToGene
+#' @inherit AcidGenomes::TxToGene
 #' @note Updated 2021-02-03.
 #'
 #' @inheritParams AcidRoxygen::params
@@ -10,25 +10,25 @@
 #'
 #' ## SummarizedExperiment ====
 #' object <- SummarizedExperiment_transcripts
-#' t2g <- Tx2Gene(object)
+#' t2g <- TxToGene(object)
 #' print(t2g)
 NULL
 
 
 
 ## Updated 2021-01-29.
-`Tx2Gene,SE` <- # nolint
+`TxToGene,SE` <- # nolint
     function(object) {
         object <- rowData(object, use.names = TRUE)
-        Tx2Gene(object)
+        TxToGene(object)
     }
 
 
 
-#' @rdname Tx2Gene
+#' @rdname TxToGene
 #' @export
 setMethod(
-    f = "Tx2Gene",
+    f = "TxToGene",
     signature = signature(object = "SummarizedExperiment"),
-    definition = `Tx2Gene,SE`
+    definition = `TxToGene,SE`
 )

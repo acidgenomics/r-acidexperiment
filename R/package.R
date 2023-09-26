@@ -10,7 +10,7 @@
 ## Classes =====================================================================
 
 #' @importClassesFrom AcidBase missingOrNULL
-#' @importClassesFrom AcidGenomes Ensembl2Ncbi Gene2Symbol Ncbi2Ensembl Tx2Gene
+#' @importClassesFrom AcidGenomes EnsemblToNcbi GeneToSymbol NcbiToEnsembl TxToGene
 #' @importClassesFrom IRanges SplitDFrameList
 #' @importClassesFrom Matrix Matrix
 #' @importClassesFrom S4Vectors DFrame SimpleList
@@ -21,7 +21,7 @@ NULL
 
 ## S4 generics and methods =====================================================
 
-#' @importFrom AcidGenerics Ensembl2Ncbi Gene2Symbol Ncbi2Ensembl Tx2Gene
+#' @importFrom AcidGenerics EnsemblToNcbi GeneToSymbol NcbiToEnsembl TxToGene
 #' aggregateCols aggregateRows as.SummarizedExperiment atomize autopadZeros
 #' calculateMetrics camelCase convertGenesToSymbols convertSampleIDsToNames
 #' convertSymbolsToGenes convertTranscriptsToGenes correlation dottedCase
@@ -44,7 +44,7 @@ NULL
 NULL
 
 #' @importMethodsFrom AcidBase headtail
-#' @importMethodsFrom AcidGenomes Ensembl2Ncbi Gene2Symbol Ncbi2Ensembl Tx2Gene
+#' @importMethodsFrom AcidGenomes EnsemblToNcbi GeneToSymbol NcbiToEnsembl TxToGene
 #' stripGeneVersions stripTranscriptVersions
 #' @importMethodsFrom AcidPlyr leftJoin mutateAt
 #' @importMethodsFrom pipette atomize droplevels2 export factorize import

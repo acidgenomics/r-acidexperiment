@@ -28,7 +28,7 @@
 #' txse <- SummarizedExperiment_transcripts
 #' object <- txse
 #'
-#' t2g <- Tx2Gene(object)
+#' t2g <- TxToGene(object)
 #' print(t2g)
 #' transcripts <- rownames(object)
 #' print(transcripts)
@@ -65,7 +65,7 @@ NULL
         assert(
             isCharacter(object),
             hasNoDuplicates(object),
-            is(tx2gene, "Tx2Gene")
+            is(tx2gene, "TxToGene")
         )
         ## Arrange the tx2gene to match the input.
         cols <- c("txId", "geneId")
@@ -131,7 +131,7 @@ NULL
             assays = lapply(
                 X = assays(object),
                 FUN = convertTranscriptsToGenes,
-                tx2gene = Tx2Gene(object)
+                tx2gene = TxToGene(object)
             ),
             colData = colData(object)
         )

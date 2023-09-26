@@ -1,6 +1,6 @@
 object <- head(rse, n = 2L)
 rownames <- rownames(object)
-g2s <- Gene2Symbol(object)
+g2s <- GeneToSymbol(object)
 geneIds <- g2s[["geneId"]]
 geneNames <- g2s[["geneName"]]
 

@@ -3,7 +3,7 @@
 skip_if_not(hasInternet())
 
 ## NOTE Consider using a presaved object, to speed up tests.
-tx2gene <- AcidGenomes::makeTx2GeneFromEnsembl(
+tx2gene <- AcidGenomes::makeTxToGeneFromEnsembl(
     organism = "Homo sapiens",
     genomeBuild = "GRCh38",
     release = 87L,
