@@ -50,7 +50,7 @@ NULL
                 msg = "Strict mode check failure."
             )
         }
-        g2s <- Gene2Symbol(object, format = "makeUnique", quiet = TRUE)
+        g2s <- GeneToSymbol(object, format = "makeUnique", quiet = TRUE)
         assert(areSetEqual(rownames(object), rownames(g2s)))
         g2s <- g2s[rownames(object), , drop = FALSE]
         rn <- unname(as.character(g2s[[to]]))

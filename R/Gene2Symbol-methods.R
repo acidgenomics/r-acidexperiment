@@ -1,5 +1,5 @@
-#' @name Gene2Symbol
-#' @inherit AcidGenomes::Gene2Symbol
+#' @name GeneToSymbol
+#' @inherit AcidGenomes::GeneToSymbol
 #' @note Updated 2021-08-09.
 #'
 #' @param ... Additional arguments.
@@ -9,27 +9,27 @@
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' x <- Gene2Symbol(object)
+#' x <- GeneToSymbol(object)
 #' print(x)
 NULL
 
 
 
 ## Updated 2021-08-10.
-`Gene2Symbol,SE` <- # nolint
+`GeneToSymbol,SE` <- # nolint
     function(object, ...) {
         object <- as.SummarizedExperiment(object)
         df <- rowData(object)
         rownames(df) <- rownames(object)
-        Gene2Symbol(df, ...)
+        GeneToSymbol(df, ...)
     }
 
 
 
-#' @rdname Gene2Symbol
+#' @rdname GeneToSymbol
 #' @export
 setMethod(
-    f = "Gene2Symbol",
+    f = "GeneToSymbol",
     signature = signature(object = "SummarizedExperiment"),
-    definition = `Gene2Symbol,SE`
+    definition = `GeneToSymbol,SE`
 )

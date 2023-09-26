@@ -32,7 +32,7 @@
 #' object <- RangedSummarizedExperiment
 #' rownames <- head(rownames(object))
 #' print(rownames)
-#' g2s <- Gene2Symbol(object)
+#' g2s <- GeneToSymbol(object)
 #' geneIds <- head(g2s[["geneId"]])
 #' print(geneIds)
 #' geneNames <- head(g2s[["geneName"]])

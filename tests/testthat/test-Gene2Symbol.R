@@ -1,20 +1,20 @@
-test_that("Gene2Symbol", {
+test_that("GeneToSymbol", {
     formats <- eval(methodFormals(
-        f = "Gene2Symbol",
+        f = "GeneToSymbol",
         signature = "DFrame",
         package = "AcidGenomes"
     )[["format"]])
     for (format in formats) {
         object <- rse
-        object <- Gene2Symbol(object, format = format)
-        expect_s4_class(object, "Gene2Symbol")
+        object <- GeneToSymbol(object, format = format)
+        expect_s4_class(object, "GeneToSymbol")
         expect_identical(colnames(object), c("geneId", "geneName"))
     }
 })
 
 test_that("summary", {
     object <- rse
-    x <- Gene2Symbol(object)
+    x <- GeneToSymbol(object)
     output <- capture.output(summary(x))
     expect_identical(
         head(output, n = 1L),

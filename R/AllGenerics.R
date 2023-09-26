@@ -1,22 +1,22 @@
 #' @export
-#' @name Ensembl2Ncbi
-#' @usage Ensembl2Ncbi(object, ...)
+#' @name EnsemblToNcbi
+#' @usage EnsemblToNcbi(object, ...)
 NULL
 
 #' @export
-#' @name Gene2Symbol
-#' @usage Gene2Symbol(object, ...)
+#' @name GeneToSymbol
+#' @usage GeneToSymbol(object, ...)
 NULL
 
 #' @export
-#' @rdname Ensembl2Ncbi
-#' @name Ncbi2Ensembl
-#' @usage Ncbi2Ensembl(object, ...)
+#' @rdname EnsemblToNcbi
+#' @name NcbiToEnsembl
+#' @usage NcbiToEnsembl(object, ...)
 NULL
 
 #' @export
-#' @name Tx2Gene
-#' @usage Tx2Gene(object, ...)
+#' @name TxToGene
+#' @usage TxToGene(object, ...)
 NULL
 
 #' @export

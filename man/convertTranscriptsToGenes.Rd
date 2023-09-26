@@ -55,7 +55,7 @@ data(SummarizedExperiment_transcripts, package = "AcidTest")
 txse <- SummarizedExperiment_transcripts
 object <- txse
 
-t2g <- Tx2Gene(object)
+t2g <- TxToGene(object)
 print(t2g)
 transcripts <- rownames(object)
 print(transcripts)
