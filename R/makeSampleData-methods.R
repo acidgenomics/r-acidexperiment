@@ -53,7 +53,7 @@ NULL
         )
         ## Enforcing strict as of 2021-01-14.
         colnames(object) <- camelCase(colnames(object), strict = TRUE)
-        object <- removeNA(object)
+        object <- removeNa(object)
         ## Assign row names from column automatically, if applicable.
         if (!hasRownames(object)) {
             rnCols <- c("sampleId", "rowname", "rn")

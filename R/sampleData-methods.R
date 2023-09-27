@@ -81,7 +81,7 @@ NULL
         assert(
             hasRownames(data),
             isFlag(clean),
-            isCharacter(ignoreCols, nullOK = TRUE)
+            isCharacter(ignoreCols, nullOk = TRUE)
         )
         ## This provides backward compatibility for legacy objects, such as
         ## bcbioRNASeq.
