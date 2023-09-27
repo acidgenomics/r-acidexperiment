@@ -52,7 +52,7 @@ microplate <-
             isSubset(x = wells, y = c(96L, 384L)),
             isInt(controls),
             isInRange(x = controls, lower = 0L, upper = 12L),
-            isString(prefix, nullOK = TRUE)
+            isString(prefix, nullOk = TRUE)
         )
         switch(
             EXPR = as.character(wells),

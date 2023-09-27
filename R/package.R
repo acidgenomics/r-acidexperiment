@@ -28,7 +28,7 @@ NULL
 #' droplevels2 encode export factorize geneNames headtail humanize import
 #' integerCounts interestingGroups interestingGroups<- leftJoin makeNames
 #' makeSampleData mapGenesToIDs mapGenesToRownames mapGenesToSymbols
-#' matchSampleColumn melt metrics mutateAt nonzeroRowsAndCols removeNA
+#' matchSampleColumn melt metrics mutateAt nonzeroRowsAndCols removeNa
 #' sampleData sampleData<- selectSamples snakeCase stripGeneVersions
 #' stripTranscriptVersions tpm uniteInterestingGroups upperCamelCase
 #' @importFrom BiocGenerics Map %in% as.data.frame cbind combine counts counts<-
@@ -48,7 +48,7 @@ NULL
 #' stripGeneVersions stripTranscriptVersions
 #' @importMethodsFrom AcidPlyr leftJoin mutateAt
 #' @importMethodsFrom pipette atomize droplevels2 export factorize import
-#' removeNA
+#' removeNa
 #' @importMethodsFrom syntactic camelCase dottedCase makeNames snakeCase
 #' upperCamelCase
 NULL
@@ -69,7 +69,7 @@ NULL
 #' areIntersectingSets areSetEqual assert bapply cause false hasColnames
 #' hasCols hasDimnames hasDuplicates hasLength hasNames hasNoDuplicates
 #' hasRownames hasRows hasValidDimnames hasValidNames isADirectory isAFile
-#' isAURL isAny isCharacter isFlag isInRange isInstalled isInt isNonNegative
+#' isAUrl isAny isCharacter isFlag isInRange isInstalled isInt isNonNegative
 #' isNumber isPositive isScalar isString isSubset matchesUniqueGeneNames
 #' requireNamespaces validNames
 #' @importFrom methods as is new setMethod setReplaceMethod signature

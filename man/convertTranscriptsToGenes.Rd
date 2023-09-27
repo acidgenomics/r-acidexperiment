@@ -22,7 +22,7 @@ convertTranscriptsToGenes(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{tx2gene}{\code{Tx2Gene}.
+\item{tx2gene}{\code{TxToGene}.
 Transcript-to-gene mappings.}
 
 \item{aggregate}{\code{logical(1)}.

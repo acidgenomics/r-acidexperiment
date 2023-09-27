@@ -66,7 +66,7 @@
 #' @examples
 #' ## Demultiplexed ====
 #' file <- file.path(
-#'     AcidExperimentTestsURL,
+#'     AcidExperimentTestsUrl,
 #'     "bcbio-metadata-demultiplexed.csv"
 #' )
 #' x <- importSampleData(file, pipeline = "bcbio")
@@ -74,7 +74,7 @@
 #'
 #' ## Multiplexed ====
 #' file <- file.path(
-#'     AcidExperimentTestsURL,
+#'     AcidExperimentTestsUrl,
 #'     "bcbio-metadata-multiplexed-indrops.csv"
 #' )
 #' x <- importSampleData(file, pipeline = "bcbio")
@@ -90,7 +90,7 @@ importSampleData <-
             lanes <- 0L # nocov
         }
         assert(
-            isAFile(file) || isAURL(file),
+            isAFile(file) || isAUrl(file),
             isInt(lanes),
             isNonNegative(lanes),
             isFlag(autopadZeros)
@@ -111,7 +111,7 @@ importSampleData <-
         data <- import(con = file, ...)
         data <- as(data, "DFrame")
         colnames(data) <- camelCase(colnames(data), strict = TRUE)
-        data <- removeNA(data)
+        data <- removeNa(data)
         ## Manual "sampleId" column not allowed for bcbio or Cell Ranger input.
         if (isSubset(pipeline, c("bcbio", "cellranger"))) {
             assert(areDisjointSets("sampleId", colnames(data)))
