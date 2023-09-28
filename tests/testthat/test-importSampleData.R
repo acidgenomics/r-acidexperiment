@@ -16,7 +16,7 @@ test_that("Direct 'sampleId' column, requiring snake case sanitization", {
 
 
 test_that("DFrame return", {
-    file <- file.path("cache", "bcbio-metadata-demultiplexed.csv")
+    file <- file.path(cacheDir, "bcbio-metadata-demultiplexed.csv")
     expect_identical(
         object = importSampleData(file, pipeline = "bcbio"),
         expected = DataFrame(
@@ -30,7 +30,7 @@ test_that("DFrame return", {
 })
 
 test_that("Lane-split technical replicate support", {
-    file <- file.path("cache", "bcbio-metadata-demultiplexed.csv")
+    file <- file.path(cacheDir, "bcbio-metadata-demultiplexed.csv")
     object <- importSampleData(file, lanes = 4L, pipeline = "bcbio")
     expect_true("lane" %in% colnames(object))
     expect_identical(
@@ -44,7 +44,7 @@ test_that("Lane-split technical replicate support", {
 
 test_that("Required column check failure", {
     file <- file.path(
-        "cache",
+        cacheDir,
         "bcbio-metadata-demultiplexed-invalid-missing-columns.csv"
     )
     expect_error(
@@ -55,7 +55,7 @@ test_that("Required column check failure", {
 
 test_that("Duplicated description", {
     file <- file.path(
-        "cache",
+        cacheDir,
         "bcbio-metadata-demultiplexed-invalid-duplicated.csv"
     )
     expect_error(
@@ -67,7 +67,7 @@ test_that("Duplicated description", {
 ## Recommend using `fileName` instead.
 test_that("bcbio 'samplename' column", {
     file <- file.path(
-        "cache",
+        cacheDir,
         "bcbio-metadata-demultiplexed-invalid-legacy-samplename.csv"
     )
     out <- importSampleData(file, pipeline = "bcbio")
@@ -79,7 +79,7 @@ test_that("bcbio 'samplename' column", {
 
 test_that("'sampleId' column defined by user", {
     file <- file.path(
-        "cache",
+        cacheDir,
         "bcbio-metadata-demultiplexed-invalid-sample-id.csv"
     )
     expect_error(
@@ -95,7 +95,7 @@ test_that("'sampleId' column defined by user", {
 
 
 test_that("DFrame return", {
-    file <- file.path("cache", "bcbio-metadata-multiplexed-indrops.csv")
+    file <- file.path(cacheDir, "bcbio-metadata-multiplexed-indrops.csv")
     object <- importSampleData(file, pipeline = "bcbio")
     expected <- DataFrame(
         sampleName = factor(c(
@@ -173,7 +173,7 @@ test_that("DFrame return", {
 })
 
 test_that("Lane-split technical replicate support", {
-    file <- file.path("cache", "bcbio-metadata-multiplexed-indrops.csv")
+    file <- file.path(cacheDir, "bcbio-metadata-multiplexed-indrops.csv")
     object <- importSampleData(file, lanes = 4L, pipeline = "bcbio")
     expect_identical(
         object = rownames(object),
@@ -216,7 +216,7 @@ test_that("Lane-split technical replicate support", {
 
 test_that("Required column check failure.", {
     file <- file.path(
-        "cache",
+        cacheDir,
         "bcbio-metadata-multiplexed-invalid-missing-columns.csv"
     )
     expect_error(
@@ -227,7 +227,7 @@ test_that("Required column check failure.", {
 
 test_that("Duplicate rows in 'sampleName' column", {
     file <- file.path(
-        "cache",
+        cacheDir,
         "bcbio-metadata-multiplexed-invalid-duplicated.csv"
     )
     expect_error(
@@ -247,7 +247,7 @@ test_that("Missing file", {
 
 test_that("Metadata denylist", {
     file <- file.path(
-        "cache",
+        cacheDir,
         "bcbio-metadata-invalid-column-name.csv"
     )
     expect_error(
@@ -258,7 +258,7 @@ test_that("Metadata denylist", {
 
 test_that("Invalid description", {
     file <- file.path(
-        "cache",
+        cacheDir,
         "bcbio-metadata-invalid-description.csv"
     )
     expect_error(
