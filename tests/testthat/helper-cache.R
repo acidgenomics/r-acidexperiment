@@ -1,39 +1,18 @@
-if (!isTRUE(goalie::hasInternet())) {
-    warning("No Internet connection detected.")
-    return(invisible(NULL))
-}
-cacheDir <- file.path(
-    tools::R_user_dir(package = .pkgName, which = "cache"),
-    "testthat"
-)
-dir.create(cacheDir, showWarnings = FALSE, recursive = TRUE)
-files <- c(
-    "bcbio-metadata-demultiplexed-invalid-duplicated.csv",
-    "bcbio-metadata-demultiplexed-invalid-legacy-samplename.csv",
-    "bcbio-metadata-demultiplexed-invalid-missing-columns.csv",
-    "bcbio-metadata-demultiplexed-invalid-sample-id.csv",
-    "bcbio-metadata-demultiplexed.csv",
-    "bcbio-metadata-invalid-column-name.csv",
-    "bcbio-metadata-invalid-description.csv",
-    "bcbio-metadata-multiplexed-cellranger.csv",
-    "bcbio-metadata-multiplexed-indrops.csv",
-    "bcbio-metadata-multiplexed-invalid-duplicated.csv",
-    "bcbio-metadata-multiplexed-invalid-missing-columns.csv"
-)
-Map(
-    f = function(remoteDir, file, envir) {
-        destfile <- file.path(cacheDir, file)
-        if (!file.exists(destfile)) {
-            utils::download.file(
-                url = paste(remoteDir, file, sep = "/"),
-                destfile = destfile
-            )
-        }
-    },
-    file = files,
-    MoreArgs = list(
-        "remoteDir" = AcidExperimentTestsUrl,
-        "envir" = environment()
+lst <- AcidDevTools::cacheTestFiles(
+    pkg = .pkgName,
+    files = c(
+        "bcbio-metadata-demultiplexed-invalid-duplicated.csv",
+        "bcbio-metadata-demultiplexed-invalid-legacy-samplename.csv",
+        "bcbio-metadata-demultiplexed-invalid-missing-columns.csv",
+        "bcbio-metadata-demultiplexed-invalid-sample-id.csv",
+        "bcbio-metadata-demultiplexed.csv",
+        "bcbio-metadata-invalid-column-name.csv",
+        "bcbio-metadata-invalid-description.csv",
+        "bcbio-metadata-multiplexed-cellranger.csv",
+        "bcbio-metadata-multiplexed-indrops.csv",
+        "bcbio-metadata-multiplexed-invalid-duplicated.csv",
+        "bcbio-metadata-multiplexed-invalid-missing-columns.csv"
     )
 )
-rm(files)
+cacheDir <- lst[["cacheDir"]]
+rm(lst)
