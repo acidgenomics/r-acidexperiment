@@ -1,5 +1,5 @@
-#' @name convertSampleIDsToNames
-#' @inherit AcidGenerics::convertSampleIDsToNames
+#' @name convertSampleIdsToNames
+#' @inherit AcidGenerics::convertSampleIdsToNames
 #' @note Updated 2021-02-02.
 #'
 #' @inheritParams AcidRoxygen::params
@@ -10,13 +10,13 @@
 #'
 #' ## SummarizedExperiment ===
 #' object <- RangedSummarizedExperiment
-#' convertSampleIDsToNames(object)
+#' convertSampleIdsToNames(object)
 NULL
 
 
 
 ## Updated 2021-02-02.
-`convertSampleIDsToNames,SE` <- # nolint
+`convertSampleIdsToNames,SE` <- # nolint
     function(object) {
         validObject(object)
         sampleNames <- sampleNames(object)
@@ -43,10 +43,10 @@ NULL
 
 
 
-#' @rdname convertSampleIDsToNames
+#' @rdname convertSampleIdsToNames
 #' @export
 setMethod(
-    f = "convertSampleIDsToNames",
+    f = "convertSampleIdsToNames",
     signature = signature(object = "SummarizedExperiment"),
-    definition = `convertSampleIDsToNames,SE`
+    definition = `convertSampleIdsToNames,SE`
 )

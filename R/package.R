@@ -7,10 +7,11 @@
 
 
 
-## Classes =====================================================================
+## S4 classes ==================================================================
 
 #' @importClassesFrom AcidBase missingOrNULL
-#' @importClassesFrom AcidGenomes EnsemblToNcbi GeneToSymbol NcbiToEnsembl TxToGene
+#' @importClassesFrom AcidGenomes EnsemblToNcbi GeneToSymbol NcbiToEnsembl
+#' TxToGene
 #' @importClassesFrom IRanges SplitDFrameList
 #' @importClassesFrom Matrix Matrix
 #' @importClassesFrom S4Vectors DFrame SimpleList
@@ -23,11 +24,11 @@ NULL
 
 #' @importFrom AcidGenerics EnsemblToNcbi GeneToSymbol NcbiToEnsembl TxToGene
 #' aggregateCols aggregateRows as.SummarizedExperiment atomize autopadZeros
-#' calculateMetrics camelCase convertGenesToSymbols convertSampleIDsToNames
+#' calculateMetrics camelCase convertGenesToSymbols convertSampleIdsToNames
 #' convertSymbolsToGenes convertTranscriptsToGenes correlation dottedCase
 #' droplevels2 encode export factorize geneNames headtail humanize import
 #' integerCounts interestingGroups interestingGroups<- leftJoin makeNames
-#' makeSampleData mapGenesToIDs mapGenesToRownames mapGenesToSymbols
+#' makeSampleData mapGenesToIds mapGenesToRownames mapGenesToSymbols
 #' matchSampleColumn melt metrics mutateAt nonzeroRowsAndCols removeNa
 #' sampleData sampleData<- selectSamples snakeCase stripGeneVersions
 #' stripTranscriptVersions tpm uniteInterestingGroups upperCamelCase

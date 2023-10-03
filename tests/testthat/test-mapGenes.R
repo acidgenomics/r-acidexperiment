@@ -195,21 +195,21 @@ test_that("Direct matching against rownames, for a minimal object", {
 
 test_that("SummarizedExperiment", {
     expect_identical(
-        object = mapGenesToIDs(rse, genes = rownames),
+        object = mapGenesToIds(rse, genes = rownames),
         expected = c(
             "gene001" = "ENSG00000000003.15",
             "gene002" = "ENSG00000000005.6"
         )
     )
     expect_identical(
-        object = mapGenesToIDs(rse, genes = geneIds),
+        object = mapGenesToIds(rse, genes = geneIds),
         expected = c(
             "ENSG00000000003.15" = "ENSG00000000003.15",
             "ENSG00000000005.6" = "ENSG00000000005.6"
         )
     )
     expect_identical(
-        object = mapGenesToIDs(rse, genes = geneNames),
+        object = mapGenesToIds(rse, genes = geneNames),
         expected = c(
             "TSPAN6" = "ENSG00000000003.15",
             "TNMD" = "ENSG00000000005.6"

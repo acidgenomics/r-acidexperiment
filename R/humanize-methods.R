@@ -21,7 +21,7 @@ NULL
 `humanize,SE` <- # nolint
     function(object) {
         to <- object
-        to <- convertSampleIDsToNames(to)
+        to <- convertSampleIdsToNames(to)
         to <- convertGenesToSymbols(to)
         to
     }

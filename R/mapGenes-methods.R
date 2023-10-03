@@ -44,9 +44,9 @@
 #' mapGenesToRownames(object, genes = geneNames)
 #'
 #' ## Gene identifiers.
-#' mapGenesToIDs(object, genes = rownames)
-#' mapGenesToIDs(object, genes = geneIds)
-#' mapGenesToIDs(object, genes = geneNames)
+#' mapGenesToIds(object, genes = rownames)
+#' mapGenesToIds(object, genes = geneIds)
+#' mapGenesToIds(object, genes = geneNames)
 #'
 #' ## Gene names (symbols).
 #' mapGenesToSymbols(object, genes = rownames)
@@ -170,7 +170,7 @@ NULL
 
 
 ## Updated 2021-06-09.
-`mapGenesToIDs,SE` <- # nolint
+`mapGenesToIds,SE` <- # nolint
     function(object,
              genes,
              strict = TRUE) {
@@ -262,9 +262,9 @@ setMethod(
 #' @rdname mapGenes
 #' @export
 setMethod(
-    f = "mapGenesToIDs",
+    f = "mapGenesToIds",
     signature = signature(object = "SummarizedExperiment"),
-    definition = `mapGenesToIDs,SE`
+    definition = `mapGenesToIds,SE`
 )
 
 #' @rdname mapGenes
