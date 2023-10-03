@@ -69,8 +69,8 @@ NULL
 NULL
 
 #' @export
-#' @name convertSampleIDsToNames
-#' @usage convertSampleIDsToNames(object, ...)
+#' @name convertSampleIdsToNames
+#' @usage convertSampleIdsToNames(object, ...)
 NULL
 
 #' @export
@@ -163,8 +163,8 @@ NULL
 
 #' @export
 #' @rdname mapGenes
-#' @name mapGenesToIDs
-#' @usage mapGenesToIDs(object, ...)
+#' @name mapGenesToIds
+#' @usage mapGenesToIds(object, ...)
 NULL
 
 #' @export

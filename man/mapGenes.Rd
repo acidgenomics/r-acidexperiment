@@ -2,23 +2,23 @@
 % Please edit documentation in R/AllGenerics.R, R/mapGenes-methods.R
 \name{mapGenesToRownames}
 \alias{mapGenesToRownames}
-\alias{mapGenesToIDs}
+\alias{mapGenesToIds}
 \alias{mapGenesToSymbols}
 \alias{mapGenes}
 \alias{mapGenesToRownames,SummarizedExperiment-method}
-\alias{mapGenesToIDs,SummarizedExperiment-method}
+\alias{mapGenesToIds,SummarizedExperiment-method}
 \alias{mapGenesToSymbols,SummarizedExperiment-method}
 \title{Map genes}
 \usage{
 mapGenesToRownames(object, ...)
 
-mapGenesToIDs(object, ...)
+mapGenesToIds(object, ...)
 
 mapGenesToSymbols(object, ...)
 
 \S4method{mapGenesToRownames}{SummarizedExperiment}(object, genes, strict = TRUE)
 
-\S4method{mapGenesToIDs}{SummarizedExperiment}(object, genes, strict = TRUE)
+\S4method{mapGenesToIds}{SummarizedExperiment}(object, genes, strict = TRUE)
 
 \S4method{mapGenesToSymbols}{SummarizedExperiment}(object, genes, strict = TRUE)
 }
@@ -75,9 +75,9 @@ mapGenesToRownames(object, genes = geneIds)
 mapGenesToRownames(object, genes = geneNames)
 
 ## Gene identifiers.
-mapGenesToIDs(object, genes = rownames)
-mapGenesToIDs(object, genes = geneIds)
-mapGenesToIDs(object, genes = geneNames)
+mapGenesToIds(object, genes = rownames)
+mapGenesToIds(object, genes = geneIds)
+mapGenesToIds(object, genes = geneNames)
 
 ## Gene names (symbols).
 mapGenesToSymbols(object, genes = rownames)
