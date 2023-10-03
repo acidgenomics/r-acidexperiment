@@ -31,18 +31,22 @@ plates.
 These plate formats are frequently used for high-throughput screening assays.
 }
 \note{
-Updated 2022-05-04.
+Updated 2023-10-03.
 }
 \examples{
 ## Single 96-well plate.
-microplate(wells = 96L)
+x <- microplate(wells = 96L)
+print(head(x))
 
 ## 2 96-well plates.
-microplate(plates = 2L, wells = 96L)
+x <- microplate(plates = 2L, wells = 96L)
+print(head(x))
 
 ## Single 384-well plate.
-microplate(wells = 384L)
+x <- microplate(wells = 384L)
+print(head(x))
 
 ## 2 96-well plates with 6 control wells per plate.
-microplate(plates = 2L, wells = 96L, controls = 6L)
+x <- microplate(plates = 2L, wells = 96L, controls = 6L)
+print(head(x))
 }
