@@ -21,7 +21,7 @@ Lane numbers.
 Detect sequencing lanes
 }
 \note{
-Updated 2022-05-04.
+Updated 2023-10-03.
 }
 \examples{
 ## Matching lanes 1-4 for paired-end FASTQ files.
@@ -31,5 +31,6 @@ files <- paste0(
     paste0("_L00", seq_len(4L)),
     ".fastq.gz"
 )
-detectLanes(files)
+x <- detectLanes(files)
+print(x)
 }

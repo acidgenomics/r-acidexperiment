@@ -1,6 +1,6 @@
 #' Detect sequencing lanes
 #'
-#' @note Updated 2022-05-04.
+#' @note Updated 2023-10-03.
 #' @export
 #'
 #' @param path `character`.
@@ -20,20 +20,16 @@
 #'     paste0("_L00", seq_len(4L)),
 #'     ".fastq.gz"
 #' )
-#' detectLanes(files)
+#' x <- detectLanes(files)
+#' print(x)
 detectLanes <- function(path, pattern) {
     assert(
         isCharacter(path),
-        isString(lanePattern)
+        isString(pattern)
     )
     basename <- basename(path)
     if (any(grepl(pattern = pattern, x = basename))) {
-        ## FIXME Rework using AcidBase string parsing here.
-        assert(requireNamespaces("stringi"))
-        out <- stringi::stri_match_first_regex(
-            str = basename,
-            pattern = pattern
-        )[, 2L]
+        out <- strMatch(x = basename, pattern = pattern)[, 2L]
         out <- as.integer(out)
     } else {
         out <- integer()
