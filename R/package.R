@@ -75,5 +75,5 @@ NULL
 #' requireNamespaces validNames
 #' @importFrom methods as is new setMethod setReplaceMethod signature
 #' validObject
-#' @importFrom utils packageName packageVersion sessionInfo
+#' @importFrom utils sessionInfo
 NULL

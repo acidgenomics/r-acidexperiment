@@ -1,5 +1,5 @@
 lst <- AcidDevTools::cacheTestFiles(
-    pkg = .pkgName,
+    pkg = "AcidExperiment",
     files = c(
         "bcbio-metadata-demultiplexed-invalid-duplicated.csv",
         "bcbio-metadata-demultiplexed-invalid-legacy-samplename.csv",
