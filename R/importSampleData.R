@@ -287,7 +287,7 @@ importSampleData <-
 
 
 ## Sample metadata assert check for goalie engine.
-## Updated 2021-09-01.
+## Updated 2023-10-03.
 .isSampleData <- function(object, requiredCols = "sampleName") {
     assert(isCharacter(requiredCols))
     ok <- isAny(object, c("data.frame", "DFrame"))
@@ -305,10 +305,10 @@ importSampleData <-
         return(false(sprintf(
             fmt = paste0(
                 "Denylist columns detected: %s.\n",
-                "Refer to '%s' for formatting requirements."
+                "Refer to {.fun %s} for formatting requirements."
             ),
             toString(intersect, width = 100L),
-            "importSampleData()"
+            "importSampleData"
         )))
     }
     ## Check for required columns (e.g. description).
@@ -318,10 +318,10 @@ importSampleData <-
         return(false(sprintf(
             fmt = paste0(
                 "Required columns missing: %s.\n",
-                "Refer to '%s' for formatting requirements."
+                "Refer to {.fun %s} for formatting requirements."
             ),
             toString(setdiff, width = 100L),
-            "importSampleData()"
+            "importSampleData"
         )))
     }
     TRUE
