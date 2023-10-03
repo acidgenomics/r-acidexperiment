@@ -59,7 +59,7 @@ NULL
 # Standard functions ===========================================================
 
 #' @importFrom AcidBase geometricMean initDir lanePattern metadataDenylist
-#' methodFunction realpath standardizeCall
+#' methodFunction realpath standardizeCall strMatch strPad
 #' @importFrom AcidCLI abort alert alertInfo alertWarning toInlineString
 #' @importFrom AcidGenomes detectOrganism emptyRanges
 #' @importFrom GenomicRanges GRanges

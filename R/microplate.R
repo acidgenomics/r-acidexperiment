@@ -5,7 +5,7 @@
 #'
 #' These plate formats are frequently used for high-throughput screening assays.
 #'
-#' @note Updated 2022-05-04.
+#' @note Updated 2023-10-03.
 #' @export
 #'
 #' @param plates `integer(1)`.
@@ -25,27 +25,26 @@
 #'
 #' @examples
 #' ## Single 96-well plate.
-#' microplate(wells = 96L)
+#' x <- microplate(wells = 96L)
+#' print(head(x))
 #'
 #' ## 2 96-well plates.
-#' microplate(plates = 2L, wells = 96L)
+#' x <- microplate(plates = 2L, wells = 96L)
+#' print(head(x))
 #'
 #' ## Single 384-well plate.
-#' microplate(wells = 384L)
+#' x <- microplate(wells = 384L)
+#' print(head(x))
 #'
 #' ## 2 96-well plates with 6 control wells per plate.
-#' microplate(plates = 2L, wells = 96L, controls = 6L)
+#' x <- microplate(plates = 2L, wells = 96L, controls = 6L)
+#' print(head(x))
 microplate <-
     function(plates = 1L,
              wells = 96L,
              controls = 0L,
              prefix = NULL) {
-        plates <- as.integer(plates)
-        wells <- as.integer(wells)
-        controls <- as.integer(controls)
         assert(
-            ## FIXME Rework using AcidBase string parsing.
-            requireNamespaces("stringi"),
             isInt(plates),
             isPositive(plates),
             isInt(wells),
@@ -55,6 +54,9 @@ microplate <-
             isInRange(x = controls, lower = 0L, upper = 12L),
             isString(prefix, nullOk = TRUE)
         )
+        plates <- as.integer(plates)
+        wells <- as.integer(wells)
+        controls <- as.integer(controls)
         switch(
             EXPR = as.character(wells),
             "96" = {
@@ -67,26 +69,30 @@ microplate <-
             }
         )
         row <- LETTERS[seq_len(row)]
-        col <- seq_len(col)
-        col <- stringi::stri_pad_left(
-            str = col,
-            width = max(stringi::stri_length(col)),
+        col <- as.character(seq_len(col))
+        col <- strPad(
+            x = col,
+            width = max(nchar(col)),
+            side = "left",
             pad = "0"
         )
-        plates <- seq_len(plates)
-        plates <- stringi::stri_pad_left(
-            str = plates,
-            width = max(stringi::stri_length(plates)),
+        plates <- as.character(seq_len(plates))
+        plates <- strPad(
+            x = plates,
+            width = max(nchar(plates)),
+            side = "left",
             pad = "0"
         )
         df <- expand.grid(plates, row, col)
+        assert(identical(colnames(df), c("Var1", "Var2", "Var3")))
         vector <- sort(paste0(df[["Var1"]], "-", df[["Var2"]], df[["Var3"]]))
         ## Prepare control wells.
         if (isTRUE(controls > 0L)) {
             ## Create a grep string matching the control wells.
-            grep <- stringi::stri_pad_left(
-                str = seq_len(controls),
-                width = max(stringi::stri_length(col)),
+            grep <- strPad(
+                x = as.character(seq_len(controls)),
+                width = max(nchar(col)),
+                side = "left",
                 pad = "0"
             )
             grep <- paste(grep, collapse = "|")
