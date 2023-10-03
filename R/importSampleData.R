@@ -226,6 +226,7 @@ importSampleData <-
         ## rows into the number of desired replicates (e.g. "L001").
         ## `lapply()` approach here inspired by `mefa::rep.data.frame()`.
         if (isTRUE(length(lanes) > 1L)) {
+            ## FIXME Rework using AcidBase string parsing here.
             assert(requireNamespaces("stringi"))
             split <- split(data, f = data[[idCol]])
             split <- SplitDataFrameList(lapply(
@@ -258,6 +259,7 @@ importSampleData <-
             ## case, but we're still providing support here.
             ## Example: `indrops1_AGAGGATA_L001` to `indrops1_L001_AGAGGATA`.
             if (identical(pipeline, "bcbio") && isTRUE(multiplexed)) {
+                ## FIXME Rework using AcidBase string parsing here.
                 assert(requireNamespaces("stringi"))
                 match <- stringi::stri_match_first_regex(
                     str = data[["description"]],
