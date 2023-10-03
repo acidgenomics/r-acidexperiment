@@ -1,5 +1,13 @@
 # Release notes
 
+## AcidExperiment 0.5.0 (2023-10-03)
+
+Major changes:
+
+- Starting a new release series, based on breaking changes in other Acid
+  Genomics dependency packages.
+- Now enforcing strict camel case for all function names.
+
 ## AcidExperiment 0.4.6 (2023-04-27)
 
 Minor changes:
