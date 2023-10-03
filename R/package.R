@@ -45,8 +45,8 @@ NULL
 NULL
 
 #' @importMethodsFrom AcidBase headtail
-#' @importMethodsFrom AcidGenomes EnsemblToNcbi GeneToSymbol NcbiToEnsembl TxToGene
-#' stripGeneVersions stripTranscriptVersions
+#' @importMethodsFrom AcidGenomes EnsemblToNcbi GeneToSymbol NcbiToEnsembl
+#' TxToGene stripGeneVersions stripTranscriptVersions
 #' @importMethodsFrom AcidPlyr leftJoin mutateAt
 #' @importMethodsFrom pipette atomize droplevels2 export factorize import
 #' removeNa
