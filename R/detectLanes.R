@@ -28,6 +28,7 @@ detectLanes <- function(path, pattern) {
     )
     basename <- basename(path)
     if (any(grepl(pattern = pattern, x = basename))) {
+        ## FIXME Rework using AcidBase string parsing here.
         assert(requireNamespaces("stringi"))
         out <- stringi::stri_match_first_regex(
             str = basename,

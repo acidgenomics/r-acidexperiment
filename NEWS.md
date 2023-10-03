@@ -7,6 +7,12 @@ Major changes:
 - Starting a new release series, based on breaking changes in other Acid
   Genomics dependency packages.
 - Now enforcing strict camel case for all function names.
+- Replaced usage of `"2"` with `"To"` in relevant generics.
+- `export`: Updated method to use AcidGenerics conventions rather than BiocIO.
+
+Minor changes:
+
+- `AcidExperimentTestsUrl`: No longer uses specific version.
 
 ## AcidExperiment 0.4.6 (2023-04-27)
 

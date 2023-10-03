@@ -44,6 +44,7 @@ microplate <-
         wells <- as.integer(wells)
         controls <- as.integer(controls)
         assert(
+            ## FIXME Rework using AcidBase string parsing.
             requireNamespaces("stringi"),
             isInt(plates),
             isPositive(plates),
