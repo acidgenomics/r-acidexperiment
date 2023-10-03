@@ -1,6 +1,6 @@
 # AcidExperiment
 
-[![Install with Bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/r-acidexperiment/README.html)
+[![Install with Bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg)](http://bioconda.github.io/recipes/r-acidexperiment/README.html) ![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)
 
 Toolkit to extend the functionality of [SummarizedExperiment][].
 
@@ -34,20 +34,7 @@ conda activate "$name"
 R
 ```
 
-### [Docker][] method
-
-```sh
-image='acidgenomics/r-packages:acidexperiment'
-workdir='/mnt/work'
-docker pull "$image"
-docker run -it \
-    --volume="${PWD}:${workdir}" \
-    --workdir="$workdir" \
-    "$image"
-```
-
 [bioconda]: https://bioconda.github.io/
 [conda]: https://conda.io/
-[docker]: https://www.docker.com/
 [r]: https://www.r-project.org/
 [summarizedexperiment]: https://bioconductor.org/packages/SummarizedExperiment/
