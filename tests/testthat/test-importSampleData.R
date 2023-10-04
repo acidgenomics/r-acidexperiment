@@ -13,8 +13,6 @@ test_that("Direct 'sampleId' column, requiring snake case sanitization", {
     unlink2(tmpfile)
 })
 
-
-
 test_that("DFrame return", {
     file <- file.path(cacheDir, "bcbio-metadata-demultiplexed.csv")
     expect_identical(
@@ -91,8 +89,6 @@ test_that("'sampleId' column defined by user", {
         class = "DFrame"
     )
 })
-
-
 
 test_that("DFrame return", {
     file <- file.path(cacheDir, "bcbio-metadata-multiplexed-indrops.csv")

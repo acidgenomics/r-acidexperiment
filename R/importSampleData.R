@@ -36,7 +36,7 @@
 #' @note Works with local or remote files.
 #'
 #' @author Michael Steinbaugh
-#' @note Updated 2023-10-03.
+#' @note Updated 2023-10-04.
 #' @export
 #'
 #' @inheritParams AcidRoxygen::params
@@ -202,8 +202,10 @@ importSampleData <-
         ## - Require at least 6 nucleotides in the index sequence.
         ## - inDrops currently uses 8 but SureCell uses 6.
         if (identical(pipeline, "bcbio") && isTRUE(multiplexed)) {
-            requireNamespaces("Biostrings")
-            assert(isSubset(c("index", "sequence"), colnames(data)))
+            assert(
+                requireNamespaces("Biostrings"),
+                isSubset(c("index", "sequence"), colnames(data))
+            )
             sequence <- data[["sequence"]]
             assert(allAreMatchingRegex(sequence, pattern = "^[ACGT]{6,}"))
             data[["revcomp"]] <- vapply(
@@ -260,15 +262,7 @@ importSampleData <-
             if (identical(pipeline, "bcbio") && isTRUE(multiplexed)) {
                 match <- strMatch(
                     x = data[["description"]],
-                    pattern = paste0(
-                        "^",
-                        "(.+)",
-                        "_",
-                        "(", data[["revcomp"]], ")",
-                        "_",
-                        "(", data[["lane"]], ")",
-                        "$"
-                    )
+                    pattern = "^(.+)_([ACGT]{8})_(.+)$"
                 )
                 data[["description"]] <- apply(
                     X = match,
