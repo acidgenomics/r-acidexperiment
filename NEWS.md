@@ -1,6 +1,6 @@
 # Release notes
 
-## AcidExperiment 0.5.0 (2023-10-03)
+## AcidExperiment 0.5.0 (2023-10-04)
 
 Major changes:
 
@@ -9,6 +9,7 @@ Major changes:
 - Now enforcing strict camel case for all function names.
 - Replaced usage of `"2"` with `"To"` in relevant generics.
 - `export`: Updated method to use AcidGenerics conventions rather than BiocIO.
+- Replaced usage of stringi with AcidBase variants.
 
 Minor changes:
 
