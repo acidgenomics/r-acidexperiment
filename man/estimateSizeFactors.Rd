@@ -65,7 +65,7 @@ the accessor function \code{sizeFactors()}. Alternative library size estimators
 can also be supplied using the assignment function \verb{sizeFactors<-()}.
 }
 \note{
-Updated 2021-10-19.
+Updated 2023-10-04.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
