@@ -5,7 +5,7 @@ test_that("SummarizedExperiment", {
         type in eval(methodFormals(
             f = "estimateSizeFactors",
             signature = "SummarizedExperiment",
-            package = .pkgName
+            package = "AcidExperiment"
         )[["type"]])
     ) {
         object <- rse
