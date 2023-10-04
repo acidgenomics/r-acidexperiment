@@ -1,5 +1,4 @@
 ## NOTE These values can change when we update AcidTest.
-
 test_that("SummarizedExperiment", {
     types <- eval(methodFormals(
         f = "estimateSizeFactors",
