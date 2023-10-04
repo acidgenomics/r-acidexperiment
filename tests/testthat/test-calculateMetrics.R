@@ -19,11 +19,11 @@ test_that("SE", {
     expect_equal(
         object = x,
         expected = list(
-            "log10FeaturesPerCount" = 0.617,
+            "log10FeaturesPerCount" = 0.619,
             "mitoRatio" = NA_integer_,
-            "nCount" = 20070, # nolint
-            "nFeature" = 451, # nolint
-            "nCoding" = 20049, # nolint
+            "nCount" = 19671, # nolint
+            "nFeature" = 457, # nolint
+            "nCoding" = 19617, # nolint
             "nMito" = NA_integer_
         )
     )
