@@ -13,7 +13,7 @@
 #' can also be supplied using the assignment function `sizeFactors<-()`.
 #'
 #' @name estimateSizeFactors
-#' @note Updated 2021-10-19.
+#' @note Updated 2023-10-04.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
