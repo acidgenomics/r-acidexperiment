@@ -7,4 +7,4 @@
 #' @examples
 #' AcidExperimentTestsUrl
 AcidExperimentTestsUrl <- # nolint
-    "https://r.acidgenomics.com/testdata/acidexperiment/"
+    "https://r.acidgenomics.com/testdata/acidexperiment"
