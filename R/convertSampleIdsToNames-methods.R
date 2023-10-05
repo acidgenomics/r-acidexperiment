@@ -15,7 +15,7 @@ NULL
 
 
 
-## Updated 2021-02-02.
+## Updated 2023-10-05.
 `convertSampleIdsToNames,SE` <- # nolint
     function(object) {
         validObject(object)
@@ -30,7 +30,6 @@ NULL
                     y = colnames(object)
                 )
         ) {
-            alertWarning("Returning object with sample names unmodified.")
             return(object)
         }
         colnames <- as.character(sampleNames)

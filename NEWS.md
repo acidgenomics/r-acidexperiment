@@ -1,5 +1,10 @@
 # Release notes
 
+## AcidExperiment 0.5.1 (2023-10-05)
+
+- `convertSampleIdsToNames`: Quiet down this function when no sample name
+  conversion is necessary.
+
 ## AcidExperiment 0.5.0 (2023-10-04)
 
 Major changes:
