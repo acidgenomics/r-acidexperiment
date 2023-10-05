@@ -1,6 +1,16 @@
 # Release notes
 
+## AcidExperiment 0.5.2 (2023-10-05)
+
+Minor changes:
+
+- Removed `export` method for `MultiAssayExperiment`, which has migrated to
+  cBioPortalAnalysis package instead. The MultiAssayExperiment package
+  introduces too many unwanted dependencies.
+
 ## AcidExperiment 0.5.1 (2023-10-05)
+
+Minor changes:
 
 - `convertSampleIdsToNames`: Quiet down this function when no sample name
   conversion is necessary.
