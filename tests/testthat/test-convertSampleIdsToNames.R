@@ -9,8 +9,8 @@ test_that("SE", {
 test_that("SE : return unmodified", {
     object <- rse
     colData(object)[["sampleName"]] <- NULL
-    expect_message(
+    expect_identical(
         object = convertSampleIdsToNames(object),
-        regexp = "unmodified"
+        expected = object
     )
 })
