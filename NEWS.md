@@ -1,5 +1,12 @@
 # Release notes
 
+## AcidExperiment 0.5.3 (2023-10-27)
+
+Minor changes:
+
+- `melt`: Needed to ensure that join column is factor, to avoid unwanted
+  type switch during `leftJoin` step.
+
 ## AcidExperiment 0.5.2 (2023-10-05)
 
 Minor changes:
