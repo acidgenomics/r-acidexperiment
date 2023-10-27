@@ -1,7 +1,7 @@
 #' @name melt
 #' @inherit AcidPlyr::melt
 #'
-#' @note Updated 2023-04-27.
+#' @note Updated 2023-10-27.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -35,7 +35,7 @@ NULL
 
 
 
-## Updated 2019-08-24.
+## Updated 2023-10-27.
 `melt,SE` <- # nolint
     function(object,
              assay = 1L,
@@ -55,7 +55,7 @@ NULL
         )
         colnamesCol <- colnames(data)[[2L]]
         colData <- sampleData(object)
-        colData[[colnamesCol]] <- rownames(colData)
+        colData[[colnamesCol]] <- as.factor(rownames(colData))
         data <- leftJoin(data, colData, by = colnamesCol)
         data <- encode(data)
         data
