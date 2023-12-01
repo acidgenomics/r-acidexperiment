@@ -63,7 +63,7 @@ Assay name or index position.}
 Unpivot column data from wide format to long format.
 }
 \note{
-Updated 2023-04-27.
+Updated 2023-10-27.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")

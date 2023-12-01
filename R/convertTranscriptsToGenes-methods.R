@@ -157,6 +157,7 @@ setMethod(
 )
 
 #' @rdname convertTranscriptsToGenes
+#' @export
 setMethod(
     f = "convertTranscriptsToGenes",
     signature = signature(object = "character"),
