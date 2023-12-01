@@ -1,5 +1,12 @@
 # Release notes
 
+## AcidExperiment 0.5.4 (2023-12-01)
+
+Minor changes:
+
+- `EnsemblToEntrez`: Updated unit test to reflect breaking change in pending
+  AcidGenomes package update.
+
 ## AcidExperiment 0.5.3 (2023-10-27)
 
 Minor changes:
