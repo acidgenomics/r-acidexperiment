@@ -246,7 +246,7 @@ NULL
             },
             "2" = {
                 if (is(x, "RangedSummarizedExperiment")) {
-                    args[["rowRanges"]] <- rowRanges(x) # nocov
+                    args[["rowRanges"]] <- rowRanges(x)
                 } else {
                     args[["rowData"]] <- rowData(x)
                 }
@@ -274,7 +274,7 @@ NULL
 ## Updated 2021-09-10.
 `aggregateCols,matrix` <- # nolint
     function(x, ...) {
-        aggregate(x = x, MARGIN = 2L, ...) # nocov
+        aggregate(x = x, MARGIN = 2L, ...)
     }
 
 
@@ -294,7 +294,7 @@ NULL
 ## Updated 2021-09-10.
 `aggregateRows,matrix` <- # nolint
     function(x, ...) {
-        aggregate(x = x, MARGIN = 1L, ...) # nocov
+        aggregate(x = x, MARGIN = 1L, ...)
     }
 
 
