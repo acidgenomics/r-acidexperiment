@@ -87,7 +87,7 @@ importSampleData <-
              ...) {
         ## Coerce `detectLanes()` empty integer return to 0.
         if (!hasLength(lanes)) {
-            lanes <- 0L # nocov
+            lanes <- 0L
         }
         assert(
             isAFile(file) || isAUrl(file),
@@ -131,10 +131,8 @@ importSampleData <-
                 idCol <- "description"
             },
             "cellranger" = {
-                ## nocov start
                 ## Consider renaming this to `sampleId`, for consistency.
                 idCol <- "directory"
-                ## nocov end
             }
         )
         ## Check that input passes denylist, and has all required columns.
@@ -181,7 +179,7 @@ importSampleData <-
             }
             ## Autopad zeros in sample IDs to improve sorting.
             if (isTRUE(autopadZeros)) {
-                data[[idCol]] <- autopadZeros(data[[idCol]]) # nocov
+                data[[idCol]] <- autopadZeros(data[[idCol]])
             }
         } else {
             abort(sprintf(
@@ -286,11 +284,11 @@ importSampleData <-
     assert(isCharacter(requiredCols))
     ok <- isAny(object, c("data.frame", "DFrame"))
     if (!isTRUE(ok)) {
-        return(ok) # nocov
+        return(ok)
     }
     ok <- hasRows(object)
     if (!isTRUE(ok)) {
-        return(ok) # nocov
+        return(ok)
     }
     ## Check for denylist columns.
     intersect <- intersect(colnames(object), metadataDenylist)
