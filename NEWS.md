@@ -1,5 +1,11 @@
 # Release notes
 
+## AcidExperiment 0.5.5 (2025-03-24)
+
+Minor changes:
+
+- Relaxed R dependency from 4.3 to 4.0.
+
 ## AcidExperiment 0.5.4 (2023-12-01)
 
 Minor changes:

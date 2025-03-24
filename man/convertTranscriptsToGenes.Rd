@@ -22,8 +22,7 @@ convertTranscriptsToGenes(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{tx2gene}{\code{TxToGene}.
-Transcript-to-gene mappings.}
+\item{tx2gene}{\code{TxToGene}.}
 
 \item{aggregate}{\code{logical(1)}.
 For objects supporting \code{dim()}, aggregate counts to gene level and

@@ -15,7 +15,7 @@ interestingGroups(object, ...)  <- value
 
 \S4method{interestingGroups}{Annotated}(object)
 
-\S4method{interestingGroups}{Annotated,`NULL`}(object) <- value
+\S4method{interestingGroups}{Annotated,NULL}(object) <- value
 
 \S4method{interestingGroups}{Annotated,character}(object) <- value
 
