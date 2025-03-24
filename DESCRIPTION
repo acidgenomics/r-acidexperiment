@@ -1,8 +1,8 @@
 Package: AcidExperiment
 Title: Acid Genomics Summarized Experiment
 Description: Toolkit to extend the functionality of SummarizedExperiment.
-Version: 0.5.4
-Date: 2023-12-01
+Version: 0.5.5
+Date: 2025-03-24
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -26,34 +26,34 @@ URL:
 BugReports: https://github.com/acidgenomics/r-acidexperiment/issues/
 License: AGPL-3
 Encoding: UTF-8
-Depends: R (>= 4.3)
+Depends: R (>= 4.0)
 Imports:
-    AcidBase (>= 0.7.2),
-    AcidCLI (>= 0.3.0),
-    AcidGenerics (>= 0.7.4),
-    AcidGenomes (>= 0.6.1),
-    AcidPlyr (>= 0.5.2),
-    Biobase (>= 2.60.0),
-    BiocGenerics (>= 0.46.0),
-    GenomicRanges (>= 1.52.0),
-    IRanges (>= 2.34.0),
-    Matrix (>= 1.6.1),
-    S4Vectors (>= 0.38.0),
-    SummarizedExperiment (>= 1.30.0),
-    goalie (>= 0.7.6),
-    pipette (>= 0.15.0),
-    syntactic (>= 0.7.1),
+    AcidBase,
+    AcidCLI,
+    AcidGenerics,
+    AcidGenomes,
+    AcidPlyr,
+    Biobase,
+    BiocGenerics,
+    GenomicRanges,
+    IRanges,
+    Matrix,
+    S4Vectors,
+    SummarizedExperiment,
+    goalie,
     methods,
+    pipette,
+    syntactic,
     utils
 Suggests:
-    AcidDevTools (>= 0.7.3),
-    AcidTest (>= 0.9.0),
-    Biostrings (>= 2.68.0),
-    GenomeInfoDb (>= 1.36.0),
-    scales (>= 1.3.0),
-    testthat (>= 3.2.0)
+    AcidDevTools,
+    AcidTest,
+    Biostrings,
+    GenomeInfoDb,
+    scales,
+    testthat
 Additional_repositories: https://r.acidgenomics.com
 Config/testthat/edition: 3
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 biocViews: Infrastructure

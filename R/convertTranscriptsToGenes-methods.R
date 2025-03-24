@@ -12,6 +12,7 @@
 #' @param aggregate `logical(1)`.
 #' For objects supporting `dim()`, aggregate counts to gene level and
 #' collapse the matrix.
+#' @param tx2gene `TxToGene`.
 #'
 #' @return
 #' - `character`: `factor`.
