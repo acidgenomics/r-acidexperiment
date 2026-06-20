@@ -3,12 +3,16 @@
 skip_if_not(hasInternet())
 
 ## NOTE Consider using a presaved object, to speed up tests.
-tx2gene <- AcidGenomes::makeTxToGeneFromEnsembl( # nolint
+## makeTxToGeneFromEnsembl was removed in AcidGenomes 0.8.x; build TxToGene
+## via makeGRangesFromEnsembl() at the transcripts level instead.
+gr <- AcidGenomes::makeGRangesFromEnsembl(
     organism = "Homo sapiens",
+    level = "transcripts",
     genomeBuild = "GRCh38",
     release = 87L,
     ignoreVersion = TRUE
 )
+tx2gene <- AcidGenomes::TxToGene(gr)
 
 test_that("character", {
     ## Ensure that function supports remapping of column names.
