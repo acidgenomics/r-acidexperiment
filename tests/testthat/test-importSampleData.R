@@ -1,6 +1,9 @@
 test_that("Direct 'sampleId' column, requiring snake case sanitization", {
     tmpfile <- tempfile(fileext = ".csv")
-    df <- data.frame("sampleId" = c("10001-A", "10002-B"))
+    df <- data.frame(
+        "sampleId" = c("10001-A", "10002-B"),
+        stringsAsFactors = FALSE
+    )
     export(df, con = tmpfile)
     expect_identical(
         object = importSampleData(tmpfile),
@@ -122,12 +125,15 @@ test_that("DFrame return", {
         )),
         index = factor(rep(c(2L, 1L, 3L, 4L), times = 2L)),
         sequence = factor(
-            rep(c(
-                "TATCCTCT",
-                "CTCTCTAT",
-                "GTAAGGAG",
-                "ACTGCATA"
-            ), times = 2L)
+            rep(
+                c(
+                    "TATCCTCT",
+                    "CTCTCTAT",
+                    "GTAAGGAG",
+                    "ACTGCATA"
+                ),
+                times = 2L
+            )
         ),
         aggregate = factor(
             paste0("sample", rep(c(2L, 1L, 3L, 4L), times = 2L)),
@@ -147,12 +153,15 @@ test_that("DFrame return", {
             levels = c("knockout", "wildtype")
         ),
         revcomp = factor(
-            rep(c(
-                "AGAGGATA",
-                "ATAGAGAG",
-                "CTCCTTAC",
-                "TATGCAGT"
-            ), times = 2L)
+            rep(
+                c(
+                    "AGAGGATA",
+                    "ATAGAGAG",
+                    "CTCCTTAC",
+                    "TATGCAGT"
+                ),
+                times = 2L
+            )
         ),
         row.names = c(
             "indrops1_AGAGGATA",
@@ -231,7 +240,6 @@ test_that("Duplicate rows in 'sampleName' column", {
         regexp = "sampleName"
     )
 })
-
 
 
 test_that("Missing file", {

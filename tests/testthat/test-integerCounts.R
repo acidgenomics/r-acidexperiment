@@ -4,9 +4,15 @@ test_that("SE", {
         assays = list(
             "counts" = matrix(
                 data = c(
-                    0.1, 0.2, 0.3,
-                    1.1, 1.2, 1.3,
-                    2.1, 2.2, 2.3
+                    0.1,
+                    0.2,
+                    0.3,
+                    1.1,
+                    1.2,
+                    1.3,
+                    2.1,
+                    2.2,
+                    2.3
                 ),
                 nrow = 3L,
                 ncol = 3L,
@@ -16,9 +22,15 @@ test_that("SE", {
     )
     expected <- matrix(
         data = c(
-            0L, 0L, 0L,
-            1L, 1L, 1L,
-            2L, 2L, 2L
+            0L,
+            0L,
+            0L,
+            1L,
+            1L,
+            1L,
+            2L,
+            2L,
+            2L
         ),
         nrow = 3L,
         ncol = 3L,
@@ -34,9 +46,18 @@ test_that("Matrix", {
     object <- matrix(
         ## nolint start
         data = c(
-            0, 0, 1.1, 1.2,
-            2.1, 2.2, 0, 0,
-            3.1, 0, 3.2, 0
+            0,
+            0,
+            1.1,
+            1.2,
+            2.1,
+            2.2,
+            0,
+            0,
+            3.1,
+            0,
+            3.2,
+            0
         ),
         ## nolint end
         nrow = 3L,
@@ -46,9 +67,18 @@ test_that("Matrix", {
     object <- as(object, "sparseMatrix")
     expected <- matrix(
         data = c(
-            0L, 0L, 1L, 1L,
-            2L, 2L, 0L, 0L,
-            3L, 0L, 3L, 0L
+            0L,
+            0L,
+            1L,
+            1L,
+            2L,
+            2L,
+            0L,
+            0L,
+            3L,
+            0L,
+            3L,
+            0L
         ),
         nrow = 3L,
         ncol = 4L,

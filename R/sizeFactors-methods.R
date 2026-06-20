@@ -23,15 +23,12 @@
 NULL
 
 
-
 ## If exporting a numeric value signature for SE, the SE method will mask SCE
 ## ANY value method. In this case, we need to export a corresponding SCE numeric
 ## method.
 ##
 ## See also:
 ## - https://github.com/drisso/SingleCellExperiment/pull/34
-
-
 
 ## Updated 2019-08-06.
 `sizeFactors,SE` <- # nolint
@@ -43,7 +40,6 @@ NULL
         names(sf) <- colnames(object)
         sf
     }
-
 
 
 ## Updated 2022-05-23.
@@ -61,7 +57,6 @@ NULL
         validObject(object)
         object
     }
-
 
 
 #' @rdname sizeFactors

@@ -16,7 +16,6 @@
 NULL
 
 
-
 ## Updated 2022-05-04.
 `nonzeroRowsAndCols,matrix` <- # nolint
     function(object, quiet = FALSE) {
@@ -84,11 +83,9 @@ NULL
     }
 
 
-
 ## Updated 2021-02-22.
 `nonzeroRowsAndCols,Matrix` <- # nolint
     `nonzeroRowsAndCols,matrix`
-
 
 
 ## Updated 2022-05-04.
@@ -99,7 +96,6 @@ NULL
         object <- object[rownames(assay), colnames(assay)]
         object
     }
-
 
 
 #' @rdname nonzeroRowsAndCols

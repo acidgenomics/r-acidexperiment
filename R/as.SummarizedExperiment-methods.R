@@ -27,7 +27,6 @@
 NULL
 
 
-
 ## Updated 2019-08-23.
 `as.SummarizedExperiment,SE` <- # nolint
     function(x) {
@@ -36,7 +35,6 @@ NULL
         metadata(rowData(x)) <- rowMeta
         x
     }
-
 
 
 ## Updated 2019-08-23.
@@ -48,7 +46,6 @@ NULL
         metadata(rowData(x)) <- rowMeta
         x
     }
-
 
 
 #' @rdname as.SummarizedExperiment

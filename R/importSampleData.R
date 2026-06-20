@@ -80,11 +80,13 @@
 #' x <- importSampleData(file, pipeline = "bcbio")
 #' print(x)
 importSampleData <-
-    function(file,
-             lanes = 0L,
-             pipeline = c("none", "bcbio", "cellranger"),
-             autopadZeros = FALSE,
-             ...) {
+    function(
+        file,
+        lanes = 0L,
+        pipeline = c("none", "bcbio", "cellranger"),
+        autopadZeros = FALSE,
+        ...
+    ) {
         ## Coerce `detectLanes()` empty integer return to 0.
         if (!hasLength(lanes)) {
             lanes <- 0L
@@ -138,7 +140,8 @@ importSampleData <-
         ## Check that input passes denylist, and has all required columns.
         assert(
             .isSampleData(object = data, requiredCols = requiredCols),
-            isString(idCol), isSubset(idCol, colnames(data))
+            isString(idCol),
+            isSubset(idCol, colnames(data))
         )
         ## Valid rows must contain a non-empty sample identifier.
         data <- data[!is.na(data[[idCol]]), , drop = FALSE]
@@ -275,7 +278,6 @@ importSampleData <-
         rownames(data) <- makeNames(data[[idCol]], unique = TRUE)
         makeSampleData(data)
     }
-
 
 
 ## Sample metadata assert check for goalie engine.

@@ -16,13 +16,11 @@
 NULL
 
 
-
 ## Updated 2023-10-04.
 `EnsemblToNcbi,RSE` <- # nolint
     function(object, ...) {
         EnsemblToNcbi(rowRanges(object), ...)
     }
-
 
 
 #' @rdname EnsemblToNcbi

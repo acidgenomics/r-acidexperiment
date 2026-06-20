@@ -4,7 +4,8 @@ test_that("data.frame with row names", {
             object = data.frame(
                 "genotype" = rep(c("control", "wildtype"), times = 2L),
                 "treatment" = rep(c("vector", "RNAi"), each = 2L),
-                row.names = paste0("GSM000000", seq_len(4L))
+                row.names = paste0("GSM000000", seq_len(4L)),
+                stringsAsFactors = FALSE
             )
         ),
         expected = DataFrame(
@@ -20,7 +21,8 @@ test_that("data.frame with 'rowname' column", {
     expect_identical(
         object = makeSampleData(
             object = data.frame(
-                "rowname" = c("sample1", "sample2")
+                "rowname" = c("sample1", "sample2"),
+                stringsAsFactors = FALSE
             )
         ),
         expected = DataFrame(

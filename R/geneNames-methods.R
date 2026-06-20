@@ -14,7 +14,6 @@
 NULL
 
 
-
 ## Updated 2019-07-22.
 `geneNames,Vector` <- # nolint
     function(object) {
@@ -22,17 +21,14 @@ NULL
     }
 
 
-
 ## Updated 2019-07-22.
 `geneNames,GRanges` <- # nolint
     `geneNames,Vector`
 
 
-
 ## Updated 2019-07-22.
 `geneNames,SE` <- # nolint
     `geneNames,Vector`
-
 
 
 #' @rdname geneNames

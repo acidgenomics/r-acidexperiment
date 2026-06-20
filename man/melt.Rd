@@ -18,10 +18,10 @@ melt(object, ...)
 
 \S4method{melt}{SummarizedExperiment}(
   object,
-  assay = 1L,
   min = -Inf,
   minMethod = c("absolute", "perRow"),
-  trans = c("identity", "log2", "log10")
+  trans = c("identity", "log2", "log10"),
+  assay = 1L
 )
 }
 \arguments{

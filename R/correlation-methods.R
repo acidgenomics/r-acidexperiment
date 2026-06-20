@@ -54,9 +54,7 @@
 NULL
 
 
-
 .method <- formals(stats::cor)[["method"]]
-
 
 
 ## Updated 2021-02-03.
@@ -65,7 +63,8 @@ NULL
         assert(
             hasLength(x),
             identical(length(x), length(y)),
-            !anyNA(x), !anyNA(y)
+            !anyNA(x),
+            !anyNA(y)
         )
         method <- match.arg(method)
         n <- length(x)
@@ -86,21 +85,20 @@ formals(`correlation,numeric,numeric`)[["method"]] <- # nolint
     .method
 
 
-
 ## Updated 2021-02-03.
 `correlation,matrix,missing` <- # nolint
-    function(x, y = NULL, method) {
+    function(x, method, y = NULL) {
         assert(!anyNA(x))
         method <- match.arg(method)
         alert(sprintf(
-            "Calculating {.val %s} correlation matrix.", method
+            "Calculating {.val %s} correlation matrix.",
+            method
         ))
         cor(x = x, y = NULL, method = method)
     }
 
 formals(`correlation,matrix,missing`)[["method"]] <- # nolint
     .method
-
 
 
 ## Updated 2019-11-08.
@@ -114,22 +112,17 @@ formals(`correlation,matrix,matrix`)[["method"]] <- # nolint
     .method
 
 
-
 `correlation,Matrix,missing` <- # nolint
     `correlation,matrix,missing`
-
 
 
 `correlation,Matrix,Matrix` <- # nolint
     `correlation,matrix,matrix`
 
 
-
 ## Updated 2019-11-08.
 `correlation,SE,missing` <- # nolint
-    function(x, y = NULL,
-             i = 1L, j = NULL,
-             method) {
+    function(x, method, y = NULL, i = 1L, j = NULL) {
         assert(!identical(i, j))
         method <- match.arg(method)
         if (is.null(j)) {
@@ -150,10 +143,9 @@ formals(`correlation,SE,missing`)[["method"]] <- # nolint
     .method
 
 
-
 ## Updated 2019-11-08.
 `correlation,SE,SE` <- # nolint
-    function(x, y, i = 1L, method) {
+    function(x, y, method, i = 1L) {
         method <- match.arg(method)
         correlation(
             x = assay(x, i = i),
@@ -166,7 +158,6 @@ formals(`correlation,SE,SE`)[["method"]] <- # nolint
     .method
 
 rm(.method)
-
 
 
 #' @rdname correlation

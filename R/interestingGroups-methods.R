@@ -18,13 +18,11 @@
 NULL
 
 
-
 ## Updated 2019-07-22.
 `interestingGroups,Annotated` <- # nolint
     function(object) {
         metadata(object)[["interestingGroups"]]
     }
-
 
 
 ## Updated 2019-07-22.
@@ -34,7 +32,6 @@ NULL
         metadata(object)[["interestingGroups"]] <- value
         object
     }
-
 
 
 ## Note that we're always allowing `sampleName` to be slotted, even if that
@@ -57,14 +54,12 @@ NULL
     }
 
 
-
 ## Updated 2019-07-22.
 `interestingGroups<-,Annotated,NULL` <- # nolint
     function(object, value) {
         metadata(object)[["interestingGroups"]] <- NULL
         object
     }
-
 
 
 #' @rdname interestingGroups
@@ -74,7 +69,6 @@ setMethod(
     signature = signature(object = "Annotated"),
     definition = `interestingGroups,Annotated`
 )
-
 
 
 #' @rdname interestingGroups

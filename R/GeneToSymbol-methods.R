@@ -14,7 +14,6 @@
 NULL
 
 
-
 ## Updated 2021-08-10.
 `GeneToSymbol,SE` <- # nolint
     function(object, ...) {
@@ -23,7 +22,6 @@ NULL
         rownames(df) <- rownames(object)
         GeneToSymbol(df, ...)
     }
-
 
 
 #' @rdname GeneToSymbol
