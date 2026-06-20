@@ -87,7 +87,7 @@ formals(`correlation,numeric,numeric`)[["method"]] <- # nolint
 
 ## Updated 2021-02-03.
 `correlation,matrix,missing` <- # nolint
-    function(x, y = NULL, method) {
+    function(x, y = NULL, method = .method) {
         assert(!anyNA(x))
         method <- match.arg(method)
         alert(sprintf(
