@@ -25,7 +25,6 @@
 NULL
 
 
-
 ## Updated 2021-10-21.
 .interconvertGenesAndSymbols <-
     function(object, from, to, strict) {
@@ -64,7 +63,6 @@ NULL
     }
 
 
-
 ## Updated 2021-10-21.
 `convertGenesToSymbols,SE` <- # nolint
     function(object, strict = FALSE) {
@@ -77,7 +75,6 @@ NULL
     }
 
 
-
 ## Updated 2021-10-21.
 `convertSymbolsToGenes,SE` <- # nolint
     function(object, strict = FALSE) {
@@ -88,7 +85,6 @@ NULL
             strict = strict
         )
     }
-
 
 
 #' @rdname convertGenesToSymbols

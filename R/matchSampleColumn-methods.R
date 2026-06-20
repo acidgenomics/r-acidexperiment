@@ -15,7 +15,6 @@
 NULL
 
 
-
 ## Updated 2023-04-26.
 `matchSampleColumn,DFrame` <- # nolint
     function(object) {
@@ -30,13 +29,11 @@ NULL
     }
 
 
-
 ## Updated 2021-01-16.
 `matchSampleColumn,SE` <- # nolint
     function(object) {
         matchSampleColumn(colData(object))
     }
-
 
 
 #' @rdname matchSampleColumn

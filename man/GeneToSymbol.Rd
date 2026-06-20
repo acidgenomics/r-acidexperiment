@@ -36,6 +36,3 @@ object <- RangedSummarizedExperiment
 x <- GeneToSymbol(object)
 print(x)
 }
-\seealso{
-\code{\link[AcidGenomes:makeGeneToSymbol]{makeGeneToSymbol()}}.
-}

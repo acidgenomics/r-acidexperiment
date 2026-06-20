@@ -32,5 +32,5 @@ t2g <- TxToGene(object)
 print(t2g)
 }
 \seealso{
-\code{\link[AcidGenomes:makeTxToGene]{makeTxToGene()}}.
+\code{\link[AcidGenomes:makeTxToGeneFromFasta]{makeTxToGeneFromFasta()}}.
 }

@@ -98,15 +98,17 @@
 #' )
 #' print(x)
 makeSummarizedExperiment <-
-    function(assays = S4Vectors::SimpleList(),
-             rowRanges = GenomicRanges::GRanges(),
-             rowData = NULL,
-             colData = S4Vectors::DataFrame(),
-             metadata = list(),
-             transgeneNames = NULL,
-             denylist = TRUE,
-             sort = TRUE,
-             sessionInfo = TRUE) {
+    function(
+        assays = S4Vectors::SimpleList(),
+        rowRanges = GenomicRanges::GRanges(),
+        rowData = NULL,
+        colData = S4Vectors::DataFrame(),
+        metadata = list(),
+        transgeneNames = NULL,
+        denylist = TRUE,
+        sort = TRUE,
+        sessionInfo = TRUE
+    ) {
         assert(
             isAny(assays, c("SimpleList", "list")),
             isAny(rowRanges, c("GRanges", "GRangesList", "NULL")),
@@ -130,11 +132,10 @@ makeSummarizedExperiment <-
         if (hasLength(assays)) {
             ## Name the primary assay "counts" by default.
             if (!hasNames(assays)) {
-                if (hasLength(assays, n = 1L)) {
-                    names(assays) <- "counts"
-                } else {
+                if (!hasLength(assays, n = 1L)) {
                     abort("Multiple assays defined without names.")
                 }
+                names(assays) <- "counts"
             }
             assert(
                 hasNames(assays),
@@ -203,7 +204,8 @@ makeSummarizedExperiment <-
                         "Automatic mismatched feature handling only",
                         "curently supported for {.val %s} (not {.val %s})."
                     ),
-                    "GRanges", "GRangesList"
+                    "GRanges",
+                    "GRangesList"
                 ))
             }
             ## Transgenes.
@@ -243,7 +245,8 @@ makeSummarizedExperiment <-
                         msg2 = "features"
                     ),
                     toInlineString(setdiff, n = 5L, class = "val"),
-                    "ensemblRelease", "gffFile",
+                    "ensemblRelease",
+                    "gffFile",
                     "transgeneNames"
                 ))
                 unknownRanges <- emptyRanges(

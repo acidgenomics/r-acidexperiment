@@ -25,14 +25,12 @@
 NULL
 
 
-
 ## Updated 2019-08-06.
 `counts,SE` <- # nolint
     function(object) {
         validObject(object)
         assay(object, i = "counts")
     }
-
 
 
 ## Updated 2022-05-23.
@@ -49,11 +47,9 @@ NULL
     }
 
 
-
 ## Updated 2019-08-06.
 `counts<-,SE,Matrix` <- # nolint
     `counts<-,SE,matrix`
-
 
 
 #' @rdname counts
@@ -63,7 +59,6 @@ setMethod(
     signature = signature(object = "SummarizedExperiment"),
     definition = `counts,SE`
 )
-
 
 
 #' @rdname counts

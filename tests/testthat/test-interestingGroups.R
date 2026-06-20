@@ -30,7 +30,9 @@ test_that("SE : assignment method", {
         expected = intgroup
     )
     expect_error(
-        object = interestingGroups(object) <- "XXX",
+        object = {
+            interestingGroups(object) <- "XXX"
+        },
         regexp = "XXX"
     )
 })

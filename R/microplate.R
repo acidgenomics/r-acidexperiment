@@ -40,10 +40,7 @@
 #' x <- microplate(plates = 2L, wells = 96L, controls = 6L)
 #' print(head(x))
 microplate <-
-    function(plates = 1L,
-             wells = 96L,
-             controls = 0L,
-             prefix = NULL) {
+    function(plates = 1L, wells = 96L, controls = 0L, prefix = NULL) {
         assert(
             isInt(plates),
             isPositive(plates),

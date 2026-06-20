@@ -11,5 +11,9 @@ test_that("SE assignment", {
 })
 
 test_that("SE assignment failure", {
-    expect_error(counts(rse) <- matrix())
+    expect_error(
+        object = {
+            counts(rse) <- matrix()
+        }
+    )
 })

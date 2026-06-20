@@ -1,5 +1,16 @@
 # Release notes
 
+## AcidExperiment 0.5.6 (2026-06-19)
+
+License changes:
+
+- Relicensed from AGPL-3 to Apache 2.0.
+
+Minor changes:
+
+- Modernized tooling: removed per-package `.lintr` in favour of global
+  `~/.lintr`; added `air.toml`; migrated to roxygen2 8.0.
+
 ## AcidExperiment 0.5.5 (2025-03-24)
 
 Minor changes:

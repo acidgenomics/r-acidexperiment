@@ -15,14 +15,12 @@
 NULL
 
 
-
 ## Updated 2021-01-29.
 `TxToGene,SE` <- # nolint
     function(object) {
         object <- rowData(object, use.names = TRUE)
         TxToGene(object)
     }
-
 
 
 #' @rdname TxToGene

@@ -11,16 +11,13 @@ estimateSizeFactors(object, ...)
 
 \S4method{estimateSizeFactors}{SummarizedExperiment}(
   object,
-  assay = 1L,
   type = c("mean-ratio", "geometric-mean-ratio", "log-geometric-mean-ratio"),
-  center = 1L
+  center = 1L,
+  assay = 1L
 )
 }
 \arguments{
 \item{object}{Object.}
-
-\item{assay}{\code{vector(1)}.
-Assay name or index position.}
 
 \item{type}{\code{character(1)}.
 Type of method for estimation.
@@ -46,6 +43,9 @@ Type of method for estimation.
 \item{center}{\code{numeric(1)}.
 If non-zero, scales all size factors so that the average size factor across
 cells is equal to the value defined. Set to \code{0} to disable centering.}
+
+\item{assay}{\code{vector(1)}.
+Assay name or index position.}
 
 \item{...}{Additional arguments.}
 }

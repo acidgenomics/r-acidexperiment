@@ -24,18 +24,12 @@
 NULL
 
 
-
 #' Export assays
 #'
 #' @note Updated 2022-10-24.
 #' @noRd
 .exportAssays <-
-    function(object,
-             con,
-             bindRowData,
-             compress,
-             overwrite,
-             quiet) {
+    function(object, con, bindRowData, compress, overwrite, quiet) {
         assert(
             is(object, "SummarizedExperiment"),
             hasNoDuplicates(rownames(object)),
@@ -62,7 +56,8 @@ NULL
         )
         alert(sprintf(
             fmt = "Exporting assays %s to {.path %s}.",
-            toInlineString(assayNames, n = 5L, class = "val"), con
+            toInlineString(assayNames, n = 5L, class = "val"),
+            con
         ))
         if (isTRUE(bindRowData)) {
             rowData <- rowData(object)
@@ -102,16 +97,12 @@ NULL
     }
 
 
-
 #' Export DFrame
 #'
 #' @note Updated 2023-04-27.
 #' @noRd
 .exportDF <-
-    function(object,
-             con,
-             overwrite,
-             quiet) {
+    function(object, con, overwrite, quiet) {
         assert(
             is(object, "DFrame"),
             isString(con),
@@ -139,7 +130,6 @@ NULL
     }
 
 
-
 #' Export SummarizedExperiment
 #'
 #' @note Updated 2022-09-22.
@@ -151,12 +141,14 @@ NULL
 #' contains a single, unnamed assay, we make sure to rename it internally to
 #' "assay" before exporting.
 `export,SE` <- # nolint
-    function(object,
-             con,
-             bindRowData = FALSE,
-             compress = FALSE,
-             overwrite = TRUE,
-             quiet = FALSE) {
+    function(
+        object,
+        con,
+        bindRowData = FALSE,
+        compress = FALSE,
+        overwrite = TRUE,
+        quiet = FALSE
+    ) {
         assert(
             validObject(object),
             hasNoDuplicates(rownames(object)),
@@ -171,7 +163,8 @@ NULL
         if (!isTRUE(quiet)) {
             alert(sprintf(
                 fmt = "Exporting {.cls %s} to {.path %s}.",
-                "SummarizedExperiment", con
+                "SummarizedExperiment",
+                con
             ))
         }
         files <- list()
@@ -210,7 +203,6 @@ NULL
         files <- Filter(Negate(is.null), files)
         invisible(files)
     }
-
 
 
 #' @rdname export
