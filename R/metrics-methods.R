@@ -30,7 +30,6 @@
 NULL
 
 
-
 ## Updated 2022-05-04.
 `metrics,SE` <- # nolint
     function(object) {
@@ -45,7 +44,6 @@ NULL
         df <- decode(df)
         df
     }
-
 
 
 #' @describeIn metrics Sample-level metrics.

@@ -20,7 +20,6 @@
 NULL
 
 
-
 ## Updated 2021-02-03.
 `organism,SE` <- # nolint
     function(object) {
@@ -46,7 +45,6 @@ NULL
         }
         detectOrganism(x)
     }
-
 
 
 #' @rdname organism

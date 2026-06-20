@@ -5,7 +5,6 @@ geneIds <- g2s[["geneId"]]
 geneNames <- g2s[["geneName"]]
 
 
-
 test_that("SummarizedExperiment", {
     expect_identical(
         object = mapGenesToRownames(rse, genes = rownames),
@@ -59,15 +58,14 @@ test_that("Mapping priority and failure handling", {
     )
     ## geneId
     expect_identical(
-        object =
-            mapGenesToRownames(
-                object = object,
-                genes = c(
-                    "ENSG00000000419.14",
-                    "ENSG00000000003.15",
-                    "ENSG00000000005.6"
-                )
-            ),
+        object = mapGenesToRownames(
+            object = object,
+            genes = c(
+                "ENSG00000000419.14",
+                "ENSG00000000003.15",
+                "ENSG00000000005.6"
+            )
+        ),
         expected = c(
             "ENSG00000000419.14" = "gene3",
             "ENSG00000000003.15" = "gene1",
@@ -76,15 +74,14 @@ test_that("Mapping priority and failure handling", {
     )
     ## geneIdNoVersion
     expect_identical(
-        object =
-            mapGenesToRownames(
-                object = object,
-                genes = c(
-                    "ENSG00000000419",
-                    "ENSG00000000003",
-                    "ENSG00000000005"
-                )
-            ),
+        object = mapGenesToRownames(
+            object = object,
+            genes = c(
+                "ENSG00000000419",
+                "ENSG00000000003",
+                "ENSG00000000005"
+            )
+        ),
         expected = c(
             "ENSG00000000419" = "gene3",
             "ENSG00000000003" = "gene1",
@@ -93,15 +90,14 @@ test_that("Mapping priority and failure handling", {
     )
     ## geneName
     expect_identical(
-        object =
-            mapGenesToRownames(
-                object = object,
-                genes = c(
-                    "DPM1",
-                    "TSPAN6",
-                    "TNMD"
-                )
-            ),
+        object = mapGenesToRownames(
+            object = object,
+            genes = c(
+                "DPM1",
+                "TSPAN6",
+                "TNMD"
+            )
+        ),
         expected = c(
             "DPM1" = "gene3",
             "TSPAN6" = "gene1",
@@ -192,7 +188,6 @@ test_that("Direct matching against rownames, for a minimal object", {
 })
 
 
-
 test_that("SummarizedExperiment", {
     expect_identical(
         object = mapGenesToIds(rse, genes = rownames),
@@ -216,7 +211,6 @@ test_that("SummarizedExperiment", {
         )
     )
 })
-
 
 
 test_that("SummarizedExperiment", {

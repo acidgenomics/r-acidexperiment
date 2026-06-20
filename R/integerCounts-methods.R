@@ -23,7 +23,6 @@
 NULL
 
 
-
 ## This is inspired by approach used internally by DESeq2.
 ## Updated 2019-12-04.
 `integerCounts,matrix` <- # nolint
@@ -34,7 +33,6 @@ NULL
     }
 
 
-
 ## Updated 2019-12-04.
 `integerCounts,Matrix` <- # nolint
     function(object) {
@@ -43,17 +41,14 @@ NULL
     }
 
 
-
 ## Updated 2021-09-13.
 `integerCounts,SE` <- # nolint
-    function(object,
-             assay = "counts") {
+    function(object, assay = "counts") {
         validObject(object)
         assert(isScalar(assay))
         assay <- assay(object, i = assay)
         integerCounts(assay)
     }
-
 
 
 #' @rdname integerCounts

@@ -42,7 +42,6 @@
 NULL
 
 
-
 ## Updated 2023-04-26.
 `makeSampleData,DFrame` <- # nolint
     function(object) {
@@ -108,13 +107,11 @@ NULL
     }
 
 
-
 ## Updated 2021-10-14.
 `makeSampleData,data.frame` <- # nolint
     function(object) {
         makeSampleData(as(object, "DFrame"))
     }
-
 
 
 #' @rdname makeSampleData

@@ -55,7 +55,6 @@
 NULL
 
 
-
 #' Make a gene mapping data frame
 #'
 #' Contains gene identifiers, gene names (symbols), and alternative (legacy)
@@ -86,11 +85,8 @@ NULL
 }
 
 
-
 ## Updated 2021-09-02.
-.mapGenes <- function(object,
-                      genes,
-                      strict = TRUE) {
+.mapGenes <- function(object, genes, strict = TRUE) {
     validObject(object)
     assert(
         is(object, "DFrame"),
@@ -168,12 +164,9 @@ NULL
 }
 
 
-
 ## Updated 2021-06-09.
 `mapGenesToIds,SE` <- # nolint
-    function(object,
-             genes,
-             strict = TRUE) {
+    function(object, genes, strict = TRUE) {
         validObject(object)
         col <- "geneId"
         map <- .makeGeneMap(object)
@@ -186,12 +179,9 @@ NULL
     }
 
 
-
 ## Updated 2021-08-09.
 `mapGenesToRownames,SE` <- # nolint
-    function(object,
-             genes,
-             strict = TRUE) {
+    function(object, genes, strict = TRUE) {
         validObject(object)
         assert(
             hasRownames(object),
@@ -232,12 +222,9 @@ NULL
     }
 
 
-
 ## Updated 2021-06-09.
 `mapGenesToSymbols,SE` <- # nolint
-    function(object,
-             genes,
-             strict = TRUE) {
+    function(object, genes, strict = TRUE) {
         validObject(object)
         col <- "geneName"
         map <- .makeGeneMap(object)
@@ -248,7 +235,6 @@ NULL
         assert(hasNoDuplicates(out))
         out
     }
-
 
 
 #' @rdname mapGenes

@@ -17,7 +17,6 @@
 NULL
 
 
-
 ## Updated 2022-04-25.
 `droplevels2,SE` <- # nolint
     function(x) {
@@ -29,7 +28,6 @@ NULL
         }
         x
     }
-
 
 
 #' @rdname droplevels2

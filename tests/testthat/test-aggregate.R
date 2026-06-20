@@ -1,9 +1,21 @@
 counts <- matrix(
     data = c(
-        0L, 1L, 2L, 3L,
-        4L, 0L, 5L, 6L,
-        7L, 8L, 0L, 9L,
-        10L, 11L, 12L, 0L
+        0L,
+        1L,
+        2L,
+        3L,
+        4L,
+        0L,
+        5L,
+        6L,
+        7L,
+        8L,
+        0L,
+        9L,
+        10L,
+        11L,
+        12L,
+        0L
     ),
     nrow = 4L,
     ncol = 4L,
@@ -36,7 +48,6 @@ se <- SummarizedExperiment(
 )
 
 
-
 test_that("'sum' count mode", {
     invisible(Map(
         object = list(
@@ -61,8 +72,14 @@ test_that("'sum' count mode", {
                 object = aggObject,
                 expected = matrix(
                     data = c(
-                        4L, 1L, 7L, 9L,
-                        17L, 19L, 12L, 9L
+                        4L,
+                        1L,
+                        7L,
+                        9L,
+                        17L,
+                        19L,
+                        12L,
+                        9L
                     ),
                     nrow = 2L,
                     ncol = 4L,
@@ -94,10 +111,14 @@ test_that("'sum' count mode", {
                 object = aggObject,
                 expected = matrix(
                     data = c(
-                        1L, 5L,
-                        4L, 11L,
-                        15L, 9L,
-                        21L, 12L
+                        1L,
+                        5L,
+                        4L,
+                        11L,
+                        15L,
+                        9L,
+                        21L,
+                        12L
                     ),
                     nrow = 4L,
                     ncol = 2L,
@@ -132,32 +153,49 @@ test_that("'mean' count mode", {
         ),
         rowExpectedData = list(
             "matrix" = c(
-                2.0, 0.5, 3.5, 4.5,
-                8.5, 9.5, 6.0, 4.5
+                2.0,
+                0.5,
+                3.5,
+                4.5,
+                8.5,
+                9.5,
+                6.0,
+                4.5
             ),
             "Matrix" = c(
-                4.0, 1.0, 3.5, 4.5,
-                8.5, 9.5, 12.0, 9.0
+                4.0,
+                1.0,
+                3.5,
+                4.5,
+                8.5,
+                9.5,
+                12.0,
+                9.0
             )
         ),
         colExpectedData = list(
             "matrix" = c(
-                0.5, 2.5,
-                2.0, 5.5,
-                7.5, 4.5,
-                10.5, 6.0
+                0.5,
+                2.5,
+                2.0,
+                5.5,
+                7.5,
+                4.5,
+                10.5,
+                6.0
             ),
             "Matrix" = c(
-                1.0, 2.5,
-                4.0, 5.5,
-                7.5, 9.0,
-                10.5, 12.0
+                1.0,
+                2.5,
+                4.0,
+                5.5,
+                7.5,
+                9.0,
+                10.5,
+                12.0
             )
         ),
-        f = function(object,
-                     class,
-                     rowExpectedData,
-                     colExpectedData) {
+        f = function(object, class, rowExpectedData, colExpectedData) {
             ## Aggregate down the rows.
             aggObject <- aggregate(
                 x = object,
@@ -238,8 +276,14 @@ test_that("'n' count mode", {
             object = aggObject,
             expected = matrix(
                 data = c(
-                    1L, 1L, 2L, 2L,
-                    2L, 2L, 1L, 1L
+                    1L,
+                    1L,
+                    2L,
+                    2L,
+                    2L,
+                    2L,
+                    1L,
+                    1L
                 ),
                 nrow = 2L,
                 ncol = 4L,
@@ -271,10 +315,14 @@ test_that("'n' count mode", {
             object = aggObject,
             expected = matrix(
                 data = c(
-                    1L, 2L,
-                    1L, 2L,
-                    2L, 1L,
-                    2L, 1L
+                    1L,
+                    2L,
+                    1L,
+                    2L,
+                    2L,
+                    1L,
+                    2L,
+                    1L
                 ),
                 nrow = 4L,
                 ncol = 2L,

@@ -59,7 +59,6 @@
 NULL
 
 
-
 ## Updated 2021-09-01.
 `convertTranscriptsToGenes,character` <- # nolint
     function(object, tx2gene) {
@@ -82,14 +81,14 @@ NULL
             ))
         }
         tx2gene <- tx2gene[
-            match(x = object, table = tx2gene[["txId"]]), ,
+            match(x = object, table = tx2gene[["txId"]]),
+            ,
             drop = FALSE
         ]
         out <- as.factor(tx2gene[["geneId"]])
         names(out) <- tx2gene[["txId"]]
         out
     }
-
 
 
 ## Consider aggregating the matrix to gene level instead.
@@ -118,11 +117,9 @@ NULL
     }
 
 
-
 ## Updated 2020-01-30.
 `convertTranscriptsToGenes,Matrix` <- # nolint
     `convertTranscriptsToGenes,matrix`
-
 
 
 ## Updated 2021-09-13.
@@ -138,7 +135,6 @@ NULL
         )
         se
     }
-
 
 
 #' @rdname convertTranscriptsToGenes
