@@ -1,6 +1,6 @@
 # AcidExperiment
 
-[![Install with Bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg)](http://bioconda.github.io/recipes/r-acidexperiment/README.html) ![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)
+[![Install with Bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg)](https://bioconda.github.io/recipes/r-acidexperiment/README.html) ![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)
 
 Toolkit to extend the functionality of [SummarizedExperiment][].
 
@@ -38,3 +38,7 @@ R
 [conda]: https://docs.conda.io/
 [r]: https://www.r-project.org/
 [summarizedexperiment]: https://bioconductor.org/packages/SummarizedExperiment/
+
+## License
+
+Apache-2.0 — Copyright 2021 Acid Genomics LLC — see [LICENSE.md](LICENSE.md).
