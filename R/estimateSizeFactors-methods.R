@@ -73,15 +73,16 @@
 NULL
 
 
-
 ## Updated 2021-09-02.
 .librarySizeFactors <- # nolint
-    function(counts,
-             type = c(
-                 "mean-ratio",
-                 "geometric-mean-ratio",
-                 "log-geometric-mean-ratio"
-             )) {
+    function(
+        counts,
+        type = c(
+            "mean-ratio",
+            "geometric-mean-ratio",
+            "log-geometric-mean-ratio"
+        )
+    ) {
         assert(
             isAny(counts, c("matrix", "Matrix")),
             !anyNA(counts)
@@ -92,7 +93,8 @@ NULL
                 "Calculating library size factors using {.val %s}",
                 "method defined in {.arg %s}."
             ),
-            type, "type"
+            type,
+            "type"
         ))
         ## Get the sum of expression per cell.
         libSizes <- colSums(counts)
@@ -120,9 +122,6 @@ NULL
     }
 
 
-
-
-
 ## Updated 2023-03-01.
 .centerSizeFactors <- function(sf, center = 1L) {
     assert(
@@ -138,13 +137,9 @@ NULL
 }
 
 
-
 ## Updated 2023-03-01.
 `estimateSizeFactors,SE` <- # nolint
-    function(object,
-             assay = 1L,
-             type,
-             center) {
+    function(object, type, center, assay = 1L) {
         validObject(object)
         assert(
             isScalar(assay),
@@ -162,13 +157,10 @@ NULL
         object
     }
 
-formals(`estimateSizeFactors,SE`)[ # nolint
-    c("type", "center")
-] <- list(
+formals(`estimateSizeFactors,SE`)[c("type", "center")] <- list( # nolint
     type = formals(.librarySizeFactors)[["type"]],
     center = formals(.centerSizeFactors)[["center"]]
 )
-
 
 
 #' @rdname estimateSizeFactors

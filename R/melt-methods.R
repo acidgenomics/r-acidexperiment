@@ -18,7 +18,6 @@
 NULL
 
 
-
 ## Updated 2020-10-07.
 `melt,matrix` <- # nolint
     methodFunction(
@@ -28,20 +27,14 @@ NULL
     )
 
 
-
 ## Updated 2021-02-22.
 `melt,Matrix` <- # nolint
     `melt,matrix`
 
 
-
 ## Updated 2023-10-27.
 `melt,SE` <- # nolint
-    function(object,
-             assay = 1L,
-             min,
-             minMethod,
-             trans) {
+    function(object, min, minMethod, trans, assay = 1L) {
         validObject(object)
         assert(isScalar(assay))
         minMethod <- match.arg(minMethod)
@@ -65,7 +58,6 @@ args <- c("min", "minMethod", "trans")
 formals(`melt,SE`)[args] <- # nolint
     formals(`melt,matrix`)[args]
 rm(args)
-
 
 
 #' @rdname melt

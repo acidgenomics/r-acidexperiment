@@ -15,11 +15,15 @@ test_that("SE assignment", {
 
 test_that("SE assignment failures", {
     expect_error(
-        object = sampleNames(rse) <- "xxx",
+        object = {
+            sampleNames(rse) <- "xxx"
+        },
         regexp = "NULL"
     )
     expect_error(
-        object = sampleNames(rse) <- c(aaa = "bbb"),
+        object = {
+            sampleNames(rse) <- c(aaa = "bbb")
+        },
         regexp = "areSetEqual"
     )
 })

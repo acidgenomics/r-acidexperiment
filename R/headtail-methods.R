@@ -17,7 +17,6 @@
 NULL
 
 
-
 ## Updated 2023-04-27.
 `headtail,DFrame` <- # nolint
     methodFunction(
@@ -25,7 +24,6 @@ NULL
         signature = "data.frame",
         package = "AcidBase"
     )
-
 
 
 ## Updated 2023-04-27.
@@ -38,7 +36,6 @@ formals(`headtail,GRanges`) <- # nolint
     formals(`headtail,DFrame`)
 
 
-
 ## Updated 2020-10-07.
 `headtail,Matrix` <- # nolint
     methodFunction(
@@ -46,7 +43,6 @@ formals(`headtail,GRanges`) <- # nolint
         signature = "matrix",
         package = "AcidBase"
     )
-
 
 
 ## Updated 2022-05-20.
@@ -57,7 +53,6 @@ formals(`headtail,GRanges`) <- # nolint
 
 formals(`headtail,SE`) <- # nolint
     formals(`headtail,DFrame`)
-
 
 
 #' @describeIn headtail Same method as `data.frame`.

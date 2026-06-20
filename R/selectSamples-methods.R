@@ -16,7 +16,6 @@
 NULL
 
 
-
 ## Updated 2022-08-17.
 `selectSamples,SE` <- # nolint
     function(object, ...) {
@@ -49,7 +48,6 @@ NULL
         out <- droplevels2(out)
         out
     }
-
 
 
 #' @rdname selectSamples

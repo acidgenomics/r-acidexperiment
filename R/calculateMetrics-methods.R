@@ -31,12 +31,9 @@
 NULL
 
 
-
 ## Updated 2021-09-02.
 `calculateMetrics,matrix` <- # nolint
-    function(object,
-             rowData = NULL,
-             prefilter = FALSE) {
+    function(object, rowData = NULL, prefilter = FALSE) {
         assert(
             hasValidDimnames(object),
             hasRows(object),
@@ -162,7 +159,8 @@ NULL
             if (isTRUE(n1 < n2)) {
                 msg <- sprintf(
                     fmt = "Prefilter: %d / %d %s",
-                    n1, n2,
+                    n1,
+                    n2,
                     ngettext(
                         n = n1,
                         msg1 = "sample",
@@ -183,18 +181,14 @@ NULL
     }
 
 
-
 ## Updated 2021-02-22.
 `calculateMetrics,Matrix` <- # nolint
     `calculateMetrics,matrix`
 
 
-
 ## Updated 2021-09-11.
 `calculateMetrics,SE` <- # nolint
-    function(object,
-             assay = 1L,
-             prefilter = FALSE) {
+    function(object, assay = 1L, prefilter = FALSE) {
         validObject(object)
         assert(
             isScalar(assay),
@@ -217,8 +211,7 @@ NULL
         }
         ## Update the metrics in column data.
         colData <- colData(object)
-        colData <- colData[
-            ,
+        colData <- colData[,
             setdiff(colnames(colData), colnames(metrics)),
             drop = FALSE
         ]
@@ -228,7 +221,6 @@ NULL
         validObject(object)
         object
     }
-
 
 
 #' @rdname calculateMetrics

@@ -19,7 +19,6 @@
 NULL
 
 
-
 ## Updated 2023-04-27.
 `uniteInterestingGroups,DFrame` <- # nolint
     function(object, interestingGroups) {
@@ -47,7 +46,6 @@ NULL
         object[["interestingGroups"]] <- unname(value)
         object
     }
-
 
 
 #' @rdname uniteInterestingGroups

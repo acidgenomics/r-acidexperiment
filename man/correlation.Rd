@@ -15,21 +15,21 @@ correlation(x, y, ...)
 
 \S4method{correlation}{Matrix,Matrix}(x, y, method = c("pearson", "kendall", "spearman"))
 
-\S4method{correlation}{Matrix,missingOrNULL}(x, y = NULL, method = c("pearson", "kendall", "spearman"))
+\S4method{correlation}{Matrix,missingOrNULL}(x, method = c("pearson", "kendall", "spearman"), y = NULL)
 
-\S4method{correlation}{SummarizedExperiment,SummarizedExperiment}(x, y, i = 1L, method = c("pearson", "kendall", "spearman"))
+\S4method{correlation}{SummarizedExperiment,SummarizedExperiment}(x, y, method = c("pearson", "kendall", "spearman"), i = 1L)
 
 \S4method{correlation}{SummarizedExperiment,missingOrNULL}(
   x,
+  method = c("pearson", "kendall", "spearman"),
   y = NULL,
   i = 1L,
-  j = NULL,
-  method = c("pearson", "kendall", "spearman")
+  j = NULL
 )
 
 \S4method{correlation}{matrix,matrix}(x, y, method = c("pearson", "kendall", "spearman"))
 
-\S4method{correlation}{matrix,missingOrNULL}(x, y = NULL, method = c("pearson", "kendall", "spearman"))
+\S4method{correlation}{matrix,missingOrNULL}(x, method = c("pearson", "kendall", "spearman"), y = NULL)
 
 \S4method{correlation}{numeric,numeric}(x, y, method = c("pearson", "kendall", "spearman"))
 }

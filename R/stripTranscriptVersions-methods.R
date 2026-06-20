@@ -20,7 +20,6 @@
 NULL
 
 
-
 ## Updated 2021-02-02.
 `stripTranscriptVersions,SE` <- # nolint
     methodFunction(
@@ -28,7 +27,6 @@ NULL
         signature = "matrix",
         package = "AcidGenomes"
     )
-
 
 
 #' @rdname stripTranscriptVersions

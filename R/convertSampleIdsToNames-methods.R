@@ -14,7 +14,6 @@
 NULL
 
 
-
 ## Updated 2023-10-05.
 `convertSampleIdsToNames,SE` <- # nolint
     function(object) {
@@ -39,7 +38,6 @@ NULL
         ## so don't run validity checks.
         object
     }
-
 
 
 #' @rdname convertSampleIdsToNames

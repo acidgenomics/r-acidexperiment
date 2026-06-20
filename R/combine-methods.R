@@ -44,7 +44,6 @@
 NULL
 
 
-
 # Updated 2020-01-20.
 `combine,SE` <- # nolint
     function(x, y) {
@@ -195,7 +194,6 @@ NULL
         validObject(out)
         out
     }
-
 
 
 #' @rdname combine

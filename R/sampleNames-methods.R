@@ -30,7 +30,6 @@
 NULL
 
 
-
 ## Updated 2019-07-22.
 `sampleNames,SE` <- # nolint
     function(object) {
@@ -40,7 +39,6 @@ NULL
         names(out) <- rownames(data)
         out
     }
-
 
 
 ## Updated 2019-07-22.
@@ -66,7 +64,6 @@ NULL
     }
 
 
-
 #' @rdname sampleData
 #' @export
 setMethod(
@@ -74,7 +71,6 @@ setMethod(
     signature = signature(object = "SummarizedExperiment"),
     definition = `sampleNames,SE`
 )
-
 
 
 #' @rdname sampleNames

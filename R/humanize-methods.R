@@ -16,7 +16,6 @@
 NULL
 
 
-
 ## Updated 2021-10-21.
 `humanize,SE` <- # nolint
     function(object) {
@@ -25,7 +24,6 @@ NULL
         to <- convertGenesToSymbols(to)
         to
     }
-
 
 
 #' @rdname humanize

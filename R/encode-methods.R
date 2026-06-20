@@ -24,7 +24,6 @@
 NULL
 
 
-
 ## Updated 2019-07-20.
 `encode,SE` <- # nolint
     function(x) {
@@ -38,7 +37,6 @@ NULL
         validObject(x)
         x
     }
-
 
 
 #' @rdname encode

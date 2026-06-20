@@ -62,18 +62,19 @@
 NULL
 
 
-
 ## Don't run validity checks here.
 ## Updated 2021-02-08.
 `sampleData,SE` <- # nolint
-    function(object,
-             clean = TRUE,
-             ignoreCols = c(
-                 "^description$",
-                 "^genomeBuild$",
-                 "^qualityFormat$",
-                 "^samRef$"
-             )) {
+    function(
+        object,
+        clean = TRUE,
+        ignoreCols = c(
+            "^description$",
+            "^genomeBuild$",
+            "^qualityFormat$",
+            "^samRef$"
+        )
+    ) {
         data <- colData(object)
         if (!hasRows(data)) {
             return(data)
@@ -94,7 +95,9 @@ NULL
         } else if (!is.factor(data[["sampleName"]])) {
             abort(sprintf(
                 "{.fun %s} requires {.val %s} factor in {.fun %s}.",
-                "sampleData", "sampleName", "colData"
+                "sampleData",
+                "sampleName",
+                "colData"
             ))
         }
         ## Clean mode.
@@ -125,7 +128,6 @@ NULL
     }
 
 
-
 ## nolint start
 ##
 ## Note that attempting to use `NULL` to remove columns on a DFrame will result
@@ -133,8 +135,6 @@ NULL
 ## https://stat.ethz.ch/pipermail/bioc-devel/2017-November/012343.html
 ##
 ## nolint end
-
-
 
 ## Updated 2023-04-27.
 `sampleData<-,SE,DFrame` <- # nolint
@@ -150,7 +150,6 @@ NULL
     }
 
 
-
 #' @rdname sampleData
 #' @export
 setMethod(
@@ -158,7 +157,6 @@ setMethod(
     signature = signature(object = "SummarizedExperiment"),
     definition = `sampleData,SE`
 )
-
 
 
 #' @rdname sampleData

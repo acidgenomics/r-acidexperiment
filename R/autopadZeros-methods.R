@@ -26,13 +26,9 @@
 NULL
 
 
-
 ## Updated 2019-07-22.
 `autopadZeros,matrix` <- # nolint
-    function(object,
-             rownames = FALSE,
-             colnames = TRUE,
-             sort = TRUE) {
+    function(object, rownames = FALSE, colnames = TRUE, sort = TRUE) {
         assert(
             hasValidDimnames(object),
             isFlag(rownames),
@@ -55,14 +51,15 @@ NULL
     }
 
 
-
 ## Updated 2021-09-02.
 `autopadZeros,SE` <- # nolint
-    function(object,
-             rownames = FALSE,
-             colnames = TRUE,
-             sampleNames = TRUE,
-             sort = TRUE) {
+    function(
+        object,
+        rownames = FALSE,
+        colnames = TRUE,
+        sampleNames = TRUE,
+        sort = TRUE
+    ) {
         assert(isFlag(sampleNames))
         what <- `autopadZeros,matrix`
         args <- list(
@@ -80,7 +77,6 @@ NULL
         }
         object
     }
-
 
 
 #' @rdname autopadZeros

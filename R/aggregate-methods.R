@@ -106,15 +106,17 @@
 NULL
 
 
-
 ## aggregate ===================================================================
 ## Using the `stats::aggregate.data.frame()` S3 method internally here.
 ## Updated 2023-09-21.
 `aggregate,matrix` <- # nolint
-    function(x,
-             by,
-             fun = c("sum", "mean", "median", "geometricMean", "n"),
-             MARGIN = 1L) { # nolint
+    function(
+        x,
+        by,
+        fun = c("sum", "mean", "median", "geometricMean", "n"),
+        MARGIN = 1L
+    ) {
+        # nolint
         assert(
             hasDimnames(x),
             is.factor(by),
@@ -146,15 +148,12 @@ NULL
     }
 
 
-
 ## Matrix multiplication using sparse model (design matrix).
 ## Note that this works row-wise, like stats data.frame method.
 ## Updated 2021-09-10.
 `aggregate,Matrix` <- # nolint
-    function(x,
-             by,
-             fun = c("sum", "mean", "n"),
-             MARGIN = 1L) { # nolint
+    function(x, by, fun = c("sum", "mean", "n"), MARGIN = 1L) {
+        # nolint
         requireNamespaces("Matrix")
         assert(
             hasDimnames(x),
@@ -186,13 +185,10 @@ NULL
     }
 
 
-
 ## Updated 2021-09-13.
 `aggregate,SE` <- # nolint
-    function(x,
-             col = "aggregate",
-             fun = "sum",
-             MARGIN = 1L) { # nolint
+    function(x, col = "aggregate", fun = "sum", MARGIN = 1L) {
+        # nolint
         validObject(x)
         assert(
             hasDimnames(x),
@@ -269,7 +265,6 @@ NULL
     }
 
 
-
 ## Legacy methods ==============================================================
 ## Updated 2021-09-10.
 `aggregateCols,matrix` <- # nolint
@@ -278,17 +273,14 @@ NULL
     }
 
 
-
 ## Updated 2021-09-10.
 `aggregateCols,Matrix` <- # nolint
     `aggregateCols,matrix`
 
 
-
 ## Updated 2021-09-10.
 `aggregateCols,SE` <- # nolint
     `aggregateCols,matrix`
-
 
 
 ## Updated 2021-09-10.
@@ -298,17 +290,14 @@ NULL
     }
 
 
-
 ## Updated 2021-09-10.
 `aggregateRows,Matrix` <- # nolint
     `aggregateRows,matrix`
 
 
-
 ## Updated 2021-09-10.
 `aggregateRows,SE` <- # nolint
     `aggregateRows,matrix`
-
 
 
 ## S4 method exports ===========================================================
@@ -339,7 +328,6 @@ setMethod(
 )
 
 
-
 #' @rdname aggregate
 #' @export
 setMethod(
@@ -363,7 +351,6 @@ setMethod(
     signature = signature(x = "matrix"),
     definition = `aggregateCols,matrix`
 )
-
 
 
 #' @rdname aggregate

@@ -6,12 +6,11 @@
 "_PACKAGE"
 
 
-
 ## S4 classes ==================================================================
 
 #' @importClassesFrom AcidBase missingOrNULL
 #' @importClassesFrom AcidGenomes EnsemblToNcbi GeneToSymbol NcbiToEnsembl
-#' TxToGene
+#' @importClassesFrom AcidGenomes TxToGene
 #' @importClassesFrom IRanges SplitDFrameList
 #' @importClassesFrom Matrix Matrix
 #' @importClassesFrom S4Vectors DFrame SimpleList
@@ -19,46 +18,52 @@
 NULL
 
 
-
 ## S4 generics and methods =====================================================
 
 #' @importFrom AcidGenerics EnsemblToNcbi GeneToSymbol NcbiToEnsembl TxToGene
-#' aggregateCols aggregateRows as.SummarizedExperiment atomize autopadZeros
-#' calculateMetrics camelCase convertGenesToSymbols convertSampleIdsToNames
-#' convertSymbolsToGenes convertTranscriptsToGenes correlation dottedCase
-#' droplevels2 encode export factorize geneNames headtail humanize import
-#' integerCounts interestingGroups interestingGroups<- leftJoin makeNames
-#' makeSampleData mapGenesToIds mapGenesToRownames mapGenesToSymbols
-#' matchSampleColumn melt metrics mutateAt nonzeroRowsAndCols removeNa
-#' sampleData sampleData<- selectSamples snakeCase stripGeneVersions
-#' stripTranscriptVersions tpm uniteInterestingGroups upperCamelCase
+#' @importFrom AcidGenerics aggregateCols aggregateRows as.SummarizedExperiment
+#' @importFrom AcidGenerics atomize autopadZeros calculateMetrics camelCase
+#' @importFrom AcidGenerics convertGenesToSymbols convertSampleIdsToNames
+#' @importFrom AcidGenerics convertSymbolsToGenes convertTranscriptsToGenes
+#' @importFrom AcidGenerics correlation dottedCase droplevels2 encode export
+#' @importFrom AcidGenerics factorize geneNames headtail humanize import
+#' @importFrom AcidGenerics integerCounts interestingGroups interestingGroups<-
+#' @importFrom AcidGenerics leftJoin makeNames makeSampleData mapGenesToIds
+#' @importFrom AcidGenerics mapGenesToRownames mapGenesToSymbols
+#' @importFrom AcidGenerics matchSampleColumn melt metrics mutateAt
+#' @importFrom AcidGenerics nonzeroRowsAndCols removeNa sampleData sampleData<-
+#' @importFrom AcidGenerics selectSamples snakeCase stripGeneVersions
+#' @importFrom AcidGenerics stripTranscriptVersions tpm uniteInterestingGroups
+#' @importFrom AcidGenerics upperCamelCase
 #' @importFrom BiocGenerics Map %in% as.data.frame cbind combine counts counts<-
-#' do.call estimateSizeFactors lapply match organism organism<- setdiff
-#' sizeFactors sizeFactors<- t unlist unsplit
+#' @importFrom BiocGenerics do.call estimateSizeFactors lapply match organism
+#' @importFrom BiocGenerics organism<- setdiff sizeFactors sizeFactors<- t
+#' @importFrom BiocGenerics unlist unsplit
 #' @importFrom Biobase sampleNames sampleNames<-
 #' @importFrom Matrix colSums rowSums
 #' @importFrom S4Vectors aggregate complete.cases cor decode droplevels head
-#' mcols mcols<- metadata metadata<- na.omit split summary
+#' @importFrom S4Vectors mcols mcols<- metadata metadata<- na.omit split summary
 #' @importFrom SummarizedExperiment assay assay<- assayNames assayNames<- assays
-#' assays<- colData colData<- rowData rowData<- rowRanges rowRanges<-
+#' @importFrom SummarizedExperiment assays<- colData colData<- rowData rowData<-
+#' @importFrom SummarizedExperiment rowRanges rowRanges<-
 NULL
 
 #' @importMethodsFrom AcidBase headtail
 #' @importMethodsFrom AcidGenomes EnsemblToNcbi GeneToSymbol NcbiToEnsembl
-#' TxToGene stripGeneVersions stripTranscriptVersions
+#' @importMethodsFrom AcidGenomes TxToGene stripGeneVersions
+#' @importMethodsFrom AcidGenomes stripTranscriptVersions
 #' @importMethodsFrom AcidPlyr leftJoin mutateAt
 #' @importMethodsFrom pipette atomize droplevels2 export factorize import
-#' removeNa
+#' @importMethodsFrom pipette removeNa
 #' @importMethodsFrom syntactic camelCase dottedCase makeNames snakeCase
-#' upperCamelCase
+#' @importMethodsFrom syntactic upperCamelCase
 NULL
-
 
 
 # Standard functions ===========================================================
 
 #' @importFrom AcidBase geometricMean initDir lanePattern metadataDenylist
-#' methodFunction realpath standardizeCall strMatch strPad
+#' @importFrom AcidBase methodFunction realpath standardizeCall strMatch strPad
 #' @importFrom AcidCLI abort alert alertInfo alertWarning toInlineString
 #' @importFrom AcidGenomes detectOrganism emptyRanges
 #' @importFrom GenomicRanges GRanges
@@ -66,13 +71,15 @@ NULL
 #' @importFrom S4Vectors DataFrame Rle SimpleList
 #' @importFrom SummarizedExperiment SummarizedExperiment
 #' @importFrom goalie allAreAtomic allAreMatchingRegex areDisjointSets
-#' areIntersectingSets areSetEqual assert bapply cause false hasColnames
-#' hasCols hasDimnames hasDuplicates hasLength hasNames hasNoDuplicates
-#' hasRownames hasRows hasValidDimnames hasValidNames isADirectory isAFile
-#' isAUrl isAny isCharacter isFlag isInRange isInstalled isInt isNonNegative
-#' isNumber isPositive isScalar isString isSubset matchesUniqueGeneNames
-#' requireNamespaces validNames
+#' @importFrom goalie areIntersectingSets areSetEqual assert bapply cause false
+#' @importFrom goalie hasColnames hasCols hasDimnames hasDuplicates hasLength
+#' @importFrom goalie hasNames hasNoDuplicates hasRownames hasRows
+#' @importFrom goalie hasValidDimnames hasValidNames isADirectory isAFile
+#' @importFrom goalie isAUrl isAny isCharacter isFlag isInRange isInstalled
+#' @importFrom goalie isInt isNonNegative isNumber isPositive isScalar isString
+#' @importFrom goalie isSubset matchesUniqueGeneNames requireNamespaces
+#' @importFrom goalie validNames
 #' @importFrom methods as is new setMethod setReplaceMethod signature
-#' validObject
+#' @importFrom methods validObject
 #' @importFrom utils sessionInfo
 NULL
